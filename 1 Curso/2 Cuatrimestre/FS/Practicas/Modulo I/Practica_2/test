@@ -1,0 +1,12 @@
+1. Liste el contenido del directorio /etc/ a un archivo de nombre ejercico1
+
+ls /etc/ > ejercicio1
+
+2.Añada la ruta del directorio actial al archivo ejericio1
+
+pwd >> ejercicio1
+
+3.Haciendo uso de los comandos de ejecución condcional de órdenes, comprueba si existe el archivo sample.txt en el directorio /root/. En caso afirmativo, haciendo uso de la orden echo, muestra "file found". En caso negativo, muestra "file not found".
+
+(cat /home/javi5454/newJavaFile.java && echo "file found") || echo "file not found"
+

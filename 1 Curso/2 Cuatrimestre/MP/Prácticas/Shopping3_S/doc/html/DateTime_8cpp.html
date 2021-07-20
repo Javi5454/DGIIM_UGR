@@ -1,0 +1,310 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.17"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>SHOPPING1: Referencia del Archivo src/DateTime.cpp</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">SHOPPING1
+   &#160;<span id="projectnumber">0</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Generado por Doxygen 1.8.17 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'Buscar');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','Buscar');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#func-members">Funciones</a>  </div>
+  <div class="headertitle">
+<div class="title">Referencia del Archivo DateTime.cpp</div>  </div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><code>#include &lt;iostream&gt;</code><br />
+<code>#include &lt;sstream&gt;</code><br />
+<code>#include &quot;<a class="el" href="DateTime_8h_source.html">DateTime.h</a>&quot;</code><br />
+<code>#include &lt;algorithm&gt;</code><br />
+</div><div class="textblock"><div class="dynheader">
+Dependencia gráfica adjunta para DateTime.cpp:</div>
+<div class="dyncontent">
+<div class="center"><img src="DateTime_8cpp__incl.png" border="0" usemap="#src_2DateTime_8cpp" alt=""/></div>
+<!-- MAP 0 -->
+</div>
+</div>
+<p><a href="DateTime_8cpp_source.html">Ir al código fuente de este archivo.</a></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
+Funciones</h2></td></tr>
+<tr class="memitem:a9962ec9b30855e08347df66f3fc99345"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="DateTime_8cpp.html#a9962ec9b30855e08347df66f3fc99345">isCorrect</a> (int year, int month, int day, int hour, int min, int sec)</td></tr>
+<tr class="memdesc:a9962ec9b30855e08347df66f3fc99345"><td class="mdescLeft">&#160;</td><td class="mdescRight">auxiliary function to check if the date and the time are in correct format, taking into account, leap year etc.  <a href="DateTime_8cpp.html#a9962ec9b30855e08347df66f3fc99345">Más...</a><br /></td></tr>
+<tr class="separator:a9962ec9b30855e08347df66f3fc99345"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af2b9a13e863e39a34e807bef47cbbd16"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="DateTime_8cpp.html#af2b9a13e863e39a34e807bef47cbbd16">split</a> (const std::string &amp;line, int &amp;y, int &amp;m, int &amp;d, int &amp;h, int &amp;mn, int &amp;s)</td></tr>
+<tr class="memdesc:af2b9a13e863e39a34e807bef47cbbd16"><td class="mdescLeft">&#160;</td><td class="mdescRight">split the first field in 6 components of the data time. Please consider using string::substr(int, int)[<a href="https://en.cppreference.com/w/cpp/string/basic_string/substr">https://en.cppreference.com/w/cpp/string/basic_string/substr</a>] to cut the line into the appropriate substrings and then convert it into integer values with the function stoi(string) [<a href="https://en.cppreference.com/w/cpp/string/basic_string/stol">https://en.cppreference.com/w/cpp/string/basic_string/stol</a>]  <a href="DateTime_8cpp.html#af2b9a13e863e39a34e807bef47cbbd16">Más...</a><br /></td></tr>
+<tr class="separator:af2b9a13e863e39a34e807bef47cbbd16"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">Descripción detallada</h2>
+<div class="textblock"><dl class="section author"><dt>Autor</dt><dd>DECSAI </dd></dl>
+<dl class="section note"><dt>Nota</dt><dd>To be implemented by students </dd></dl>
+
+<p class="definition">Definición en el archivo <a class="el" href="DateTime_8cpp_source.html">DateTime.cpp</a>.</p>
+</div><h2 class="groupheader">Documentación de las funciones</h2>
+<a id="a9962ec9b30855e08347df66f3fc99345"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9962ec9b30855e08347df66f3fc99345">&#9670;&nbsp;</a></span>isCorrect()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool isCorrect </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>year</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>month</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>day</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>hour</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>min</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>sec</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>auxiliary function to check if the date and the time are in correct format, taking into account, leap year etc. </p>
+<dl class="params"><dt>Parámetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">year</td><td>input </td></tr>
+    <tr><td class="paramname">month</td><td>input </td></tr>
+    <tr><td class="paramname">day</td><td>input </td></tr>
+    <tr><td class="paramname">hour</td><td>input </td></tr>
+    <tr><td class="paramname">min</td><td>input </td></tr>
+    <tr><td class="paramname">sec</td><td>input </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Devuelve</dt><dd>true if is correct, false if not </dd></dl>
+
+<p class="definition">Definición en la línea <a class="el" href="DateTime_8cpp_source.html#l00060">60</a> del archivo <a class="el" href="DateTime_8cpp_source.html">DateTime.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;                                                                         {</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    </div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    <span class="keywordtype">int</span> nDays;</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;    <span class="keywordtype">bool</span> bisiesto = ((year % 4 == 0 &amp;&amp; year % 100 != 0) || year % 400 == 0);</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;    </div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;    <span class="keywordflow">if</span>((month == 1) || (month == 3) || (month == 5) || (month == 7) || (month == 8)</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;            || (month == 10) || (month == 12)){</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;            </div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;        nDays = 31;</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;    }</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;    <span class="keywordflow">else</span> <span class="keywordflow">if</span> (month == 2)</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;    {</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;        <span class="keywordflow">if</span>(bisiesto)</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;        {</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;            nDays = 29;</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;        }</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;        <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;        {</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;            nDays = 28;</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;        }</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;    }</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;    <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;    {</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;        nDays = 30;</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;    }</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;    </div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;    </div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;    <span class="keywordflow">return</span> ((month &lt;= 12) &amp;&amp; (month &gt;= 1) &amp;&amp; (day &lt;= nDays) &amp;&amp; (day &gt;= 0) &amp;&amp; (hour &lt;=23)</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;            &amp;&amp; (hour &gt;= 0) &amp;&amp; (min &gt;= 0) &amp;&amp; (min &lt;= 59) &amp;&amp; (sec &lt;= 59) &amp;&amp; (sec &gt;= 0)); </div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160; </div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="af2b9a13e863e39a34e807bef47cbbd16"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af2b9a13e863e39a34e807bef47cbbd16">&#9670;&nbsp;</a></span>split()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void split </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>line</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int &amp;&#160;</td>
+          <td class="paramname"><em>y</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int &amp;&#160;</td>
+          <td class="paramname"><em>m</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int &amp;&#160;</td>
+          <td class="paramname"><em>d</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int &amp;&#160;</td>
+          <td class="paramname"><em>h</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int &amp;&#160;</td>
+          <td class="paramname"><em>mn</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int &amp;&#160;</td>
+          <td class="paramname"><em>s</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>split the first field in 6 components of the data time. Please consider using string::substr(int, int)[<a href="https://en.cppreference.com/w/cpp/string/basic_string/substr">https://en.cppreference.com/w/cpp/string/basic_string/substr</a>] to cut the line into the appropriate substrings and then convert it into integer values with the function stoi(string) [<a href="https://en.cppreference.com/w/cpp/string/basic_string/stol">https://en.cppreference.com/w/cpp/string/basic_string/stol</a>] </p>
+<div class="fragment"><div class="line">YYYY-MM-dd hh:mm:ss UTC </div>
+<div class="line">+----+----+----+----+----+ </div>
+<div class="line">|    |    |    |    |    |</div>
+<div class="line">0    5    10   15   20   25</div>
+</div><!-- fragment --><ul>
+<li><dl class="params"><dt>Parámetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">line</td><td>input string </td></tr>
+    <tr><td class="paramname">y</td><td>output int </td></tr>
+    <tr><td class="paramname">m</td><td>output int </td></tr>
+    <tr><td class="paramname">d</td><td>output int </td></tr>
+    <tr><td class="paramname">h</td><td>output int </td></tr>
+    <tr><td class="paramname">mn</td><td>output int </td></tr>
+    <tr><td class="paramname">s</td><td>output int </td></tr>
+  </table>
+  </dd>
+</dl>
+</li>
+</ul>
+
+<p class="definition">Definición en la línea <a class="el" href="DateTime_8cpp_source.html#l00092">92</a> del archivo <a class="el" href="DateTime_8cpp_source.html">DateTime.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;                                                                                      {</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;    </div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;    <span class="keywordtype">string</span> add;</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;    </div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;    <span class="keywordflow">if</span>(line.length() == 23){</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;        y = stoi(line.substr(0,4));</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;        m = stoi(line.substr(5,2));</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;        d = stoi(line.substr(8,2));</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;        </div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;        h = stoi(line.substr(11,2));</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;        mn = stoi(line.substr(14,2));</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;        s = stoi(line.substr(17,2));</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;    }</div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;    <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;    {</div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;        m = 15; <span class="comment">//Le pasamos un valor incorrecto del mes</span></div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;    }</div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;     </div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;}</div>
+</div><!-- fragment -->
+</div>
+</div>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Generado por &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.17
+</small></address>
+</body>
+</html>

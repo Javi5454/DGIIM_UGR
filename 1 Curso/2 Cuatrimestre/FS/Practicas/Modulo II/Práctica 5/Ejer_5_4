@@ -1,0 +1,29 @@
+#!/bin/bash
+# Titulo: Ejercicio 4 Práctica 5 
+# Fecha: 4/5/2021
+# Autor: Javier Gómez López
+# Versión: 1.0
+
+if [ $# != 1 ]
+then 
+    echo "Error arguments <string>"
+fi
+
+arg=$1
+minus=$(echo $arg | tr '[:upper:]' '[:lower:]')
+
+case "$minus" in
+    "jan"|1) echo "January";;
+    "feb"|2) echo "February";;
+    "mar"|3) echo "March";;
+    "apr"|4) echo "April";;
+    "may"|5) echo "May";;
+    "jun"|6) echo "June";;
+    "jul"|7) echo "July";;
+    "aug"|8) echo "August";;
+    "sep"|9) echo "September";;
+    "oct"|10) echo "October";;
+    "nov"|11) echo "November";;
+    "dec"|12) echo "December";;
+    *) echo "Error arguments entered";;
+esac

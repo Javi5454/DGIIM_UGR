@@ -1,0 +1,401 @@
+\documentclass[a4paper, 12pt]{article}
+
+\usepackage{amsmath} %Todos los paquetes de matematicas
+\usepackage{amsthm}
+\usepackage{mathtools}
+\providecommand{\abs}[1]{\lvert#1\rvert}
+\providecommand{\norm}[1]{\lVert#1\rVert}
+\usepackage{yhmath}
+\usepackage[utf8]{inputenc}
+\usepackage[spanish]{babel}
+\usepackage{wrapfig} %Figuras flotantes
+\usepackage{parselines}
+\usepackage{enumitem}
+\usepackage{xcolor}
+\usepackage{graphicx}
+\graphicspath{{images/}}
+\usepackage{subcaption}
+\usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry}
+\usepackage{eurosym} %Euro, de nada misniños
+
+\theoremstyle{definition}
+\newtheorem{ej}{Ejercicio}
+
+
+
+\title{\textbf{Relación de ejercicios 3 EDIP}}
+\author{Carlos García, Bora Goker, Javier Gómez,  \\ Ana Graciani, J.Alberto Hoces}
+\date{2020/2021}
+
+\setlength{\parindent}{0px}
+
+\begin{document}
+
+\maketitle
+
+\begin{ej}
+Durante un año, las personas de una ciudad utilizan 3 tipos de transportes: metro (M), autobús (A), y coche particular (C). Las probabilidades de que durante el año hayan usado unos u otros transportes son:
+
+\medskip
+
+\begin{tabular}{c c c c c c c}
+	M: 0.3; & A: 0.2; & C: 0.15; & M y A: 0.1; & M y C: 0.05; & A y C: 0.06; & M, A y C: 0.01
+\end{tabular} 
+
+\medskip
+
+Calcular las probabilidades siguientes:
+\begin{enumerate}[label=\textit{\alph*)}]
+	\item que una persona viaje en metro y no en autobús.
+\[
+	P(M \cap \bar{A}) = P(M) - P(M \cap A) = 0.3 - 0.1 = \underline{0.2}
+\]
+	\item que una persona tome al menos dos medios de transporte.
+\[
+	P((M \cap A) \cup (M \cap C) \cup (A \cap C) \cup (M \cap A \cap C)) = P((M \cap A) \cup (M \cap C)) + P((A \cap C) \cup (M \cap A \cap C)) 
+\]
+\[
+	- P(((M \cap A) \cup (M \cap C)) \cap ((A \cap C) \cup (M \cap A \cap C))) =
+\]
+\[
+	P(M \cap A) + P(M \cap C) - P(M \cap A \cap C) + P(A \cap C) + P(M \cap A \cap C) - P(M \cap A \cap C) - P(M \cap A \cap C) =
+\]
+\[
+	0.1 + 0.05 - 0.01 + 0.06 + 0.01 - 0.01 - 0.01 = \underline{0.19}
+\]
+	\item que una persona viaje en metro o en coche, pero no en autobús.
+\[
+	P((M \cup C) \cap \bar{A}) = P(M \cup C) - P((M \cup C) \cap A) = P(M) + P(C) - P(M \cap C) - [P((M \cap A) \cup (A \cap C))] =
+\]
+\[
+	P(M) + P(C) - P(M \cap C) - P(M \cap A) - P(A \cap A) + P(M \cap A \cap C) =
+\]
+\[
+	0.3 + 0.15 - 0.05 - 0.1 - 0.06 + 0.01 = \underline{0.25}
+\]
+	\item que viaje en metro, o bien en autobús y en coche.
+\[
+	P(M \cup (A \cap C)) = P(M) + P(A \cap C) - P(M \cap A \cap C) = 0.3 + 0.06 - 0.01 = \underline{0.35}
+\]
+	\item que una persona vaya a pie.
+	Aquí se  nos plantean dos posibilidades: que o el ir a pie sea la única alternativa a los medios de transportes propuestos en el enunciado, o que no sea así. En el segundo caso el problema sería imposible de resolver puesto que faltarían datos. Resolvamoslo para el primer caso:
+\[
+	P(\overline{M \cup A \cup C}) = 1 - P(M \cup A \cup C) = 1 - [P(M \cup A) + P(C) - P((M \cup A) \cap C)] = 
+\]
+\[
+	1 - [P(M) + P(A) - P(M \cap A) + P(C) - P((M \cap C) \cup (A \cap C))] =
+\]
+\[
+	1 - [0.3 + 0.2 - 0.1 + 0.15 - 0.05 - 0.06 + 0.01] = \underline{0.55}
+\]
+\end{enumerate}
+\end{ej}
+
+\newpage
+
+\begin{ej}
+Sean \(A,B\) y \(C\) tres sucesos de un espacio probabilístico \(\Omega, \mathcal{A}, P)\), tales que \(P(A) = 0.4\), \(P(B) = 0.2\), \(P(C) = 0.3\), \(P(A \cap B) = 0.1\) y \((A \cup B) \cap C = \emptyset\). Calcular las probabilidades de los siguientes sucesos:
+
+\medskip
+
+\begin{enumerate}[label=\textit{\alph*)}]
+	\item sólo ocurre \(A\).
+\[
+	P(A \cap \bar{B} \cap \bar{C}) = P(A \cap (\overline{B \cup C})) = P(A) - P(A \cap (B \cup C)) = P(A) - P((A \cap B) \cup (A \cap C)) =
+\]
+\[
+	P(A) - P(A \cap B) - P(A \cap C) + P(A \cap B \cap C) = 0.4 - 0.1 - 0 - 0 = \underline{0.3}
+\]
+	\item ocurren los tres sucesos
+\[
+	P((A \cup B) \cap C) = P((A \cap C) \cup (B \cap C)) = 0 \Rightarrow P(A \cap C) = 0 \text{ y } P(B \cap C) = 0
+\]
+\[
+	P(A \cap B \cap C) = \underline{0}
+\]
+	\item ocurren \(A\) y \(B)\) pero no \(C\).
+\[
+	P(A \cap B \cap \bar{C}) = P(A \cap B) - P(A \cap B \cap C) = P(A \cap B) = \underline{0.1}
+\]
+	\item por los menos dos ocurren.
+\[
+	P((A \cap B) \cup (B \cap C) \cup (A \cap C)) = P((A \cap B) \cup ((A \cup B) \cap C)) = P((A \cap B) \cup \emptyset) = P(A \cap B) = \underline{0.1}
+\]
+	\item ocurren dos y no más.
+\[
+	P((A \cap B) \cup (B \cap C) \cup (A \cap C)) = P(A \cap B) = \underline{0.1}
+\]
+	\item no ocurren más de dos.
+\[
+	P(\overline{A \cap B \cap C}) = 1 - P(A \cap B \cap C) = \underline{1}
+\]
+	\item ocurre por lo menos uno
+\[
+	P(A \cup B \cup C) = P(A \cup B) + P(C) - P((A \cup B) \cap C) = P(A) + P(B) + P(C) - P(A \cap B) = 
+\]
+\[
+	0.4 + 0.2 + 0.4 - 0.1 = \underline{0.8}
+\]
+	\item ocurre sólo uno.
+\[
+	P((A \cap \bar{B} \cap \bar{C}) \cup (\bar{A} \cap B \cap \bar{C}) \cup (\bar{A} \cap \bar{B} \cap C)) = P((A \cap \bar{B} \cap \bar{C}) \cup (\bar{A} \cap B \cap \bar{C})) + P(\bar{A} \cap \bar{B} \cap C) - 0 = 
+\]
+\[
+	P(A \cap \bar{B} \cap \bar{C}) + P(\bar{A} \cap B \cap \bar{C}) + P(\bar{A} \cap \bar{B} \cap C) - 0 - 0 = 
+\]
+\[
+	P(A \cap \bar{B}) - P(A \cap \bar{B} \cap C) + P(\bar{A} \cap B) - P(\bar{A} \cap B \cap C) + P(\bar{A} \cap C) - P(\bar{A} \cap B \cap C) =
+\]
+\[
+	P(A) - P(A \cap B) - P(A \cap C) + P(A \cap B \cap C) + P(B) - P(A \cap B) - P(B \cap C) +
+\]
+\[
+	+ P(A \cap B \cap C) + P(C) - P(A \cap C) - P(B \cap C) + P(A \cap B \cap C) =
+\]
+\[
+	P(A) - P(A \cap B) + P(B) - P(A \cap B) + P(C) = 0.4 - 0.1 + 0.2 - 0.1 + 0.3 = \underline{0.7}
+\]
+	\item no ocurre ninguno.
+\[
+	P(\overline{A \cup B \cup C}) = 1 - P(A \cup B \cup C) = 1 - 0.8 = \underline{0.2}
+\]
+\end{enumerate}
+\end{ej}
+
+\newpage
+
+\begin{ej}
+Se sacan dos bolas sucesivamente sin devolución de una urna que contiene 3 bolas rojas distinguibles y 2 blancas distinguibles. \\
+\begin{enumerate}[label=\textit{\alph*)}]
+    \item Describir el espacio de probabilidad asociado a este experimento.\\
+    $\Omega =
+    \{b_i b_j; i,j=1,2 ;i \neq j \} \cup \{ b_i r_j; i=1,2 ; j= 1,2,3\} \cup  \{ r_i b_j; i=1,2 ; j= 1,2,3\} \cup \\ \cup \{ r_i r_j; i,j=1,2,3; i\neq j\} $ 
+    $$\#(\Omega) = 20$$
+    \item Descomponer en sucesos elementales los sucesos:la primera bola es roja,la segunda bola esblanca y calcular la probabilidad de cada uno de ellos. \\
+    $P(1^a \ roja) = P(1^a \ roja \ 2^a \ roja) + P(1^a \ roja \ 2^a \ blanca) = P(r_i r_j; i,j=1,2,3; i\neq j) +$\\$+ \ P(r_i b_j; i=1,2,3 ; j= 1,2) = \dfrac{2*3}{20} + \dfrac{2*3}{20} = \dfrac{3}{5}$ \\
+    $P(2^a \ blanca) = P(1^a \ roja \ 2^a \ blanca) + P(1^a \ blanca \ 2^a \ blanca) = P(r_i b_j; i=1,2,3 ; j= 1,2) +$\\$+ \ P(b_i b_j; i,j=1,2 ;i \neq j) = \dfrac{2*1}{20} + \dfrac{3*2}{20} = \dfrac{2}{5}$
+    \item ¿Cúal es la probabilidad de que ocurra alguno de los sucesos considerados en el apartado anterior?\\
+    Usando el principio de inclusión-exclusión: \\
+    $P(1^a \ roja \cup 2^a \ blanca) = P(1^a \ roja) + P(2^a \ blanca) - P(1^a \ roja 2^a \ blanca) =$\\$= 1- \dfrac{3*2}{20} = \underline{0.7}$
+    
+\end{enumerate}
+\end{ej}
+
+\begin{ej}
+Una urna contiene a bolas blancas y b bolas negras. ¿Cuál es la probabilidad de que al extraer
+dos bolas simultáneamente sean de distinto color?
+
+\medskip
+
+Aunque en el enunciado del problema se nos especifique que ambas bolas se extraen de la urna simultáneamente, podemos considerar la extracción de una bola y luego de otra sin reemplazamiento con el fin  de facilitar el cálculo de la probabilidad que se nos pide. Nombraremos B y N a los sucesos ``sacar bola blanca'' y ``sacar bola negra'' respectivamente. Que sean de distinto color significa que primero se saca una bola negra y luego una blanca o bien una blanca y después una negra. Por lo tanto, el cálculo de la probabilidad del suceso pedido será igual a la suma de estas dos probabilidades:
+
+\[
+	P(B/N)\cdot P(N) \Rightarrow \text{Que salga blanca después de sacar una negra}
+\]
+
+\[
+	P(N/B)\cdot P(B) \Rightarrow \text{Que salga negra después de sacar una blanca}
+\]
+
+\[
+	P(\text{2 bolas de distinto color}) = P(B/N)\cdot P(N) + P(N/B)\cdot P(B) =
+\]
+
+\[
+	= \frac{b}{n+b-1}\cdot\frac{n}{n+b} + \frac{n}{n+b-1}\cdot\frac{b}{n+b} = \frac{2nb}{n^2+b^2+2nb-n-b}
+\]
+
+\end{ej}
+
+\medskip
+
+\begin{ej}
+Una urna contiene 5 bolas blancas y 3 rojas. Se extraen 2 bolas simultáneamente. Calcular la
+probabilidad de obtener:
+\begin{enumerate}[label=\textit{\alph*)}]
+\item dos bolas rojas
+\item dos bolas blancas
+\item una blanca y otra roja.
+\end{enumerate}
+
+No influye el orden en el que sacamos las bolas, los pares se sacan simultáneamente, y no se pueden repetir elementos porque no podemos sacar la misma bola 2 veces, luego para calcular las situaciones posibles calculamos las combinaciones sin repetición. \\
+Tenemos 8 bolas en total y sacamos 2; $\qquad n=8 , \quad p=2$
+\[C^p_n = C^2_8 = \binom{8}{2} = 28\]
+\begin{enumerate}[label=\textit{\alph*)}]
+\item No influye el orden y no se pueden repetir elementos $\longrightarrow$ combinaciones sin repetición
+
+Hay 3 bolas rojas $\quad\Longrightarrow\quad$ situaciones favorables: $\quad C_3^2 = \binom{3}{2} = 3$
+\[P(\text{dos bolas rojas}) = \frac{C_3^2}{C_8^2} = \frac{3}{28} = \underline{0.107}\]
+\item \[P(\text{dos bolas blancas}) = \frac{C_5^2}{C_8^2} = \frac{\binom{5}{2}}{\binom{8}{2}} = \frac{10}{28} = \frac{5}{14} = \underline{0.357}\]
+\item 5 bolas blancas $\quad\Longrightarrow\quad \text{situaciones favorables 1 bola blanca:}\quad C_5^1 = \binom{5}{1} = 5$ \\
+3 bolas rojas $\quad\Longrightarrow\quad \text{situaciones favorables 1 bola roja:}\quad C_3^1 = \binom{3}{1} = 3$
+\[P(\text{una bola blanca y otra roja}) = \frac{C_5^2 \cdot C_3^2}{C_8^2} = \frac{5\cdot3}{28} = \frac{15}{28} = \underline{0.536}\]
+\end{enumerate}
+
+\end{ej}
+
+\medskip
+
+\begin{ej}
+En una lotería de 100 billetes hay 2 que tienen premio.
+
+\begin{enumerate}[label=\textit{\alph*)}]
+	\item ¿Cuál es la probabilidad de ganar al menos un premio si se compran 12 billetes?
+	
+	Sea \(A\) la probabilidad de ganar al menos uno. Podemos afirmar que:
+\[
+	P(A) = 1 - P(\bar{A})
+\]
+Por tanto, hay \(\binom{100}{12}\) combinaciones de billetes y hay \(\binom{98}{12}\) combinaciones de billetes no ganadores. Por tanto:
+\[
+	P(A) = 1 - \frac{\binom{98}{12}}{\binom{100}{12}} = 1 - \frac{98! \cdot 88!}{86! \cdot 100!} = 1 - 0.773 = \underline{0.2267}
+\]
+
+	\item ¿Cuantos billetes habrá que comprar para que la probabilidad de ganar al menos un premio sea mayor que 4/5?
+
+Supongamos que cogemos \(x\) billetes. La probabilidad de no ganar nada con ellos sería:
+\[
+	\frac{\binom{98}{x}}{\binom{100}{x}}
+\]
+Para obtener una probabilidad mayor que 4/5 de ganar, tenemos que obtener una menor de 0.2 de perder. Así:
+\[
+	\frac{\binom{98}{x}}{\binom{100}{x}} \leq 0.2 \Rightarrow \frac{(100-x) (99-x)}{9900} \leq 0.2 \Rightarrow x^2 - 199x + 7920 \leq 0
+\]
+\[
+	x = 144 \text{ ó } x = 55
+\]
+Puesto que hay 100 billetes la solución correcta es 55 billetes.
+\end{enumerate}
+\end{ej}
+
+\begin{ej}
+Se consideran los 100 primeros números naturales. Se sacan 3 al azar.\\
+\begin{enumerate}[label=\textit{\alph*)}]
+    \item Calcular la probabilidad de que en los 3 primeros números obtenidos no exista ningún cuadrado perfecto. \\
+    Si se hacen sin repetición: \\ $P(\text{No cuadrado perfecto}) = \dfrac{{90 \choose 3}}{{100 \choose 3}}  = \frac{90\cdot89\cdot88}{3\cdot2}= \dfrac{117480}{161700} = \underline{0.727}$  \\
+    Si se hacen con repetición: \\  $P(\text{No cuadrado perfecto}) = \dfrac{90^3}{100^3}=\dfrac{72900}{1000000} = \underline{0.729}$
+    \item Calcular la probabilidad de que exista al menos un cuadrado perfecto.
+    Si se hacen sin repetición: \\ $P(\text{Cuadrado perfecto}) = 1 - P(\text{No cuadrado perfecto}) = 1 - 0.727 = \underline{0.273}$ \\
+    Si se hacen con repetición: \\ $P(\text{Cuadrado perfecto}) = 1 - P(\text{No cuadrado perfecto}) = 1 - 0.729 = \underline{0.271}$
+    \item Calcular la probabilidad de que exista un solo cuadrado perfecto, de que existan dos y de que tres lo sean.\\
+    Si se hacen sin repetición: \\ 
+    $P(\text{Un solo cuadrado perfecto}) = \dfrac{{90 \choose 2} \cdot {10 \choose 1}}{{100 \choose 3}} = \dfrac{40050}{161700} = \underline{0.248}$ \\
+    $P(\text{Dos cuadrados perfectos}) = \dfrac{{90 \choose 1} \cdot {10 \choose 2}}{{100 \choose 3}} = \dfrac{4050}{161700} = \underline{0.025}$\\
+    $P(\text{Tres cuadrados perfectos}) = \dfrac{{10 \choose 3}}{{100 \choose 3}} = \dfrac{120}{161700} = \underline{0.001}$\\
+    Si se hacen con repetición:\\
+    $P(\text{Un solo cuadrado perfecto}) = \dfrac{90^2\cdot 10}{100^3} = \dfrac{81000}{1000000} = \underline{0.081}$ \\
+    $P(\text{Dos cuadrados perfectos}) = \dfrac{90 \cdot 10^2}{100^3} = \dfrac{9000}{1000000} = \underline{0.009}$\\
+    $P(\text{Tres cuadrados perfectos}) = \dfrac{10^3}{100^3} = \dfrac{1000}{1000000} = \underline{0.001}$\\
+    
+\end{enumerate}
+\end{ej}
+
+\medskip
+
+\begin{ej}
+En una carrera de relevos cada equipo se compone de 4 atletas. La sociedad deportiva de un colegio cuenta con 10 corredores y su entrenador debe formar un equipo de relevos que disputará el
+campeonato, y el orden en que participarán los seleccionados.
+\begin{enumerate}[label=\textit{\alph*)}]
+\item ¿Entre cuántos equipos distintos habrá de elegir el entrenador si los 10 corredores son de
+igual valía? (Dos equipos con los mismos atletas en orden distinto se consideran diferentes)
+
+\medskip
+
+Influye el orden de los atletas en el equipo, no intervienen los 10 corredores del colegio en el equipo y un mismo corredor no puede ocupar dos puestos en un equipo, por lo que no se pueden repetir $\longrightarrow$ variaciones sin repetición \\
+Calculamos el número de variaciones sin repetición, que será el número de equipos distintos posibles; $n = 10,\qquad p = 4$
+\[V^4_{10} = \frac{10!}{(10-4)!} = 7\cdot8\cdot9\cdot10 = 5040\text{  equipos}\]
+\item Calcular la probabilidad de que un alumno cualquiera sea seleccionado.
+
+\medskip
+
+$A$: ser seleccionado un alumno cualquiera \\
+situaciones favorables: $V_4^1 \cdot V_9^3 \quad; \qquad\qquad$ situaciones posibles: $V_{10}^4$
+\[P(A) = \frac{V_4^1 \cdot V_9^3}{V_{10}^4} = \frac{\frac{4!}{(4-1)!}\frac{9!}{(9-3)!}}{\frac{10!}{(10-4)!}} = \frac{\frac{4!}{3!}\frac{9!}{6!}}{\frac{10!}{6!}} = \frac{4\cdot 9!}{10!} = \frac{4}{10} = \underline{0.4}\]
+
+\end{enumerate}
+\end{ej}
+
+\medskip
+
+\begin{ej}
+Una tienda compra bombillas en lotes de 300 unidades. Cuando un lote llega, se comprueban 60
+unidades elegidas al azar, rechazándose el envío si se supera la cifra de 5 defectuosas. ¿Cuál es
+la probabilidad de aceptar un lote en el que haya 10 defectuosas?
+
+\medskip
+
+Estamos ante un problema de combinatoria. Haremos uso del esquema dado en clase:
+
+\medskip
+
+¿Intervienen todos los elementos? $\longrightarrow$ No, pues de cada 300 uds. se toman 60.
+\newline
+¿Influye el orden? $\longrightarrow$ No, ya que lo único que nos importa es si las unidades son o no defectuosas, las mismas 60 unidades dispuestas en distinto orden no va a alterar la decisión de descartar el lote.
+\newline
+¿Se pueden repetir los elementos? $\longrightarrow$ No, ya que no se puede escoger la misma bombilla dos veces.
+
+Por lo tanto, estamos ante combinaciones sin repetición. El número total de combinaciones posibles será $C_{300}^{60} = \frac{300!}{60!240!}$. Ahora necesitamos hallar las probabilidades de los sucesos favorables a que el lote sea aceptado, es decir, que de las 60 uds. escogidas haya 0, 1, 2, 3, 4 o 5 bombillas defectuosas. Llamemos A, B, C, D, E y F a los sucesos de sacar 0, 1, 2, 3, 4 y 5 piezas defectuosas entre las 60 escogidas respectivamente. Si tenemos 10 bombillas defectuosas entre las 300, habrá 290 bombillas perfectas. Para calcular la probabilidad de que en las 60 escogidas haya 0 defectuosas (suceso A) tendremos que hallar el cociente entre $C_{290}^{60}$ (combinaciones de 290 elementos tomados de 60 en 60) y $C_{300}^{60}$ (esto se debe a la regla de Laplace):
+
+\[
+    P(A) = \frac{C_{10}^{0} \cdot C_{290}^{60}}{C_{300}^{60}} = \frac{\binom{10}{0} \binom{290}{60}}{\binom{300}{60}} = \underline{0.10333} 
+\]
+
+Para la probabilidad de que en las 60 haya una defectuosa (suceso B) hemos de tener en cuenta que habrá 1 bombilla defectuosa y 59 buenas, por lo que por cada combinación de bombillas defectuosas que se han fijado en las 60 habrá $C_{290}^{59}$ combinaciones posibles de bombillas buenas, y concluimos que la probabilidad del suceso B es:
+
+\[
+    P(B) = \frac{C_{10}^{1} \cdot C_{290}^{59}}{C_{300}^{60}} = \frac{\binom{10}{1} \binom{290}{59}}{\binom{300}{60}} = \underline{0.26838}
+\]
+
+Repetimos los mismos razonamientos con los sucesos C, D, E y F:
+
+\[
+    P(C) = \frac{C_{10}^{2} \cdot C_{290}^{58}}{C_{300}^{60}} = \frac{\binom{10}{2} \binom{290}{58}}{\binom{300}{60}} = \underline{0.307137} \hspace{0.3cm}
+    P(D) = \frac{C_{10}^{3} \cdot C_{290}^{57}}{C_{300}^{60}} = \frac{\binom{10}{3} \binom{290}{57}}{\binom{300}{60}} = \underline{0.20388}
+\]
+
+\[
+    P(E) = \frac{C_{10}^{4} \cdot C_{290}^{56}}{C_{300}^{60}} = \frac{\binom{10}{4} \binom{290}{56}}{\binom{300}{60}} = \underline{0.08691} \hspace{0.3cm}
+    P(F) = \frac{C_{10}^{5} \cdot C_{290}^{55}}{C_{300}^{60}} = \frac{\binom{10}{5} \binom{290}{55}}{\binom{300}{60}} = \underline{0.024853}
+\]
+
+Y calculamos la probabilidad de aceptar el lote como la suma de todas las probabilidades calculadas:
+
+\[
+    P(\text{Aceptar lote con 10 piezas defectuosas}) = \underline{0.99449}
+\]
+
+
+\end{ej}
+
+\begin{ej}
+Una secretaria debe echar al correo 3 cartas; para ello, introduce cada carta en un sobre y escribe las direcciones al azar. ¿Cuál es la probabilidad de que al menos una carta llegue a su destino?
+
+Sean:
+\begin{itemize}
+	\item \(A_1\): La primera carta llega a su destino.
+	\item \(A_2\): La segunda carta llega a su destino.
+	\item \(A_3\): La tercera carta llega a su desitno.
+\end{itemize}
+
+Por tanto, podemos afirmar que:
+\[
+	P(A_1 \cup A_2 \cup A_3) = P(A_1) + P(A_2) + P(A_3) - P(A_1 \cap A_2) - P(A_1 \cap A_3) - P(A_2 \cap A_3) + P(A_1 \cap A_2 \cap A_3)
+\]
+
+\[
+	P(A_i) = \frac{2!}{3!} = \frac{1}{3}; \quad i = 1,2,3
+\]
+\[
+	P(A_i \cap A_j) = \frac{1}{3!} = \frac{1}{6} \quad i,j = 1,2,3
+\]
+\[
+	P(A_1 \cap A_2 \cap A_3) = \frac{1}{3} \cdot \frac{1}{2} \cdot 1 = \frac{1}{6}
+\]
+
+Así:
+\[
+	P(A_1 \cup A_2 \cup A_3) = 3 \cdot \frac{1}{3} - 3 \cdot \frac{1}{6} + \frac{1}{6} = \frac{2}{3}
+\]
+\end{ej}
+
+\end{document}

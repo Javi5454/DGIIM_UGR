@@ -1,0 +1,11 @@
+CC = gcc
+CFLAGS = -g -Wall
+TARGET = myprog
+
+all: $(TARGET)
+
+$(TARGET): $(TARGET).c
+	$(CC) $(CFLAGS) -o $@ $<
+
+eliminate:
+	rm $(TARGET)

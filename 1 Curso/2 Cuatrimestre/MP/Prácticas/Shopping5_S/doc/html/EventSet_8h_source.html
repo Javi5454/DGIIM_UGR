@@ -1,0 +1,145 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.17"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>SHOPPING1: Fichero Fuente include/EventSet.h</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">SHOPPING1
+   &#160;<span id="projectnumber">0</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Generado por Doxygen 1.8.17 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'Buscar');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','Buscar');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">EventSet.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="EventSet_8h.html">Ir a la documentación de este archivo.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160; </div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#ifndef EVENTSET_H</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor">#define EVENTSET_H</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160; </div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="DateTime_8h.html">DateTime.h</a>&quot;</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="Event_8h.html">Event.h</a>&quot;</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160; </div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="preprocessor">#define MAXEVENT  500</span></div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160; </div>
+<div class="line"><a name="l00016"></a><span class="lineno"><a class="line" href="classEventSet.html">   16</a></span>&#160;<span class="keyword">class </span><a class="code" href="classEventSet.html">EventSet</a> {</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="keyword">private</span>:</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;    <a class="code" href="classEvent.html">Event</a> _events[MAXEVENT]; <span class="comment">// Set of events load correcty</span></div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;    <span class="keywordtype">int</span> _nEvents; <span class="comment">// Number of available event</span></div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="keyword">public</span>:</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;    <a class="code" href="classEventSet.html#aee4ddfa7f8c26efab1c978b891999f7e">EventSet</a>();</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    <span class="keywordtype">int</span> <a class="code" href="classEventSet.html#afa17cf8b71961fe1bab9ae5bc7f4963d">size</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    std::string <a class="code" href="classEventSet.html#afc14a43734b5dc5d03289d02546c9ed9">to_string</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classEventSet.html#a82709f9c800e8df263ec719c64b5d81d">clear</a>();</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    <span class="keywordtype">int</span> <a class="code" href="classEventSet.html#acfb9e40b46c649bef5082f5577d733a6">add</a>(<span class="keyword">const</span> <a class="code" href="classEvent.html">Event</a> &amp; e);</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;    <span class="keywordtype">int</span> <a class="code" href="classEventSet.html#acfb9e40b46c649bef5082f5577d733a6">add</a>(<span class="keyword">const</span> std::string&amp; line);</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160; </div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;    <span class="keyword">const</span> <a class="code" href="classEvent.html">Event</a> &amp; <a class="code" href="classEventSet.html#ab8ac311a6121981191ce61d505cc069f">at</a>(<span class="keywordtype">int</span> pos) <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160; </div>
+<div class="line"><a name="l00073"></a><span class="lineno"><a class="line" href="classEventSet.html#a96bdfa35b46daf5760a9152d22d1ceb9">   73</a></span>&#160;    std::string <a class="code" href="classEventSet.html#a96bdfa35b46daf5760a9152d22d1ceb9">reportData</a>()<span class="keyword"> const </span>{</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;        std::string result = <span class="stringliteral">&quot;&quot;</span>;</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;        <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; _nEvents; i++) {</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;            result += std::to_string(std::hash&lt;std::string&gt;{}(_events[i].<a class="code" href="classEvent.html#a317506221f3d1189594fe7ef47bd2910">to_string</a>()));</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;        }</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;        result = std::to_string(std::hash&lt;std::string&gt;{}(result));</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;        result = std::to_string(_nEvents) + <span class="stringliteral">&quot; &quot;</span> + result;</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;        <span class="keywordflow">return</span> result;</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;    }</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160; </div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classEventSet.html#a73bc5f23d807c0fcafd4e93c8b5b1652">write</a>(std::ofstream &amp;os) <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160; </div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="classEventSet.html#a71b8b0c87f2d00203e7a72c42f485478">read</a>(std::ifstream &amp;is, <span class="keywordtype">int</span> nelements);</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;    </div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;};</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160; </div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;<span class="keywordtype">float</span> <a class="code" href="EventSet_8h.html#abe71e09d60b5cec46d638d14d9350135">sumPrice</a>(<span class="keyword">const</span> <a class="code" href="classEventSet.html">EventSet</a> &amp; evSet);</div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;<span class="keywordtype">void</span> <a class="code" href="EventSet_8h.html#a791b97200f877bd1c151572877ee5891">findUnique</a>(<span class="keyword">const</span> <a class="code" href="classEventSet.html">EventSet</a>&amp; es, <span class="keyword">const</span> std::string &amp;field, std::string values[], <span class="keywordtype">int</span> &amp; n_values);</div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;<a class="code" href="classEventSet.html">EventSet</a> <a class="code" href="EventSet_8h.html#ad8fd6256f4d913aabdfa023926874cb3">rawFilterEvents</a>(<span class="keyword">const</span> <a class="code" href="classEventSet.html">EventSet</a>&amp; es, <span class="keyword">const</span> std::string &amp;field, <span class="keyword">const</span> std::string &amp;value);</div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160; </div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;<span class="keyword">extern</span> <a class="code" href="classEvent.html">Event</a> NULL_EVENT; </div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160; </div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/* EVENTSET_H */</span><span class="preprocessor"></span></div>
+<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160; </div>
+</div><!-- fragment --></div><!-- contents -->
+<div class="ttc" id="aclassEventSet_html_a73bc5f23d807c0fcafd4e93c8b5b1652"><div class="ttname"><a href="classEventSet.html#a73bc5f23d807c0fcafd4e93c8b5b1652">EventSet::write</a></div><div class="ttdeci">void write(std::ofstream &amp;os) const</div><div class="ttdoc">Writes the EventSet in an output stream in CSV format.</div><div class="ttdef"><b>Definition:</b> <a href="EventSet_8cpp_source.html#l00156">EventSet.cpp:156</a></div></div>
+<div class="ttc" id="aclassEventSet_html_aee4ddfa7f8c26efab1c978b891999f7e"><div class="ttname"><a href="classEventSet.html#aee4ddfa7f8c26efab1c978b891999f7e">EventSet::EventSet</a></div><div class="ttdeci">EventSet()</div><div class="ttdoc">Basic constructor. All the attributes are initialized to its default value.</div><div class="ttdef"><b>Definition:</b> <a href="EventSet_8cpp_source.html#l00043">EventSet.cpp:43</a></div></div>
+<div class="ttc" id="aclassEventSet_html_a71b8b0c87f2d00203e7a72c42f485478"><div class="ttname"><a href="classEventSet.html#a71b8b0c87f2d00203e7a72c42f485478">EventSet::read</a></div><div class="ttdeci">bool read(std::ifstream &amp;is, int nelements)</div><div class="ttdoc">Reads the EventSet from an input stream.</div><div class="ttdef"><b>Definition:</b> <a href="EventSet_8cpp_source.html#l00157">EventSet.cpp:157</a></div></div>
+<div class="ttc" id="aDateTime_8h_html"><div class="ttname"><a href="DateTime_8h.html">DateTime.h</a></div></div>
+<div class="ttc" id="aclassEventSet_html_ab8ac311a6121981191ce61d505cc069f"><div class="ttname"><a href="classEventSet.html#ab8ac311a6121981191ce61d505cc069f">EventSet::at</a></div><div class="ttdeci">const Event &amp; at(int pos) const</div><div class="ttdoc">get the event in a position selected, for consulting</div><div class="ttdef"><b>Definition:</b> <a href="EventSet_8cpp_source.html#l00088">EventSet.cpp:88</a></div></div>
+<div class="ttc" id="aclassEvent_html_a317506221f3d1189594fe7ef47bd2910"><div class="ttname"><a href="classEvent.html#a317506221f3d1189594fe7ef47bd2910">Event::to_string</a></div><div class="ttdeci">std::string to_string() const</div><div class="ttdoc">transform an event to a string, using separator</div><div class="ttdef"><b>Definition:</b> <a href="Event_8cpp_source.html#l00246">Event.cpp:246</a></div></div>
+<div class="ttc" id="aclassEventSet_html_acfb9e40b46c649bef5082f5577d733a6"><div class="ttname"><a href="classEventSet.html#acfb9e40b46c649bef5082f5577d733a6">EventSet::add</a></div><div class="ttdeci">int add(const Event &amp;e)</div><div class="ttdoc">Adds a new event at the end of the eventSet whenever there is some room.</div><div class="ttdef"><b>Definition:</b> <a href="EventSet_8cpp_source.html#l00056">EventSet.cpp:56</a></div></div>
+<div class="ttc" id="aclassEventSet_html_afa17cf8b71961fe1bab9ae5bc7f4963d"><div class="ttname"><a href="classEventSet.html#afa17cf8b71961fe1bab9ae5bc7f4963d">EventSet::size</a></div><div class="ttdeci">int size() const</div><div class="ttdoc">Returns the number of events stored.</div><div class="ttdef"><b>Definition:</b> <a href="EventSet_8cpp_source.html#l00047">EventSet.cpp:47</a></div></div>
+<div class="ttc" id="aclassEvent_html"><div class="ttname"><a href="classEvent.html">Event</a></div><div class="ttdoc">It stores every logged event of a web marketplace as it appears in https://www.kaggle....</div><div class="ttdef"><b>Definition:</b> <a href="Event_8h_source.html#l00041">Event.h:41</a></div></div>
+<div class="ttc" id="aEventSet_8h_html_abe71e09d60b5cec46d638d14d9350135"><div class="ttname"><a href="EventSet_8h.html#abe71e09d60b5cec46d638d14d9350135">sumPrice</a></div><div class="ttdeci">float sumPrice(const EventSet &amp;evSet)</div><div class="ttdoc">It Computes the total sum for price, on the complete EventSet.</div><div class="ttdef"><b>Definition:</b> <a href="EventSet_8cpp_source.html#l00146">EventSet.cpp:146</a></div></div>
+<div class="ttc" id="aclassEventSet_html_a82709f9c800e8df263ec719c64b5d81d"><div class="ttname"><a href="classEventSet.html#a82709f9c800e8df263ec719c64b5d81d">EventSet::clear</a></div><div class="ttdeci">void clear()</div><div class="ttdoc">Resets the set of events to 0 components.</div><div class="ttdef"><b>Definition:</b> <a href="EventSet_8cpp_source.html#l00052">EventSet.cpp:52</a></div></div>
+<div class="ttc" id="aEvent_8h_html"><div class="ttname"><a href="Event_8h.html">Event.h</a></div></div>
+<div class="ttc" id="aclassEventSet_html_a96bdfa35b46daf5760a9152d22d1ceb9"><div class="ttname"><a href="classEventSet.html#a96bdfa35b46daf5760a9152d22d1ceb9">EventSet::reportData</a></div><div class="ttdeci">std::string reportData() const</div><div class="ttdoc">Shows the number of events in the EventSet and a numeric value that encodes the whole set of events.</div><div class="ttdef"><b>Definition:</b> <a href="EventSet_8h_source.html#l00073">EventSet.h:73</a></div></div>
+<div class="ttc" id="aclassEventSet_html_afc14a43734b5dc5d03289d02546c9ed9"><div class="ttname"><a href="classEventSet.html#afc14a43734b5dc5d03289d02546c9ed9">EventSet::to_string</a></div><div class="ttdeci">std::string to_string() const</div><div class="ttdoc">transform an eventSet to a string,</div><div class="ttdef"><b>Definition:</b> <a href="EventSet_8cpp_source.html#l00035">EventSet.cpp:35</a></div></div>
+<div class="ttc" id="aEventSet_8h_html_a791b97200f877bd1c151572877ee5891"><div class="ttname"><a href="EventSet_8h.html#a791b97200f877bd1c151572877ee5891">findUnique</a></div><div class="ttdeci">void findUnique(const EventSet &amp;es, const std::string &amp;field, std::string values[], int &amp;n_values)</div><div class="ttdoc">It explores all the EventSet and builds a string[] composed of all different values taken by the fiel...</div><div class="ttdef"><b>Definition:</b> <a href="EventSet_8cpp_source.html#l00115">EventSet.cpp:115</a></div></div>
+<div class="ttc" id="aclassEventSet_html"><div class="ttname"><a href="classEventSet.html">EventSet</a></div><div class="ttdef"><b>Definition:</b> <a href="EventSet_8h_source.html#l00016">EventSet.h:16</a></div></div>
+<div class="ttc" id="aEventSet_8h_html_ad8fd6256f4d913aabdfa023926874cb3"><div class="ttname"><a href="EventSet_8h.html#ad8fd6256f4d913aabdfa023926874cb3">rawFilterEvents</a></div><div class="ttdeci">EventSet rawFilterEvents(const EventSet &amp;es, const std::string &amp;field, const std::string &amp;value)</div><div class="ttdoc">Extract a subset of the EventSet composed only of those events in which the given field matches the g...</div><div class="ttdef"><b>Definition:</b> <a href="EventSet_8cpp_source.html#l00101">EventSet.cpp:101</a></div></div>
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Generado por &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.17
+</small></address>
+</body>
+</html>

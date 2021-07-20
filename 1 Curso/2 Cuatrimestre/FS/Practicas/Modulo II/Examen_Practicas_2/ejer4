@@ -1,0 +1,22 @@
+#!/bin/bash
+# Titulo: Ejer4 Examen Practicas FS
+# Fecha: 8/6/2021
+# Autor: Javier Gómez López
+# Versión: 1.0
+
+if [ $# != 1 ]
+then 
+    echo "Error de argumentos. <nombre de usuario>"
+    exit 1
+fi
+
+appear=`cut -d':' -f1 /etc/passwd | grep $1 | wc -l`
+
+if [ $appear -ne 0 ]
+then 
+    ps -lu $1 | wc -l
+
+else
+    echo "El usuario no existe"
+    exit 1
+fi

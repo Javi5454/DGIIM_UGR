@@ -1,0 +1,736 @@
+\documentclass[a4paper, 12pt]{article}
+
+\usepackage{amsmath} %Todos los paquetes de matematicas
+\usepackage{amsthm}
+\usepackage{amsfonts}
+\usepackage{mathtools}
+\providecommand{\abs}[1]{\lvert#1\rvert}
+\providecommand{\norm}[1]{\lVert#1\rVert}
+\usepackage{yhmath}
+\usepackage[utf8]{inputenc}
+\usepackage[spanish]{babel}
+\usepackage{wrapfig} %Figuras flotantes
+\usepackage{parselines}
+\usepackage{enumitem}
+\usepackage{xcolor}
+\usepackage{graphicx}
+\usepackage{tikz}
+\usetikzlibrary{positioning}
+\usepackage{pgfplots}
+\graphicspath{{images/}}
+\usepackage{subcaption}
+\usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry}
+\usepackage{eurosym} %Euro, de nada misniños
+
+\theoremstyle{definition}
+\newtheorem{ej}{Ejercicio}
+
+
+
+\title{\textbf{Relación de ejercicios 5 EDIP}}
+\author{Carlos García, Bora Goker, Javier Gómez,  \\ Ana Graciani, J.Alberto Hoces}
+\date{2020/2021}
+
+\setlength{\parindent}{0px}
+
+\begin{document}
+
+\maketitle
+
+\begin{ej}
+Sea $X$ una variable aleatoria con función masa de probabilidad $P(X=i)= ki; \hspace{0.1cm} i = 1, . . . , 20$.
+
+\begin{enumerate}
+    \item[a)] Determinar el valor de $k$, la función de distribución y las siguientes probabilidades:
+    
+    \[
+    P (X = 4), \hspace{0.1cm} P (X < 4), \hspace{0.1cm} P (3 \leq X \leq 10), \hspace{0.1cm} P (3 < X \leq 10), \hspace{0.1cm} P (3 < X < 10)
+    \]
+    
+    Para poder determinar el valor de $k$, hemos de tener en cuenta que estamos ante una variable aleatoria discreta $X$, y la función masa de probabilidad de una variable aleatoria debe cumplir que $\sum_{i} P(X=i)=1$. En nuestro caso concretamente es $\sum_{i=1}^{20} P(X=i)=1$, lo cual se traduce en la siguiente ecuación: 
+    
+    \[
+        \sum_{i=1}^{20} P(X=i)=1 \rightarrow 210k = 1 \rightarrow k = \frac{1}{210}
+    \]
+    
+    Para hallar la función de distribución tendremos en cuenta su definición: 
+    \[
+    F_{X}(i) = P(X \leq i) = \sum_{j=1}^{i} P(X=j) \hspace{0.3cm} \forall i \in \{1,...,20\}
+    \]
+    
+    Por lo que la función de distribución de la variable aleatoria X estará definida como:
+    
+    \[
+    F_{X}(i)= \left\{ \begin{array}{lcc}
+             0 &   si  & i \leq 1 \\
+             \\ \sum_{j=1}^{i} P(X=j) = \sum_{j=1}^{i} \frac{1}{210} \cdot j &  si & 1 \leq i \leq 20 \\
+             \\ 1 &  si  & x > 20
+             \end{array}
+   \right.
+    \]
+    
+    Y ahora podemos emplear esta función para hallar las probabilidades pedidas (cuando sea la probabilidad de que la variable aleatoria tome un valor concreto, usaremos la función masa de probabilidad):
+    
+    \[
+    P(X=4) = \frac{1}{210} \cdot 4 = \frac{2}{105} = 0.0190476
+    \]
+    
+    \[
+    P(X<4) = P(X\leq 3) = F_{X}(3) = \frac{1}{210} + \frac{2}{210} + \frac{3}{210} = \frac{1}{35} = 0.0285714
+    \]
+    
+    \[
+    P(3\leq X \leq 10) = P(X\leq10) - P(X<3) = P(X\leq10) - P(X\leq2) = F_{X}(10)-F_{X}(2)=
+    \]
+    
+    \[
+    = \sum_{j=3}^{10} \frac{1}{210} \cdot j = \frac{26}{105} = 0.247619
+    \]
+    
+    \[
+    P(3 < X \leq 10) = P(X\leq10) - P(X \leq 3) = F_{X}(10)-F_{X}(3)= \sum_{j=4}^{10} \frac{1}{210} \cdot j = \frac{7}{30} = 0.233333
+    \]
+    
+     \[
+    P(3 < X < 10) = P(X<10) - P(X\leq3) = P(X\leq9) - P(X\leq3) = F_{X}(9)-F_{X}(3)=
+    \]
+    
+    \[
+    = \sum_{j=4}^{9} \frac{1}{210} \cdot j = \frac{13}{70} = 0.1857142
+    \]
+    
+    \item[b)] Supongamos que un jugador gana 20 monedas si al observar esta variable obtiene un valor
+    menor que 4, gana 24 monedas si obtiene el valor 4 y, en caso contrario, pierde una moneda.
+    Calcular la ganancia esperada del jugador y decir si el juego le es favorable.
+    
+    Definimos una nueva variable aleatoria $Y$ que será el número de monedas obtenidas en función de los valores que toma la variable aleatoria $X$:
+    
+    \[
+    Y= h(X) = \left\{ \begin{array}{lcc}
+             20 &   si  & 1 < X < 4 \\
+             \\ 24 &  si & X = 4 \\
+             \\ -1 &  si  & 4 < X \leq 20
+             \end{array}
+   \right.
+    \]
+    
+    Y calculamos la probabilidad de que la variable $Y$ tome cada uno de sus valores posibles para que podamos hallar su esperanza:
+    \[
+    P(Y=20)=P(X<4)=P(X\leq3)=F_{X}(3) = \frac{1}{210} + \frac{2}{210} + \frac{3}{210} = \frac{1}{35} = 0.0285714
+    \]
+    
+    \[
+    P(Y=24)=P(X=4)= \frac{1}{210} \cdot 4 = \frac{2}{105} = 0.0190476
+    \]
+    
+    \[
+    P(Y=-1)=P(X>4)=1-P(X \leq 4) = 1-P(X<4)-P(X=4)= \frac{20}{21} = 0.95238
+    \]
+    
+    Ya podemos hallar la esperanza matemática de $Y (y_{1} = 20, y_{2} = 24, y_{3} = -1)$ :
+    
+    \[
+    E[Y]=\sum_{i}^3 y_{i}P(Y=y_{i})=\frac{20}{35}+\frac{48}{105}-\frac{20}{21} = \frac{8}{105} = 0.0761904
+    \]
+    
+    Como la esperanza de $Y$ es mayor que 0, el juego es favorable al jugador.
+\end{enumerate}
+\end{ej}
+
+\newpage
+
+\begin{ej}
+Sea X el número de bolas blancas obtenidas al sacar dos de una urna cpn 10 bolas de las que 8 son blancas. Calcular:
+\begin{enumerate}
+    \item[a) ] Función masa de probabilidad y función de distribución.\\
+    P(X = 0) = $\dfrac{{2 \choose 2}}{{10 \choose 2}} = \dfrac{1}{45} = 0.022$\\
+    P(X = 1) = $\dfrac{{2 \choose 1} \cdot {8 \choose 1}}{{10 \choose 2}} = \dfrac{16}{45} = 0.356$ \\ 
+    P(X = 2) = $\dfrac{{8 \choose 2}}{{10 \choose 2}} = \dfrac{28}{45} = 0.622 \\$
+    F(x) = $$\left\{
+     \begin{array}{lr}
+       0 & \mbox{si }  x < 0 \\
+       \\
+       \dfrac{1}{45} & \mbox{si }0 \leq x < 1 \\
+       \\
+       \dfrac{17}{45}& \mbox{si }  1 \leq x < 2 \\
+       \\
+       1 & \mbox{si } x \geq 2
+     \end{array}
+   \right.
+    $$
+\\
+\item[b) ] Media, mediana y moda, dando la interpretación de cada una de estas medidas. \\
+E[X] = $0 \cdot \dfrac{1}{45} + 1 \cdot \dfrac{16}{45} + 2 \cdot \dfrac{28}{45} = \dfrac{8}{5} = 1.6$ bolas blancas. La media es el centro de gravedad de la distribución, en este caso son 1.6 bolas blancas.
+\\
+Para calcular la mediana nos fijamos en la función masa y escogemos el valor inmediatamente mayor a 0.5, en este caso $\dfrac{28}{45}$, por lo que Me = 2. Es el valor que deja por encima y por debajo la misma probabilidad.
+\\
+En el caso de la moda, se escoge el mayor valor de la función maso, en este caso, al igual que la mediana es $\dfrac{28}{45}$, por lo que Mo = 2. El valor con mayor probabilidad.\\
+\item[c) ] Intervalo intercuartílico, especificando su interpretación. \\
+El primer cuartil es el valor cuya función de distribución es inmediatamente superior o igual a 0.25, en este caso sería 1, ya que su función de distribución es 0.378, por otro lado el tercer cuartil sería 2, ya que es 1 es el valor inmediatamente superior a 0.75. Por tanto el intervalo intercuartílico es 2 - 1 = 1, que es el intervalo en el que está contenido el $50\%$ de la probabilidad central.
+
+\end{enumerate}
+
+\end{ej}
+
+\begin{ej}
+El número de lanzamientos de una moneda hasta salir cara es una variable aleatoria con distribución \(P(X=x) = 2^{-x}\); \(x=1,2,\dotsc\).
+
+\begin{enumerate}[label=\textit{\alph*)}]
+	\item Probar que la función masa de probabilidad está bien definida.
+	
+Para que la función masa esté bien defindida, se tiene que cumplir que:
+\[
+	P(X=x_i) \geq 0 \quad \forall i \in \mathbb{N} \qquad \sum_{i=1}^{\infty} P(X=x_i) = \sum_{i=1}^{\infty} 2^{-x} \overset{\text{Serie Geométrica}}{\Rightarrow} \frac{\frac{1}{2}}{1-\frac{1}{2}} = 1
+\]
+
+La primera condición se cumple siempre, puesto que que la función tiene la expresión \(2^{-x}\), la cual es positiva \(\forall x \in \mathbb{R}\).
+
+La segunda condición se demuestra observando que es una serie geométrica, las cuales convergen si y solo si su razón \(|r| < 1\). En este caso:
+\[
+	|r| = \frac{1}{2} < 1 \Rightarrow \text{La serie converge}
+\]
+
+Se cumplen las dos condiciones, así, afirmamos que la función masa de probabilidad está bien definida.
+
+	\item Calcular la probabilidad de que el número de lanzamientos necesarios para salir cara esté entre 4 y 10.
+	
+Esto es calcular
+\[
+	P(4 \leq x \leq 10) = \sum_{i=4}^{10}p_i = 2^{-4} \cdot 2^{-5} \cdot 2^{-6} \cdot 2^{-7} \cdot 2^{-8} \cdot 2^{-9} \cdot 2^{-10} = \frac{127}{1024}
+\]
+
+	\item Calcular los cuartiles y la moda de la distribución, interpretando los valores.
+	
+Como se ha visto en otros temas, sabemos que el percentil de orden \(n\) se calcula:
+\[
+	P(X \leq x_i) = \frac{n}{100} \Rightarrow P_n = x_i.
+\]
+
+Así, 
+\[
+	P(X \leq x_i) = 0.25 \Rightarrow x_i = 1 \Rightarrow Q_1 = 1 \qquad P(X \leq x_i) = 0.5 \Rightarrow x_i = 1 \Rightarrow Q_2 = 1
+\]
+\[
+	P(X \leq x_i) = 0.75 \Rightarrow P(X=1) + P(X=2) \geq \frac{3}{4} \Rightarrow Q_3 = 2
+\]
+
+En una variable aleatoria discreta, definimos la moda como:
+\[
+	Mo = x_i : P(X=x_i) = \text{máx} \{p_i\}
+\]
+Al ser la función masa de probabilidad decreciente, el máximo valor se encuentra en 1. Así:
+\[
+	x_1 = 1 \Rightarrow Mo = 1
+\]
+
+	\item Calcular función generatriz de momentos y, a partir de ella, el número medio de lanzamientos necesarios para salir cara y la desviación típica.
+	
+Definimos la función generatriz de momentos como
+\[
+M_x(t) = E[e^{tX}] \quad \forall t \in (t_0, t_1) \text{ centrado en el origen}
+\]
+
+\[
+	M_x(t) = \sum_{x=1}^{\infty} e^{tx} \frac{1}{2^x} = \sum_{x=1}^{\infty} \left( \frac{e^t}{2} \right)^x = \frac{\frac{e^t}{2}}{1- \frac{e^t}{2}}
+\]
+Observamos que esta serie es absolutamente convergente \(\forall t < \log (2)\), por lo que converge en un entorno de cero, y por tanto, existe la función generatriz de momentos.
+
+Ahora calculemos su esperanza:
+\[
+	E[X] = M'_X(t) = \frac{\frac{e^t}{2}(1-\frac{e^t}{2}) - \frac{e^t}{2} \cdot - \frac{e^t}{2}}{(1-\frac{e^t}{2})^2}
+\]
+\[
+	M'_X(0) = 2 = E[X]
+\]
+
+Por último calculamos su desviación típica:
+\[
+	E[X^2] = M''_X(t) = \frac{2e^t (e^t -2)^2 - 2e^t (e^t-2)e^t}{(e^t-2)^4}
+\]
+\[
+	M''_X(0) = 6 \Rightarrow Var|X| = E[X^2] - E[X]^2 = 2 \Rightarrow \sigma_x = \sqrt{2}
+\]
+
+\end{enumerate}
+
+\end{ej}
+
+\begin{ej}
+	Sea $X$ una variable aleatoria con función de densidad
+	\[
+	f(x) = \left\{ \begin{array}{cc}
+	k_1(x+1) & 0 \leq x \leq 4 \\
+	& \\
+	k_2x^2 & 4 < x \leq 6
+	\end{array} \right.
+	\]
+	Sabiendo que \(P(0 \leq X \leq 4) = 2/3\), determinar \(k_1\), \(k_2\), y deducir su función de distribución.
+	
+	\[P(0\leq X\leq 4) = \int_0^4 k_1(x+1) dx = \left. \left(\frac{x^2}{2}+x\right)\right|^4_0 = k_1\left(\frac{4^2}{2}+4\right) = 12k_1 = \frac{2}{3} \Longrightarrow \quad k_1 = \frac{1}{18}\]
+	\[P(4<X\leq 6) = 1 - P(0 \leq X \leq 4) = \frac{1}{3}\]
+	\[P(4 < X \leq 6) = \int_6^4 k_2x^2 dx = k_2 \left.\frac{x^3}{3}\right|_6^4 = k_2\left(\frac{6^3}{3}-\frac{4^3}{3}\right)= k_2\cdot \frac{152}{3} = \frac{1}{3}\Longrightarrow\quad k_2 = \frac{1}{152}\]
+	
+	\medskip
+	
+	Función de distribución:
+	\[
+	F(x) = \left\{ \begin{array}{cc}
+	0 & 0 <x \\
+	& \\
+	\frac{1}{18}\left(\frac{x^2}{2}+x\right) & 0\leq x \leq 4 \\
+	& \\
+	\frac{2}{3} + \frac{1}{152}\left(\frac{x^3 - 64}{3}\right) & 4 < x \leq 6 \\
+	& \\
+	1 & x > 6
+	\end{array} \right.
+	\]
+	
+	
+\end{ej}
+
+\begin{ej}
+La dimensión en centímetros de los tornillos que salen de cierta fábrica es una variable aleatoria, \(X\), con función de densidad
+\[
+	f(x) = \frac{k}{x^2}, \quad 1 \leq x \leq 10.
+\]
+
+\begin{enumerate}[label=\alph*)]
+	\item Determinar el valor de \(k\), y obtener la función de distribución.
+	
+Comencemos encontrando el valor de \(k\):
+\[
+	\int_{1}^{10} \frac{k}{x^2} dx = 1 \Rightarrow k \int_{1}^{10} \frac{1}{x^2} dx = k \left. - \frac{1}{x} \right|_{1}^{10} = k \left(- \frac{1}{10} - \left( - \frac{1}{1} \right) \right) = k \left(1 - \frac{1}{10} \right) = k \frac{9}{10} = 1
+\]
+\[
+	k = \frac{10}{9}
+\]
+
+Y podemos afirmar que la función de distribución es:
+\[
+	F(x) = \left\{ \begin{array}{ccc}
+	\int_{1}^{x} \frac{10}{9x^2} & \text{si} & 1 \leq x \leq 10 \\
+	\\
+	0 & \text{si} & x < 1
+	\end{array} \right.
+\]
+
+	\item Hallar la probabilidad de que la dimensión de un tornillo esté entre 2 y 5 cm.
+	
+\[
+	\int_{2}^{5} \frac{10}{9x^2}dx = \frac{10}{9}	 \int_{2}^{5} \frac{1}{x^2}dx = \frac{10}{9} \left. \left( - \frac{1}{x} \right) \right|_{2}^{5} = \frac{10}{9} \left( - \frac{1}{5} - \left( - \frac{1}{2} \right) \right) = \frac{10}{9} \left( \frac{1}{2} - \frac{1}{5} \right) = \frac{10}{9} \cdot \frac{3}{10} = \frac{1}{3}
+\]
+
+Por lo tanto:
+\[
+	A = \text{Un tornillo tiene una dimensión entre 2 y 5 cm} \quad P(A) = \frac{1}{3}
+\]
+
+	\item Determinar la dimensión máxima del 50 \% de los tornillos con menor dimensión y la dimesión mínima del 5 \% con mayor dimensión.
+	
+Nos están pidiendo primero la mediana:
+\[
+	Me = \frac{10}{9} \int_{1}^{x} f(z)dz = \frac{10}{9} \left. \left( - \frac{1}{x} \right) \right|_{1}^{x} = 0.5
+\]
+\[
+	\left. - \frac{1}{x} \right|_{1}^{x} = \frac{9}{10} \cdot 0.5 \Rightarrow  - \frac{1}{x} +1 = 0.45 \Rightarrow \frac{1}{x} = 0.55 \Rightarrow x= 1.818 \text{ cm}
+\]
+
+Por otro lado nos están pidiendo el percentil 95:
+\[
+	\frac{10}{9} \int_{1}^{x} \frac{1}{x^2}dx = \frac{10}{9} \left. \left( - \frac{1}{x} \right) \right|_{1}^{x} = 0.95 \Rightarrow \left. - \frac{1}{x} \right|_{1}^{x} = 0.855
+\]
+\[
+	- \frac{1}{x} + 1 = 0.855 \Rightarrow \frac{1}{x} = 0.145 \Rightarrow x= 6.896 \text{ cm}
+\]
+
+	\item Si \(Y\) denota la dimensión de los tornillos producidos en otra fábrica, con la misma medida y desviación típica que \(X\), dar un intervalo en el que tome valores la variable \(Y\) con una probabilidad mínima de 0.99.
+	
+Puesto que ambas variables tienen la misma media y la misma desviación típica, podemos calcular dichos valores a través de la variable \(X\)
+\[
+	m_1 = E[X] = E[Y] = \int_{- \infty}^{+ \infty} xf(x)dx = \int_{-\infty}^{1} 0dx + \int_{1}^{10} \frac{10}{9x} dx + \int_{10}^{+ \infty} 0dx = \frac{10 \log (10)}{9} = 2.558 \text{ cm}
+\]
+\[
+	m_2 = E[X^2] = \int_{1}^{10} \frac{10}{9} dx = 10 \text{ cm}^2 \Rightarrow \sigma_x = \sqrt{m_2 - m_1^2} = 1.859 \text{ cm}
+\]
+
+Podemos afirmar que la variable \(X\) cumple la desigualdad de Chebyshev:
+\[
+	P(E[Y] - k \sigma_x \leq X \leq E[Y] + k \sigma_x) \geq 1 - \frac{1}{k^2}
+\]
+
+Tomando \(1 - \frac{1}{k^2} = 0.99 \Rightarrow k = 10\). Por lo que el intervalo que buscamos es [-16.02, 21.14]. pero al ser medidas de tornillos solo tomamos los valores positivos, así, el intervalo buscado es el [0, 21.14].
+\end{enumerate}
+
+\end{ej}
+
+\begin{ej}
+Sea \(X\) una variable aleatoria con función de densidad
+\[
+	f(x) = \left\{ \begin{array}{cc}
+	\frac{2x-1}{10} & 1 < x \leq 2 \\
+	& \\
+	0.4 & 4 < x \leq 6
+	\end{array} \right.
+\]
+
+\begin{enumerate}[label=\textit{\alph*)}]
+	\item Calcular \(P(1.5 < X \leq 2)\), \(P(2.5 < X \leq 3.5)\), \(P(4.5 \leq X \leq 5.5)\), \(P(1.2 < X \leq 5.2)\).
+	
+Primero calculamos:
+
+\[
+	\int_{a}^{t} \frac{2x-1}{10}dx = \left. \frac{x^2 - x}{10} \right|_{a}^{t} \quad t \in [1,2]
+\]
+\[
+	\int_{a}^{t} 0.4x = \left. 0.4x \right|_{a}^{t} \quad t \in [4,6]
+\]
+
+Así:
+\[
+	P(1.5 < X \leq 2) = \left. \frac{x^2 - x}{10} \right|_{1.5}^{2} = \frac{1}{8} \qquad P(2.5 < X \leq 3.5) = 0
+\]
+\[
+P(4.5 \leq X \leq 5.5) = \left. 0.4x \right|_{4.5}^{5.5} = \frac{2}{5} \qquad P(1.2 < X \leq 5.2) = \left. \frac{x^2 - x}{10} \right|_{1.2}^{2} + \left. 0.4x \right|_{4}^{5.2} = \frac{82}{125}
+\]
+
+	\item Dar la expresión general de los momentos no centrados y deducir el valor medio de \(X\).
+	
+Primero daremos la expresión del momento de orden \(k\) no centrado:
+\[
+	m_k = \int_{-\infty}^{+\infty} x^k f(x) dx = \int_{-\infty}^{1} 0 dx + \int_{1}^{2} x^k \frac{2x-1}{10}dx + \int_{2}^{4} 0 dx + \int_{4}^{6} 0.4x^kdx + \int_{6}^{+\infty} 0 dx =
+\]
+\[
+	= \int_{1}^{2} \frac{2x -1 }{10} dx + \int_{4}^{6} 0.4x^k dx
+\]
+
+Y por tanto podemos afirmar que la esperanza (valor medio) es:
+\[
+	E[X] = m_1 = \int_{1}^{2} x \frac{2x-1}{10} dx + \int_{4}^{6} 0.4 x dx = \left. \frac{2x^3}{30} - \frac{x^2}{20} \right|_{1}^{2} + \left. \frac{x^2}{5} \right|_{4}^{6} = \frac{259}{60} 
+\]
+
+	\item Calcular la función generatriz de momentos de \(X\).
+	
+Definimos la función generatriz de momentos como
+\[
+	M_X(t) = E[e^{tX}] \quad \forall t \in (t_0, t_1) \text{ que contenga al origen}
+\]
+
+Así
+\[
+	M_X(t) = \int_{-\infty}^{+\infty} e^{tx} f(x) dx = \int_{1}^{2} e^{tx} \frac{2x-1}{10} dx + \int_{4}^{6} 0.4e^{tx} dx = 
+\]
+\[
+	\frac{1}{10} \cdot \left. \left( 2 \left( x e^{tx} - \frac{e^{tx}}{t^2} \right) - \frac{e^{tx}}{t} \right) \right|_{1}^{2}  + 0.4 \left. \frac{e^{tx}}{t} \right|_{4}^{6} < + \infty \quad \forall t \in \mathbb{R} \Rightarrow \exists M_X(t)
+\]
+\end{enumerate}
+
+\end{ej}
+
+\begin{ej}
+Con objeto de establecer un plan de producción, una empresa ha estimado que la demanda de
+sus clientes, en miles de unidades del producto, se comporta semanalmente con arreglo a una
+ley de probabilidad dada por la función de densidad:
+
+\[
+f(x)=\frac{3}{4} (2x-x^2), \hspace{0.3cm} 0 \leq x \leq 2
+\]
+
+\begin{enumerate}
+    \item[a)] ¿Qué cantidad deberá tener dispuesta a la venta al comienzo de cada semana para poder satisfacer plenamente la demanda con probabilidad 0.5?
+    
+    Se nos está pidiendo calcular el valor $x$ que toma la variable aleatoria continua $X$ ``cantidad dispuesta a la venta'' tal que $P(X\leq x) = F_{X}(x) = 0.5$, por lo que nos hace falta conocer la función de distribución de $X$. Al tratarse de una variable aleatoria continua, podemos calcularla a partir de la función de densidad de la siguiente forma: $F_{X}(x) = \int_{-\infty}^{x}f(t)dt$.
+    
+    \[
+    F_{X}(x) = \left\{ \begin{array}{lcc}
+             \int_{-\infty}^{x}0dt &   si  & x < 0 \\
+             \\ \int_{-\infty}^{0}0dt + \int_{0}^{x}\frac{3}{4} (2t-t^2)dt &  si & 0 \leq x \leq 2 \\
+             \\ \int_{-\infty}^{0}0dt + \int_{0}^{2}\frac{3}{4} (2t-t^2)dt + \int_{2}^{x}0dt &  si  & x > 2
+             \end{array}
+   \right.
+    \]
+    
+    Desarrollamos las integrales:
+    
+    \[
+    \int_{0}^{x}\frac{3}{4} (2t-t^2)dt = \left[\frac{3t^2}{4}-\frac{t^3}{4}\right]^{x}_{0} = \frac{3x^2}{4}-\frac{x^3}{4}
+    \]
+    
+    \[
+    \int_{0}^{2}\frac{3}{4} (2t-t^2)dt = \left[\frac{3t^2}{4}-\frac{t^3}{4}\right]^{2}_{0} = \frac{12}{4}-\frac{8}{4}=1
+    \]
+    
+    Y la función de distribución queda así:
+    
+    \[
+    F_{X}(x) = \left\{ \begin{array}{lcc}
+             0 &   si  & x < 0 \\
+             \\ \frac{3x^2}{4}-\frac{x^3}{4} &  si & 0 \leq x \leq 2 \\
+             \\ 1 &  si  & x > 2
+             \end{array}
+   \right.
+    \]
+    
+    Como $F_{X}$ solo puede tomar el valor 0.5 en el intervalo $[0,2]$, tendremos que resolver la siguiente ecuación:
+    
+    \[
+    \frac{3x^2}{4}-\frac{x^3}{4} = \frac{1}{2} \rightarrow x^3-3x^2+2=0
+    \]
+    
+    Y dicha ecuación tiene como soluciones: $x_1 = 1, x_2 = 1-\sqrt{3}, x_3 = 1+ \sqrt{3}$. De entre esas soluciones, podemos descartar $x_2$ ya que es menor que 0 y nuestra variable aleatoria solo toma valores positivos. También podemos descartar $x_3$ ya que es mayor que 2 y por lo tanto $P(X\leq x_3) = 1 \neq 0.5$, por lo que el $x$ que buscamos es $x = 1$, y podemos concluir que será necesario tener 1000 unidades disponibles a la venta desde el principio de la semana si se quiere satisfacer plenamente la demanda con probabilidad 0.5.
+
+    \item[b)] Pasado cierto tiempo, se observa que la demanda ha crecido, estimándose que en ese momento se distribuye según la función de densidad:
+    
+    \[
+    f(y)=\frac{3}{4} (4y-y^2-3), \hspace{0.3cm} 1 \leq y \leq 3
+    \]
+    
+    Los empresarios sospechan que este crecimiento no ha afectado a la dispersión de la demanda, ¿es cierta esta sospecha?
+    
+    Para determinar si es cierta la sospecha, calcularemos los coeficientes de variación de las variables aleatorias $X$ e $Y$, para lo cual necesitaremos hallar $E[X], E[Y], Var(X)$ y $Var(Y)$:
+    
+    \begin{equation*}
+        E[X] = \int_{-\infty}^{+\infty}x \cdot f(x)dx = \int_{-\infty}^{0}0dx + \int_{0}^{2}\frac{3}{4} (2x^2-x^3)dx + \int_{2}^{+\infty}0dx = \left[\frac{x^3}{2}-\frac{3x^4}{16}\right]^{2}_{0} = 1
+    \end{equation*}
+    
+    \begin{equation*}
+        E[Y] = \int_{-\infty}^{+\infty}y \cdot f(y)dx = \int_{-\infty}^{1}0dy + \int_{1}^{3}\frac{3}{4} (4y^2-y^3-3y)dy + \int_{3}^{+\infty}0dy = \left[y^3-\frac{3y^4}{16}-\frac{9y^2}{8}\right]^{3}_{1} = 2
+    \end{equation*}
+    
+    \begin{equation*}
+        E[X^2] = \int_{-\infty}^{+\infty}x^2 \cdot f(x)dx = \int_{-\infty}^{0}0dx + \int_{0}^{2}\frac{3}{4} (2x^3-x^4)dx + \int_{2}^{+\infty}0dx = \left[\frac{3x^4}{8}-\frac{3x^5}{20}\right]^{2}_{0} = 1.2
+    \end{equation*}
+    
+    \begin{equation*}
+        E[Y^2] = \int_{-\infty}^{+\infty}y^2 \cdot f(y)dx = \int_{-\infty}^{1}0dy + \int_{1}^{3}\frac{3}{4} (4y^3-y^4-3y^2)dy + \int_{3}^{+\infty}0dy =
+    \end{equation*}
+    
+    \begin{equation*}
+        = \left[\frac{3y^4}{4}-\frac{3y^5}{20}-\frac{3y^3}{4}\right]^{3}_{1} = 4.2
+    \end{equation*}
+    
+    \begin{equation*}
+        C.V.(X)=\frac{\sqrt{Var(X)}}{E[X]} = \frac{\sqrt{E[X^2]-E[X]^2}}{E[X]} = \frac{\sqrt{0.2}}{1} = \frac{\sqrt{5}}{5}
+    \end{equation*}
+    
+    \begin{equation*}
+        C.V.(Y)=\frac{\sqrt{Var(Y)}}{E[Y]} = \frac{\sqrt{E[Y^2]-E[Y]^2}}{E[Y]} = \frac{\sqrt{0.2}}{2} = \frac{\sqrt{5}}{10}
+    \end{equation*}
+
+A la vista de los coeficientes de variación obtenidos, las sospechas eran ciertas ya que estos no coinciden.
+\end{enumerate}
+\end{ej}
+
+\begin{ej}
+		Calcular las funciones de densidad de las variables $Y = 2X +3$ y $Z = |X|$, siendo $X$ una
+	variable continua con función de densidad
+	\[f_X(x) = \frac{1}{4}, -2 < x < 2.\]
+	\begin{itemize}
+		\item \(Y = 2X+3 = h(X) \qquad\forall x\in (-2, 2)\) \\
+		\\
+		\(h(]-2,2[) = ]-1,7[\quad \Longrightarrow \qquad h^{-1}(y) = \frac{y-3}{2}\qquad\forall y\in (-1,7)\) \\
+		\(\frac{dh^{-1}(y)}{dy} = \frac{1}{2}\) \\
+		\\
+		Por el teorema de cambio de variable de continua a continua: \\
+		\(
+		g(y) = f\left(\frac{1}{2}\right)\left|\frac{1}{2}\right| \quad \forall y \in (-1,7)\)
+		\[
+		g(y) = \left\{ \begin{array}{cc}
+		\frac{1}{8}  &  y \in (-1,7)\\
+		& \\
+		0   & y \notin (-1,7)
+		\end{array} \right.
+		\]
+		
+		\item \(Z = |X| = h(X) \qquad\forall x\in (-2,2)\) \\
+		\\
+		\[h(X) = \left\{ \begin{array}{cc}
+		h_1(X) = -X &\qquad X < 0 \\
+		& \\
+		h_2(X) = X &\qquad 0 \leq X
+		\end{array} \right. \qquad \forall X\in (-2,2)\]
+		\(h(]-2,2[) = [0,2[\)
+		\[\left\{\begin{array}{cc}
+		h_1^{-1}(z) = -z  & \forall z\in [0,2) \\
+		& \\
+		h_2^{-1}(z) = z  & \forall z\notin [0,2) 
+		\end{array}\right. \qquad
+		\left\{\begin{array}{cc}
+		\frac{dh_1^{-1}(z)}{dz} = -1 &  \forall z \in [0,2)\\
+		& \\
+		\frac{dh_2^{-1}(z)}{dz} = 1 & \forall z \notin [0,2)
+		
+		\end{array} \right.\]
+		Por el teorema de cambio de variable de continua a continua: \\ 
+		\(g(z) = f\left(h^{-1}(z)\right)\left|\left(h^{-1}\right)'(z)\right| \quad \forall z \in [0,2)\)
+		\[g(z) = \left\{\begin{array}{cc}
+		\frac{1}{4} & z \in [0,2) \\
+		& \\
+		0 & z \notin[0,2)
+		\end{array}\right.\]
+	\end{itemize}
+\end{ej}
+
+\begin{ej}
+	Calcular las funciones de densidad de las variables $Y = 2X +3$ y $Z = |X|$, siendo $X$ una
+	variable continua con función de densidad
+	\[f_X(x) = \frac{1}{4}, -2 < x < 2.\]
+	\begin{itemize}
+		\item \(Y = 2X+3 = h(X) \qquad\forall x\in (-2, 2)\) \\
+		\\
+		\(h(]-2,2[) = ]-1,7[\quad \Longrightarrow \qquad h^{-1}(y) = \frac{y-3}{2}\qquad\forall y\in (-1,7)\) \\
+		\(\frac{dh^{-1}(y)}{dy} = \frac{1}{2}\) \\
+		\\
+		Por el teorema de cambio de variable de continua a continua: \\
+		\(
+		g(y) = f\left(\frac{1}{2}\right)\left|\frac{1}{2}\right| \quad \forall y \in (-1,7)\)
+		\[
+		g(y) = \left\{ \begin{array}{cc}
+		\frac{1}{8}  &  y \in (-1,7)\\
+		& \\
+		0   & y \notin (-1,7)
+		\end{array} \right.
+		\]
+		
+		\item \(Z = |X| = h(X) \qquad\forall x\in (-2,2)\) \\
+		\\
+		\[h(X) = \left\{ \begin{array}{cc}
+		h_1(X) = -X &\qquad X < 0 \\
+		& \\
+		h_2(X) = X &\qquad 0 \leq X
+		\end{array} \right. \qquad \forall X\in (-2,2)\]
+		\(h(]-2,2[) = [0,2[\)
+		\[\left\{\begin{array}{cc}
+		h_1^{-1}(z) = -z  & \forall z\in [0,2) \\
+		& \\
+		h_2^{-1}(z) = z  & \forall z\notin [0,2) 
+		\end{array}\right. \qquad
+		\left\{\begin{array}{cc}
+		\frac{dh_1^{-1}(z)}{dz} = -1 &  \forall z \in [0,2)\\
+		& \\
+		\frac{dh_2^{-1}(z)}{dz} = 1 & \forall z \notin [0,2)
+		
+		\end{array} \right.\]
+		Por el teorema de cambio de variable de continua a continua: \\ 
+		\(g(z) = f\left(h^{-1}(z)\right)\left|\left(h^{-1}\right)'(z)\right| \quad \forall z \in [0,2)\)
+		\[g(z) = \left\{\begin{array}{cc}
+		\frac{1}{4} & z \in [0,2) \\
+		& \\
+		0 & z \notin[0,2)
+		\end{array}\right.\]
+	\end{itemize}
+\end{ej}
+
+\begin{ej}
+Si \(X\) es una variable aleatoria con función de densidad
+\[
+	f(x) = \frac{e^{-|x|}}{2}, \quad - \infty < x < \infty,
+\]
+hallar su funcíon de distribución y la probabilidad de cada uno de los siguientes sucesos: \\
+
+Primero hallamos su función de densidad:
+\[
+	f(x) = \left\{ \begin{array}{ccc}
+	\frac{e^{-x}}{2} & \text{si} & 0 < x \infty \\
+	\\
+	\frac{e^x}{2} & \text{si} & - \infty < x \leq 0
+	\end{array} \right.
+\]
+
+Así:
+\[
+	\int_{-\infty}^{0} \frac{e^2}{2} dx = \left. \frac{e^x}{2} \right|_{-\infty}^{0} \qquad \int_{0}^{\infty} \frac{e^{-x}}{2} dx = \left. - \frac{e^{-x}}{2} \right|_{0}^{\infty}
+\]
+
+Y la función de distribución será:
+\[
+	F(x) = \left\{ \begin{array}{ccc}
+	\left. \frac{e^x}{2} \right|_{-\infty}^{x} & \text{si} & - \infty < x < 0 \\
+	\\
+	\left. 1 - \frac{e^{-x}}{2} \right|_{0}^{x} & \text{si} & 0 \leq x < \infty
+	\end{array} \right.
+\]
+
+\begin{enumerate}[label=\alph*)]
+	\item \{\(|X| \leq 2\)\}.
+\[
+	P(|X| \leq 2) = P(-2 \leq X \leq 2) = F(2) - F(-2) = 1 - e^{-2}
+\]
+
+	\item \{\(|X| \leq 2\) ó \(X \geq 0\)\}.
+\[
+	P(|X| \leq 2 \text{ ó } X \geq 0) = P(X \geq -2) = F(\infty) - F(-2) = 1 - - \frac{1}{2e^2}
+\]
+
+	\item \{\(|X| \leq 2\) y \(X \leq -1\)\}.
+\[
+	P(-2 \leq X \leq -1) = F(-1) - F(-2) = \frac{e^{-1}-e^{-2}}{2}
+\]
+
+	\item \{\(X^3 - X^2 - X - 2 \leq 0\)\}.
+\[
+	P((X-2)(X^2 + X + 1) \leq 0) = P(X \geq 2) = 1 - \frac{1}{2e^2}
+\]
+
+	\item \{\(X|\) es irracional\}.
+\[
+	P(X \in (\mathbb{R} - \mathbb{Q})) = 0, \text{ al ser una variable continua, la probabilidad de un punto es nula}
+\]
+\end{enumerate}
+\end{ej}
+
+\begin{ej}
+	Sea $X$ una variable aleatoria con función de densidad
+	\[f(x) = 1, \quad 0\leq x \leq 1.\]
+	Encontrar la distribución de las variables:
+	\begin{enumerate}[label=\textit{\alph*)}]
+		\item $Y = \frac{X}{1+X}$ \\
+		\\
+		Busco la función de distribución
+		\[\left. \begin{array}{c}
+		h(X) = \frac{X}{1+X} \quad \forall X\in [0,1] \\
+		\\
+		h([0,1]) = \left[0, \frac{1}{2}\right] 
+		\end{array} \right\} \Longrightarrow \qquad h^{-1}(y) =\frac{y}{1-y}\quad\forall y\in \left[0, \frac{1}{2}\right]\]
+		\(\left(h^{-1}\right)'(y) =  \frac{1-y+y}{(1-y)^2} = \frac{1}{(1-y)^2}\) \\
+		\\
+		Por el teorema de cambio de variable de continua a continua
+		\[g(y) = \left\{\begin{array}{cc}
+		\frac{1}{(1-y)^2} & y \in \left[0, \frac{1}{2}\right] \\
+		& \\
+		0 & y \notin \left[0, \frac{1}{2}\right]
+		\end{array}\right.\]
+		
+		\item $Z = \left\{\begin{array}{cc}
+		-1, & X<3/4 \\
+		0, & X=3/4 \\
+		1, & X>3/4 \\
+		\end{array} \quad\right\} = h(X)$ \\
+		\\
+		Por el teorema de cambio de variable de continua a discreta \\
+		\\
+		\(P(Z=-1) = P(X<3/4) = \int^{3/4}_0 1 dx = \frac{3}{4}\) \\
+		\(P(Z=0) = P(X=3/4) = 0 \quad\) por ser un punto y X una variable discreta \\
+		\(P(Z=1) = P(X>3/4) = 1-P(Z \neq 1) = \frac{1}{4}\)
+		\[P(Z=z) = \left\{\begin{array}{cc}
+		\frac{3}{4} & z = -1 \\
+		0 & z = 0 \\
+		\frac{1}{4} & z = 1
+		\end{array}\right.\]
+	\end{enumerate}
+\end{ej}
+
+\begin{ej}
+Sea X una variable aleatoria simétrica con respecto al punto 2, y con coeficiente de variación 1. ¿Qué puede decirse acerca de las siguientes probabilidades?:\\
+
+    Por ser simétrica respecto de 2, la esperanza de X es 2. Como el coeficiente de variación se calcula como la desviación típica entre la esperanza, la desviación típica de X debe ser 2 tambióen, por lo que la varianza de X debe ser 4. El hecho de que exista varianza implica que el momento de orden 2 de la variable es finito, así que se puede usar la desigualdad de Chebyshev.
+    \\
+    $P(|X-E[X]|<k) \geq 1- \dfrac{Var(X)}{k^2}$\\
+    $P(|X-2| < k) \geq 1-\dfrac{4}{k^2} \longrightarrow  P(-k < X - 2 < k) \geq 1 - \dfrac{4}{k^2} \longrightarrow P(2-k < X < k+2) \geq 1-\dfrac{4}{k^2}$ \\
+    Si tomamos $k = 10$ y $k = 8$ tenemos las probabilidades pedidas:
+    \\
+    $P(-8 < X < 12) \geq 1 - \dfrac{4}{100} = 0.96$\\
+    $P(-6 < X < 10) \geq 1- \dfrac{4}{64} = 0.938$
+\end{ej}
+
+
+\end{document}

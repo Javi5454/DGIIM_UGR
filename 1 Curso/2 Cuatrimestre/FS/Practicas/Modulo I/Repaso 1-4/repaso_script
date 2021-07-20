@@ -1,0 +1,39 @@
+#!/bin/bash
+# Titulo: repaso
+# Fecha: 6/4/2021
+# Autor: Javier Gómez López
+# Versión: 1.0
+# Descripción: Crear un guión que tenga dos argumentos de tipo nombre de archivo y de nombre de directorio. Si se introducen un número incorrecto de argumentos se muestra en pantalla. 
+# Si el segundo argumento es un archivo, escribir las tres primeras líneas en otro archivo llamado salida y 
+# mostrar un mensaje informando de dicha acción. En caso contrario informar del error y salir.
+# Si el primer argumento es un directorio, mostrar un mensaje con el número de archivos que contiene. En caso contrario crear un directorio con el nombre del primer argumento.
+# Buscar en el directorio pasado como primer argumento los archivos que tienen permiso de lectura y añadir el resultado de la búsqueda al final del archivo salida. 
+# Además, mostrar por pantalla el siguiente mensaje:  “De un total de N archivos, hay X archivos con permiso de lectura” (siendo N el número total de archivos del directorio y X 
+# los que tienen permiso de lectura).
+# Opciones: Dos argumentos
+
+#if (( $1 > $2 )); then (echo "Es mayor el primero"; touch "$(($1*$2))_multi.txt"); elif (($1<$2)); then echo "El segundo es mayor, su resta es: "$(($1-$2))""; else echo "Son iguales"; fi
+
+if [ $# != 2 ];
+then 
+    echo "Error de argumentos"
+    exit 1
+fi
+
+if [ -f $2 ];
+then
+    head -3 $2 > salida
+    echo "Se ha creado un archivo salida con las 3 primeras lineas del archivo suministrado como argumento"
+else
+    echo "Mal"
+fi
+
+if [ -d $1 ];
+then
+    echo "El número de archivos que contiene el directorio es: $(ls $1|wc -l)"
+    find $1 -perm -a=r >> "$(pwd)/salida"
+    echo "De un total de $(find $1|wc -l) archivos, hay $(find $1 -perm -a=r|wc -l) archivos con permiso de lectura"
+else
+    mkdir $1
+    echo "Se ha creado un directorio con dicho nombre"
+fi

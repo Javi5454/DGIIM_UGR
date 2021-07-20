@@ -1,0 +1,36 @@
+# Nombre archivo: makefile
+# Uso: make 
+# Descripción: Mantiene todas las dependencias entre los módulos y la biblioteca
+#              que utiliza el programa2.
+
+# Variable que indica el compilaodr
+CC=g++
+
+# Variable que indica el directorio de las cabeceras
+INCLUDE_DIR=./includes
+
+LIB_DIR=./libs
+
+programa2: main2.o factorial.o hello.o ./libs/libmates.a
+	g++ -L$(LIB_DIR) -o $@ $^ -lmates
+
+main2.o: main2.cpp functions.h mates.h 
+	g++ -I./includes -c main2.cpp
+
+factorial.o: factorial.cpp functions.h
+	g++ -I./includes -c factorial.o
+
+hello.o: hello.cpp functions.h
+	g++ -I./includes -c hello.cpp
+
+libmates.a: sin.o cos.o tan.o
+	ar -rvs ./libs/libmates.a sin.o cos.o tan.o
+
+sin.o: sin.cpp mates.h
+	g++ -I./includes -c sin.cpp
+
+cos.o: cos.cpp mates.h
+	g++ -I./includes -c cos.cpp
+
+tan.o: tan.cpp mates.h
+	g++ -I./includes -c tan.cpp

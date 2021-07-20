@@ -1,0 +1,334 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.17"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>SHOPPING1: Fichero Fuente src/DateTime.cpp</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">SHOPPING1
+   &#160;<span id="projectnumber">0</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Generado por Doxygen 1.8.17 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'Buscar');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','Buscar');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">DateTime.cpp</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="DateTime_8cpp.html">Ir a la documentación de este archivo.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160; </div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#include &lt;iostream&gt;</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor">#include &lt;sstream&gt;</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="DateTime_8h.html">DateTime.h</a>&quot;</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor">#include &lt;algorithm&gt;</span> </div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="keyword">using namespace </span>std;</div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160; </div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="DateTime_8cpp.html#a9962ec9b30855e08347df66f3fc99345">isCorrect</a>(<span class="keywordtype">int</span> year, <span class="keywordtype">int</span> month, <span class="keywordtype">int</span> day, <span class="keywordtype">int</span> hour, <span class="keywordtype">int</span> min, <span class="keywordtype">int</span> sec);</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;<span class="keywordtype">void</span> <a class="code" href="DateTime_8cpp.html#af2b9a13e863e39a34e807bef47cbbd16">split</a>(<span class="keyword">const</span> std::string &amp;line, <span class="keywordtype">int</span> &amp;y, <span class="keywordtype">int</span>  &amp;m, <span class="keywordtype">int</span> &amp;d, <span class="keywordtype">int</span>  &amp;h, <span class="keywordtype">int</span> &amp;mn, <span class="keywordtype">int</span> &amp;s);</div>
+<div class="line"><a name="l00052"></a><span class="lineno"><a class="line" href="classDateTime.html#a3ccfb87f7a2e9683b91964e32d907161">   52</a></span>&#160;<a class="code" href="classDateTime.html#a3ccfb87f7a2e9683b91964e32d907161">DateTime::DateTime</a>() {</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;    initDefault();</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;}</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160; </div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;<span class="keywordtype">void</span> DateTime::initDefault() {</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;    set(<a class="code" href="DateTime_8h.html#a292ad31d1998b1655e56c85d294fd185">DATETIME_DEFAULT</a>);</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;}</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160; </div>
+<div class="line"><a name="l00060"></a><span class="lineno"><a class="line" href="DateTime_8cpp.html#a9962ec9b30855e08347df66f3fc99345">   60</a></span>&#160;<span class="keywordtype">bool</span> <a class="code" href="DateTime_8cpp.html#a9962ec9b30855e08347df66f3fc99345">isCorrect</a>(<span class="keywordtype">int</span> year, <span class="keywordtype">int</span> month, <span class="keywordtype">int</span> day, <span class="keywordtype">int</span> hour, <span class="keywordtype">int</span> min, <span class="keywordtype">int</span> sec) {</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    </div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    <span class="keywordtype">int</span> nDays;</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;    <span class="keywordtype">bool</span> bisiesto = ((year % 4 == 0 &amp;&amp; year % 100 != 0) || year % 400 == 0);</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;    </div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;    <span class="keywordflow">if</span>((month == 1) || (month == 3) || (month == 5) || (month == 7) || (month == 8)</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;            || (month == 10) || (month == 12)){</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;            </div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;        nDays = 31;</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;    }</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;    <span class="keywordflow">else</span> <span class="keywordflow">if</span> (month == 2)</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;    {</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;        <span class="keywordflow">if</span>(bisiesto)</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;        {</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;            nDays = 29;</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;        }</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;        <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;        {</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;            nDays = 28;</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;        }</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;    }</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;    <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;    {</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;        nDays = 30;</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;    }</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;    </div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;    </div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;    <span class="keywordflow">return</span> ((month &lt;= 12) &amp;&amp; (month &gt;= 1) &amp;&amp; (day &lt;= nDays) &amp;&amp; (day &gt;= 0) &amp;&amp; (hour &lt;=23)</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;            &amp;&amp; (hour &gt;= 0) &amp;&amp; (min &gt;= 0) &amp;&amp; (min &lt;= 59) &amp;&amp; (sec &lt;= 59) &amp;&amp; (sec &gt;= 0)); </div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160; </div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;}</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160; </div>
+<div class="line"><a name="l00092"></a><span class="lineno"><a class="line" href="DateTime_8cpp.html#af2b9a13e863e39a34e807bef47cbbd16">   92</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="DateTime_8cpp.html#af2b9a13e863e39a34e807bef47cbbd16">split</a>(<span class="keyword">const</span> std::string &amp;line, <span class="keywordtype">int</span> &amp;y, <span class="keywordtype">int</span>  &amp;m, <span class="keywordtype">int</span>  &amp;d, <span class="keywordtype">int</span>  &amp;h, <span class="keywordtype">int</span> &amp;mn, <span class="keywordtype">int</span> &amp;s) {</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;    </div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;    <span class="keywordtype">string</span> add;</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;    </div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;    <span class="keywordflow">if</span>(line.length() == 23){</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;        y = stoi(line.substr(0,4));</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;        m = stoi(line.substr(5,2));</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;        d = stoi(line.substr(8,2));</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;        </div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;        h = stoi(line.substr(11,2));</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;        mn = stoi(line.substr(14,2));</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;        s = stoi(line.substr(17,2));</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;    }</div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;    <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;    {</div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;        m = 15; <span class="comment">//Le pasamos un valor incorrecto del mes</span></div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;    }</div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;     </div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;}</div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160; </div>
+<div class="line"><a name="l00112"></a><span class="lineno"><a class="line" href="classDateTime.html#a1a27664ae0a3025fe99343ca57b28873">  112</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classDateTime.html#a1a27664ae0a3025fe99343ca57b28873">DateTime::set</a>(<span class="keyword">const</span> std::string  &amp;line) {</div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;    </div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;    <span class="keywordtype">int</span> y, m, d, h, mn, s;</div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;    </div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;    <a class="code" href="DateTime_8cpp.html#af2b9a13e863e39a34e807bef47cbbd16">split</a>(line, y, m, d, h, mn, s);</div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;    </div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;    <span class="keywordflow">if</span>(<a class="code" href="DateTime_8cpp.html#a9962ec9b30855e08347df66f3fc99345">isCorrect</a>(y, m, d, h, mn, s))</div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;    {</div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;        _year = y;</div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;        _month = m;</div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;        _day = d;</div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;        _hour = h;</div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;        _min = mn;</div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;        _sec = s;</div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;    }</div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;    <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;    {</div>
+<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;        initDefault();</div>
+<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;    }</div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;}</div>
+<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160; </div>
+<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;<a class="code" href="classDateTime.html#a3ccfb87f7a2e9683b91964e32d907161">DateTime::DateTime</a>(<span class="keyword">const</span> <span class="keywordtype">string</span>  &amp;line) {</div>
+<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;    </div>
+<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;    <span class="keywordtype">int</span> y, m, d, h, mn, s;</div>
+<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;    </div>
+<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;    <a class="code" href="DateTime_8cpp.html#af2b9a13e863e39a34e807bef47cbbd16">split</a>(line, y, m, d, h, mn, s);</div>
+<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;    </div>
+<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;    <span class="keywordflow">if</span>(<a class="code" href="DateTime_8cpp.html#a9962ec9b30855e08347df66f3fc99345">isCorrect</a>(y, m, d, h, mn, s))</div>
+<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;    {</div>
+<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;        set(line);</div>
+<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;    }</div>
+<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;    <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;    {</div>
+<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;        initDefault();</div>
+<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;    }</div>
+<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;    </div>
+<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;}</div>
+<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160; </div>
+<div class="line"><a name="l00150"></a><span class="lineno"><a class="line" href="classDateTime.html#af0eb582fdc2b0964ecf255df53396712">  150</a></span>&#160;<span class="keywordtype">int</span> <a class="code" href="classDateTime.html#af0eb582fdc2b0964ecf255df53396712">DateTime::year</a>()<span class="keyword"> const </span>{</div>
+<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;    </div>
+<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;    <span class="keywordflow">return</span> _year;</div>
+<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;}</div>
+<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160; </div>
+<div class="line"><a name="l00155"></a><span class="lineno"><a class="line" href="classDateTime.html#a294643a8ce6bd0cca6cda71890e7456c">  155</a></span>&#160;<span class="keywordtype">int</span> <a class="code" href="classDateTime.html#a294643a8ce6bd0cca6cda71890e7456c">DateTime::month</a>()<span class="keyword"> const </span>{</div>
+<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;    </div>
+<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;    <span class="keywordflow">return</span> _month;</div>
+<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;}</div>
+<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160; </div>
+<div class="line"><a name="l00160"></a><span class="lineno"><a class="line" href="classDateTime.html#a2d1b93811c0d81597963162b726d26f3">  160</a></span>&#160;<span class="keywordtype">int</span> <a class="code" href="classDateTime.html#a2d1b93811c0d81597963162b726d26f3">DateTime::day</a>()<span class="keyword"> const </span>{</div>
+<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;    </div>
+<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;    <span class="keywordflow">return</span> _day;</div>
+<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;}</div>
+<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160; </div>
+<div class="line"><a name="l00165"></a><span class="lineno"><a class="line" href="classDateTime.html#a042f8d8eac63eee6b8059ec2df41be93">  165</a></span>&#160;<span class="keywordtype">int</span> <a class="code" href="classDateTime.html#a042f8d8eac63eee6b8059ec2df41be93">DateTime::hour</a>()<span class="keyword"> const </span>{</div>
+<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;    </div>
+<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;    <span class="keywordflow">return</span> _hour;</div>
+<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;}</div>
+<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160; </div>
+<div class="line"><a name="l00170"></a><span class="lineno"><a class="line" href="classDateTime.html#ab1632b886ff734092729f844b39958c9">  170</a></span>&#160;<span class="keywordtype">int</span> <a class="code" href="classDateTime.html#ab1632b886ff734092729f844b39958c9">DateTime::min</a>()<span class="keyword"> const </span>{</div>
+<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;    </div>
+<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;    <span class="keywordflow">return</span> _min;</div>
+<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;}</div>
+<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160; </div>
+<div class="line"><a name="l00175"></a><span class="lineno"><a class="line" href="classDateTime.html#a37f20f7430da224a0c08a9cbca1c1d7d">  175</a></span>&#160;<span class="keywordtype">int</span> <a class="code" href="classDateTime.html#a37f20f7430da224a0c08a9cbca1c1d7d">DateTime::sec</a>()<span class="keyword"> const </span>{</div>
+<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;    </div>
+<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;    <span class="keywordflow">return</span> _sec;</div>
+<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;}</div>
+<div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160; </div>
+<div class="line"><a name="l00180"></a><span class="lineno"><a class="line" href="classDateTime.html#ae519b679df0449166adf57267d89142f">  180</a></span>&#160;<span class="keywordtype">bool</span> <a class="code" href="classDateTime.html#ae519b679df0449166adf57267d89142f">DateTime::isBefore</a>(<span class="keyword">const</span> <a class="code" href="classDateTime.html">DateTime</a>  &amp;one)<span class="keyword">  const </span>{</div>
+<div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;    </div>
+<div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;    <span class="keywordtype">bool</span> resultado;</div>
+<div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;    </div>
+<div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;    <span class="keywordflow">if</span>(_year &gt; one.<a class="code" href="classDateTime.html#af0eb582fdc2b0964ecf255df53396712">year</a>())</div>
+<div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;    {</div>
+<div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;        resultado = <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;    }</div>
+<div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;    <span class="keywordflow">else</span> <span class="keywordflow">if</span>(_year &lt; one.<a class="code" href="classDateTime.html#af0eb582fdc2b0964ecf255df53396712">year</a>())</div>
+<div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;    {</div>
+<div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;        resultado = <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;    }</div>
+<div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;    <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;    {</div>
+<div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;        <span class="keywordflow">if</span>(_month &gt; one.<a class="code" href="classDateTime.html#a294643a8ce6bd0cca6cda71890e7456c">month</a>())</div>
+<div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;        {</div>
+<div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;            resultado = <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;        }</div>
+<div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;        <span class="keywordflow">else</span> <span class="keywordflow">if</span>(_month &lt; one.<a class="code" href="classDateTime.html#a294643a8ce6bd0cca6cda71890e7456c">month</a>())</div>
+<div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;        {</div>
+<div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;            resultado = <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;        }</div>
+<div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;        <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160;        {</div>
+<div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;            <span class="keywordflow">if</span>(_day &gt; one.<a class="code" href="classDateTime.html#a2d1b93811c0d81597963162b726d26f3">day</a>())</div>
+<div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160;            {</div>
+<div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160;                resultado = <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160;            }</div>
+<div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160;            <span class="keywordflow">else</span> <span class="keywordflow">if</span> (_day &lt; one.<a class="code" href="classDateTime.html#a2d1b93811c0d81597963162b726d26f3">day</a>())</div>
+<div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160;            {</div>
+<div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160;                resultado = <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160;            }</div>
+<div class="line"><a name="l00212"></a><span class="lineno">  212</span>&#160;            <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00213"></a><span class="lineno">  213</span>&#160;            {</div>
+<div class="line"><a name="l00214"></a><span class="lineno">  214</span>&#160;                <span class="keywordflow">if</span>(_hour &gt; one.<a class="code" href="classDateTime.html#a042f8d8eac63eee6b8059ec2df41be93">hour</a>())</div>
+<div class="line"><a name="l00215"></a><span class="lineno">  215</span>&#160;                {</div>
+<div class="line"><a name="l00216"></a><span class="lineno">  216</span>&#160;                    resultado = <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00217"></a><span class="lineno">  217</span>&#160;                }</div>
+<div class="line"><a name="l00218"></a><span class="lineno">  218</span>&#160;                <span class="keywordflow">else</span> <span class="keywordflow">if</span> (_hour &lt; one.<a class="code" href="classDateTime.html#a042f8d8eac63eee6b8059ec2df41be93">hour</a>())</div>
+<div class="line"><a name="l00219"></a><span class="lineno">  219</span>&#160;                {</div>
+<div class="line"><a name="l00220"></a><span class="lineno">  220</span>&#160;                    resultado = <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00221"></a><span class="lineno">  221</span>&#160;                }</div>
+<div class="line"><a name="l00222"></a><span class="lineno">  222</span>&#160;                <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00223"></a><span class="lineno">  223</span>&#160;                {</div>
+<div class="line"><a name="l00224"></a><span class="lineno">  224</span>&#160;                    <span class="keywordflow">if</span>(_min &gt; one.<a class="code" href="classDateTime.html#ab1632b886ff734092729f844b39958c9">min</a>())</div>
+<div class="line"><a name="l00225"></a><span class="lineno">  225</span>&#160;                    {</div>
+<div class="line"><a name="l00226"></a><span class="lineno">  226</span>&#160;                        resultado = <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00227"></a><span class="lineno">  227</span>&#160;                    }</div>
+<div class="line"><a name="l00228"></a><span class="lineno">  228</span>&#160;                    <span class="keywordflow">else</span> <span class="keywordflow">if</span> (_min &lt; one.<a class="code" href="classDateTime.html#ab1632b886ff734092729f844b39958c9">min</a>())</div>
+<div class="line"><a name="l00229"></a><span class="lineno">  229</span>&#160;                    {</div>
+<div class="line"><a name="l00230"></a><span class="lineno">  230</span>&#160;                        resultado = <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00231"></a><span class="lineno">  231</span>&#160;                    }</div>
+<div class="line"><a name="l00232"></a><span class="lineno">  232</span>&#160;                    <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00233"></a><span class="lineno">  233</span>&#160;                    {</div>
+<div class="line"><a name="l00234"></a><span class="lineno">  234</span>&#160;                        <span class="keywordflow">if</span>(_sec &gt;= one.<a class="code" href="classDateTime.html#a37f20f7430da224a0c08a9cbca1c1d7d">sec</a>())</div>
+<div class="line"><a name="l00235"></a><span class="lineno">  235</span>&#160;                        {</div>
+<div class="line"><a name="l00236"></a><span class="lineno">  236</span>&#160;                            resultado = <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00237"></a><span class="lineno">  237</span>&#160;                        }</div>
+<div class="line"><a name="l00238"></a><span class="lineno">  238</span>&#160;                        <span class="keywordflow">else</span> </div>
+<div class="line"><a name="l00239"></a><span class="lineno">  239</span>&#160;                        {</div>
+<div class="line"><a name="l00240"></a><span class="lineno">  240</span>&#160;                            resultado = <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00241"></a><span class="lineno">  241</span>&#160;                        }</div>
+<div class="line"><a name="l00242"></a><span class="lineno">  242</span>&#160;                    }</div>
+<div class="line"><a name="l00243"></a><span class="lineno">  243</span>&#160;                }</div>
+<div class="line"><a name="l00244"></a><span class="lineno">  244</span>&#160;            }</div>
+<div class="line"><a name="l00245"></a><span class="lineno">  245</span>&#160;        }</div>
+<div class="line"><a name="l00246"></a><span class="lineno">  246</span>&#160;    }</div>
+<div class="line"><a name="l00247"></a><span class="lineno">  247</span>&#160;    </div>
+<div class="line"><a name="l00248"></a><span class="lineno">  248</span>&#160;    <span class="keywordflow">return</span> resultado;</div>
+<div class="line"><a name="l00249"></a><span class="lineno">  249</span>&#160;}</div>
+<div class="line"><a name="l00250"></a><span class="lineno">  250</span>&#160; </div>
+<div class="line"><a name="l00251"></a><span class="lineno">  251</span>&#160; </div>
+<div class="line"><a name="l00252"></a><span class="lineno"><a class="line" href="classDateTime.html#a9c75b71d29094fde37d36f86c10b934b">  252</a></span>&#160;<span class="keywordtype">int</span> <a class="code" href="classDateTime.html#a9c75b71d29094fde37d36f86c10b934b">DateTime::weekDay</a>()<span class="keyword"> const  </span>{</div>
+<div class="line"><a name="l00253"></a><span class="lineno">  253</span>&#160;    </div>
+<div class="line"><a name="l00254"></a><span class="lineno">  254</span>&#160;    <span class="keywordtype">int</span> a, y, m ,d;</div>
+<div class="line"><a name="l00255"></a><span class="lineno">  255</span>&#160;    </div>
+<div class="line"><a name="l00256"></a><span class="lineno">  256</span>&#160;    a = (14 - month()) / 12;</div>
+<div class="line"><a name="l00257"></a><span class="lineno">  257</span>&#160;    y = year() - a;</div>
+<div class="line"><a name="l00258"></a><span class="lineno">  258</span>&#160;    m = month() + (12*a) - 2;</div>
+<div class="line"><a name="l00259"></a><span class="lineno">  259</span>&#160;    d = (day() + y + (y/4) - (y/100) + (y/400) + (31*m)/12) % 7;</div>
+<div class="line"><a name="l00260"></a><span class="lineno">  260</span>&#160;    </div>
+<div class="line"><a name="l00261"></a><span class="lineno">  261</span>&#160;    <span class="keywordflow">return</span> d;</div>
+<div class="line"><a name="l00262"></a><span class="lineno">  262</span>&#160;}</div>
+<div class="line"><a name="l00263"></a><span class="lineno">  263</span>&#160; </div>
+<div class="line"><a name="l00264"></a><span class="lineno"><a class="line" href="classDateTime.html#a246ab4f7cd93e15135efb69363d97d83">  264</a></span>&#160;<span class="keywordtype">string</span> <a class="code" href="classDateTime.html#a246ab4f7cd93e15135efb69363d97d83">DateTime::to_string</a>()<span class="keyword"> const </span>{</div>
+<div class="line"><a name="l00265"></a><span class="lineno">  265</span>&#160;    <span class="keywordtype">char</span> local[64];</div>
+<div class="line"><a name="l00266"></a><span class="lineno">  266</span>&#160;    sprintf(local, <span class="stringliteral">&quot;%04i-%02i-%02i %02i:%02i:%02i UTC&quot;</span>, _year, _month, _day, _hour, _min, _sec);</div>
+<div class="line"><a name="l00267"></a><span class="lineno">  267</span>&#160;    <span class="keywordflow">return</span> local;</div>
+<div class="line"><a name="l00268"></a><span class="lineno">  268</span>&#160;}</div>
+<div class="line"><a name="l00269"></a><span class="lineno">  269</span>&#160; </div>
+<div class="line"><a name="l00270"></a><span class="lineno">  270</span>&#160; </div>
+<div class="line"><a name="l00271"></a><span class="lineno"><a class="line" href="classDateTime.html#ab29a27908ce1e547fe907dc23e5bbe62">  271</a></span>&#160;<span class="keywordtype">bool</span> <a class="code" href="classDateTime.html#ab29a27908ce1e547fe907dc23e5bbe62">DateTime::sameDay</a>(<span class="keyword">const</span> <a class="code" href="classDateTime.html">DateTime</a> &amp;other)<span class="keyword"> const </span>{  </div>
+<div class="line"><a name="l00272"></a><span class="lineno">  272</span>&#160;    <span class="keywordflow">if</span>((_year == other.<a class="code" href="classDateTime.html#af0eb582fdc2b0964ecf255df53396712">year</a>()) &amp;&amp; (_month == other.<a class="code" href="classDateTime.html#a294643a8ce6bd0cca6cda71890e7456c">month</a>()) &amp;&amp; (_day == other.<a class="code" href="classDateTime.html#a2d1b93811c0d81597963162b726d26f3">day</a>())){</div>
+<div class="line"><a name="l00273"></a><span class="lineno">  273</span>&#160;        <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00274"></a><span class="lineno">  274</span>&#160;    }</div>
+<div class="line"><a name="l00275"></a><span class="lineno">  275</span>&#160;    <span class="keywordflow">else</span>{</div>
+<div class="line"><a name="l00276"></a><span class="lineno">  276</span>&#160;        <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00277"></a><span class="lineno">  277</span>&#160;    }</div>
+<div class="line"><a name="l00278"></a><span class="lineno">  278</span>&#160;}</div>
+</div><!-- fragment --></div><!-- contents -->
+<div class="ttc" id="aclassDateTime_html_a3ccfb87f7a2e9683b91964e32d907161"><div class="ttname"><a href="classDateTime.html#a3ccfb87f7a2e9683b91964e32d907161">DateTime::DateTime</a></div><div class="ttdeci">DateTime()</div><div class="ttdoc">Base constructor. It sets the default date.</div><div class="ttdef"><b>Definition:</b> <a href="DateTime_8cpp_source.html#l00052">DateTime.cpp:52</a></div></div>
+<div class="ttc" id="aclassDateTime_html_ab29a27908ce1e547fe907dc23e5bbe62"><div class="ttname"><a href="classDateTime.html#ab29a27908ce1e547fe907dc23e5bbe62">DateTime::sameDay</a></div><div class="ttdeci">bool sameDay(const DateTime &amp;other) const</div><div class="ttdoc">Check if the referenced object and the argument belong to the same day.</div><div class="ttdef"><b>Definition:</b> <a href="DateTime_8cpp_source.html#l00271">DateTime.cpp:271</a></div></div>
+<div class="ttc" id="aclassDateTime_html_a294643a8ce6bd0cca6cda71890e7456c"><div class="ttname"><a href="classDateTime.html#a294643a8ce6bd0cca6cda71890e7456c">DateTime::month</a></div><div class="ttdeci">int month() const</div><div class="ttdoc">It gives the month.</div><div class="ttdef"><b>Definition:</b> <a href="DateTime_8cpp_source.html#l00155">DateTime.cpp:155</a></div></div>
+<div class="ttc" id="aclassDateTime_html_a246ab4f7cd93e15135efb69363d97d83"><div class="ttname"><a href="classDateTime.html#a246ab4f7cd93e15135efb69363d97d83">DateTime::to_string</a></div><div class="ttdeci">std::string to_string() const</div><div class="ttdoc">transform a dataTime to a string following the format: 2019-10-01 00:15:06 UTC</div><div class="ttdef"><b>Definition:</b> <a href="DateTime_8cpp_source.html#l00264">DateTime.cpp:264</a></div></div>
+<div class="ttc" id="aDateTime_8h_html"><div class="ttname"><a href="DateTime_8h.html">DateTime.h</a></div></div>
+<div class="ttc" id="aDateTime_8cpp_html_a9962ec9b30855e08347df66f3fc99345"><div class="ttname"><a href="DateTime_8cpp.html#a9962ec9b30855e08347df66f3fc99345">isCorrect</a></div><div class="ttdeci">bool isCorrect(int year, int month, int day, int hour, int min, int sec)</div><div class="ttdoc">auxiliary function to check if the date and the time are in correct format, taking into account,...</div><div class="ttdef"><b>Definition:</b> <a href="DateTime_8cpp_source.html#l00060">DateTime.cpp:60</a></div></div>
+<div class="ttc" id="aclassDateTime_html_a37f20f7430da224a0c08a9cbca1c1d7d"><div class="ttname"><a href="classDateTime.html#a37f20f7430da224a0c08a9cbca1c1d7d">DateTime::sec</a></div><div class="ttdeci">int sec() const</div><div class="ttdoc">It gives the number of seconds.</div><div class="ttdef"><b>Definition:</b> <a href="DateTime_8cpp_source.html#l00175">DateTime.cpp:175</a></div></div>
+<div class="ttc" id="aclassDateTime_html_ae519b679df0449166adf57267d89142f"><div class="ttname"><a href="classDateTime.html#ae519b679df0449166adf57267d89142f">DateTime::isBefore</a></div><div class="ttdeci">bool isBefore(const DateTime &amp;one) const</div><div class="ttdoc">check if the referenced object is before in time than the dataTime one</div><div class="ttdef"><b>Definition:</b> <a href="DateTime_8cpp_source.html#l00180">DateTime.cpp:180</a></div></div>
+<div class="ttc" id="aclassDateTime_html_a9c75b71d29094fde37d36f86c10b934b"><div class="ttname"><a href="classDateTime.html#a9c75b71d29094fde37d36f86c10b934b">DateTime::weekDay</a></div><div class="ttdeci">int weekDay() const</div><div class="ttdoc">Computes the week day, from date of the dataTime. According to the Zeller's congruence look at wikipe...</div><div class="ttdef"><b>Definition:</b> <a href="DateTime_8cpp_source.html#l00252">DateTime.cpp:252</a></div></div>
+<div class="ttc" id="aclassDateTime_html_a1a27664ae0a3025fe99343ca57b28873"><div class="ttname"><a href="classDateTime.html#a1a27664ae0a3025fe99343ca57b28873">DateTime::set</a></div><div class="ttdeci">void set(const std::string &amp;line)</div><div class="ttdoc">set the dataTime if is correct, as well as in date, as in time</div><div class="ttdef"><b>Definition:</b> <a href="DateTime_8cpp_source.html#l00112">DateTime.cpp:112</a></div></div>
+<div class="ttc" id="aclassDateTime_html_ab1632b886ff734092729f844b39958c9"><div class="ttname"><a href="classDateTime.html#ab1632b886ff734092729f844b39958c9">DateTime::min</a></div><div class="ttdeci">int min() const</div><div class="ttdoc">It gives the minutes.</div><div class="ttdef"><b>Definition:</b> <a href="DateTime_8cpp_source.html#l00170">DateTime.cpp:170</a></div></div>
+<div class="ttc" id="aclassDateTime_html_a042f8d8eac63eee6b8059ec2df41be93"><div class="ttname"><a href="classDateTime.html#a042f8d8eac63eee6b8059ec2df41be93">DateTime::hour</a></div><div class="ttdeci">int hour() const</div><div class="ttdoc">It gives the hour.</div><div class="ttdef"><b>Definition:</b> <a href="DateTime_8cpp_source.html#l00165">DateTime.cpp:165</a></div></div>
+<div class="ttc" id="aclassDateTime_html"><div class="ttname"><a href="classDateTime.html">DateTime</a></div><div class="ttdoc">Used to represent dates and times in the format YYYY-MM-dd hh:mm::ss, where.</div><div class="ttdef"><b>Definition:</b> <a href="DateTime_8h_source.html#l00037">DateTime.h:37</a></div></div>
+<div class="ttc" id="aDateTime_8h_html_a292ad31d1998b1655e56c85d294fd185"><div class="ttname"><a href="DateTime_8h.html#a292ad31d1998b1655e56c85d294fd185">DATETIME_DEFAULT</a></div><div class="ttdeci">#define DATETIME_DEFAULT</div><div class="ttdoc">Default date.</div><div class="ttdef"><b>Definition:</b> <a href="DateTime_8h_source.html#l00016">DateTime.h:16</a></div></div>
+<div class="ttc" id="aclassDateTime_html_a2d1b93811c0d81597963162b726d26f3"><div class="ttname"><a href="classDateTime.html#a2d1b93811c0d81597963162b726d26f3">DateTime::day</a></div><div class="ttdeci">int day() const</div><div class="ttdoc">It gives the day.</div><div class="ttdef"><b>Definition:</b> <a href="DateTime_8cpp_source.html#l00160">DateTime.cpp:160</a></div></div>
+<div class="ttc" id="aclassDateTime_html_af0eb582fdc2b0964ecf255df53396712"><div class="ttname"><a href="classDateTime.html#af0eb582fdc2b0964ecf255df53396712">DateTime::year</a></div><div class="ttdeci">int year() const</div><div class="ttdoc">It gives the year.</div><div class="ttdef"><b>Definition:</b> <a href="DateTime_8cpp_source.html#l00150">DateTime.cpp:150</a></div></div>
+<div class="ttc" id="aDateTime_8cpp_html_af2b9a13e863e39a34e807bef47cbbd16"><div class="ttname"><a href="DateTime_8cpp.html#af2b9a13e863e39a34e807bef47cbbd16">split</a></div><div class="ttdeci">void split(const std::string &amp;line, int &amp;y, int &amp;m, int &amp;d, int &amp;h, int &amp;mn, int &amp;s)</div><div class="ttdoc">split the first field in 6 components of the data time. Please consider using string::substr(int,...</div><div class="ttdef"><b>Definition:</b> <a href="DateTime_8cpp_source.html#l00092">DateTime.cpp:92</a></div></div>
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Generado por &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.17
+</small></address>
+</body>
+</html>

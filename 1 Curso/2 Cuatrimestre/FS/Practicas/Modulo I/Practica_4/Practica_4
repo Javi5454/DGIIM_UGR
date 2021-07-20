@@ -1,0 +1,11 @@
+#!/bin/bash
+# Titulo: practica_4
+# Fecha: 23/3/2021
+# Autor: Javier Gómez López
+# Versión: 1.0
+# Descripción: Crea un guion que tenga dos argumentos de tipo numérico.
+#Si el primer argumento es mayor que el segundo, entonces que se multipliquen #los valores. En este caso, se ha de crear un archivo cuyo nombre contenga el #resultado de la multiplicación. Por ejemplo: 12_multi.txt  o   50_multi.txt
+#Si el segundo es mayor que el primero, entonces que se resten.
+#Si son el mismo número, entonces que muestre un mensaje indicándolo #simplemente.
+# Opciones: Dos argumentos
+if (( $1 > $2 )); then (echo "Es mayor el primero"; touch "$(($1*$2))_multi.txt"); elif (($1<$2)); then echo "El segundo es mayor, su resta es: "$(($1-$2))""; else echo "Son iguales"; fi

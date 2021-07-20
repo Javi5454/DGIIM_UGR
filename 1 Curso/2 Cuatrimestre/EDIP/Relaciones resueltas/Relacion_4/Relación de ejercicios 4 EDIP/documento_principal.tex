@@ -1,0 +1,440 @@
+\documentclass[a4paper, 12pt]{article}
+
+\usepackage{amsmath} %Todos los paquetes de matematicas
+\usepackage{amsthm}
+\usepackage{mathtools}
+\providecommand{\abs}[1]{\lvert#1\rvert}
+\providecommand{\norm}[1]{\lVert#1\rVert}
+\usepackage{yhmath}
+\usepackage[utf8]{inputenc}
+\usepackage[spanish]{babel}
+\usepackage{wrapfig} %Figuras flotantes
+\usepackage{parselines}
+\usepackage{enumitem}
+\usepackage{xcolor}
+\usepackage{graphicx}
+\usepackage{tikz}
+\usetikzlibrary{positioning}
+\usepackage{pgfplots}
+\graphicspath{{images/}}
+\usepackage{subcaption}
+\usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry}
+\usepackage{eurosym} %Euro, de nada misniños
+\usepackage{amsfonts}
+\theoremstyle{definition}
+\newtheorem{ej}{Ejercicio}
+
+
+
+\title{\textbf{Relación de ejercicios 4 EDIP}}
+\author{Carlos García, Bora Goker, Javier Gómez,  \\ Ana Graciani, J.Alberto Hoces}
+\date{2020/2021}
+
+\setlength{\parindent}{0px}
+
+\begin{document}
+
+\maketitle
+
+\begin{ej}
+En una batalla naval, tres destructores localizan y disparan simultáneamente a un submarino. La probabilidad de que el primer destructor acierte el disparo es 0.6, la de que lo acierte el segundo es 0.3 y la de que lo acierte el tercero es 0.1. ¿Cuál es la probabilidad de que el submarino sea alcanzado por algún disparo? \\
+
+Lo primero de todo, es necesario destacar el hecho de que los tres sucesos son independientes, pues que un disparo acierte o no al submarino no influye en el hecho de que lo hagan los otros. 
+
+Así, sea \(A\) el suceso de que el primer destructor alcance al submarino y \(P(A) = 0.6\). \(B\) es el suceso de que el segundo destructor alcance al submarino y \(P(B) = 0.3\). Y \(C\) el suceso de que el tercer destructor alcance al submarino y \(P(C) = 0.1\).
+\[
+	P(A \cup B \cup C) = P(A \cup B) + P(C) - P((A \cup B) \cap C) = P(A) + P(B) + P(C) - P(A \cap B) -
+\]
+\[
+	- P((A\cap C) \cup (B \cap C)) = P(A) + P(B) + P(C) - P(A \cap B) - P(A \cap C) - 
+\]
+\[
+	- P(B \cap C) + P(A \cap B \cap C) = 0.6 + 0.3 + 0.1 - 0.6 \cdot 0.3 - 0.6 \cdot 0.1 - 0.3 \cdot 0.1 + 0.6 \cdot 0.3 \cdot 0.1 =
+\]
+\[
+	= \underline{0.748}
+\]
+
+\end{ej}
+
+\bigskip
+
+\begin{ej}
+Un estudiante debe pasar durante el curso 5 pruebas selectivas. La probabilidad de pasar la primera es 1/6. La probabilidad de pasar la \textit{i-ésima}, habiendo pasado las anteriores es 1/(7- \(i\)). Determinar la probabilidad de que el alumno apruebe el curso. \\
+
+Lo primero de todo, los sucesos son independientes pues el pasar o no una prueba no influye en pasar la siguiente, solamente influye el número de pruebas realizadas no el resultado en ellas.
+
+Así:
+\[
+	P \left( \cap_{i=1}^{5} A_i \right) = \prod_{i=1}^{5} \frac{1}{7-i} = \frac{1}{6} \cdot \frac{1}{5} \cdot \frac{1}{4} \cdot \frac{1}{3} \cdot \frac{1}{2} = \underline{1.3888 \cdot 10}^{-3}
+\]
+\end{ej}
+
+\medskip
+
+\begin{ej}
+En una ciudad, el 40\% de las personas tienen pelo rubio, el 25\% tienen ojos azules y el 5\% el
+pelo rubio y los ojos azules. Se selecciona una persona al azar. Calcular la probabilidad de los
+siguientes sucesos:
+
+\begin{enumerate}[label=\textit{\alph*)}]
+\item tener el pelo rubio si se tiene los ojos azules,
+
+\medskip
+
+A: tener el pelo rubio \\
+B: tener los ojos azules \\
+$P(A) = 0.4; \qquad P(B)= 0.25;\qquad P(A\cap B) = 0.05$
+\[P(A|B) = \frac{P(A\cap B)}{P(B)} = \frac{0.05}{0.25} = 0.2\]
+\item tener los ojos azules si se tiene el pelo rubio,
+
+\[P(B|A) = \frac{P(A\cap B)}{P(B)} = \frac{0.05}{0.4} = 0.125\]
+
+\item no tener pelo rubio ni ojos azules,
+\begin{center}
+$P(\bar{A} \cap \bar{B}) = P(\overline{ A\cup B}) = 1 - P(A\cup B) = 1- (P(A)+P(B)-P(A\cap B)) =$ \\ $= 1- (0.4 + 0.25 -0.05) = 1 - 0.6 = 0.4$
+\end{center}
+
+\item tener exactamente una de estas características
+
+\medskip
+\begin{center}
+$P((A\cap B)\cup (B \cap \bar{A})) = P(A\cap\bar{B})+P(B\cap\bar{A})-P((A\cap B)\cap (B \cap \bar{A})))=$\\
+$=P(A-B)+P(B-A)=P(A)-P(A\cap B) +P(B) - P(A \cap B) =$\\$= 0.4 +0.25 -2\cdot 0.05 = 0.55$
+\end{center}
+\end{enumerate}
+
+\end{ej}
+
+\medskip
+
+\begin{ej}
+En una población de moscas, el 25 \% presentan mutación en los ojos, el 50 \% presentan mutación
+en las alas, y el 40 \% de las que presentan mutación en los ojos presentan mutación en las alas.
+
+\begin{enumerate}
+
+
+\item[a)] ¿Cuál es la probabilidad de que una mosca elegida al azar presente al menos una de las
+mutaciones?
+
+Primero hemos de nombrar los sucesos del experimento:
+
+\begin{center}
+    $O \equiv \text{escoger mosca con mutación en los ojos}$
+    $A \equiv \text{escoger mosca con mutación en las alas}$
+\end{center}
+
+De la información aportada en el enunciado deducimos fácilmente que:
+
+\begin{center}
+    $P(O) = \underline{0.25}$ \hspace{1cm} $P(A) = \underline{0.5}$ \hspace{1cm} $P(A|O) = \underline{0.4}$
+\end{center}
+
+Que la mosca elegida tenga al menos una mutación  significa que tenga mutación en los ojos, en las alas o en ambos a la vez, es decir, se nos está pidiendo la probabilidad del suceso $A\cup O$:
+
+\begin{center}
+    $P(A\cup O) = P(A) + P(O) - P(A\cap O) =$
+    $= P(A) + P(O) - P(O)\cdot P(A|O) = 0.25 + 0.5 - 0.1 = \underline{0.65}$
+\end{center}
+
+\item[b)] ¿Cuál es la probabilidad de que presente mutación en los ojos pero no en las alas?
+
+Que la mosca elegida tenga mutación en los ojos pero no en las alas es el suceso $O-A$, por lo que calcularemos su probabilidad:
+
+\begin{center}
+    $P(O-A) = P(O\cap \overline{A}) = P(O) - P(O\cap A) = P(O) - P(O)\cdot P(A|O) = 0.25 - 0.1 = \underline{0.15}$
+\end{center}
+\end{enumerate}
+\end{ej}
+
+\begin{ej}
+Una empresa utiliza dos sistemas alternativos, \(A\) y \(B\), en la fabricación de un artículo, fabricando por el sistema \(A\) el 20\% de su producción. Cuando a un cliente se le ofrece dicho artículo, la probabilidad de que lo compre es de 2/3 si éste se fabricó por el sistema \(A\) y 2/5 si se fabricó por el sistema \(B\). Calcular la probabilidad de vender el producto. \\
+
+Sean:
+\begin{itemize}
+	\item \(C\): probabilidad de que el producto sea comprado.
+	\item \(P_r\): producto producido.
+	\item \(P(A) = \frac{1}{5}\)
+	\item \(P(B) = \frac{4}{5}\)
+\end{itemize}
+
+Así:
+\begin{figure}[!h]
+	\centering
+	\begin{tikzpicture}[
+	squarenode/.style={rectangle, draw=black, thick, minimum size=5mm},
+	scale=0.9]
+	
+	%Nodes
+	\node at (-1,0) {\(P_r\)};
+	\node[squarenode] at (1,1.3) {1/5};
+	\node[squarenode] at (1,-1.2) {4/5};
+	\node at (2.5,2.1) {\(A\)};
+	\node at (2.5, -2.1) {\(B\)};
+	\node[squarenode] at (4, 2.6) {2/3};
+	\node[squarenode] at (4, 1.5) {1/3};
+	\node[squarenode] at (4,-1.55) {2/5};
+	\node[squarenode] at (4, -2.8) {3/5};
+	\node at (5.4,3.1) {\(C\)};
+	\node at (5.4, 1) {\(\bar{C}\)};
+	\node at (5.4, -1) {\(C\)};
+	\node at (5.3, -3.2) {\(\bar{C}\)};
+	
+	%Lines
+	\draw (-0.6,0.2)-- (0.35,0.8);
+	\draw (-0.6,-0.2)-- (0.35, -0.8);
+	\draw (1.7,1.65)-- (2.2,1.96);
+	\draw (1.7, -1.65)-- (2.2, -1.96);
+	\draw (2.7, 2.1)-- (3.2, 2.3);
+	\draw (4.8, 2.94)-- (5.1, 3.06);
+	\draw (2.7, 2)-- (3.2, 1.8);
+	\draw (4.8, 1.16)-- (5.1, 1.04);
+	\draw (2.7, -2.1)-- (3.2, -1.9);
+	\draw (4.8, -1.21)-- (5.1, -1.09);
+	\draw (2.7, -2.2)-- (3.2, -2.45);
+	\draw (4.8, -3.04)-- (5.1, -3.16);
+	\end{tikzpicture}
+\end{figure}
+
+Por lo tanto:
+\[
+	P(C) = P(A) \cdot P(C|A) + P(B) \cdot P(C|B) = \frac{1}{5} \cdot \frac{2}{3} + \frac{4}{5} \cdot \frac{2}{5} = \underline{0.4533}
+\]
+\end{ej}
+
+\begin{ej}
+Se consideran dos urnas: la primera con 20 bolas, de las cuales 18 son blancas, y la segunda con 10 bolas, de las cuales 9 son blancas. Se extrae una bola de la segunda urna y se deposita en la primera; si a continuación, se extrae una bola de ésta, calcular la probabilidad de que sea blanca. \\
+
+Sean:
+\begin{itemize}
+	\item \(B_s\) = "Bola sacada".
+	\item \(A\) = "Probabilidad de sacar una bola blanca de la 2º caja".
+	\item \(B\) = "Probabilidad de sacar una bola blanca de la 1º caja".
+\end{itemize}
+
+Así:
+\begin{figure}[!h]
+	\centering
+	\begin{tikzpicture}[
+	squarenode/.style={rectangle, draw=black, thick, minimum size=5mm},
+	scale=0.9]
+	
+	%Nodes
+	\node at (-1,0) {\(B_s\)};
+	\node[squarenode] at (1,1.3) {9/10};
+	\node[squarenode] at (1,-1.2) {1/10};
+	\node at (2.5,2.1) {\(A\)};
+	\node at (2.5, -2.1) {\(\bar{A}\)};
+	\node[squarenode] at (4, 2.6) {19/21};
+	\node[squarenode] at (4, 1.5) {2/21};
+	\node[squarenode] at (4,-1.55) {18/21};
+	\node[squarenode] at (4, -2.8) {3/21};
+	\node at (5.4,3.1) {\(B\)};
+	\node at (5.4, 1) {\(\bar{B}\)};
+	\node at (5.4, -1) {\(B\)};
+	\node at (5.3, -3.2) {\(\bar{B}\)};
+	
+	%Lines
+	\draw (-0.6,0.2)-- (0.35,0.8);
+	\draw (-0.6,-0.2)-- (0.35, -0.8);
+	\draw (1.7,1.65)-- (2.2,1.96);
+	\draw (1.7, -1.65)-- (2.2, -1.96);
+	\draw (2.7, 2.1)-- (3.2, 2.3);
+	\draw (4.8, 2.94)-- (5.1, 3.06);
+	\draw (2.7, 2)-- (3.2, 1.8);
+	\draw (4.8, 1.16)-- (5.1, 1.04);
+	\draw (2.7, -2.1)-- (3.2, -1.9);
+	\draw (4.8, -1.21)-- (5.1, -1.09);
+	\draw (2.7, -2.2)-- (3.2, -2.45);
+	\draw (4.8, -3.04)-- (5.1, -3.16);
+	\end{tikzpicture}
+\end{figure}
+
+\newpage
+
+Por tanto:
+\[
+	P(B) = P(A) \cdot P(B|A) + P(\bar{A}) \cdot P(B|\bar{A}) = \frac{9}{10} \cdot \frac{19}{21} + \frac{1}{10} \cdot \frac{18}{21} = \frac{9}{10} = \underline{0.9}
+\]
+\end{ej}
+
+\begin{ej}
+Se dispone de tres urnas con la siguiente composici ́on de bolas blancas y negras:
+$$U_1: 5B \ \text{y} \ 5N \ \ U_2: 6B \ \text{y} \ 4N \ \ U_3: 7B \ \text{y} \ 3N$$
+Se elige una urna al azar y se sacan cuatro bolas sin reemplazamiento.
+\begin{enumerate}
+    \item[a) ] Calcular la probabilidad de que las cuatro sean blancas.\\
+    \textbf{B}:Sacar 4 bolas blancas. \\
+    \textbf{$A_1$}:Elegir la primera urna. \\
+    \textbf{$A_2$}:Elegir la segunda urna. \\
+    \textbf{$A_3$}:Elegir la tercera urna. \\
+    $P(A_i) = \dfrac{1}{3} \ \forall i=1,2,3. $
+    $P(B) = P(A_i)\cdot (P(B|A_1) + P(B|A_2) + P(B|A_3))$
+    $P(B) = \dfrac{1}{3}\cdot (\dfrac{5}{210} + \dfrac{15}{210} + \dfrac{35}{210}) = \dfrac{1}{3}\cdot (\dfrac{1}{42} + \dfrac{1}{14} + \dfrac{1}{6}) = 0.087.$
+    \item[b) ] Si en las bolas extraídas sólo hay una negra, ¿cuál es la probabilidad de que la urna elegida haya sido $U_2$.
+    \textbf{B}:Sacar 1 bola negra. \\
+    \textbf{$A_1$}:Elegir la primera urna. \\
+    \textbf{$A_2$}:Elegir la segunda urna. \\
+    \textbf{$A_3$}:Elegir la tercera urna. \\
+    $P(A_2|B) = \dfrac{\dfrac{{4 \choose 1} \cdot {6 \choose 3}}{{10 \choose 4}} \cdot \dfrac{1}{3}}{\dfrac{1}{3} \cdot ( \dfrac{{5 \choose 1} \cdot {5 \choose 3}}{{10 \choose 4}} + \dfrac{{4 \choose 1} \cdot {6 \choose 3}}{{10 \choose 4}} + \dfrac{{3 \choose 1} \cdot {7 \choose 3}}{{10 \choose 4}})} = \dfrac{\dfrac{8}{21}}{\dfrac{5}{21} + \dfrac{8}{21} + \dfrac{1}{2}} = 0.34$
+\end{enumerate}
+\end{ej}
+
+\begin{ej}
+La probabilidad de que se olvide inyectar el suero a un enfermo durante la ausencia del doctor es
+2/3. Si se le inyecta el suero, el enfermo tiene igual probabilidad de mejorar que de empeorar, pero
+si no se le inyecta, la probabilidad de mejorar se reduce a 0.25. Al regreso, el doctor encuentra
+que el enfermo ha empeorado. ¿Cuál es la probabilidad de que no se le haya inyectado el suero?
+
+\medskip
+
+$A$: el enfermo mejora \\ $\bar{A}$: el enfermo empeora\\
+$B$: se le inyecta suero al enfermo
+
+\medskip
+
+Buscamos $P(\bar{B}|\bar{A})$: \\
+$P(\bar{B}) = \frac{2}{3} \quad\Longrightarrow\quad P(B)=\frac{1}{3}$ \\
+$P(A|B) = 0.5= P(\bar{A}|B)$ \\
+$P(A|\bar{B}) = 0.25 \quad\Longrightarrow\quad P(\bar{A}|\bar{B}) = 0.75$
+
+\[P(\bar{A}|\bar{B}) = 0.75 = \frac{P(\bar{A}\cap\bar{B})}{P(\bar{B})} = \frac{P(\bar{A}\cap\bar{B})}{\frac{2}{3}}\quad\Longrightarrow\quad P(\bar{A}\cap\bar{B}) = P(\bar{A}|\bar{B})\cdot P(\bar{B}) = \frac{3}{4}\cdot\frac{2}{3} = 0.5 \] \\
+Utilizamos $P(B) = \sum_{n=1}^\infty P(A_n) P(B|A_n)$;
+\[P(\bar{B}|\bar{A}) = \frac{P(\bar{B}\cap\bar{A})}{P(\bar{A})} = \frac{P(\bar{B}\cap\bar{A})}{P(B\cap\bar{A})+P(\bar{B}\cap\bar{A})} = \frac{0.5}{P(B-A) + P(\bar{B}-A)} =\]
+\[= \frac{0.5}{P(B)+P(\bar{B})-2\cdot P(A)} = \frac{0.5}{1-(P(B)\cdot P(A|B) + P(\bar{B})\cdot P(A|\bar{B})} = \]
+\[ = \frac{0.5}{1-(\frac{1}{3} \cdot 0.5 + \frac{2}{3}\cdot 0.25)} = \frac{\frac{1}{2}}{\frac{2}{3}} = \frac{3}{4} = 0.75\]
+
+\end{ej}
+
+\medskip
+
+\begin{ej}
+\(N\) urnas contienen cada una 4 bolas blancas y 6 negras, mientras otra urna contiene 5 bolas blancas y 5 negras. De las \(N+1\) urnas, se elige una al azar y se extraen dos bolas sucesivamente, sin reemplazamiento, resultando ser ambas negras. Sabiendo que la probabilidad de que queden 5 blancas y 3 negras en la urna elegida es 1/7, encontrar \(N\). \\
+
+Sean:
+\begin{itemize}
+	\item \(U_1\): elegir la urna tipo 1.
+	\item \(U_2\): elegir la urna tipo 2.
+	\item \(N\): sacar dos bolas negras sin reemplazo. 
+\end{itemize}
+
+Sabemos que:
+\[
+	P(U_1)= \frac{N}{N + 1} \qquad P(U_2) = \frac{1}{N+1} \qquad N = ?
+\]
+\[
+	P(U_2|N) = \frac{1}{7}
+\]
+
+\[
+	P(U_1 \cap N) = \frac{N}{N + 1} \cdot \frac{6}{10} \cdot \frac{5}{9} = \frac{N}{N + 1} \cdot \frac{30}{90} = \frac{N}{3(N+1)}
+\]
+\[
+	P(U_2 \cap N) = \frac{1}{N + 1} \cdot \frac{5}{10} \cdot \frac{4}{9} = \frac{1}{N+1} \cdot \frac{20}{90} = \frac{2}{9(N+1)}
+\]
+
+\[
+	P(N) = P(U_1 \cap N) + P(U_2 \cap N) = \frac{N}{3(N+1)} + \frac{2}{9(N+1)} = \frac{3N + 2}{9(N+1)}
+\]
+
+\[
+	P(U_2|N) = \frac{P(U_2 \cap N)}{P(N)} = \frac{\frac{2}{9}(N+1)}{\frac{3N + 2}{9(N+1)}} = \frac{2}{3N + 2}
+\]
+\[
+	P(U_2|N) = \frac{2}{3N+2} = \frac{1}{7} \Rightarrow \underline{N=4}
+\]
+\end{ej}
+
+\begin{ej}
+Se dispone de 6 cajas, cada una con 12 tornillos; una caja tiene 8 buenos y 4 defectuosos; dos
+cajas tienen 6 buenos y 6 defectuosos y tres cajas tienen 4 buenos y 8 defectuosos. Se elige al
+azar una caja y se extraen 3 tornillos con reemplazamiento, de los cuales 2 son buenos y 1 es
+defectuoso. ¿Cuál es la probabilidad de que la caja elegida contuviera 6 buenos y 6 defectuosos?
+
+\medskip
+
+En este experimento debemos tener en cuenta que primero se escoge una de las 6 cajas y una vez hecho esto, se realiza la extracción con reemplazamiento de 3 tornillos de la caja escogida. Nombremos los sucesos que nos harán falta para el cálculo de la probabilidad pedida:
+
+\begin{center}
+    $A \equiv \text{escoger la caja de 8 tornillos buenos y 4 defectuosos}$
+    
+    $B \equiv \text{escoger la caja de 6 tornillos buenos y 6 defectuosos}$
+    
+    $C \equiv \text{escoger la caja de 4 tornillos buenos y 8 defectuosos}$
+    
+    $T \equiv \text{extraer 2 tornillos buenos y 1 defectuoso de la caja escogida}$
+\end{center}
+
+En vista de los sucesos nombrados, sabemos que debemos hallar $P(B|T) = \frac{P(B \cap T)}{P(T)}$. De la información del enunciado también sabemos el valor de las probabilidades de algunos sucesos:
+
+\begin{center}
+    $P(A) = \underline{0.1667}$ \hspace{1cm} $P(B) = \underline{0.3333}$ \hspace{1cm} $P(C) = \underline{0.5}$
+\end{center}
+
+Nos centraremos en hallar $P(B \cap T)$ y $P(T)$ a partir de los datos que tenemos:
+\[
+    P(B \cap T) = P(B) \cdot P(T|B) = 0.3333 \cdot \left(\frac{1}{2} \cdot \dfrac{1}{2} \cdot \frac{1}{2} \right) = \underline{0.0417} 
+\]
+
+Nos falta hallar $P(T)$, y lo haremos con el uso del Teorema de la probabilidad total:
+
+\begin{center}
+    $P(T) = P(A) \cdot P(T|A) + P(B) \cdot P(T|B) + P(C) \cdot P(T|C) = P(T \cap A) + P(T \cap B) + P(T \cap C) = $
+\end{center}
+
+\[
+    \frac{1}{6}\cdot \left(\frac{8}{12} \cdot \dfrac{8}{12} \cdot \frac{4}{12} \right) + \frac{1}{3} \cdot \left(\frac{1}{2} \cdot \dfrac{1}{2} \cdot \frac{1}{2} \right) + \frac{1}{2} \cdot \left(\frac{4}{12} \cdot \dfrac{4}{12} \cdot \frac{8}{12} \right) = \underline{0.103395}
+\]
+
+Ya podemos calcular la probabilidad que se nos pedía:
+
+\[
+    P(B|T) = \frac{P(B \cap T)}{P(T)} = \frac{0.0417}{0.103395} = \underline{0.4033}
+\]
+\end{ej}
+
+\begin{ej}
+Se seleccionan $n$ dados con probabilidad $p_n = \dfrac{1}{2^n}$, $n \in \mathbb{N}$. Si se lanzan estos $n$ dados y se obtiene una suma de 4 puntos. ¿cuál es la probabilidad de haber seleccionado 4 dados?\\
+El número máximo de dados en este caso son $n=4$.
+\textbf{B}:Sumar 4 puntos. \\
+\textbf{$A_1$}: 1 dado. $P(A_1) = p_1 = \dfrac{1}{2}$\\
+\textbf{$A_2$}: 2 dados. $P(A_2) = p_2 = \dfrac{1}{4}$\\
+\textbf{$A_3$}: 3 dados. $P(A_3) = p_3 = \dfrac{1}{8}$\\
+\textbf{$A_4$}: 4 dados. $P(A_4) = p_4 = \dfrac{1}{16}$\\
+$P(A_4|B) = \dfrac{\dfrac{1}{6^4}\cdot\dfrac{1}{16}}{\dfrac{1}{2}\cdot\dfrac{1}{6} + \dfrac{1}{4}\cdot\dfrac{3}{6^2} + \dfrac{1}{8}\cdot\dfrac{3}{6^3} + \dfrac{1}{6^4}\cdot\dfrac{1}{16}} = \dfrac{1}{2197} = 0.000455$
+\end{ej}
+
+\begin{ej}
+Se lanza una moneda; si sale cara, se introducen $k$ bolas blancas en una urna y si sale cruz, se
+introducen $2k$ bolas blancas. Se hace una segunda tirada, poniendo en la urna $h$ bolas negras
+si sale cara y $2h$ si sale cruz. De la urna así compuesta se toma una bola al azar. ¿Cuál es la
+probabilidad de que sea negra?
+
+
+\medskip
+
+La probabilidad de que salga negra será igual a la suma de las probabilidades de que salga negra en cada una de las 4 composiciones posibles de las cajas. La composición de cada caja vendrá dada por el experimento del lanzamiento de una moneda 2 veces seguidas, cuyo espacio muestral es el siguiente: $\Omega = \{CC,CX,XC,XX\}$. Es un espacio de sucesos equiprobables donde cada suceso elemental tiene una probabilidad es de $0.25$. Veamos qué composición presenta la caja para cada uno de estos sucesos:
+
+\begin{center}
+    $CC \longrightarrow \text{k bolas blancas y h bolas negras}$
+    
+    $CX \longrightarrow \text{k bolas blancas y 2h bolas negras}$
+    
+    $XC \longrightarrow \text{2k bolas blancas y h bolas negras}$
+    
+    $XX \longrightarrow \text{2k bolas blancas y 2h bolas negras}$
+\end{center}
+
+Una vez analizada la composición de las cajas en función del doble lanzamiento de una moneda, podemos calcular la probabilidad de que salga negra mediante el Teorema de la probabilidad total (nombramos el suceso ``sacar bola negra'' como N):
+
+\begin{center}
+    $P(N) = P(CC) \cdot P(N|CC) + P(CX) \cdot P(N|CX) + P(XC) \cdot P(N|XC) + P(XX) \cdot P(N|XX) = $
+\end{center}
+
+\[
+    = \frac{1}{4} \cdot \frac{h}{k+h} + \frac{1}{4} \cdot \frac{2h}{k+2h} + \frac{1}{4} \cdot \frac{h}{2k+h} + \frac{1}{4} \cdot \frac{2h}{2k+2h} = \frac{8h^3+9k^{2}h+19kh^2}{8h^3+8k^3+28k^{2}h+28kh^2}
+\]
+\end{ej}
+
+\end{document}

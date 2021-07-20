@@ -1,0 +1,15 @@
+1. Indica cuáles serían las órdenes necesarias para crear el árbol de directorios que se muestra en la figura, suponiendo que estás en el directorio raiz (/)
+
+    1. cd /
+    2. mkdir mnt -p home/luis -p home/pedro
+    3. cd home/luis
+    4. touch Carta.txt
+
+2. Situado en el directorio /home, indica cuál sería la orden necesaria para borrar el archivo Carta.txt.
+
+    1. rm luis/Carta.txt
+
+3. Situado en el directorio luis, indica cuál sería la orden necesaria para listar los archivos que comiencen por C y cuya extensión termine en x.
+
+    1. cd luis/
+    2. ls -l [C].[x]

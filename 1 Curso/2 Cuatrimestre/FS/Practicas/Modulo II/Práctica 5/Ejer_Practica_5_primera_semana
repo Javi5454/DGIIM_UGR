@@ -1,0 +1,35 @@
+#!/bin/bash
+# Titulo: Ejercicio Práctica 5
+# Fecha: 27/4/2021
+# Autor: Javier Gómez López
+# Descripción: script que actuará como calculadora
+# Versión: 1.0
+
+echo -e "Seleccione opcion: \n 1) Sumar números \n 2) Restar números 
+ 3) Multiplicar números \n 4) Salir"
+read option
+
+while [[ option -ne 4 ]]
+do
+
+    case "$option" in 
+    
+    1)  echo "Introduzca los dos números a sumar: "
+        read num1
+        read num2
+        echo -e "Resultado:" $(($num1 + $num2)) "\n";;
+
+    2)  echo "Introduzca los dos números a restar: "
+        read num1 
+        read num2
+        echo -e "Resultado:" $(($num1 - $num2)) "\n";;
+
+    3)  echo "Introduzca los dos números a multiplicar: "
+        read num1 
+        read num2
+        echo -e "Resultado:" $(($num1 * $num2)) "\n";;
+    esac
+
+    echo -e "Seleccione opcion: \n 1) Sumar números \n 2) Restar números \n 3) Multiplicar números \n 4) Salir"
+    read option
+done

@@ -1,0 +1,15 @@
+1. Usa uno de los guiones que tienes y ejecútalo en background. Indica el comando para realizar este punto
+
+./nombre_script &
+
+2. Indica el número de proceso asignado. ¿Qué comando has usado?
+
+ps | grep nombre_script (El primer numero que aparece)
+
+3. ¿Cómo matarías dicho proceso antes de que finalice?
+
+kill -9 (Numero de proceso asignado)
+
+4. Muestra la información más completa de todos los procesos que se están ejecutando en el sistema (no solo los tuyos)
+
+top 

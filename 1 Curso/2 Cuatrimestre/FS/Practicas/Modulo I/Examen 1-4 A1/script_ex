@@ -1,0 +1,14 @@
+#!/bin/bash
+# Titulo: Escriba un guion que averigüe el número de procesos que estén ejecutando un cierto programa (bash, cat, ….), cuyo nombre se pasará como parámetro del guion.repaso
+# Fecha: 13/4/2021
+# Autor: Javier Gómez López
+# Versión: 1.0
+
+if [ $# != 3 ]
+then 
+    echo "Error de argumentos. <nombre de programa>"
+    exit 1
+fi
+
+total=`ps -e | grep $1 | wc -l`
+echo($total)

@@ -1,0 +1,50 @@
+#!/bin/bash
+# Titulo: Ejercicio Práctica 5 #2
+# Fecha: 4/5/2021
+# Autor: Javier Gómez López
+# Descripción: Script de la segunda entrega de la práctica 5
+# Versión: 1.0
+
+if [ $# != 2 ]
+then 
+    echo "Error argumentos <letra> <directorio>"
+    exit 1
+fi
+
+es_letra_minuscula='[a-z]'
+
+if ! [[ $1 =~ $es_letra_minuscula ]]
+then 
+    echo "Error: la letra no es minúscula"
+    exit 1
+fi
+
+if ! [ -d $2 ]
+then
+    echo "Error: no existe el directorio"
+    exit 1
+fi
+
+case $1 in
+    [ae]) total=$(find $2 -name "$1*" | wc -l)
+          echo "$total archivos en $2 que empiezan por la letra $1";;
+
+    [iou]) name="$2backup.tar"
+            if [ -f $name ]
+            then 
+                echo "El archivo $name ya existe"
+            else 
+                tar -cvf $name $2
+            fi;;
+    [bcdfghjklmnpqrstvwxyz]) read -p "Introduce una nueva letra " nueva_letra
+                             case $nueva_letra in
+                                u) total=$(find $2 -perm -375 | wc -l)
+                                    echo "$total de archivos donde el usuario no puede escribir";;
+                                g) total=$(find $2 -perm -735 | wc -l)
+                                    echo "$total de archivos donde el grupo no puede escribir";;  
+                                o) total=$(find $2 -perm -771 | wc -l)
+                                    echo "$total de archivos donde others no puede escribir";;
+                                *)  echo "La letra introducida no es valida";;
+
+                                esac
+esac

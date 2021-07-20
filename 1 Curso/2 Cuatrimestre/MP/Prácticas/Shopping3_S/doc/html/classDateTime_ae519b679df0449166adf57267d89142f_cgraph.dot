@@ -1,0 +1,20 @@
+digraph "DateTime::isBefore"
+{
+ // LATEX_PDF_SIZE
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="LR";
+  Node1 [label="DateTime::isBefore",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip="check if the referenced object is before in time than the dataTime one"];
+  Node1 -> Node2 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node2 [label="DateTime::day",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classDateTime.html#a2d1b93811c0d81597963162b726d26f3",tooltip="It gives the day."];
+  Node1 -> Node3 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node3 [label="DateTime::hour",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classDateTime.html#a042f8d8eac63eee6b8059ec2df41be93",tooltip="It gives the hour."];
+  Node1 -> Node4 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node4 [label="DateTime::min",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classDateTime.html#ab1632b886ff734092729f844b39958c9",tooltip="It gives the minutes."];
+  Node1 -> Node5 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node5 [label="DateTime::month",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classDateTime.html#a294643a8ce6bd0cca6cda71890e7456c",tooltip="It gives the month."];
+  Node1 -> Node6 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node6 [label="DateTime::sec",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classDateTime.html#a37f20f7430da224a0c08a9cbca1c1d7d",tooltip="It gives the number of seconds."];
+  Node1 -> Node7 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node7 [label="DateTime::year",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classDateTime.html#af0eb582fdc2b0964ecf255df53396712",tooltip="It gives the year."];
+}

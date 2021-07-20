@@ -1,0 +1,188 @@
+\hypertarget{EventSet_8h}{}\doxysection{Referencia del Archivo include/\+Event\+Set.h}
+\label{EventSet_8h}\index{include/EventSet.h@{include/EventSet.h}}
+{\ttfamily \#include \char`\"{}Date\+Time.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}Event.\+h\char`\"{}}\newline
+Dependencia gráfica adjunta para Event\+Set.\+h\+:
+% FIG 0
+Gráfico de los archivos que directa o indirectamente incluyen a este archivo\+:
+% FIG 1
+\doxysubsection*{Clases}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{classEventSet}{Event\+Set}}
+\end{DoxyCompactItemize}
+\doxysubsection*{defines}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{EventSet_8h_a2a50d99dc5d43eb57bdcb2c4c29bc76e}\label{EventSet_8h_a2a50d99dc5d43eb57bdcb2c4c29bc76e}} 
+\#define {\bfseries M\+A\+X\+E\+V\+E\+NT}~500
+\end{DoxyCompactItemize}
+\doxysubsection*{Funciones}
+\begin{DoxyCompactItemize}
+\item 
+float \mbox{\hyperlink{EventSet_8h_abe71e09d60b5cec46d638d14d9350135}{sum\+Price}} (const \mbox{\hyperlink{classEventSet}{Event\+Set}} \&ev\+Set)
+\begin{DoxyCompactList}\small\item\em It Computes the total sum for price, on the complete \mbox{\hyperlink{classEventSet}{Event\+Set}}. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{EventSet_8h_a791b97200f877bd1c151572877ee5891}{find\+Unique}} (const \mbox{\hyperlink{classEventSet}{Event\+Set}} \&es, const std\+::string \&field, std\+::string values\mbox{[}$\,$\mbox{]}, int \&n\+\_\+values)
+\begin{DoxyCompactList}\small\item\em It explores all the \mbox{\hyperlink{classEventSet}{Event\+Set}} and builds a string\mbox{[}\mbox{]} composed of all different values taken by the field {\itshape field}. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classEventSet}{Event\+Set}} \mbox{\hyperlink{EventSet_8h_ad8fd6256f4d913aabdfa023926874cb3}{raw\+Filter\+Events}} (const \mbox{\hyperlink{classEventSet}{Event\+Set}} \&es, const std\+::string \&field, const std\+::string \&value)
+\begin{DoxyCompactList}\small\item\em Extract a subset of the \mbox{\hyperlink{classEventSet}{Event\+Set}} composed only of those events in which the given {\itshape field} matches the given {\itshape value}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{EventSet_8h_afe9c596c081a7b8686b57d8bdadb3bb4}\label{EventSet_8h_afe9c596c081a7b8686b57d8bdadb3bb4}} 
+\mbox{\hyperlink{classEvent}{Event}} {\bfseries N\+U\+L\+L\+\_\+\+E\+V\+E\+NT}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Descripción detallada}
+\begin{DoxyAuthor}{Autor}
+M\+P-\/\+Team D\+E\+C\+S\+AI 
+\end{DoxyAuthor}
+\begin{DoxyNote}{Nota}
+To be implemented by students 
+\end{DoxyNote}
+
+
+\doxysubsection{Documentación de las funciones}
+\mbox{\Hypertarget{EventSet_8h_a791b97200f877bd1c151572877ee5891}\label{EventSet_8h_a791b97200f877bd1c151572877ee5891}} 
+\index{EventSet.h@{EventSet.h}!findUnique@{findUnique}}
+\index{findUnique@{findUnique}!EventSet.h@{EventSet.h}}
+\doxysubsubsection{\texorpdfstring{findUnique()}{findUnique()}}
+{\footnotesize\ttfamily void find\+Unique (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classEventSet}{Event\+Set}} \&}]{es,  }\item[{const std\+::string \&}]{field,  }\item[{std\+::string}]{values\mbox{[}$\,$\mbox{]},  }\item[{int \&}]{n\+\_\+values }\end{DoxyParamCaption})}
+
+
+
+It explores all the \mbox{\hyperlink{classEventSet}{Event\+Set}} and builds a string\mbox{[}\mbox{]} composed of all different values taken by the field {\itshape field}. 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em field} & The field of the event \\
+\hline
+{\em values} & Array of values (as string) which is made up of all different values of the field {\itshape field} \\
+\hline
+{\em n\+\_\+values} & Number of different values found \\
+\hline
+\end{DoxyParams}
+
+
+Definición en la línea 115 del archivo Event\+Set.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{115                                                                                                 \{}
+\DoxyCodeLine{116     }
+\DoxyCodeLine{117     n\_values = 0;}
+\DoxyCodeLine{118     }
+\DoxyCodeLine{119     \textcolor{keywordflow}{if}(es.\mbox{\hyperlink{classEventSet_afa17cf8b71961fe1bab9ae5bc7f4963d}{size}}() > 0)\{}
+\DoxyCodeLine{120         values[0] = es.\mbox{\hyperlink{classEventSet_ab8ac311a6121981191ce61d505cc069f}{at}}(0).\mbox{\hyperlink{classEvent_aa0f2e1910272a7014e97794b7fc73d9a}{getField}}(field);}
+\DoxyCodeLine{121         n\_values++;}
+\DoxyCodeLine{122         \textcolor{keywordtype}{bool} add = \textcolor{keyword}{true};}
+\DoxyCodeLine{123 }
+\DoxyCodeLine{124         \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int} i = 1; i < es.\mbox{\hyperlink{classEventSet_afa17cf8b71961fe1bab9ae5bc7f4963d}{size}}(); i++)\{}
+\DoxyCodeLine{125 }
+\DoxyCodeLine{126             \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int} k = 0; k < i; k++)\{}
+\DoxyCodeLine{127                 \textcolor{keywordflow}{if}(values[k] != es.\mbox{\hyperlink{classEventSet_ab8ac311a6121981191ce61d505cc069f}{at}}(i).\mbox{\hyperlink{classEvent_aa0f2e1910272a7014e97794b7fc73d9a}{getField}}(field))\{}
+\DoxyCodeLine{128                     add = \textcolor{keyword}{true};}
+\DoxyCodeLine{129                 \}}
+\DoxyCodeLine{130                 \textcolor{keywordflow}{else}}
+\DoxyCodeLine{131                 \{}
+\DoxyCodeLine{132                     add = \textcolor{keyword}{false};}
+\DoxyCodeLine{133                     k = i+1;}
+\DoxyCodeLine{134                 \}}
+\DoxyCodeLine{135             \}}
+\DoxyCodeLine{136 }
+\DoxyCodeLine{137             \textcolor{keywordflow}{if} (add)\{}
+\DoxyCodeLine{138                 values[n\_values] = es.\mbox{\hyperlink{classEventSet_ab8ac311a6121981191ce61d505cc069f}{at}}(i).\mbox{\hyperlink{classEvent_aa0f2e1910272a7014e97794b7fc73d9a}{getField}}(field);}
+\DoxyCodeLine{139                 n\_values++;}
+\DoxyCodeLine{140             \}}
+\DoxyCodeLine{141         \}}
+\DoxyCodeLine{142         }
+\DoxyCodeLine{143     \}}
+\DoxyCodeLine{144 \}}
+
+\end{DoxyCode}
+Gráfico de llamadas para esta función\+:
+% FIG 2
+\mbox{\Hypertarget{EventSet_8h_ad8fd6256f4d913aabdfa023926874cb3}\label{EventSet_8h_ad8fd6256f4d913aabdfa023926874cb3}} 
+\index{EventSet.h@{EventSet.h}!rawFilterEvents@{rawFilterEvents}}
+\index{rawFilterEvents@{rawFilterEvents}!EventSet.h@{EventSet.h}}
+\doxysubsubsection{\texorpdfstring{rawFilterEvents()}{rawFilterEvents()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classEventSet}{Event\+Set}} raw\+Filter\+Events (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classEventSet}{Event\+Set}} \&}]{es,  }\item[{const std\+::string \&}]{field,  }\item[{const std\+::string \&}]{value }\end{DoxyParamCaption})}
+
+
+
+Extract a subset of the \mbox{\hyperlink{classEventSet}{Event\+Set}} composed only of those events in which the given {\itshape field} matches the given {\itshape value}. 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em field} & The name of the field of the event. According to \\
+\hline
+\end{DoxyParams}
+\begin{DoxySeeAlso}{Ver también}
+\mbox{\hyperlink{Event_8h}{Event.\+h}} 
+\end{DoxySeeAlso}
+
+\begin{DoxyParams}{Parámetros}
+{\em value} & The value of the field that will be used to partition the \mbox{\hyperlink{classEventSet}{Event\+Set}} \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Devuelve}
+An \mbox{\hyperlink{classEventSet}{Event\+Set}} which is a subset of the current one in which all events have {\itshape field} == {\itshape value} 
+\end{DoxyReturn}
+\begin{DoxyRefDesc}{Obsoleto}
+\item[\mbox{\hyperlink{deprecated__deprecated000001}{Obsoleto}}]\end{DoxyRefDesc}
+
+
+Definición en la línea 101 del archivo Event\+Set.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{101                                                                                              \{}
+\DoxyCodeLine{102     }
+\DoxyCodeLine{103     \mbox{\hyperlink{classEventSet}{EventSet}} result;}
+\DoxyCodeLine{104     }
+\DoxyCodeLine{105     \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int} i = 0; i < es.\mbox{\hyperlink{classEventSet_afa17cf8b71961fe1bab9ae5bc7f4963d}{size}}(); i++)\{}
+\DoxyCodeLine{106         \textcolor{keywordflow}{if}(es.\mbox{\hyperlink{classEventSet_ab8ac311a6121981191ce61d505cc069f}{at}}(i).\mbox{\hyperlink{classEvent_aa0f2e1910272a7014e97794b7fc73d9a}{getField}}(field) == value)\{}
+\DoxyCodeLine{107             result.\mbox{\hyperlink{classEventSet_acfb9e40b46c649bef5082f5577d733a6}{add}}(es.\mbox{\hyperlink{classEventSet_ab8ac311a6121981191ce61d505cc069f}{at}}(i));}
+\DoxyCodeLine{108         \}}
+\DoxyCodeLine{109     \}}
+\DoxyCodeLine{110     }
+\DoxyCodeLine{111     \textcolor{keywordflow}{return} result;}
+\DoxyCodeLine{112     }
+\DoxyCodeLine{113 \}}
+
+\end{DoxyCode}
+Gráfico de llamadas para esta función\+:
+% FIG 3
+\mbox{\Hypertarget{EventSet_8h_abe71e09d60b5cec46d638d14d9350135}\label{EventSet_8h_abe71e09d60b5cec46d638d14d9350135}} 
+\index{EventSet.h@{EventSet.h}!sumPrice@{sumPrice}}
+\index{sumPrice@{sumPrice}!EventSet.h@{EventSet.h}}
+\doxysubsubsection{\texorpdfstring{sumPrice()}{sumPrice()}}
+{\footnotesize\ttfamily float sum\+Price (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classEventSet}{Event\+Set}} \&}]{ev\+Set }\end{DoxyParamCaption})}
+
+
+
+It Computes the total sum for price, on the complete \mbox{\hyperlink{classEventSet}{Event\+Set}}. 
+
+\begin{DoxyReturn}{Devuelve}
+the total computed 
+\end{DoxyReturn}
+
+
+Definición en la línea 146 del archivo Event\+Set.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{146                                        \{}
+\DoxyCodeLine{147     \textcolor{keywordtype}{float} result = 0;}
+\DoxyCodeLine{148     }
+\DoxyCodeLine{149     \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int} i = 0; i < evSet.\mbox{\hyperlink{classEventSet_afa17cf8b71961fe1bab9ae5bc7f4963d}{size}}(); i++)\{}
+\DoxyCodeLine{150         result += evSet.\mbox{\hyperlink{classEventSet_ab8ac311a6121981191ce61d505cc069f}{at}}(i).\mbox{\hyperlink{classEvent_a9ba1e8107abdbd879d00663daf64fd70}{getPrice}}();}
+\DoxyCodeLine{151     \}}
+\DoxyCodeLine{152     }
+\DoxyCodeLine{153     \textcolor{keywordflow}{return} result;}
+\DoxyCodeLine{154 \}}
+
+\end{DoxyCode}
+Gráfico de llamadas para esta función\+:
+% FIG 4
