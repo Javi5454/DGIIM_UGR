@@ -1,0 +1,208 @@
+\documentclass[a4paper, 12pt]{article}
+
+\usepackage{amsmath} %Todos los paquetes de matematicas
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage[utf8]{inputenc}
+\usepackage[spanish, es-lcroman]{babel}
+\usepackage{wrapfig} %Figuras flotantes
+\usepackage{parselines}
+\usepackage{enumitem}
+\usepackage{xcolor}
+\usepackage{graphicx}
+\usepackage{subcaption}
+\usepackage{pgfplots}
+\usepackage{hyperref}
+\usepackage{textcomp}
+\usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry}
+
+
+\providecommand{\abs}[1]{\lvert#1\rvert} %Valor absoluto
+\providecommand{\norm}[1]{\lVert#1\rVert} %Norma
+
+\newtheorem*{lema*}{Lema}
+\newtheorem{teorema}{Teorema}
+\newtheorem*{teorema*}{Teorema}
+\newtheorem{corolario}{Corolario}
+\renewcommand{\qedsymbol}{\(\blacksquare\)}
+
+\providecommand{\abs}[1]{\lvert#1\rvert} %Valor absoluto
+\providecommand{\norm}[1]{\lVert#1\rVert} %Norma
+
+
+\title{\textbf{Objetivos de aprendizaje Tema 3} \\ \textit{Análisis Matemático II}}
+\author{Javier Gómez López}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\begin{enumerate}[label=\textbf{\arabic*}.]
+
+\item Conocer y comprender la definición de la medida de Lebesgue.
+
+En lo que sigue, mantenemos fijo \(N \in \mathbb{N}\) y denotamos por \(\mathcal{P}(\mathbb{R}^N)\) al conjunto de todos los subconjuntos de \(\mathbb{R}^N\). Para \(n \in \mathbb{N}\) será útil escribir \(\Delta_n = \{ k \in \mathbb{N} : k \leq n\}\). Dado \(k \in \Delta_N\) denotamos por \(\pi_k : \mathbb{R}^N \to \mathbb{R}\) a la \(k\)-ésima proyección coordenada en \(\mathbb{R}^N\), es decir, \(\pi_k (x) = x(k)\) para todo \(x \in \mathbb{R}^N\). \\
+
+Un \textbf{intervalo} en \(\mathbb{R}^N\) será un producto cartesiano de intervalos en \(\mathbb{R}\), y denotaremos por \(\mathcal{J}\) al conjunto de todos los \textbf{intervalos acotados} en \(\mathbb{R}^N\), entendiendo que \(\emptyset \in \mathcal{J}\). Para \(I \in \mathcal{J} \setminus \{\emptyset\}\) y cada \(k \in \Delta_k\), está claro que \(\pi_k(I)\) es un intervalo no vacío y acotado en \(\mathbb{R}\). Esto nos permite definir la \textbf{medida elemental} del intervalo \(I\) como el número \(M(I) \in \mathbb{R}_0^+\) dado por
+\begin{equation}\label{medida_elemental}
+ M(I) = \prod_{k=1}^{N} (\sup \pi_k (I) - \inf \pi_k (I))
+\end{equation}
+y como es natural, definimos \(M(\emptyset) = 0\). Obtenemos así una función \(M: \mathcal{J} \to \mathbb{R}_0^+\) a la que llamaremos \textbf{medida elemental de los intervalos acotados}. \\
+
+A raíz de esta función \(M\), podemos definir \textbf{la medida exterior de Lebesgue} como la función \(\lambda^* : \mathcal{P} (\mathbb{R}^N) \to [0, + \infty]\) definida por
+\begin{equation}\label{medida_exterior}
+	\lambda^* (E) = \inf \left\{ \sum_{n=1}^{\infty} M(I_n) : I_n \in \mathcal{J} \quad \forall n \in \mathbb{N}, \quad E \subset \bigcup_{n=1}^{\infty} I_n \right\} \qquad \forall E \in \mathcal{P} ( \mathbb{R}^N)
+\end{equation}
+
+Para cada conjunto \(E \in \mathcal{P} ( \mathbb{R}^N)\), se dice también que \(\lambda^* (E)\) es la \textbf{medida exterior} de \(E\). \\
+
+Sin embargo, existen conjuntos \(E, F \in \mathcal{P} ( \mathbb{R}^N ) \), con \(E \cap F = \emptyset\), tales que \(\lambda^* (E \cup F) < \lambda^* (E) + \lambda^* (F)\). Por tanto, para evitar estos conjuntos, diremos que un conjunto \(E \in \mathcal{P} (\mathbb{R}^N)\) es \textbf{medible} cuando se verifica la siguiente condición:
+\begin{equation}\label{medible}
+ \lambda^* (W) = \lambda^* (W \cap E) + \lambda^* (W \setminus E) \qquad \forall W \in \mathcal{P} (\mathbb{R}^N)
+\end{equation}
+y denotaremos por \(\mathcal{M}\) a la familia de todos los conjuntos medibles de \(\mathbb{R}^N\). \\
+
+Definimos así, la \textbf{medida de Lebesgue} en \(\mathbb{R}^N\) como la restricción de la medida exterior de Lebesgue a la familia de los conjuntos medibles, es decir, la función \(\lambda: \mathcal{M} \to [0, + \infty]\) definida por
+\begin{equation}\label{medida_lebesgue}
+ \lambda (E) = \lambda^* (E) \qquad \forall E \in \mathcal{M}
+\end{equation}
+
+\item Conocer y comprender el enunciado de los siguientes resultados:
+\begin{enumerate}[label=\textit{\alph*})]
+	\item Propiedades de la medida exterior de Lebesgue
+	
+\begin{itemize}
+	\item \textit{La medida exterior de Lebesgue es una función} \textbf{creciente}, \textit{es decir}:
+	\[
+		E \subset F \subset \mathbb{R}^N \Longrightarrow \lambda^* (E) \leq \lambda^* (F)
+	\]
+	
+	\item \textit{Para toda sucesión \(\{E_n\}\) de subconjuntos de \(\mathbb{R}^N\) se tiene:}
+	\[
+		\lambda^* \left( \bigcup_{n=1}^{\infty} E_n \right) \leq \sum_{n=1}^{\infty} \lambda^* (E_n)
+	\]
+	
+	Se alude a la propiedad recién nombrada, diciendo que la medida exterior de Lebesgue es una función \(\sigma\)\textbf{-subaditiva}. Fijados \(n \in \mathbb{N}\) y \(E_k \in \mathcal{P} (\mathbb{R}^N)\) para todo \(k \in \Delta_n\), podemos usar la anterior propiedad, tomando \(E_k = \emptyset\) para todo \(k \in \mathbb{N} \setminus \Delta_n\). Con ello obtenemos:
+	\[
+		\lambda^* \left( \bigcup_{k=1}^{n} E_k \right) \leq \sum_{k=1}^{n} \lambda^* (E_k)
+	\]
+y decimos ahora que la medida exterior de Lebesgue es \textbf{finitamente subaditiva}.
+\end{itemize}
+
+\medskip
+
+	\item Continuidad creciente y decreciente de la medida de Lebesgue
+	
+	De aquí en adelante, \(\mathcal{M}\) es la familia de los conjuntos medibles en \(\mathbb{R}^N\).
+	
+	\begin{itemize}
+		\item \textit{La medida de Lebesgue \(\lambda: \mathcal{M} \to [0, \infty]\) es} \textbf{crecientemente continua}, \textit{es decir}:
+		\[
+			A = \bigcup_{n=1}^{\infty} A_n, \quad A_n \in \mathcal{M} \quad \forall n \in \mathbb{N}, \quad \{A_n\} \nearrow A \Longrightarrow \{\lambda (A_n)\} \nearrow \lambda(A)
+		\]
+		
+		\textit{También es} \textbf{decrecientemente continua,} \textit{en el siguiente sentido:}
+		\[
+			A = \bigcap_{n=1}^{\infty} A_n, \quad A_n \in \mathcal{M} \quad \forall n \in \mathbb{N}, \quad \{A_n\} \searrow A, \lambda(A_1) < \infty \Longrightarrow \{\lambda(A_n)\} \searrow \lambda(A)
+		\]
+	\end{itemize}
+	
+	\item Relación entre la medida de Lebesgue y la medida elemental de los intervalos acotados
+	
+	Fijado \(N \in \mathbb{N}\), y siendo \(\mathcal{J}\) el conjunto de todos los intervalos acotados en \(\mathbb{R}^N\), tenemos la siguiente relación:
+	
+	\begin{itemize}
+		\item \textit{La medida de Lesbesgue extiende a la medida elemental de los intervalos acotados, es decir: \(\mathcal{J} \subset \mathcal{M}\) y \(\lambda(I) = M(I)\) para todo \(I \in \mathcal{J}\)}
+	\end{itemize}
+	
+	donde \(M\) es la medida elemental de los intervalos acotados. La medida de Lebesgue supone una formalización y generalización de la medida elemental. Concretamente, para un conjunto medible \(E \subset \mathbb{R}\), podemos decir que \(\lambda (E)\) es la longitud de \(E\), generalizando así la noción de longitud de un segmento, pues cuando \(E = I\) es un intervalo acotado, \(\lambda (I) = M(I)\) es la longitud de un segmento. Esta idea es extensible a los conceptos de área y volumen.
+
+\end{enumerate}
+
+\bigskip
+
+	\item Conocer y comprender la demostración del teorema referente a la estabilidad de la familia de los conjuntos medibles y la \(\sigma\)-aditividad de la medida de Lebesgue
+	
+\begin{teorema}
+La familia \(\mathcal{M}\) de los conjuntos medibles tiene las siguientes tres propiedades:
+	\begin{enumerate}[label=(\textbf{\alph*})]
+	
+	\item \(\mathbb{R}^N \in \mathcal{M}\)
+	\item \(E \in \mathcal{M} \Rightarrow \mathbb{R}^N \setminus E \in \mathcal{M}\)
+	\item \(E_n \in \mathcal{M} \quad \forall n \in \mathbb{N}, \quad E = \bigcup_{n=1}^{\infty} E_n \Rightarrow E \in \mathcal{M}\)
+	
+	\end{enumerate}
+	
+A su vez, la medida de Lebesgue \(\lambda: \mathcal{M} \to [0, \infty]\) tiene la siguiente propiedad:
+\begin{equation}\label{estabilidad}
+ E_n \in \mathcal{M} \quad \forall n \in \mathbb{N}, \quad E = \biguplus_{n=1}^{\infty} E_n \Longrightarrow \lambda(E) = \sum_{n=1}^{\infty} \lambda (E_n)
+\end{equation}
+
+\begin{proof}
+Ya sabíamos que \(\mathbb{R}^N\) es medible. Para abreviar, denotaremos por \(E^c\) al complemento de un conjunto \(E \subset \mathbb{R}^N\). Si \(E \in \mathcal{M}\), se tiene
+\[
+	\lambda^*(W \cap E^c) + \lambda^*(W \setminus E^c) = \lambda^* (W \setminus E) + \lambda^* (W \cap E) = \lambda^* (W)
+\]
+luego \(E^c \in \mathcal{M}\) y se verifica (\textbf{b}). \\
+
+Pasemos a probar (\textbf{c}). Dados \(E, F \in \mathcal{M}\), para todo \(W \in \mathcal{P} ( \mathbb{R}^N)\) tenemos
+\begin{equation}\label{paso_1}
+\lambda^* (W) = \lambda^*(W \cap E) + \lambda^* (W \cap E^c) 
+\end{equation}
+\[
+ = \lambda^*(W \cap E \cap F) + \lambda^*(W \cap E \cap F^c) + \lambda^*(W \cap E^c \cap F) + \lambda^*(W \cap E^c \cap F^c)
+\]
+
+La igualdad anterior se sigue verificando si sustituimos \(W\) por \(W \cap (E \cup F)\). Al hacerlo, obtenemos
+\begin{equation}\label{paso_2}
+\lambda^* (W \cap (E \cup F)) = \lambda^* (W \cap E \cap F) + \lambda^* (W \cap E \cap F^c) + \lambda^* (W \cap E^c \cap F)
+\end{equation}
+
+Sustituyendo (\ref{paso_2}) en (\ref{paso_1}) obtenemos
+\[
+	\lambda^*(W) = \lambda^* (W \cap (E \cup F)) + \lambda^* (W \cap E^c \cap F^c) = \lambda^* (W \cap (E \cup F)) + \lambda^* (W \setminus (E \cup F))
+\]
+
+Esta igualdad es válida para todo \(W \in \mathcal{P} (\mathbb{R}^N)\), y nos dice que \(E \cup F \in \mathcal{M}\). Usando (\textbf{b}) deducimos que también \(E \cap F \in \mathcal{M}\) y \(E \setminus F \in \mathcal{M}\). Mediante una inducción, vemos que toda unión finita de conjuntos medibles es un conjunto medible, que es la versión de (\textbf{c}) para una familia finita de conjuntos. \\
+
+Además, para \(E,F \in \mathcal{M}\), con \(E \cap F = \emptyset\), la igualdad (\ref{paso_2}) nos dice que
+\[
+	\lambda^*(W \cap (E \uplus F)) = \lambda^* (W \cap E) + \lambda^*(W \cap F) \qquad \forall W \in \mathcal{P} (\mathbb{R}^N)
+\] \\
+
+Razonando de nuevo por inducción, obtenemos que, para todo \(n \in \mathbb{N}\) se tiene:
+\begin{equation}\label{paso_3}
+E_k \in \mathcal{M} \quad \forall k \in \Delta_n, \quad E = \biguplus_{k=1}^{n} E_k \Longrightarrow \lambda^* (W \cap E) = \sum_{k=1}^{n} \lambda^*(W \cap E_k) \quad \forall W \in \mathcal{P} (\mathbb{R}^N)
+\end{equation} \\
+
+Supongamos ahora que \(E = \biguplus_{n=1}^{\infty} E_n\) con \(E_n \in \mathcal{M}\) para todo \(n \in \mathbb{N}\). Para usar lo demostrado, tomamos \(F_n = \biguplus_{k=1}^{n} E_k\) para todo \(n \in \mathbb{N}\). Fijados \(W \in \mathcal{P} (\mathbb{R}^N)\) y \(n \in \mathbb{N}\), usamos que \(\lambda^*\) es creciente, junto con (\ref{paso_3}), y como ya sabemos que \(F_n \in \mathcal{M}\), obtenemos:
+
+\[
+	\sum_{k=1}^{n} \lambda^* (W \cap E_k) + \lambda^* (W \setminus E)  \leq \sum_{k=1}^{n} \lambda^*(W \cap E_k) + \lambda^* (W \setminus F_n) 
+\]
+\[
+	= \lambda^* (W \cap F_n) + \lambda^*(W \setminus F_n) = \lambda^*(W)
+\]
+
+Esta desigualdad es válida para todo \(n \in \mathbb{N}\), luego tenemos
+\[
+	\sum_{n=1}^{\infty} \lambda^* (W \cap E_n) + \lambda^*(W \setminus E) \leq \lambda^*(W)
+\]
+
+Como \(W \cap E = \bigcup_{n=1}^{\infty} (W \cap E_n)\), usando que \(\lambda^*\) es \(\sigma\)-subaditiva, de la última desigualdad deducimos que
+\[
+	\lambda^*(W) \leq \lambda^* (W \cap E) + \lambda^*(W \setminus E) \leq \sum_{n=1}^{\infty} \lambda^*(W \cap E_n) + \lambda^*(W \setminus E) \leq \lambda^*(W)
+\]
+
+Esto prueba que \(E \in \mathcal{M}\) pero además, tomando \(W = E\) obtemos claramente la igualdad enunciada en el teorema. \\
+
+Finalmente, sea \(\{E_n\}\) una sucesión de conjuntos medibles, que ya no tiene por qué ser dos a dos disjuntos, y sea de nuevo \(E = \bigcup_{n= 1}^{\infty} E_n\). Tomando \(H_1 = E_1\) y \(H_{n+1} = E_{n+1} \setminus \bigcup_{k=1}^{n} E_k\) para todo \(n \in \mathbb{N}\), sabemos ya que \(H_n \in \mathcal{M}\) para todo \(n \in \mathbb{N}\), y se tiene claramente que \(E = \biguplus_{n=1}^{\infty} H_n\), luego usando lo ya demostrado, obtenemos que \(E \in \mathcal{M}\). Esto prueba que se verifica (\textbf{c}), lo que concluye la demostración.
+\end{proof}
+\end{teorema}
+	
+\end{enumerate}
+
+\end{document}

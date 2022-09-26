@@ -1,0 +1,187 @@
+\documentclass[a4paper, 12pt]{article}
+
+\usepackage{amsmath} %Todos los paquetes de matematicas
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage[utf8]{inputenc}
+\usepackage[spanish]{babel}
+\usepackage{wrapfig} %Figuras flotantes
+\usepackage{parselines}
+\usepackage{enumitem}
+\usepackage{xcolor}
+\usepackage{graphicx}
+\usepackage{subcaption}
+\usepackage{pgfplots}
+\usepackage{hyperref}
+\usepackage{textcomp}
+\usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry}
+
+
+\providecommand{\abs}[1]{\lvert#1\rvert} %Valor absoluto
+\providecommand{\norm}[1]{\lVert#1\rVert} %Norma
+
+
+\title{\textbf{Objetivos de aprendizaje Tema 3} \\ \textit{Análisis Matemático I}}
+\author{Javier Gómez López}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\begin{enumerate}[label=\textbf{\arabic*}.]
+
+\item Conocer y comprender las siguientes definiciones:
+	\begin{enumerate}[label=\textit{\alph*})]
+	
+	\item Continuidad en un punto
+
+Recordemos el caso conocido de una función real de variable real, es decir, una función \(f : E \rightarrow \mathbb{R}\), de donde \(E\) es un subconjunto no vacío de \(\mathbb{R}\). Sabemos que \(f\) es continua en un punto \(x \in E\), cuando se verifica la siguiente condición:
+\begin{equation}\label{distancia_r}
+	\forall \varepsilon > 0 \text{ } \exists \delta > 0 : y \in E, |y-x| < \delta \Rightarrow |f(y) - f(x)| < \varepsilon
+\end{equation}
+
+Decimos que una función \(f: E \rightarrow F\) es \textbf{continua en un punto} \(x \in E\) cuando la imagen inversa por \(f\) de cada entorno de \(f(x)\) en el espacio \(F\) es un entorno de \(x\) en \(E\):
+\[
+	V \in \mathcal{U}(f(x)) \Longrightarrow f^{-1}(V) \in \mathcal{U}(x)
+\]
+
+\bigskip
+
+	\item Límite en un punto
+	
+Recordemos la definición de límite en un punto para una función real de variable real. Dada una función \(f: A \rightarrow \mathbb{R}\) donde \(\emptyset \neq A \subset \mathbb{R}\), y dados \(\alpha \in A'\) y \(L \in \mathbb{R}\), tenemos
+\[
+	\lim_{x \to \alpha} f(x) = L \Longleftrightarrow \left[ \forall \varepsilon >0 \text{ } \exists \delta > 0 : x \in A, 0 < |x - \alpha| < \delta \Rightarrow |f(x) - L| < \varepsilon \right]
+\]
+
+Así pues, dado \(\alpha \in A'\), decimos que \(f\) \textbf{tiene límite} en el punto \(\alpha\) cuando existe \(L \in F\) verificando la siguiente condición:
+\begin{equation}\label{lim_general}
+	\forall \varepsilon > 0 \text{ } \exists \delta > 0 : x \in A, 0 < d(x, \alpha) < \delta \Rightarrow d(f(x), L) < \varepsilon
+\end{equation}
+
+Comprobaremos enseguida que entonces \(L\) es único, le llamamos \textbf{límite} de \(f\) en el punto \(\alpha\) y escribimos \(\lim_{x \to \alpha} f(x) = L\).
+
+En efecto, si \(L_1, L_2 \in F\) verifican (\ref{lim_general}), dado \(\varepsilon > 0\) podemos claramente encontrar \(\delta > 0\) tal que, para \(x \in A\) con \(0 < d(x, \alpha) < \delta \) se tiene \(d(f(x), L_1) < \varepsilon\) y también \(d(f(x), L_2) < \varepsilon\). Como \(\alpha \in A'\), existe efectivamente \(x \in A\) con \(0 < d(x, \alpha) < \delta\), y usando un tal \(x\), deducimos que \(d(L_1, L_2) \leq d(L_1, f(x)) + d(L_2, f(x)) < 2 \varepsilon\), desigualdad que es válida para todo \(\varepsilon > 0\). Tenemos por tanto \(d(L_1, L_2) = 0\), es decir, \(L_1 = L_2\). La condición de que \(\alpha \in A'\) es la que permite asegurar la unicidad del límite. \\
+
+Por otro lado, tenemos las siguientes equivalencias:
+\[
+\begin{array}{ccc}
+\lim_{x \to \alpha} f(x) = L & \Longleftrightarrow &\forall V \in \mathcal{U}(L) \text{ } \exists U \in \mathcal{U}(\alpha) : f(U \cap (A \setminus \{\alpha\})) \subset V \\
+& \Longleftrightarrow & \left[ x_n \in A \setminus \{\alpha\} \forall n \in \mathbb{N}, \{x_n\} \rightarrow \alpha \Rightarrow \{f(x_n)\} \rightarrow L \right]
+\end{array}
+\]
+
+Para terminar tenemos los siguientes resultados:
+\begin{itemize}
+	\item \textit{Para} \(a \in A \cap A'\) \textit{se tiene que} \(f\) \textit{es continua en} \(a\) \textit{si, y sólo si,} \(\lim_{x \to a}f(x) = f(a)\).
+	\item \textit{Si} \(\alpha \in A' \setminus A\), \textit{entonces} \(f\) \textit{tiene límite en el punto} \(\alpha\) \textit{si, y sólo si, se puede definir una función} \(g: A \cup \{\alpha\} \rightarrow F\) \textit{que es continua en el punto} \(\alpha\) \textit{y verifica que \(g(x) = f(x)\) para todo \(x \in A\). En tal caso se tiene \(g(\alpha) = \lim_{x \to \alpha} f(x)\), y en particular \(g\) es única.}
+\end{itemize}
+	\end{enumerate}
+	
+\bigskip
+
+\item Conocer y comprender los siguientes resultados:
+\begin{enumerate}[label=\textit{\alph*})]
+	\item Caracterizaciones de la continuidad en un punto y de la continuidad global
+	
+Tenemos una caracterización \textit{secuencial} de la continuidad, es decir, en términos de convergencia de sucesiones:
+	
+	\begin{itemize}
+	\item \textit{Para} \(f: E \rightarrow F\) \textit{y} \(x \in E\), \textit{las siguientes afirmaciones son equivalentes:}
+	\begin{enumerate}[label=(\textit{\roman*})]
+		\item \(f\) \textit{es continua en el punto} \(x\)
+		\item \(\forall \varepsilon > 0\) \(\exists \delta > 0 : y \in E\), \(d(y,x) < \delta \Rightarrow d(f(y),f(x)) < \varepsilon\)
+		\item \(x_n \in E\) \(\forall n \in \mathbb{N}\), \(\{x_n\} \rightarrow x \Rightarrow \{f(x_n)\} \rightarrow f(x)\)
+	\end{enumerate}
+
+(I) \(\Rightarrow\) (II). Dado \(\varepsilon > 0\), \(B(f(x), \varepsilon)\) es entorno de \(f(x)\) en \(F\), luego su imagen inversa por \(f\) será entorno de \(x\) en \(E\), es decir, existe \(\delta >0\) tal que \(B(x, \delta) \subset f^{-1}[B(f(x),\varepsilon)]\). Para \(y \in E\) con \(d(y,x) < \delta\) se tiene entonces \(f(y) \in B(f(x), \varepsilon)\), es decir \(d(f(y),f(x)) < \varepsilon\). \\
+
+(II) \(\Rightarrow\) (III). Para \(\varepsilon > 0 \), tenemos \(\delta > 0\) dado por (II). Por ser \(\{x_n\} \rightarrow x\), existe \(m \in \mathbb{N}\) tal que, para \(n \geq m\) se tiene \(d(x_n, x) < \delta\), luego \(d(f(x_n),f(x)) < \varepsilon\). Esto prueba que \(\{f(x_n)º\} \rightarrow f(x)\). \\
+
+(III) \(\Rightarrow\) (I). Si \(f\) no es continua en \(x\), vemos que no se verifica (III). Existe \(V \in \mathcal{U}(f(x))\) tal que \(f^{-1}(V) \notin \mathcal{U}(x)\), luego para cada \(n \in \mathbb{N}\), \(f^{-1}(V)\) no puede contener la bola abierta de centro \(x\) y radio \(1/n\), así que exsite \(x_n \in E\) tal que \(d(x_n,x) < 1/n\) pero \(f(x_n) \notin V\). Está claro entonces que \(\{x_n\} \rightarrow x\) pero \(\{f(x_n)\}\) no converge a \(f(x)\). \hspace{10.2cm} \(\blacksquare\) \\
+
+\end{itemize}
+\medskip
+
+Por otro lado, decimos que una función \(f: E \rightarrow F\) es \textbf{continua en un conjunto} no vacío \(A \subset E\) cuando es continua en todo punto \(x \in A\). Si \(f\) es continua en \(E\) decimos simplemente que \(f\) es \textbf{continua}. Reunimos en un sólo enunciado tres caracterizaciones de esta propiedad:
+
+\begin{itemize}
+	\item \textit{Para cualquier función \(f:E \rightarrow F\) las siguientes afirmaciones son equivalentes:}
+	\begin{enumerate}[label=(\textit{\roman*})]
+		\item \textit{f es continua}
+		\item \textit{Para todo abierto \(V \subset F\), se tiene que \(f^{-1}(V)\) es un abierto de \(E\)}
+		\item \textit{Para todo cerrado \(C \subset F\), se tiene que \(f^{-1}(C)\) es un cerrado de \(E\)}
+		\item \textit{f preserva la convergencia de sucesiones: para toda sucesión convergente \(\{x_n\}\) de puntos de \(E\), la sucesión \(\{f(x_n)\}\) es convergente}.
+		\end{enumerate}
+		\end{itemize}
+\bigskip
+
+	\item Carácter local de la continuidad
+\begin{itemize}
+
+	\item \textit{Sea} \(f: E \rightarrow F\) \textit{una función y sea} \(A\) \textit{un subconjunto no vacío de} \(E\), \textit{que consideramos como espacio métrico con la distancia inducida. Para} \(x \in A\) \textit{se tiene}:
+	\begin{enumerate}[label=(\textit{\roman*})]
+		\item \textit{Si} \(f\) \textit{es continua en} \(x\), \textit{entonces} \(\left. f \right|_A\) \textit{es continua en} \(x\).
+		\item \textit{Si} \(\left. f \right|_A\) \textit{es continua en} \(x\) \textit{y} \(A\) \textit{es entorno de} \(x\) \textit{en} \(E\), \textit{entonces} \(f\) \textit{es continua} \(x\).
+	\end{enumerate}
+	
+\vspace{0.5cm}
+
+(I). Si \(V \in \mathcal{U}(f(x))\) sabemos que \(f^{-1}(V)\) es entorno de \(x\) en el espacio métrico \(E\), de donde deducimos que \((\left.f \right|_A)^{-1}(V) = f^{-1}(V) \cap A\) es entorno de \(x\) en el espacio métrico \(A\). \\
+
+(II). Si \(V \in \mathcal{U}(f(x))\), sabemos ahora que \((\left. f \right|_A)^{-1} \cap A\) es entorno de \(x\) en \(A\), luego \(f^{-1}(V) \cap A \supset U \cap A\) donde \(U\) es un abierto de \(E\) tal que \(x \in U\). Entonces \(U \cap A\) es entorno de \(x\) en \(E\), luego igual le ocurre a \(f^{-1}(V)\), pues \(U \cap A \subset f^{-1}(V)\). \hspace{0.3cm} \(\blacksquare\)
+\end{itemize}
+
+\bigskip
+
+	\item Operaciones con funciones continuas
+	
+Si \(E,Y\) son conjuntos no vacíos, denotamos por \(\mathcal{F}(E,Y)\) al conjunto de todas las funciones de \(E\) en \(Y\). Si \(Y = \mathbb{R}\), escribimos simplemente \(\mathcal{F}(E)\) en lugar de \(\mathcal{F}(E,\mathbb{R})\). 
+
+Cuando \(Y\) es un espacio vectorial, \(\mathcal{F}(E,Y)\) también lo es, con la \textbf{suma y producto por escalares} definidos de manera natural:
+\[
+\begin{array}{ccc}
+	(f+g)(x) = f(x) + g(x) & \forall x \in E & \forall f,g \in \mathcal{F}(E,Y) \\
+	(\lambda g) (x) = \lambda g(x) & \forall x \in E & \forall \lambda \in \mathbb{R} \text{ } \forall g \in \mathcal{F}(E,Y)
+\end{array}
+\]
+
+De hecho, en vez del escalar \(\lambda \in \mathbb{R}\) podemos usar una función \(\Lambda \in \mathcal{F}(E,Y)\). Entonces para \(g \in \mathcal{F}(E,Y)\) podemos considerar la función \textbf{producto} dada por
+\[
+	(\Lambda g)(x) = \Lambda (x) g(x) \qquad \forall x \in E
+\]
+
+Podemos considerar el \textbf{cociente} de dos funciones \(f,g \in \mathcal{F}(E)\), siempre que \(g(x) \neq 0\) para todo \(x \in E\) de la siguiente manera:
+\[
+	\left( \frac{f}{g} \right) (x) = \frac{f(x)}{g(x)} \qquad \forall x \in E
+\]
+
+	\begin{itemize}
+		\item \textit{Sea \(E\) un espacio métrico e \(Y\) un espacio normado. Si \(f,g \in \mathcal{F}(E,Y)\) y \(\Lambda \in \mathcal{F}(E)\) son funciones continuas en un punto \(x \in E\), entonces \(f + g\) y \(\Lambda g\) son continuas en x. En el caso \(Y = \mathbb{R}\), si \(g(E) \subset \mathbb{R}^*\), entonces \(f/g\) es continua en x.} \\
+		
+Si \(E\) es un espacio métrico e \(Y\) un espacio normado, denotamos por \(\mathcal{C}(E,Y)\) al subconjunto de \(\mathcal{F}(E,Y)\) formado por las funciones continuas de \(E\) en \(Y\). Por tanto:
+		\item \(\mathcal{C}(E,Y)\) \textit{es un subespacio vectorial de \(\mathcal{F}(E,Y)\). Además, \(\mathcal{C}(E)\) es un subanillo de \(\mathcal{F}(E)\). Si \(f,g \in \mathcal{C}(E)\) y \(g(E) \subset \mathbb{R}^*\), entonces \(f/g \in \mathcal{C}(E)\).} \\
+		
+El resultado anterior sobre operaciones con funciones continuas tiene una versión análoga para el límite funcional, que nos da las reglas básicas para calcular límites de funciones:
+	\item \textit{Sea \(E\) un espacio métrico, \(A \subset E\) y \(\alpha \in A'\). Sea \(Y\) un espacio normado y consideremos tres funciones \(f,g: A \rightarrow Y\) y \(\Lambda : A \rightarrow \mathbb{R}\) que tengan límite en el punto \(\alpha\), es decir,}
+\[
+	\lim_{x \to \alpha} f(x) = y \in Y, \quad \lim_{x \to \alpha} g(x) = z \in Y \text{  y  } \lim_{x \to \alpha} \Lambda (x) = \lambda \in \mathbb{R}
+\]
+
+\textit{Se tiene entonces que:}
+\[
+	\lim_{x \to \alpha} (f+g)(x) = y+z \qquad \text{y} \qquad \lim_{x \to \alpha} (\Lambda f) (x) = \lambda y
+\]
+
+\textit{En particular, cuando \(Y = \mathbb{R}\) se tiene que \(\lim_{x \to \alpha} (fg) (x) = yz\). Finalmente, también en el caso \(Y = \mathbb{R}\), si \(g(A) \subset \mathbb{R}^*\) y \(z \in \mathbb{R}^*\) se tiene:}
+\[
+	\lim_{x \to \alpha} \left( \frac{f}{g} \right) (x) = \frac{y}{z}
+\]
+	\end{itemize}
+\end{enumerate}
+\end{enumerate}
+
+\end{document}

@@ -1,0 +1,270 @@
+\documentclass[a4paper, 12pt]{article}
+
+\usepackage{amsmath} %Todos los paquetes de matematicas
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage[utf8]{inputenc}
+\usepackage[spanish, es-lcroman]{babel}
+\usepackage{wrapfig} %Figuras flotantes
+\usepackage{parselines}
+\usepackage{enumitem}
+\usepackage{xcolor}
+\usepackage{graphicx}
+\usepackage{subcaption}
+\usepackage{pgfplots}
+\usepackage{hyperref}
+\usepackage{textcomp}
+\usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry}
+
+
+\providecommand{\abs}[1]{\lvert#1\rvert} %Valor absoluto
+\providecommand{\norm}[1]{\lVert#1\rVert} %Norma
+
+\newtheorem{teorema}{Teorema}
+\renewcommand{\qedsymbol}{\(\blacksquare\)}
+
+
+\title{\textbf{Objetivos de aprendizaje Tema 8} \\ \textit{Análisis Matemático I}}
+\author{Javier Gómez López}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\begin{enumerate}[label=\textbf{\arabic*}.]
+
+\item Conocer y comprender la definición de vector gradiente, así como su relación con la diferencial \\
+
+Antes de todo, es necesario conocer algunos conceptos previos.
+
+Sean pues \(X,Y\) espacios normados, \(\Omega\) un subconjunto abierto de \(X\) y \(f: \Omega \to Y\) una función diferenciable en un punto \(a \in \Omega\). Denotaremos por \(S\) al conjunto de todas las direcciones en \(X\), es decir, \(S = \{ u \in X : ||u|| = 1\}\).
+
+Fijemos ahora \(r \in \mathbb{R}^+\) tal que \(B(a,r) \subset \Omega\) y, para cada \(u \in S\), consideremos la función \(\varphi_u\), definida de la siguiente forma:
+\[
+	\varphi_u : ]-r,r[ \to Y, \qquad \varphi_u (t) = f(a + tu) \quad \forall t \in ]-r,r[
+\]
+
+Pues bien, dado \(u \in S\), decimos que \(f\) es \textbf{derivable en la dirección} \(u\), en el punto \(a\), cuando la función \(\varphi_u\) es derivable en 0, en cuyo caso, al vector derivada \(\varphi_u'(0)\) lo llamamos \textbf{derivada direccional} de \(f\) en \(a\), según la dirección \(u\), y lo denotamos por \(f_u'(a)\). Así pues,
+\[
+	f_u'(a) = \varphi_u ' (0) = \lim_{t \to 0} \frac{\varphi_u (t) - \varphi_u (0)}{t} = \lim_{t \to 0} \frac{f(a+tu) - f(a)}{t}
+\]
+
+Decimos que \(f\) es \textbf{direccionalmente derivable} en el punto \(a\) cuando es derivable en todas las direcciones \(u \in S\).
+
+\begin{itemize}
+	\item \textit{Sean X,Y espacios normados, \(\Omega\) un abierto de X y \(f : \Omega \to Y\) una función. Si f es diferenciable en un punto \(a \in \Omega\), entonces \(f\) es direccionalmente derivable en a con}
+	\[
+		f_u'(a) = Df(a)(u) \qquad \forall u  \in S
+	\]
+\end{itemize}
+
+\par
+
+A partir de ahora trabajamos en el caso \(X = \mathbb{R}^N\), mientras que de momento \(Y\) sigue siendo un espacio normado arbitrario. Fijamos un abierto \(\Omega\) de \(\mathbb{R}^N\), una función \(f : \Omega \to Y\) y un punto \(a \in \Omega\), y usaremos la norma euclídea.
+
+Pues bien, dado \(k \in \Delta_N\), cuando \(f\) es deriable en el punto \(a\), en la dirección \(e_k\), decimos que \(f\) es \textbf{parcialmente derivable con respecto a la \(k\)-ésima variable} en el punto \(a\). Entonces la derivada direccional de \(f\) en \(a\), según la dirección \(e_k\), se denomina \textbf{derivada parcial de \(f\) con respecto a la \(k\)-ésima variable} en el punto \(a\), y se denota por \(\frac{\partial f}{\partial x_k} (a)\), es decir,
+\begin{equation}\label{derivada_parcial}
+	\frac{\partial f}{\partial x_k} (a) = f_{e_k}' (a) = \lim_{t \to 0} \frac{f(a + t e_k) - f(a)}{t}
+\end{equation}
+
+Cuando esto ocurre para todo \(k \in \Delta_N\), decimos que \(f\) es \textbf{parcialmente derivable} en \(a\), y entonces tenemos \(N\) derivadas parciales, \(\frac{\partial f}{\partial x_k} (a)\) con \(k \in \Delta_N\). 
+
+\begin{itemize}
+	\item \textit{Si f es diferenciable en a, entonces f es particalmente derivable en a con:}
+	\begin{equation} \label{parcialmente_derivable}
+		\frac{\partial f}{\partial x_k} (a) = Df(a)(e_k) \qquad \forall j \in \Delta_N
+	\end{equation}
+\end{itemize} 
+
+\par
+
+Calculemos ahora la diferencial de un campo escalar, a partir de sus derivadas parciales. Mantenemos la notación anterior.
+
+Si \(f\) es diferenciable en \(a\), usando que \(Df(a)\) es lineal, junto con la igualdad (\ref{parcialmente_derivable}), para todo \(x = (x_1, x_2, \dotsc, x_N) \in \mathbb{R}^N\) tenemos
+\[
+	Df(a)(x) = Df(a) \left( \sum_{k=1}^{N} x_k e_k \right) = \sum_{k=1}^{N} x_k Df(a) (e_k) = \sum_{k=1}^{N} x_k \frac{\partial f}{\partial x_k} (a)
+\] 
+
+Cuando el campo \(f\) es parcialmente deriable en \(a\), el \textbf{gradiente} de \(f\) en \(a\) es, por definición, el vector \(\nabla f(a) \in \mathbb{R}^N\) dado por
+\[
+	\nabla f(a) = \left( \frac{\partial f}{\partial x_1} (a), \frac{\partial f}{\partial x_2} (a), \dotsc, \frac{\partial f}{\partial x_N} (a) \right) = \sum_{k=1}^{N} \frac{\partial f}{\partial x_k} (a) e_k
+\]
+
+Reciprocamente, obtenemos que la aplicación lineal \(T: \mathbb{R}^N \to \mathbb{R}\) dada por
+\[
+	T(x) = (\nabla f(a) | x)
+\]
+es la única posible diferencial de \(f\) en \(a\), luego \(f\) será diferenciable en \(a\) si, y sólo si, \(T\) cumple la condición que caracteriza a la diferencial. En resumen, tenemos el siguiente resultado.
+\begin{itemize}
+	\item \textit{Para un campo escalar \(f: \Omega \to \mathbb{R}\), donde \(\Omega\) es un abierto de \(\mathbb{R}^N\), y punto \(a \in \Omega\), las siguientes afirmaciones son equivalentes:}
+	\begin{enumerate}[label=(\textit{\roman*})]
+		\item \textit{f es diferenciable en a}.
+		\item \textit{f es parcialmente derivable en a y se verifica que:}
+		\begin{equation} \label{diferenciable_1}
+			\lim_{x \to a} \frac{f(x) - f(a) - (\nabla f(a) | x-a)}{||x-a||} = 0
+		\end{equation}
+		\textit{En caso de que se cumplan (i) y (ii) se tiene}:
+		\begin{equation}\label{diferenciable_2}
+			Df(a)(x) = (\nabla f(a) | x) \qquad \forall x \in \mathbb{R}^N
+		\end{equation}
+	\end{enumerate}
+\end{itemize}
+
+\bigskip
+
+\item Conocer y comprender el significado físico del vector gradiente y su relación con el plano tangente a una superficie explícita
+
+Fijada una dirección \(u \in S\), al desplazarnos una distancia \(t > 0\) desde el punto \(a\), en la dirección y sentido del vector \(u\), el campo \(f\) experimenta una variación de \(f (a +tu) - f(a)\) unidades. Podemos decir por tanto que la derivada direccional \(f_u'(a)\) es la \textit{tasa de variación} del campo en el punto \(a\) y en la dirección \(u\).  \\
+
+Si \(f\) es diferenciable en \(a \in \Omega\), se tiene \(f_u'(a) = (\nabla f(a) | u)\) para todo \(u \in S\). Supongamos que \(\nabla f(a) \neq 0\) y consideramos la dirección \(v = \nabla f(a) / || \nabla f(a)||\). Para toda dirección \(u \in S\), la desigualdad de Cauchy-Schwartz nos dice que
+\[
+	f_u'(a) = (\nabla f(a) |u) \leq || \nabla f(a)|| = (\nabla f(a) | v) = f_v'(a)
+\]
+de donde deducimos que
+\[
+	f_v'(a) = \text{máx} \{ f_u'(a) : u \in S\} > 0
+\]
+
+Tenemos así una caracterización del vector gradiente normalizado: \(v = \nabla f(a) / ||\nabla f(a) ||\) es la única dirección \(v \in S\) que hace que la derivada direccional \(f_v'(a)\) sea máxima. \\
+
+El signifcado físico de esta caracterización es claro, y se facilita si tenemos en cuenta que el vector \(v = \nabla f(a) / ||\nabla f(a) ||\) tiene la misma dirección y sentido que \(\nabla f(a)\). Por tanto, al desplazarnos desde el punto \(a\) en la dirección y el sentido del vector gradiente, conseguimos la máxima tasa de aumento de del campo por unidad de longitud. Dicho más intuitivamente, un "pequeño" desplazamiento en la dirección y sentido del vector gradiente, hace que el campo aumente "aproximadamente" a razón de \(||\nabla f(a)||\) unidades. \\
+
+Resaltamos que lo dicho es válido cuando \(f\) es diferenciable en \(a\), no basta con que \(f\) sea parcialmente derivable en \(a\), suponiendo además que \(\nabla f(a) \neq 0\). Cuando \(\nabla f(a) = 0\), se dice que \(a\) es un \textit{punto crítico} o un \textit{punto estacionario} del campo \(f\).  \\
+
+\par
+
+Por otro lado, llamamos \textbf{superficie explícita} en \(\mathbb{R}^3\) a la gráfica de una función continua \(f: \Omega \to \mathbb{R}\), donde \(\Omega\) es un subconjunto no vacío, abierto y conexo, de \(\mathbb{R}^2\). Se trata por tanto del conjunto
+\[
+	\Sigma = \text{Gr}f = \{ (x,y, f(x,y)) : (x,y) \in \Omega\} \subset \mathbb{R}^3
+\]
+
+Se dice que la igualdad 
+\[
+	z = f(x,y) \qquad (x,y) \in \Omega
+\]
+es la \textbf{ecuación explícita} de la superfice \(\Sigma\). \\
+
+Cuando \(f\) es diferenciable en un punto \((x_0, y_0) \in \Omega\), veamos la relación entre el vector gradiente \(\nabla f(x_0,y_0)\) y la superfice \(\Sigma\). Para abreviar escribimos
+\[
+	z_0 = f(x_0, y_0), \qquad \alpha_0 = \frac{\partial f}{\partial x} (x_0, y_0) \qquad \beta_0 = \frac{\partial f}{\partial y} (x_0, y_0)
+\]
+
+y consideramos el plano afín \(\Pi\) definido por la ecuación
+\[
+	z - z_0 = \alpha_0 (x - x_0) + \beta_0 (y-y_0)
+\]
+que también es una superficie explícita, concretamente \(\Pi = \text{Gr} g\) donde \(g: \mathbb{R}^2 \to \mathbb{R}\) es la función definida por
+\[
+	g(x,y) = z_0 + \alpha_0 (x - x_0) + \beta_0 (y - y_0) \qquad \forall (x,y) \in \mathbb{R}^2
+\]
+
+Usando la relación entre la diferencial y su gradiente, vemos que \(g\) es una función afín, cuyo significado analítico nos da una buena aproximación de \(f\) cerca del punto \((x_0, y_0)\). Geométricamente, esto significa que la distancia (vertical) entre el punto \((x,y,f(x,y)\) de la superficie \(\Sigma\) y el correspondiente punto \((x,y,g(x,y))\) del plano \(\Pi\), tiende a cero cuando ambos puntos se acercan a \((x_o, y_0, z_0)\), "mucho más rápidamente" que \(||(x,y) - (x_0,y_0)||\).  \\
+
+Sea \(\Sigma = \text{Gr} f\) una superficie explícita en \(\mathbb{R}^3\), donde \(f: \Omega \to \mathbb{R}\) es una función continua en un abierto conexo \(\Omega \in \mathbb{R}^2\). Si \(f\) es diferenciable en un punto \((x_0, y_0)\) y \(z_0 = f(x_0,y_0)\), se dice que el plano \(\Pi\) de ecuación explícita
+\[
+	z - z_0 = (x-x_0) \frac{\partial f}{\partial x} (x_0, y_0) + (y- y_0) \frac{\partial f}{\partial y} (x_0, y_0)
+\]
+es el \textbf{plano tangente} a la superficie \(\Sigma\) en el punto \((x_0, y_0, z_0)\).
+
+Decimos también que el vector
+\[
+	\left( \frac{\partial f}{\partial x} (x_0, y_0), \frac{\partial f}{\partial y} (x_0, y_0), -1 \right) \in \mathbb{R}^3
+\]
+es el \textbf{vector normal} a la superficie \(\Sigma\) en el punto \((x_0, y_0, z_0)\).
+
+\bigskip
+
+\item Conocer y comprender la condición suficiente para que un campo escalar sea diferenciable, en términos de sus derivadas parciales, incluyendo su demostración
+
+\begin{teorema} Sea \(\Omega\) un abierto de \(\mathbb{R}^N\), \(f: \Omega \to \mathbb{R}\) un campo escalar, \(a \in \Omega\) y \(k \in \Delta_N\). Supongamos que se verifican las dos condiciones siguientes:
+\begin{enumerate}[label=(\textit{\roman*})]
+	\item f es parcialmente derivable con respecto a la k-ésima variable en el punto a 
+	\item Para \(j \in \Delta_N \setminus \{k\}\), f es parcialmente derivable con respecto a la j-ésima variable en todo punto \(x \in \Omega\) y la función derivada parcial \(\frac{\partial f}{\partial x_j}: \Omega \to \mathbb{R}\) es continua en a.
+\end{enumerate}
+
+Entonces f es diferenciable en el punto a.
+\end{teorema}
+
+\begin{proof}
+Podemos suponer que \(k = N\), es decir, que la derivada parcial para la que sólo se supone su existencia en el punto \(a\), es la última. Tomamos \(r \in \mathbb{R}^+\) tal que \(B(a,r) \subset \Omega\), y se trata de probar 
+\[
+	\lim_{x \to a} \frac{f(x) - f(a) - (\nabla f(a) | x-a)}{||x-a||} = 0
+\]
+Para que se comprenda mejor el razonamiento, conviene destacar una igualdad evidente. \\
+
+Si escribimos \(a = (a_1, a_2, \dotsc, a_N)\), para \(x = (x_1, x_2, \dotsc, x_N) \in B(a,r)\) se tiene:
+\[
+\begin{array}{ll}
+f(x) - f(a) &= (f(x) -f (a_1,x_2, \dotsc, x_N)) \\
+&+ (f(a_1, x_2, \dotsc, x_N) - f(a_1, a_2, x_3, \dotsc, x_N)) \\
+&+ \dotsc + (f(a_1, \dotsc, a_{N-1}, x_N) - f(a)) \\
+&= \sum_{j=1}^{N} (f(a_1, \dotsc, a_{j-1}, x_j, \dotsc, x_N) - f(a_1, \dotsc, a_j, x_{j+1}, \dotsc, x_N))
+\end{array}
+\]
+
+De la anterior igualdad se deduce claramente:
+\begin{equation}\label{demos_1}
+	f(x) - f(a) - (\nabla f(a) | x-a) = \sum_{j=1}^{N} R_j (x) \qquad \forall x \in B(a,r)
+\end{equation}
+donde, para cada \(j \in \Delta_N\) hemos escrito:
+\begin{equation}\label{demos_2}
+	R_j (x) = f(a_1, \dotsc, a_{j-1}, x_j, \dotsc, x_N) - f(a_1, \dotsc, a_j, x_{j+1}, \dotsc, x_N) - (x_j - a_j) \frac{\partial f}{\partial x_j} (a)
+\end{equation} \\
+
+Trabajaremos ahora por separado con cada uno de los sumandos que han aparecido. \\
+
+Dado \(\varepsilon > 0\), de (\textit{i}) obtenemos \(\delta \in ]0, r[\) tal que, para \(x_N \in \mathbb{R}\) con \(|x_N - a_N| < \delta\), se tiene
+\begin{equation}\label{demos_3}
+	\left| f(a_1, \dotsc, a_{N-1}, x_N) - f(a) - (x_N - a_N) \frac{\partial f }{\partial x_N} (a) \right| \leq \frac{\varepsilon}{N} | x_N - a_N|
+\end{equation} \\
+
+Por otra parte, la hipótesis (\textit{ii}) nos permite conseguir que el mismo \(\delta\) verifique además que, para todo \(w \in B(x, \delta)\) se tenga
+\begin{equation}\label{demos_4}
+	\left| \frac{\partial f}{\partial x_j} (w) - \frac{\partial f}{\partial x_j} (a) \right| \leq \frac{\varepsilon}{N} \qquad \forall j \in \Delta_{N-1}
+\end{equation} \\
+
+Fijamos \(x = (x_1, x_2, \dotsc, x_N) \in B(a, \delta)\), y es importante tener en cuenta que, a partir de este momento, el vector \(x\), y por tanto todas sus componentes, estarán fijos. \\
+
+Por una parte tenemos que \(| x_N - a_N| \leq ||x-a|| < \delta\), luego (\ref{demos_3}) nos dice
+\begin{equation}\label{demos_5}
+	|R_N (x)| \leq (\varepsilon /N) |x_N - a_N| \leq (\varepsilon /N) ||x-a||
+\end{equation} \\
+
+Por otra parte, fijamos \(j \in \Delta_{N-1}\) para trabajar en el intervalo \(J = ]a_j - \delta, a_j + \delta[\) con la función \(\Psi: J \to \mathbb{R}\) definida por
+\[
+	\Psi (t) = f(a_1, \dotsc, a_{j-1}, t, x_{j+1}, \dotsc, x_N) \qquad \forall t \in J
+\] \\
+
+Para cada \(t \in J\), que \(f\) sea parcialmente derivable con respecto a la \(j\)-ésima variable en el punto \((a_1, \dotsc, a_{j-1},t , x_{j+1}, \dotsc, x_N) \in \Omega\), significa que \(\Psi\) es derivable en el punto \(t\) con 
+\[
+ \Psi'(t) = \frac{\partial f}{\partial x_j} (a_1, \dotsc, a_{j-1}, t, x_{j+1}, \dotsc, x_N)
+\]
+
+Usando el teorema del valor intermedio, obtenemos \(u \in \mathbb{R}\), con \(|u - a_j | \leq |x_j - a_j|\), tal que 
+\[
+	\Psi (x_j) - \Psi (a_j) = (x_j - a_j) \Psi ' (u) = (x_j - a_j) \frac{\partial f}{\partial x_j} (a_1, \dotsc, a_{j-1}, u, x_{j+1}, \dotsc, x_N)
+\]
+
+Tomando \(w = (a_1, \dotsc a_{j-1}, u, x_{j+1}, \dotsc, x_N)\), de la igualdad anterior deducimos que
+\[
+	R_j(x) = \Psi (x_j) - \Psi (a_j) - (x_j - a_j) - \frac{\partial f }{\partial x_j} (a) = (x_j - a_j) \left( \frac{\partial f}{\partial x_j} (w) - \frac{\partial f}{\partial x_j} (a) \right)
+\] \\
+
+Es claro que \(||w-a|| \leq ||x-a|| < \delta\), luego podemos usar (\ref{demos_4}) para obtener que
+\begin{equation}\label{demos_6}
+	|R_j(x)| \leq (\varepsilon / N) | x_j - a_j| \leq (\varepsilon /N) ||x-a||| \qquad \forall j \in \Delta_{N-1}
+\end{equation}
+
+Teniendo en cuenta (\ref{demos_1}), de (\ref{demos_5}) y (\ref{demos_6}), deducimos finalmente que
+\[
+	| f(x) - f(a) - (\nabla f(a) | (x-a)) | \leq \sum_{j=1}^{N} | R_j(x_j, x_{j+1}, \dotsc, x_N)| \leq \varepsilon ||x-a||
+\]
+
+Esto prueba que se verifica que el límite buscado, así que \(f\) es diferenciable en el punto \(a\).
+\end{proof}
+\end{enumerate}
+
+\end{document}

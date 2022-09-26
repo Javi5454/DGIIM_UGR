@@ -1,0 +1,124 @@
+\documentclass[a4paper, 12pt]{article}
+
+\usepackage{amsmath} %Todos los paquetes de matematicas
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage[utf8]{inputenc}
+\usepackage[spanish, es-lcroman]{babel}
+\usepackage{wrapfig} %Figuras flotantes
+\usepackage{parselines}
+\usepackage{enumitem}
+\usepackage{xcolor}
+\usepackage{graphicx}
+\usepackage{subcaption}
+\usepackage{pgfplots}
+\usepackage{hyperref}
+\usepackage{textcomp}
+\usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry}
+
+
+\providecommand{\abs}[1]{\lvert#1\rvert} %Valor absoluto
+\providecommand{\norm}[1]{\lVert#1\rVert} %Norma
+
+\newtheorem*{lema*}{Lema}
+\newtheorem{teorema}{Teorema}
+\newtheorem*{teorema*}{Teorema}
+\newtheorem{corolario}{Corolario}
+\renewcommand{\qedsymbol}{\(\blacksquare\)}
+
+\providecommand{\abs}[1]{\lvert#1\rvert} %Valor absoluto
+\providecommand{\norm}[1]{\lVert#1\rVert} %Norma
+
+
+\title{\textbf{Objetivos de aprendizaje Tema 7} \\ \textit{Análisis Matemático II}}
+\author{Javier Gómez López}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\begin{enumerate}[label=\textbf{\arabic*}.]
+
+\item Conocer y comprender la definición de función integrable y de integral de una tal función
+	
+Trabajamos en un conjunto medible \(\Omega \subset \mathbb{R}^N\), que mantenemos fijo. Para una función medible \(f: \Omega \to \mathbb{R}\), es decir, para \(f \in \mathcal{L} (\Omega)\), pretendemos definir, cuando sea posible, la integral de \(f\) sobre un conjunto medible \(E \subset \Omega\).
+
+Decimos que una función \(f \in \mathcal{L} (\Omega)\) es \textbf{integrable} sobre un conjunto medible \(E \subset \Omega\), cuando verifica que
+\[
+	\int_E |f| < \infty
+\]
+
+En tal caso tenemos \(f^+, f^- \in \mathcal{L}^+ (\Omega)\) y el crecimiento de la integral ya definida en \(\mathcal{L}^+ (\Omega)\) nos dice que
+\[
+	\int_E f^+ \leq \int_E |f| < \infty, \qquad \text{y también,} \qquad \int_E f^- \leq \int_E |f| < \infty
+\]
+
+Podemos por tanto definir la \textbf{integral} de \(f\) sobre \(E\) como el número real dado por 
+\[
+	\int_E f = \int_E f^+ - \int_E f^-
+\]
+
+\medskip
+
+\item Conocer y comprender el enunciado de los siguientes resultados:
+
+\begin{enumerate}[label=\textit{\alph*})]
+	\item Teorema de la convergencia absoluta
+	
+	\begin{teorema}
+	Sea \(\{f_n\}\) una sucesión de funciones integrables, tal que \(\sum_{n=1}^{\infty} \int_{\Omega} |f_n| < \infty\). Entonces, la serie \(\sum_{n \geq 1} f_n\) converge absolutamente en un conjunto \(E \subset \Omega\), con \(\lambda (\Omega \setminus E) = 0.\) Además, definiendo \(f(x) = \sum_{n=1}^{\infty} \chi_E (x) f_n(x)\) para todo \(x \in \Omega\), se tiene que \(f \in \mathcal{L}_1 (\Omega)\) con \(\int_{\Omega} f = \sum_{n=1}^{\infty} \int_{\Omega} f_n\).
+	\end{teorema}
+	
+	Donde \(\mathcal{L}_1(\Omega)\) es el conjunto de todas las funciones integrables en \(\Omega\).
+	
+	\medskip
+	
+	\item Continuidad absoluta de la integral
+	
+	\textbf{Continuidad absoluta.} \textit{Dada una función integrable \(f \in \mathcal{L}_1 (\Omega)\), para cada \(\varepsilon > 0\) puede encontrarse \(\delta > 0\) verificando que, si \(E\) es un subconjunto medible de \(\Omega\) con \(\lambda (E) < \delta\), entonces se tiene \(\int_E |f| < \varepsilon\), y por tanto \(\left| \int_E f \right| < \varepsilon\).}
+\end{enumerate}
+
+\newpage
+
+\item Conocer y comprender el teorema de la convergencia dominada, incluyendo su demostración.
+
+\begin{teorema*}[Convergencia dominada de Lebesgue]
+Sea \(\{f_n\}\) una sucesión de funciones reales medibles, que converge puntualmente en \(\Omega\) a una función \(f:\Omega \to \mathbb{R}\). Supongamos que existe una función integrable \(g: \Omega \to \mathbb{R}_0^+\) tal que:
+\[
+	| f_n(x)| \leq g(x) \qquad \forall x \in \Omega, \quad \forall n \in \mathbb{N}
+\]
+
+Entonces f es integrable y se verifica que
+\begin{equation}\label{cuatro}
+\lim_{n \to \infty} \int_{\Omega} |f_n - f| = 0, \qquad \textit{de donde,} \qquad \int_{\Omega} f = \lim_{n \to \infty} \int_{\Omega} f_n
+\end{equation}
+\end{teorema*}
+
+\begin{proof}
+Para cada \(n \in \mathbb{N}\), de \(|f_n| \leq g\) y \(g \in \mathcal{L}_1 (\Omega)\) se deduce que \(f_n \in \mathcal{L}_1 (\Omega)\). Por otra parte, para cada \(x \in \Omega\), vemos que \(|f(x)| = \lim_{n \to \infty} |f_n(x)| \leq g(x)\). Por tanto, se tiene también \(|f| \leq g\), de donde deducimos igualmente que \(f \in \mathcal{L}_1 (\Omega)\). Se trata ahora de probar la primera afirmación de (\ref{cuatro}), de la que fácilmente obtendremos la segunda.
+
+Sea pues \(\rho_n = \int_{\Omega} |f_n - f|\), para todo \(n \in \mathbb{N}\), con lo que \(\{\rho_n\}\) es una sucesión de números reales no negativos, y queremos probar que \(\{\rho_n\} \to 0\). Para abreviar la notación, escribimos también \(\rho = \int_{\Omega} (2g)\). La idea clave será usar el lema de Fatou para una conveniente sucesión de funciones. Concretamente tomamos \(g_n = 2g - |f_n - f |\) para todo \(n \in \mathbb{N}\).
+
+Como \(|f_n - f| \leq |f_n| + |f| \leq 2g\) para todo \(n \in \mathbb{N}\), vemos que \(\{g_n\}\) es una sucesión de funciones medibles positivas que converge puntualmente en \(\Omega\) a la función \(2g\). De paso vemos que \(\rho_n \leq \rho\) para todo \(n \in \mathbb{N}\). El lema de Fatou y la linealidad de la integral nos dicen que
+\begin{equation}\label{cinco}
+\rho = \int_{\Omega} (2g) = \int_{\Omega} \liminf_{n \to \infty} g_n \leq \liminf_{n \to \infty} \int_{\Omega} g_n = \liminf_{n \to \infty} (\rho - \rho_n)
+\end{equation}
+lo que nos llevará inmediatamente al resultado que buscamos.
+
+Para todo \(n \in \mathbb{N}\) se tiene que \(\inf \{\rho - \rho_k: k \geq n\} = \rho - \sup \{\rho_k : k \geq n\}\) de donde, al tomar límites, obtenemos que \(\liminf_{n\ \to \infty} (\rho - \rho_n) = \rho - \limsup_{n \to \infty} \rho_n\). Por tanto en (\ref{cinco}) teníamos
+\[
+	\rho \leq \rho - \limsup_{n \to \infty} \rho_n, \qquad \text{es decir,} \qquad \limsup_{n \to \infty} \rho_n \leq 0
+\]
+pero siendo \(\rho_n \geq 0\) para todo \(n \in \mathbb{N}\), esto significa que \(\{\rho_n\} \to 0\).
+
+La segunda afirmación de (\ref{cuatro}) se deduce claramente de la primera, usando la linealidad y positividad de la integral, que nos permiten escribir:
+\[
+	\left| \int_{\Omega} f_n - \int_{\Omega} f \right| = \left| \int_{\Omega} (f_n - f) \right| \leq \int_{\Omega} |f_n - f| \qquad \forall n \in \mathbb{N}
+\]
+\end{proof}
+\end{enumerate}
+
+\end{document}

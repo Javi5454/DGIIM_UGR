@@ -1,0 +1,5 @@
+PROJECT_NAME           = "Práctica 1. Imágenes"
+OUTPUT_DIRECTORY       = /home/javi5454/Desktop/Linux_PC/II_Curso/ED/Practicas/Practica_2/cmake-build-debug/doc_doxygen/
+INPUT                  = /home/javi5454/Desktop/Linux_PC/II_Curso/ED/Practicas/Practica_2/estudiante/include /home/javi5454/Desktop/Linux_PC/II_Curso/ED/Practicas/Practica_2/estudiante/src /home/javi5454/Desktop/Linux_PC/II_Curso/ED/Practicas/Practica_2/estudiante/doc
+GENERATE_LATEX         = NO
+IMAGE_PATH             = /home/javi5454/Desktop/Linux_PC/II_Curso/ED/Practicas/Practica_2/estudiante/doc

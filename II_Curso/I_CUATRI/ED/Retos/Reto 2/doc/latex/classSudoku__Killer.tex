@@ -1,0 +1,113 @@
+\doxysection{Referencia de la Clase Sudoku\+\_\+\+Killer}
+\label{classSudoku__Killer}\index{Sudoku\_Killer@{Sudoku\_Killer}}
+
+
+T.\+D.\+A Sudoko Killer Una instancia del tipo de dato abstracto \doxyref{Sudoku\+\_\+\+Killer}{p.}{classSudoku__Killer} nos permite crear sudokus del tipo killer.  
+
+
+
+
+{\ttfamily \#include $<$sudoku\+\_\+killer.\+h$>$}
+
+\doxysubsection*{Métodos públicos}
+\begin{DoxyCompactItemize}
+\item 
+\textbf{ Sudoku\+\_\+\+Killer} (vector$<$ vector$<$ int $>$$>$ celdas, vector$<$ int $>$ celdas\+\_\+sum)
+\begin{DoxyCompactList}\small\item\em Constructor con parámetros. \end{DoxyCompactList}\item 
+void \textbf{ print\+Sudoku} (ofstream dest)
+\begin{DoxyCompactList}\small\item\em Imprime el sudoku por un cauce dado. \end{DoxyCompactList}\item 
+bool \textbf{ solve\+Sudoku} (int i, int j)
+\begin{DoxyCompactList}\small\item\em Soluciona el sudoku de manera recursiva. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Descripción detallada}
+T.\+D.\+A Sudoko Killer Una instancia del tipo de dato abstracto \doxyref{Sudoku\+\_\+\+Killer}{p.}{classSudoku__Killer} nos permite crear sudokus del tipo killer. 
+
+El T\+DA \doxyref{Sudoku\+\_\+\+Killer}{p.}{classSudoku__Killer} proporciona además distintas herramientas para conseguir la resolución de dicho sudoku
+
+Para poder usar el T\+DA \doxyref{Sudoku\+\_\+\+Killer}{p.}{classSudoku__Killer} se debe incluir el fichero
+
+\#include $<$\doxyref{sudoku\+\_\+killer.\+h}{p.}{sudoku__killer_8h}$>$
+
+\begin{DoxyAuthor}{Autor}
+Javier Gómez López 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Fecha}
+Octubre 2021 
+\end{DoxyDate}
+
+
+Definición en la línea 25 del archivo sudoku\+\_\+killer.\+h.
+
+
+
+\doxysubsection{Documentación del constructor y destructor}
+\mbox{\label{classSudoku__Killer_a4c2abc4471fabf41962595c200692671}} 
+\index{Sudoku\_Killer@{Sudoku\_Killer}!Sudoku\_Killer@{Sudoku\_Killer}}
+\index{Sudoku\_Killer@{Sudoku\_Killer}!Sudoku\_Killer@{Sudoku\_Killer}}
+\doxysubsubsection{Sudoku\_Killer()}
+{\footnotesize\ttfamily Sudoku\+\_\+\+Killer\+::\+Sudoku\+\_\+\+Killer (\begin{DoxyParamCaption}\item[{vector$<$ vector$<$ int $>$$>$}]{celdas,  }\item[{vector$<$ int $>$}]{celdas\+\_\+sum }\end{DoxyParamCaption})}
+
+
+
+Constructor con parámetros. 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em celdas} & Las celdas enlazadas por las normas killer del sudoku \\
+\hline
+{\em celdas\+\_\+sum} & La suma de cada una de las celdas \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Documentación de las funciones miembro}
+\mbox{\label{classSudoku__Killer_ab60f1f1d7e682b5f4c8ef0ee62964d53}} 
+\index{Sudoku\_Killer@{Sudoku\_Killer}!printSudoku@{printSudoku}}
+\index{printSudoku@{printSudoku}!Sudoku\_Killer@{Sudoku\_Killer}}
+\doxysubsubsection{printSudoku()}
+{\footnotesize\ttfamily void Sudoku\+\_\+\+Killer\+::print\+Sudoku (\begin{DoxyParamCaption}\item[{ofstream}]{dest }\end{DoxyParamCaption})}
+
+
+
+Imprime el sudoku por un cauce dado. 
+
+\begin{DoxyPrecond}{Precondición}
+dest debe de haberse checkeado 
+\end{DoxyPrecond}
+
+\begin{DoxyParams}{Parámetros}
+{\em dest} & Cauce de destino del sudoku \\
+\hline
+\end{DoxyParams}
+\begin{DoxyPostcond}{Postcondición}
+El cauce dado tiene el sudoku 
+\end{DoxyPostcond}
+\mbox{\label{classSudoku__Killer_a224d79734c75b3e9a3438ca5748244a3}} 
+\index{Sudoku\_Killer@{Sudoku\_Killer}!solveSudoku@{solveSudoku}}
+\index{solveSudoku@{solveSudoku}!Sudoku\_Killer@{Sudoku\_Killer}}
+\doxysubsubsection{solveSudoku()}
+{\footnotesize\ttfamily bool Sudoku\+\_\+\+Killer\+::solve\+Sudoku (\begin{DoxyParamCaption}\item[{int}]{i,  }\item[{int}]{j }\end{DoxyParamCaption})}
+
+
+
+Soluciona el sudoku de manera recursiva. 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em i} & Actual fila \\
+\hline
+{\em j} & Actual columna \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Devuelve}
+True si lo ha solucionado, False si aún no se ha resuelto. 
+\end{DoxyReturn}
+\begin{DoxyPostcond}{Postcondición}
+El sudoku estará resuelto, no se hace por copia. 
+\end{DoxyPostcond}
+
+
+La documentación para esta clase fue generada a partir del siguiente fichero\+:\begin{DoxyCompactItemize}
+\item 
+\textbf{ sudoku\+\_\+killer.\+h}\end{DoxyCompactItemize}

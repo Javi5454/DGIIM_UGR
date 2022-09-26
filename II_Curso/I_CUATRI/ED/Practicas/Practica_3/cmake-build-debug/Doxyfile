@@ -1,0 +1,6 @@
+PROJECT_NAME           = "Práctica 2. Pilas y Colas"
+OUTPUT_DIRECTORY       = /home/javi5454/Desktop/Github/Linux_PC/II_Curso/ED/Practicas/Practica_3/cmake-build-debug/doc_doxygen/
+INPUT                  = /home/javi5454/Desktop/Github/Linux_PC/II_Curso/ED/Practicas/Practica_3/estudiante/include /home/javi5454/Desktop/Github/Linux_PC/II_Curso/ED/Practicas/Practica_3/estudiante/src /home/javi5454/Desktop/Github/Linux_PC/II_Curso/ED/Practicas/Practica_3/estudiante/doc
+GENERATE_LATEX         = NO
+IMAGE_PATH             = /home/javi5454/Desktop/Github/Linux_PC/II_Curso/ED/Practicas/Practica_3/estudiante/doc
+EXTRACT_PRIVATE	       = NO

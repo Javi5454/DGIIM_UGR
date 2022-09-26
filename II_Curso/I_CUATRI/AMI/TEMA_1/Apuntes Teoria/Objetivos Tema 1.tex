@@ -1,0 +1,213 @@
+\documentclass[a4paper, 12pt]{article}
+
+\usepackage{amsmath} %Todos los paquetes de matematicas
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage[utf8]{inputenc}
+\usepackage[spanish]{babel}
+\usepackage{wrapfig} %Figuras flotantes
+\usepackage{parselines}
+\usepackage{enumitem}
+\usepackage{xcolor}
+\usepackage{graphicx}
+\usepackage{subcaption}
+\usepackage{pgfplots}
+\usepackage{hyperref}
+\usepackage{textcomp}
+\usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry}
+
+
+\providecommand{\abs}[1]{\lvert#1\rvert} %Valor absoluto
+\providecommand{\norm}[1]{\lVert#1\rVert} %Norma
+
+\title{\textbf{Objetivos de aprendizaje Tema 1} \\ \textit{Análisis Matemático I}}
+\author{Javier Gómez López}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\begin{enumerate}[label=\textbf{\arabic*}.]
+
+\item Conocer y comprender las siguientes definiciones:
+	\begin{enumerate}[label=\textit{\alph*})]
+	
+	\item Espacio euclídeo \textit{N}-dimensional
+	
+\(\mathbb{R}^N\) es el producto cartesiano de \textit{N} copias de \(\mathbb{R}\), es decir, el conjunto de todas las posibles \textit{N}-uplas de números reales:
+\[
+	\mathbb{R}^N = \mathbb{R} \times \mathbb{R} \times \overset{(N)}{....} \times \mathbb{R} = \left\{ (x_1, x_2, \dotsc , x_N) : x_1, x_2, \dotsc, x_N \in \mathbb{R} \right\}
+\]
+
+En \(\mathbb{R}^N\) disponemos de las operaciones de \textbf{suma} y \textbf{producto por escalares}, que vienen definidas, para \(x = (x_1, x_2, \dotsc, x_N) \in \mathbb{R}^N\), \(y = (y_1, y_2, \dotsc, y_N) \in \mathbb{R}^N\) y \(\lambda \in \mathbb{R}\), por
+\[
+	x+y = (x_1 + y_1, x_2 + y_2, \dotsc, x_N + y_N)
+\]
+\[
+	\lambda x = (\lambda x_1, \lambda x_2, \dotsc, \lambda x_N)
+\]
+
+Sabemos que, con estas operaciones, \(\mathbb{R}^N\) tiene estructura de \textit{espacio vectorial}. El espacio vectorial \(\mathbb{R}^N\) tiene \textit{dimensión N}. Destacamos la \textit{base usual}, \(\Phi = \{e_1, e_2, \dotsc, e_N\}\) donde para cada \(k \in \Delta_N\), llamamos \(e_k\) a la \textit{N}-upla cuya \(k\)-ésima componente es 1 y las demás se anulan, es decir:
+\[
+	e_k(k) = 1 \qquad \text{y} \qquad e_k(j) = 0 \quad \forall j \in \triangle _N \setminus \{k\}
+\]
+
+Recordemos que \(\mathbb{R}^N\) es, salvo isomorfismos, el \textit{único} espacio vectorial de dimensión \textit{N}. \\
+
+Presentado \(\mathbb{R}^N\) como espacio vectorial, definamos ahora el concepto de \textbf{producto escalar}. El producto escalar de dos vectores \(x = (x_1, \dotsc, x_N) \in \mathbb{R}^N\) e \(y = (y_1, \dotsc, y_n) \in \mathbb{R}^N\) es el número real \((x | y)\) dado por:
+\[
+	(x|y) = \sum_{k=1}^{N} x_k y_k
+\]
+que verifica las siguientes propiedades
+\[
+\begin{array}{cc}
+\text{P1)} & (\lambda u + \mu v |y)  =  \lambda (u|y) + \mu (v|y) \\
+\text{P2)} & (x|y)  =  (y|x) \\
+\text{P3)} & (x|x) > 0 \quad \forall x \in \mathbb{R}^N \setminus \{0\}
+\end{array}
+\]
+
+Si asociamos \(\mathbb{R}^N\) con el producto escalar definido es un espacio pre-hilbertiano, conocido como el espacio euclídeo N-dimensional. \\
+\medskip 
+
+	\item Espacio pre-hilbertiano 
+	
+Un \textbf{espacio pre-hilbertiano} es, por definición, un espacio vectorial dotado de un producto escalar. El \textit{producto escalar de dos vectores} \(x = (x_1, x_2, \dotsc, x_N) \in \mathbb{R}^N\) e \(y = (y_1,y_2, \dotsc , y_N) \in \mathbb{R}^N\) es, por definición el número real \(\left( x | y \right)\) dado por
+\begin{equation}\label{producto_escalar}
+	\left( x | y \right) = \sum_{k=1}^{N} x_k y_k = \sum_{k=1}^{N} x(k) y(k)
+\end{equation}
+y decimos también que la aplicación \(\left( \cdot | \cdot \right) : \mathbb{R}^N \times \mathbb{R}^N \rightarrow \mathbb{R}\), dada por \((x,y) \mapsto (x|y)\) para cualesquiera \(x,y \in \mathbb{R}^N\), es el \textbf{producto escalar} en \(\mathbb{R}^N\). 
+
+En general, el producto escalar en \(\mathbb{R}^N\) tiene tres propiedades claras:
+\[
+\begin{array}{lll}
+\text{(\textbf{P.1})} \quad &(\lambda u + \mu v | y) = \lambda (u | y) +  \mu (v | y) \quad & \forall u,v,y \in \mathbb{R}^N \text{ , } \forall \lambda , \mu \in \mathbb{R}^N \\
+\text{(\textbf{P.2})} \quad &(x|y) = (y|x) \quad &\forall x,y \in \mathbb{R}^N \\
+\text{(\textbf{P.3})} \quad & (x|x) > 0 \quad & \forall x \in \mathbb{R}^N \setminus \{0 \}
+\end{array}
+\]
+
+Un \textbf{producto escalar} en un espacio vectorial \(X\) es una forma bilineal simétrica en \(X\), cuya forma cuadrática asociada es definida positiva. Por tanto, \(\mathbb{R}^N\) con el producto escalar definido como en (\ref{producto_escalar}) es un espacio pre-hilbertiano, que se conoce como el \textbf{espacio euclídeo} \(N\)-\textit{dimensional}.
+
+\medskip
+
+	\item Espacio normado
+	
+Se define la \textbf{norma de un vector} \(x \in X\) como la raíz cuadrada del producto escalar de \(x\) por sí mismo, es decir, el número real no negativo \(||x||\) dado por
+\begin{equation}\label{norma_escalar}
+	||x|| = (x|x)^{1/2}
+\end{equation}
+
+Una \textbf{norma} es un espacio vectorial \(X\) es una aplicación \(|| \cdot || : X \rightarrow \mathbb{R}\), que a cada \(x \in X\) hace corresponder un número real \(||x||\), verificando las tres condiciones siguientes:
+\[
+\begin{array}{lll}
+\text{(\textbf{N.1})} \quad & \textit{Desigualdad triangular: }||x+y|| \leq ||x|| + ||y||  & \forall x,y \in X \\
+\text{(\textbf{N.2})} \quad & \textit{Homogeneidad por homotecias: }||\lambda x|| = |\lambda| ||x|| & \forall x \in X, \quad \forall \lambda \in \mathbb{R} \\
+\text{(\textbf{N.3})} \quad & \textit{No degeneración: } x \in X, \quad ||x|| = 0 \Longrightarrow x = 0 
+\end{array}
+\]
+
+Un \textbf{espacio normado} es un espacio vectorial \(X\), en el que hemos fijado una norma \(|| \cdot ||\). En un mismo espacio vectorial \(X\) podemos tener varias normas distintas. Con cada una de esas normas, tendremos un espacio normado diferente.
+
+Si \(|| \cdot ||\) es una norma en un espacio vectorial \(X\), usando la homogeneidad por homotecias con \(\lambda = -1\), vemos que \(||-x|| = ||x||\) para todo \(x \in X\). Pero entonces, la desigualdad triangular implica que
+\[
+	0 = || x + (-x)|| \leq ||x|| + ||-x|| = 2||x|| \quad \forall x \in X
+\]
+así que una norma nunca puede tomar valores negativos.
+
+\medskip
+
+	\item Espacio métrico
+
+Dados dos puntos \(x,y \in \mathbb{R}^N\), el segmento que va de \(x\) a \(y\) se obtiene trasladando el que va del origen a \(y-x\), luego la longitud del vector \(y-x\) nos da la distancia de \(x\) a \(y\). 
+
+Si \(X\) es un espacio normado, se define la \textit{distancia entre dos puntos } de \(X\) por
+\begin{equation}\label{distancia}
+	d(x,y) = || y-x || \quad \forall x,y \in X
+\end{equation}
+Obtenemos así una función de dos variables \(d: X \times X \rightarrow \mathbb{R}\), a partir de la cual podemos recuperar la norma de \(X\), puesto que evidentemente
+\begin{equation}
+	||x|| = d(0,x) \quad \forall x \in X
+\end{equation}
+
+Por tanto, una \textbf{distancia} en un conjunto no vacío \(E\) es una función \(d: E \times E \rightarrow \mathbb{R}\) verificando las siguientes condiciones:
+\[
+\begin{array}{lll}
+\text{(\textbf{D.1})} \quad & \textit{Desigualdad triangular: }d(x,z) \leq d(x,y) + d(y,z)  & \forall x,y,z \in E \\
+\text{(\textbf{D.2})} \quad & \textit{Simetría: } d(x,y) = d(y,x) & \forall x,y \in E \\
+\text{(\textbf{D.2})} \quad & \textit{No degeneración: Para } x,y \in E, \text{ se tiene: } d(x,y) = 0 \Longleftrightarrow x = y
+\end{array}
+\]
+	\end{enumerate}
+	
+\newpage
+
+\item Conocer la relación entre los conceptos anteriores y los ejemplos que permitan distinguir entre ellos
+
+Todo espacio pre-hilbertiano es un espacio normado, con la norma asociada a su producto escalar. En particular, el espacio euclídeo \(N\)-dimensional (que es un espacio pre-hilbertiano con producto escalar definido como en (\ref{producto_escalar})) es un espacio normado, \(\mathbb{R}^N\) con la norma euclídea.
+
+Antes de ver otros ejemplos, conviene comentar que, en todo espacio normado \(X\), la norma de cada vector se interpreta siempre como la longitud que asignamos al vector. 
+
+La norma euclídea en \(\mathbb{R}\) coincide con el valor absoluto. Salvo cambios de escala, el valor absoluto es la única norma que cabe considerar en \(\mathbb{R}\). 
+
+Para \(N>1\), es sencillo definir en \(\mathbb{R}^N\) normas que no son proporcionales a la euclídea. Concretamente, podemos definir la \textbf{norma del máximo}, \(|| \cdot ||_{\infty}\), y la \textbf{norma de la suma}, \(|| \cdot ||_1\), escribiendo, para \(x=(x_1,x_2,\dotsc,x_N) \in \mathbb{R}^N\),
+\begin{equation}
+	||x||_{\infty} = \text{máx} \left\{ |x_k| : k \in \triangle _N \right \} \quad \text{ y } \quad ||x||_1 = \sum_{k=1}^{N} |x_k|
+\end{equation}
+Estas dos normas no proceden de ningún producto escalar en \(\mathbb{R}^N\).
+
+Consideremos de nuevo el espacio vectorial \(C[0,1]\), formado por las funciones continuas del intervalo [0,1] en \(\mathbb{R}\). Conocemos en este espacio un producto escalar que lo convierte en un espacio pre-hilbertiano, luego es un espacio normado con la norma dada por
+\[
+	||x|| = (x|x)^{1/2} = \left( \int_{0}^{1} x(t)^2 dt \right)^{1/2} \quad \forall x \in C[0,1]
+\]
+Por otro lado, para \(x \in C[0,1]\), tenemos que
+\begin{equation}
+	||x||_{\infty} = \text{máx} \left\{ |x(t)| : t \in [0,1] \right\} \quad \text{ y } \quad ||x||_1 = \int_{0}^{1} |x(t)| dt
+\end{equation}
+
+Estas normas tampoco proceden del producto escalar, y por tanto, tenemos dos ejemplos de espacios normados de dimensión infinito, que no son espacios pre-hilbertianos.
+
+\medskip
+
+\item Conocer los siguientes resultados, incluyendo su demostración:
+	\begin{enumerate}[label=\textit{\alph*})]
+		\item Desigualdad de Cauchy-Schwartz
+		
+		\textit{En todo espacio pre-hilbertiano \(X\), se tiene:}
+\begin{equation}\label{Cauchy-Schwartz}
+	|(x|y)| \leq ||x|| ||y|| \quad \forall x,y \in X
+\end{equation}
+\textit{Además, se verifica la igualdad si, y sólo si, x e y son linealmente dependientes} \\
+
+\textbf{Demostración}. Si \(x,y \in X\) son linealmente dependientes, se tendrá que \(y=0\), o bien, \(x = \lambda y\) con \(\lambda \in \mathbb{R}\). En el primer caso la igualdad buscada es trivial y en el segundo basta usar (\textbf{N.2}):
+\[
+	|(x|y)| = |(\lambda y | y)| = |\lambda| ||y||^2 = ||x|| ||y||
+\]
+
+Supongamos pues que \(x,y \in X\) son linealmente independientes, y en particular no nulos, para probar la desigualdad estricta en (\ref{Cauchy-Schwartz}). Para todo \(\lambda \in \mathbb{R}\), tenemos
+\[
+	0 < (x - \lambda y | x - \lambda y) = ||x||^2 - 2 \lambda (x|y) + \lambda^2 ||y||^2
+\]
+Podemos suponer que \((x|y) \neq 0\), pues en otro caso la desigualdad buscada es obvia, lo que nos permite tomar \(\lambda = \frac{||x||^2}{(x|y)}\), obteniendo
+\[
+	0 < -||x||^2 + \frac{||x||^4 ||y||^2}{(x|y)^2} \Rightarrow ||x||^2 (x|y)^2 < ||x||^4 ||y||^2
+\]
+Basta ahora dividir ambos miembros por \(||x||^2 > 0\) y tomar raíces cuadradas.
+
+\medskip
+
+	\item Desigualdad triangular para la norma de un espacio pre-hilbertiano
+	
+Para cada \(x,y \in X\), basta pensar que 
+\[
+	||x+y||^2 = ||x||^2 + 2(x|y) + ||y||^2 \leq ||x||^2 +2 ||x|| ||y|| + ||y||^2 = (||x|| + ||y||)^2
+\]
+donde hemos usado la desigualdad de Cauchy-Schwartz. Podemos tomar raíces cuadradas en ambos miembros de la desigualdad, puesto que son números reales positivos, y por tanto quedaría probada la desigualdad triangular.
+	\end{enumerate}
+
+\end{enumerate}
+
+\end{document}

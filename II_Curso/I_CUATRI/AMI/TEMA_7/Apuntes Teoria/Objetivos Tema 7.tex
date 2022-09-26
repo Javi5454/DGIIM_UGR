@@ -1,0 +1,166 @@
+\documentclass[a4paper, 12pt]{article}
+
+\usepackage{amsmath} %Todos los paquetes de matematicas
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage[utf8]{inputenc}
+\usepackage[spanish, es-lcroman]{babel}
+\usepackage{wrapfig} %Figuras flotantes
+\usepackage{parselines}
+\usepackage{enumitem}
+\usepackage{xcolor}
+\usepackage{graphicx}
+\usepackage{subcaption}
+\usepackage{pgfplots}
+\usepackage{hyperref}
+\usepackage{textcomp}
+\usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry}
+
+
+\providecommand{\abs}[1]{\lvert#1\rvert} %Valor absoluto
+\providecommand{\norm}[1]{\lVert#1\rVert} %Norma
+
+\newtheorem{teorema}{Teorema}
+\renewcommand{\qedsymbol}{\(\blacksquare\)}
+
+
+\title{\textbf{Objetivos de aprendizaje Tema 7} \\ \textit{Análisis Matemático I}}
+\author{Javier Gómez López}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\begin{enumerate}[label=\textbf{\arabic*}.]
+
+\item Conocer y comprender la definición de vector derivada, así como su relación con la diferencial.
+
+Antes, veamos un resultado previo que nos será de utilidad posteriormente:
+
+\begin{itemize}
+	\item \textit{Si Y es un espacio normado, la aplicación \(\Phi : L(\mathbb{R},Y) \to Y\) definida por \(\Phi (T) = T(1)\) para toda \(T \in L (\mathbb{R},Y)\), es una biyección lineal que preserva la norma, luego permite identificar totalmente el espacio normado \(L(\mathbb{R},Y)\) con el espacio normado Y.}
+\end{itemize}
+
+Por tanto, decimos que \(f\) es \textbf{derivable} en \(a \in \Omega\) cuando la función \(t \mapsto \frac{f(t) - f(a)}{t-a}\), de \(\Omega \setminus \{a\}\) en \(Y\) tiene el límite en el punto \(a\). Dicho límite es entonces el \textbf{vector derivada} de \(f\) en \(a\), que se denota por \(f'(a)\), es decir, \(f'(a) = \lim_{t \to a} \frac{f(t) - f(a)}{t-a} \in Y\).
+
+Decimos simplemente que \(f\) es \textbf{derivable}. cuando es derivable en todo punto de \(\Omega\), en cuyo caso podemos considerar la función \(f':\Omega \to Y\) que a cada punto \(x \in \Omega\) hace corresponder el vector derivada \(f'(x)\), y decimos que \(f'\) es la \textbf{función derivada} de \(f\). De aquí obtenemos el siguiente resultado:
+
+\begin{itemize}
+	\item \textit{Sea Y un espacio normado y \(\Omega\) un subconjunto abierto de \(\mathbb{R}\). Una función \(f: \Omega \to Y\) es diferenciable en un punto \(a \in \Omega\) si, y sólo si, f es derivable en a, en cuyo caso, la diferencial y el vector derivada de f en a se determinan mutuamente por:}
+	\[
+	f '(a) = Df(a)(1) \qquad \textit{y} \qquad Df(a)(t) = t f'(a) \quad \forall t \in \mathbb{R}
+	\]
+	\textit{Por tanto f es diferenciable si, y sólo si, es derivable. Por último, \(f \in C^1 (\Omega, Y)\) si, y sólo si, f es derivable y su función derivada \(f'\) es continua}.
+\end{itemize}
+
+Para terminar, destacamos dos resultados importantes:
+
+\begin{itemize}
+	\item \textit{Sea \(\Omega\) un abierto de \(\mathbb{R}\), Y un espacio normado y \(f: \Omega \to Y\) una función derivable en un punto \(a \in \Omega\). Entonces, para todo \(\varepsilon > 0\), existe un \(\delta > 0\) verificando:}
+	\begin{equation}\label{derivada_1}
+	\left.
+	\begin{array}{c}
+	t_1, t_2 \in \Omega, t_1 \neq t_2 \\
+	a - \delta < t_1 \leq a \leq t_2 < a + \delta
+	\end{array}
+	\right\} \Rightarrow \left| \left| \frac{f(t_2)-f(t_1)}{t_2-t_1} - f'(a) \right| \right| \leq \varepsilon
+	\end{equation}
+	
+	\item \textit{Sea \(\Omega\) un abierto de \(\mathbb{R}\) y \(f = (f_1, f_2, \dotsc, f_M): \Omega \to \mathbb{R}^M\) una función. Entonces f es derivable en un punto \(a \in \Omega\) si, y sólo si, \(f_j\) es derivable en a para todo \(j \in \Delta_M\), en cuyo caso se tiene \(f'(a) = (f_1'(a),f_2'(a), \dotsc, f_M'(a))\) es decir:}
+	\begin{equation} \label{derivada_2}
+	f_j'(a) = \pi_j (f'(a)) \quad \forall j \in \Delta_M \qquad \textit{o bien,} \qquad f'(a) = \sum_{j=1}^{M} f_j'(a) e_j
+	\end{equation}
+\end{itemize}
+\bigskip
+
+\item Conocer y comprender la interpretación geométrica y la interpretación física del vector derivada
+
+\begin{enumerate}
+	\item \textbf{Interpretación geométrica}
+	
+Para hacer una interpretación geométrica del vector derivada, fijamos un intervalo abierto no vacío \(J \subset \mathbb{R}\) y una función \(\gamma: J \to \mathbb{R}^M\), que suponemos continua. La imagen de \(\gamma\), es decir el conjunto \(C = \gamma (J) = \{ \gamma(t) : t \in J\} \subset \mathbb{R}^M\), es lo que en Geometría se conoce como una curva definida en forma paramétrica, o más brevemente, una \textbf{curva paramétrica}, en \(\mathbb{R}^M\).
+
+Conviene resaltar que \(\gamma\) puede no ser inyectiva, distintos valores del parámetro pueden dar lugar al mismo punto de la curva \(C\). 
+
+Pues bien, si \(\gamma\) es derivable en un punto \(a \in J\) con \(\gamma'(a) \neq 0\), podemos considerar la recta
+\[
+	R = \{ \gamma(a) + t \gamma' (a) : t \in \mathbb{R}\}
+\]
+es decir, la única recta en \(\mathbb{R}^M\) que pasa por el punto \(\gamma(a)\) y tiene como vector de dirección \(\gamma'(a)\). Se dice que \(R\) es la \textbf{recta tangente} a la curva \(C\) en el punto \(x = \gamma(a)\). Así pues, el vector derivada \(\gamma'(a) \neq 0\) es un \textit{vector de dirección de la recta tangente} a la curva \(C = \gamma(J)\) en el punto \(x = \gamma(a) \in C\).
+
+La denominación de la recta tangente tiene una clara explicación geométrica, como vamos a ver. Fijada cualquier norma en \(\mathbb{R}^M\), y dado \(\varepsilon > 0\) con \(\varepsilon < || \gamma'(a)||\), podemos conseguir \(\delta >0\) con \( ] a - \delta, a + \delta[ \subset J\), de forma que:
+\[
+	a - \delta < t_1 \leq a \leq t_2 < a + \delta, t_1 \neq t_2 \Rightarrow \left| \left| \frac{\gamma (t_2) - \gamma (t_1)}{t_2 - t_1} - \gamma'(a) \right| \right| \leq \varepsilon
+\]
+Entonces \(\frac{\gamma(t_2) - \gamma (t_1)}{t_2 - t_1} \neq 0\) es un vector de dirección de la recta, que pasa por los puntos \(\gamma(t_1)\) y \(\gamma(t_2)\), que pueden ser ambos distintos de \(\gamma(a)\). Pues bien, dicho vector tiende a ser \(\gamma'(a)\) cuando ambos valores, \(t_1, t_2\) tienden a coincidir con \(a\). \\
+
+Resaltamos la siguiente notación: Si \(\gamma\) es derivable en \(a\) con \(\gamma'(a) \neq 0\) se dice que \(x = \gamma(a)\) es un \textit{punto regular} de la curva \(C = \gamma(J)\) y, si esto ocurre para todo \(a \in J\) decimos que \(C\) es una \textit{curva regular}. Si, por el contrario, \(\gamma\) no es derivable en un punto \(a \in J\), o biene es derivable en \(a\) pero \(\gamma'(a) = 0\), el punto \(x = \gamma(a)\) es un \textit{punto singular} de la curva \(C\). \\
+
+Pensemos finalmente en las componentes de \(\gamma\). Para cada \(j \in \Delta_M\), la función \\ \(\pi_j \circ \gamma: J \to \mathbb{R}\), suele denotarse por \(x_j\), en vez de \(\gamma_j\). Se dice entonces que las \(M\) igualdades
+\[
+	x_j = x_j(t) \qquad (t \in J) \qquad \text{con } j \in \Delta_M
+\]
+son las \textit{ecuaciones paramétricas} de la curva \(C\).
+
+Sabemos que \(\gamma\) es derivable en punto \(a \in J\) si, y sólo si, lo es \(x_j\) para todo \(j \in \Delta_M\), en cuyo caso tenemos que
+\[
+	x_j' (a) = \pi_j (\gamma'(a)) \quad \forall j \in \Delta_M, \qquad \text{o bien,} \qquad \gamma'(a) = \sum_{j=1}^{M} x_j' (a) e_j
+\]
+
+Pues bien, cuando \(\gamma\) es derivable en el punto \(a\) con \(\gamma' (a) \neq 0\), la recta tangente \(R\), como curva paramétrica que también es, tiene sus ecuaciones paramétricas dadas por:
+\[
+	x_j = x_j(a) + t x_j' (a) \qquad (t \in \mathbb{R}) \qquad \text{con } j \in \Delta_M
+\]
+
+\medskip
+
+Ahora podemos destacar dos casos particulares de especial interes: \\
+
+El primero son las \textbf{curvsa planas}. Este es el caso de \(\mathbb{R}^2\). Es la imagen \(C = \gamma (J)\) de una función continua \(\gamma: J \to \mathbb{R}^2\) definida en un intervalo abierto \(J \subset \mathbb{R}\). Para denotar sus componentes, evitamos los subíndices, escribiendo \(x = \pi_1 \circ \gamma\) e \(y = \pi_2 \circ \gamma\), con lo que las ecuaciones paramétricas de \(C = \gamma (J)\) son
+\[
+	x = x(t) \qquad \text{e} \qquad y = y(t) \qquad (t \in J)
+\]
+Sabemos que \(\gamma\) es derivable en un punto \(a \in J\) si, y sólo si, lo son las funciones \(x\) e \(y\), en cuyo caso tenemos \(\gamma '(a) = (x'(a), y'(a))\). Cuando \(\gamma'(a) \neq 0\), la recta tangente a la curvva \(C\) en el punto \(\gamma(a)\) tiene ecuaciones paramétricas
+\[
+	x = x(a)  + t x'(a) \qquad \text{e} \qquad y = y(a) + t y'(a) \qquad (t \in \mathbb{R})
+\] 
+
+Conviene ahora aclarar la relación con el tipo de curva que mejor conocemos: la gráfica de una función continua \(\varphi: J \to \mathbb{R}\). Se dice que el conjunto:
+\[
+	\text{Gr} \varphi = \{ (x, \varphi (x)) : x \in J \} \subset \mathbb{R}^2
+\]
+es una \textbf{curva explícita}. Se deduce que la igualdad
+\[
+	y = \varphi (x) \qquad (x \in J)
+\]
+
+es la \textbf{ecuación explícita} de la curva Gr\(\varphi\).
+
+Por tanto, las ecuaciones paramétricas de la curva explícita Gr\(\varphi\), pueden ser
+\[
+	x = t \qquad \text{e} \qquad y = \varphi (t) \qquad (t \in J)
+\]
+
+\medskip
+
+Para terminar, mencionemos rápidamente el concepto sobre curvas paramétricas en \(\mathbb{R}^3\) o \textit{curvas alabeadas}. Ahora tenemos \(C = \gamma(J) \subset \mathbb{R}^3\) donde \(J\) es un intervalo aiberto y \(\gamma: J \to \mathbb{R}^3\) es continua. Sus componentes son \(x = \pi_1 \circ \gamma\), \(y = \pi_2 \circ \gamma\) y \(z = \pi_3 \circ \gamma\), con lo que tenemos tres ecuaciones paramétricas
+\[
+	x = x(t), \qquad y = y(t) \qquad \text{y} \qquad z = z(t) \qquad (t \in J)
+\]
+
+\bigskip
+
+\item \textbf{Interpretación física}
+
+Para hacer una interpretación física del vector derivada, podemos pensar que una función continua \(\gamma: J \to \mathbb{R}^M\) describe un movimiento en el espacio \(M\)-dimensional, de forma que \(J\) es un intervalo de \textit{tiempo} y, en cada instante \(t \in J\), el móvil ocupa la posición \(\gamma(t)\), por lo que se dice que \(\gamma(t)\) es el \textit{vector de posición} del móvil en el instante \(t\). La curva paramétrica \(C = \gamma (J)\) es la \textit{trayectoria} del movimiento y sus ecuaciones paramétricas son las \textit{ecuaciones del movimiento}.
+
+En este planteamiento físico, es natrual suponer que \(\gamma\) es derivable en todo punto de \(J\). Fijados \(t_1, t_2, t \in J\) con \(t_1 \leq t \leq t_2\) y \(t_1 \neq t_2\), el vector \(\gamma(t_2) - \gamma(t_1)\) indica el \textit{desplazamiento} del móvil durante el intervalo de tiempo \([t_1, t_2]\), luego el vector \(\frac{\gamma(t_2) - \gamma(t_1)}{t_2 - t_1}\) nos da la \textit{velocidad media} del móvil en dicho intervalo.
+
+Por ello, para todo \(t \in J\), se dice que \(\gamma' (t)\) es el \textbf{vector velocidad} del móvil en el instante \(t\) y su valor nos da la \textit{velocidad instantánea}. La norma euclídea \(|| \gamma' (t)||\) del vector velocidad se conoce como \textit{celeridad} del móvil en el instante \(t\) y nos informa de la rapidez con la que el móvil se está desplazando.
+\end{enumerate}
+\end{enumerate}
+
+\end{document}

@@ -1,0 +1,1 @@
+/usr/bin/c++ -g CMakeFiles/ejer24.dir/programas/ejer24.cpp.o -o ejer24 

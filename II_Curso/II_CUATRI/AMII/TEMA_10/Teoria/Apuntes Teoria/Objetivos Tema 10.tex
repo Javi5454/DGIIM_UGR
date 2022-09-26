@@ -1,0 +1,178 @@
+\documentclass[a4paper, 12pt]{article}
+
+\usepackage{amsmath} %Todos los paquetes de matematicas
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage[utf8]{inputenc}
+\usepackage[spanish, es-lcroman]{babel}
+\usepackage{wrapfig} %Figuras flotantes
+\usepackage{parselines}
+\usepackage{enumitem}
+\usepackage{xcolor}
+\usepackage{graphicx}
+\usepackage{subcaption}
+\usepackage{pgfplots}
+\usepackage{hyperref}
+\usepackage{textcomp}
+\usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry}
+
+
+\providecommand{\abs}[1]{\lvert#1\rvert} %Valor absoluto
+\providecommand{\norm}[1]{\lVert#1\rVert} %Norma
+
+\newtheorem*{lema*}{Lema}
+\newtheorem{teorema}{Teorema}
+\newtheorem*{teorema*}{Teorema}
+\newtheorem{corolario}{Corolario}
+\renewcommand{\qedsymbol}{\(\blacksquare\)}
+
+\providecommand{\abs}[1]{\lvert#1\rvert} %Valor absoluto
+\providecommand{\norm}[1]{\lVert#1\rVert} %Norma
+
+
+\title{\textbf{Objetivos de aprendizaje Tema 10} \\ \textit{Análisis Matemático II}}
+\author{Javier Gómez López}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\begin{enumerate}[label=\textbf{\arabic*}.]
+	
+	\item Conocer y comprender la definición de función localmente integrable y de integral indefinida de una tal función
+	
+	Diremos que una función medible \(f \in \mathcal{L} (J)\) es \textbf{localmente integrable} en \(J\), cuando \(f\) sea integrable en todo intervalo compacto \(K \subset J\), y denotaremos por \(\mathcal{L}_1^{\text{loc}} (J)\) al conjunto de tales funciones. Es claro que \(\mathcal{L}_1^{\text{loc}} (J)\) es un subespacio vectorial de \(\mathcal{L} (J)\), con \(\mathcal{L}_1 (J) \subset \mathcal{L}_1^{\text{loc}} (J)\). 
+	
+	Ahora, dada \(f \in \mathcal{L}_1^{\text{loc}} (J)\), y fijado un punto \(a \in J\), la \textbf{integral indefinida} de \(f\) con origen en \(a\) es la función \(F : J \to \mathbb{R}\) dada por
+	\[
+		F(x) = \int_a^x f(t) dt \qquad \forall x \in J
+	\]
+	
+	Nótese que la integral anterior tiene sentido para todo \(x \in J\). Si \(a < x\), ello se debe a que \(f\) es integrable en el intervalo compacto \([a,x] \subset J\). Si \(a > x\), entonces \(f\) es integrable en \([x,a]\) y basta tener en cuenta que:
+	\[
+		\int_{\beta}^{\alpha} f(x) dx \overset{\text{def}}{=} - \int_{\alpha}^{\beta} f(x) dx
+	\]
+	
+	Finalmente, en virtud de 
+	\[
+		\int_a^a f(x) dx = 0 \quad \forall a \in J
+	\]
+	
+	se tiene \(F(a) = 0\).
+	\bigskip
+	
+	\item Conocer y comprender el enunciado de los siguientes resultados:
+	
+	\begin{enumerate}[label=\textit{\alph*)}]
+		\item Teorema de derivación de integrales
+		
+		Como habíamos anunciado, si \(F\) es una integral indefinida de una función \(f \in \mathcal{L}_1^{\text{loc}} (J)\), el teorema de derivación de Lebesgue nos asegura que \(F\) es derivable c.p.d en \(J\), pero nuestro objetivo es ahora probar que de hecho se tiene \(F'(x) = f(x)\) p.c.t \(x \in J\). Nótese que la anterior igualdad c.p.d es lo mejor que podemos esperar, aún cuando \(F\) fuese derivable en todo punto de \(J\). 
+		
+		Tras realizar una serie de observaciones y probar varios resultados, podemos obtener lo que se puede entender como una primera parte del Teorema Fundamental del Cálculo:
+		
+		\begin{teorema*}[Derivación de integrales]
+		Dado un intervalo no trivial \(J \subset \mathbb{R}\), sea \(F : J \to \mathbb{R}\) cualquier integral indefinida de una función \(f \in \mathcal{L}_1^{\text{loc}} (J)\). Entonces F es derivable c.p.d en J con \(F'(x) = f(x)\) p.c.t \(x \in J\).
+		\end{teorema*}
+		
+		\item Teorema de integración de derivadas
+		
+		Veamos el resultado clave que vamos buscando, aunque después se pueda generalizar:
+		
+		
+		Trabajamos en un intervalo compacto \(K = [a,b] \subset \mathbb{R}\) con \(a < b\).
+		\begin{itemize}
+				
+		
+			\item \textit{Si \(F:K \to \mathbb{R}\) es una función creciente, entonces \(F' \in \mathcal{L}_1 (K)\) con} 
+			\begin{equation}\label{quince}
+				\int_a^b F'(x) dx \leq F(b) - F(a)	
+			\end{equation}
+		\end{itemize}
+		
+		Es tentador pensar que la desigualdad anterior pueda ser una igualdad, pero en tal caso, lo podríamos usar para todo intervalo de la forma \([a,x]\) con \(a<x<b\), obteniendo que
+		\[
+			\int_a^x F'(t) dt = F(x) - F(a) \qquad \forall x \in [a,b]
+		\]
+		
+		Pero entonces, salvo una constante aditiva, \(F\) sería una integral indefinida de \(F'\), luego \(F\) sería absolutamente continua. Sin embargo, era solamente una función creciente, que puede no ser ni continua. Ahora veamos un resultado muy interesante
+		
+		\begin{teorema*}[Integración de derivadas]
+		Dado un intervalo no trivial \(J \in \mathbb{R}\), sea \(F: J \to \mathbb{R}\) una función que tenga variación acotada en cada intervalo compacto \(K \subset J\). Entonces \(F'\) es localmente integrable en J.		
+		\end{teorema*}
+		
+		\item Versión general del teorema fundamental del cálculo
+		
+		Lo primero de todo, tenemos que dar la siguiente definición: se dice que una función \(F: K \to \mathbb{R}\) es \textbf{absolutamente continua}, cuando para cada \(\varepsilon > 0\) pueda encontrarse un \(\delta > 0\) verificando la siguiente condición: si \(n \in \mathbb{N}\) y \(\{]a_k, b_k[ : k \in \Delta_n\}\) es una familia de intervalos abiertos no vacíos, dos a dos disjuntos y contenidos en \(K\), se tiene:
+		\[
+			\sum_{k=1}^{n} (b_k - a_k) < \delta \Longrightarrow \sum_{k=1}^{n} | F(b_k) - F(a_k) | < \varepsilon
+		\]
+		
+		\begin{teorema*}[Fundamental del Cálculo]
+		Dado un intervalo no trivial \(J \subset \mathbb{R}\), sea \(F: J \to \mathbb{R}\) una función, verificando que \(F_{|_K}\) es absolutamente continua, para todo intervalo compacto \(K \subset J\). Entonces F es derivable c.p.d en J y su derivada es localmente integrable en J con 
+		\[
+			\int_a^b F'(t) dt = F(b) - F(a) \qquad \forall a,b \in J
+		\]
+		\end{teorema*}
+		
+		Conviene resaltar que el resultado anterior puede expresarse de forma que muestre la integración como operación inversa de la derivación.
+	\end{enumerate}
+	
+	\bigskip
+	
+	\item Conocer y comprender la versión elemental del teorema fundamental del cálculo, incluyendo su demostración.
+	
+	Para llegar a dicho resultado, es necesario enunciar otro antes:
+	\begin{itemize}
+		\item \textit{Sea \(f \in \mathcal{L}_1^{\text{loc}}(J)\) y F una integral indefinida de f. Si f es continua en un punto \(x \in J\), entonces F es derivable en el punto x, con \(F' (x) = f(x)\)}.
+	\end{itemize}
+	
+	\begin{proof}
+	Fijado \(y \in J \setminus \{x\}\), integrando una función constante, vemos claramente que, tanto si \(x < y\) como si \(y < x\), se tiene \((y -x) f(x) = \int_x^y f(x) dt\). Además, si la integral indefinida \(F\) tiene su origen en \(a \in J\), usando que
+	\begin{itemize}
+		\item \textit{Si \(f \in \mathcal{L}_1^{\text{loc}}(J)\), para cualesquiera \(a,b,c \in J\) se tiene:}
+		\begin{equation}\label{cuatro}
+			\int_a^b f(x) dx = \int_a^c f(x) dx + \int_c^b f(x) dx
+		\end{equation}
+	\end{itemize}
+	con \(c = x\) y \(b = y\) obtenemos que
+	\[
+		F(y) - F(x) = \int_a^y f(t) dt - \int_a^x f(t) dt = \int_x^y f(t) dt
+	\]
+	
+	Usando la linealidad de la integral, tenemos por tanto que
+	\begin{equation}\label{seis}
+		\frac{F(y) - F(x)}{y-x} - f(x) = \frac{1}{y-x} \left( \int_x^y f(t) dt - \int_x^y f(x) dt \right) = \frac{1}{y-x} \int_x^y (f(t) - f(x)) dt
+	\end{equation}
+	
+	Por otra parte, dado \(\varepsilon > 0\), la continuidad de \(f\) en el punto \(x\) nos da un \(\delta > 0\) tal que, para todo \(t \in J\) que verifique \(| t -x| < \delta\), se tiene \(| f(t) - f(x) | < \varepsilon\).
+	
+	Supongamos que \(|y - x | < \delta\) y sea \(K_y\) el intervalo compacto de extremos \(x\) e \(y\). Puesto que \(f\) es integrable en \(K_y\), también lo es la función \(\varphi : K_y \to \mathbb{R}\) dada por \(\varphi (t) = f(t) - f(x)\) para todo \(t \in K_y\). Además, para \(t \in K_y\) se tiene que \(|t-x| \leq |y-x| < \delta\), luego \(| \varphi (t) | < \varepsilon\). Deducimos claramente que
+	\[
+		\left| \int_x^y (f(t) - f(x)) dt \right| = \left| \int_{K_y} \varphi \right| \leq \int_{K_y} | \varphi| \leq \varepsilon \lambda (K_y) = \varepsilon |y-x|
+	\] 
+	
+	Usando ahora (\ref{seis}), obtenemos la desigualdad
+	\[
+		\left| \frac{F(y) - F(x)}{y-x} - f(x) \right| = \frac{1}{|y-x|} \left| \int_x^y (f(t) - f(x)) dt \right| \leq \varepsilon
+	\]
+	
+	válida para todo \(y \in J\) con \(0 < |y-x| < \delta\). Esto prueba que \(\lim_{y \to x} \frac{F(y) - F(x)}{y-x} = f(x)\), es decir, que \(F\) es derivable en el punto \(x\) con \(F'(x) = f(x)\), como se quería.
+	\end{proof}
+	
+	\medskip
+	
+	El resultado previo puede aplicarse en todos los puntos de \(J\), obteniendo así la versión más elemental del teorema fundamental del cálculo. Seguimos trabajando en un intervalo no trivial \(J \subset \mathbb{R}\).
+	
+	\begin{teorema}[Versión elemental teorema fundamental del cálculo]
+	Sea \(f: J \to \mathbb{R}\) una función continua y F una integral indefinida de f. Entonces F es una función de clase \(C^1\) en J con \(F'(x) = f(x)\) para todo \(x \in J\).
+	\end{teorema}
+	
+	\begin{proof}
+	Acabamos de ver que \(F\) es derivable en \(J\) con \(F' = f\), que es una función continua, luego \(F\) es de clase \(C^1\) en \(J\).
+	\end{proof}
+\end{enumerate}
+
+\end{document}

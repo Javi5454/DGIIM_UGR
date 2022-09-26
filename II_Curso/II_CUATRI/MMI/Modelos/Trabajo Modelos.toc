@@ -1,0 +1,8 @@
+\babel@toc {spanish}{}
+\contentsline {section}{\numberline {1}Introducción}{3}{section.1}%
+\contentsline {section}{\numberline {2}Planteamiento del modelo}{4}{section.2}%
+\contentsline {section}{\numberline {3}Resolución}{5}{section.3}%
+\contentsline {section}{\numberline {4}Aclaraciones}{6}{section.4}%
+\contentsline {section}{\numberline {5}Cuestiones interesantes}{7}{section.5}%
+\contentsline {section}{\numberline {6}Conclusiones}{7}{section.6}%
+\contentsline {section}{\numberline {7}Reflexión sobre el trabajo}{7}{section.7}%

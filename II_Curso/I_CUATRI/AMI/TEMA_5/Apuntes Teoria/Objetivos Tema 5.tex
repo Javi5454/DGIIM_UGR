@@ -1,0 +1,243 @@
+\documentclass[a4paper, 12pt]{article}
+
+\usepackage{amsmath} %Todos los paquetes de matematicas
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage[utf8]{inputenc}
+\usepackage[spanish, es-lcroman]{babel}
+\usepackage{wrapfig} %Figuras flotantes
+\usepackage{parselines}
+\usepackage{enumitem}
+\usepackage{xcolor}
+\usepackage{graphicx}
+\usepackage{subcaption}
+\usepackage{pgfplots}
+\usepackage{hyperref}
+\usepackage{textcomp}
+\usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry}
+
+
+\providecommand{\abs}[1]{\lvert#1\rvert} %Valor absoluto
+\providecommand{\norm}[1]{\lVert#1\rVert} %Norma
+
+\newtheorem{teorema}{Teorema}
+\renewcommand{\qedsymbol}{\(\blacksquare\)}
+
+
+\title{\textbf{Objetivos de aprendizaje Tema 5} \\ \textit{Análisis Matemático I}}
+\author{Javier Gómez López}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\begin{enumerate}[label=\textbf{\arabic*}.]
+
+\item Conocer y comprender las siguientes definiciones:
+	\begin{enumerate}[label=\textit{\alph*})]
+	
+	\item Sucesión de Cauchy y espacio métrico completo
+	
+	Si \(E\) es un espacio métrico con distancia \(d\), y \(x_n \in E\) para todo \(n \in \mathbb{N}\), se dice que \(\{x_n\}\) es una \textbf{sucesión de Cauchy} en \(E\), cuando:
+	\[
+		\forall \varepsilon > 0 \quad \exists m \in \mathbb{N} : p,q \geq m \Rightarrow d(x_p,x_q) < \varepsilon
+	\]
+	
+	Es obvio que, en \(\mathbb{R}\) con la distancia usual, las sucesiones de Cauchy son las que ya conocíamos, que coinciden con las convergentes. En general, tenemos siempre una implicación:
+	\begin{itemize}
+		\item \textit{En cualquier espacio métrico, toda sucesión convergente es una sucesión de Cauchy}.
+	\end{itemize}
+	
+	También es importante que, en general, el recíproco del resultado anterior no es cierto. \\
+	
+	Por otro lado, dado un espacio métrico \(E\) con distancia \(d\), se dice que \(d\) es una \textbf{distancia completa}, o también que \(E\) es un \textbf{espacio métrico completo}, cuando toda sucesión de Cauchy de puntos de \(E\) es convergente.
+	
+	El teorema de complitud de \(\mathbb{R}\), como su nombre indica, afirma que la distancia usual \(\mathbb{R}\) es completa, o que \(\mathbb{R}\) con la distancia usual es un espacio métrico completo.
+	
+	Diremos ahora que una norma \(||\cdot||\) en un espacio vectorial \(X\) es una \textbf{norma completa}, cuando es completa con la distancia \(d\) asociada, definida por \(d(x,y) = ||x-y||\) para cada \(x,y \in X\). Un \textbf{espacio de Banach} es un espacio normado que, con la distancia asociada a su norma, es un espacio métrico completo. Por otro lado, dado un espacio pre-hilbertiano cuya norma, la asociada a su producto escalar, es completa, recibe el nombre de \textbf{espacio de Hilbert}.
+	
+		
+	\medskip
+	
+	\item Función uniformemente continua
+	
+	En lo que sigue fijamos dos espacios métricos \(E\) y \(F\), cuyas distancias se denotan ambas por \(d\), y una función \(f: E \rightarrow F\). La continuidad de \(f\) se expresa en la forma
+	\[
+		\forall x \in E \text{ } \forall \varepsilon > 0 \text{ } \exists \delta > 0 : y \in E, \text{ }d(x,y) < \delta \Rightarrow d(f(x),f(y)) < \varepsilon
+	\]
+	donde sabemos que \(\delta\) puede depender tanto de \(\varepsilon\) como del punto \(x \in E\) considerado. Pues bien, tendremos continuidad uniforme cuando podamos conseguir que \(\delta\) solo dependa de \(\varepsilon\).
+	
+	Por tanto, decimos que \(f\) es \textbf{uniformemente continua} cuando:
+	\[
+		\forall \varepsilon > 0 \text{ } \exists \delta > 0 : x,y \in E, \text{ } d(x,y) < \delta \Rightarrow d(f(x),f(y)) < \varepsilon
+	\]
+	
+	Caracterizamos fácilmente la continuidad uniforme en términos de sucesiones:
+	\begin{itemize}
+		\item \textit{Si f es uniformemente continua y \(\{x_n\}\), \(\{y_n\}\) son sucesiones de puntos de E verificando que \(\{d(x_n, y_n)\} \rightarrow 0\), entonces \(\{d(fx_n),f(y_n))\} \rightarrow 0\). El recíproco también es cierto, más aún: si f no es uniformemente continua, existen dos sucesiones \(\{x_n\}\) e \(\{y_n\}\) de puntos de E y existe un \(\varepsilon > 0\) tales que \(d(x_n,y_n) < 1/n\) para todo \(n \in \mathbb{N}\), pero también se tiene que \(d(f(x_n),f(y_n)) \geq \varepsilon\) para todo \(n \in \mathbb{N}\)}
+	\end{itemize}
+	
+\medskip
+
+	\item Función lipschitziana y constante de Lipschitz
+	
+	Si \(E\) y \(F\) son espacios métricos, una función \(f:E \rightarrow F\) es \textbf{lipschitziana} cuando existe una constante \(M \in \mathbb{R}_0^+\) tal que:
+	\begin{equation}\label{lipschitz}
+	d(f(x),f(y)) \leq M d(x,y) \qquad \forall x,y \in E
+	\end{equation}
+	
+	Es evidente que toda función lipschitziana es uniformemente continua, y sabemos que el recíproco es falso.
+	
+	La mínima constante \(M_0\) que verifica (\ref{lipschitz}) es la \textbf{constante de Lipschitz} de \(f\), que viene dada por
+	\[
+		M_0 = \text{sup} \left\{ \frac{d(f(x),f(y))}{d(x,y)} : x,y \in E, x \neq y \right\}
+	\]
+	
+	Cuando \(M_0 \leq 1\) se dice que \(f\) es \textbf{no expansiva}. Cuando se tiene de hecho \(M_0 < 1\) decimos que \(f\) es \textbf{contractiva}.
+	\end{enumerate}
+	
+\bigskip
+
+	\item Conocer y comprender los siguientes resultados:
+	
+	\begin{enumerate}[label=\textit{\alph*})]
+		\item Complitud de \(\mathbb{R}^N\)
+		
+		En el ambiente particular de los espacio normados tenemos una ventaja que no teníamos en espacios métricos cualesquiera:
+	\begin{itemize}
+		\item \textit{Dos normas equivalentes en un mismo espacio vectiral dan lugar a las mismas sucesiones de Cauchy. Por tanto, toda norma equivalente a una norma completa es completa.}
+	\end{itemize}
+	
+		\begin{teorema}
+		Todo espacio normado de dimensión finita es un espacio de Banach. Por tanto, el espacio euclídeo N-dimensional es un espacio de Hilbert.
+		\end{teorema}
+		
+		\begin{proof}
+		Basta, por ejemplo, probar que la norma del máximo en \(\mathbb{R}^N\) es completa. Si \(\{x_n\}\) es una sucesión de Cauchy de vectores de \(\mathbb{R}^N\), le aplicamos la desigualdad que ya hemos usado varias veces:
+		\[
+			| x_p(k) - x_q (k)| \leq ||x_p - x_q ||_{\infty} \quad \forall p,q \in \mathbb{N}, \forall k \in \Delta_N
+		\]
+		
+		Deducimos que, para cada \(k \in \Delta_N\), la sucesión de números reales \(\{x_n(k)\}\) es de Cauchy luego, por el teorema de complitud de \(\mathbb{R}\), es convergente. Por tanto \(\{x_n\}\) es convergente.
+		\end{proof}
+		
+		\begin{itemize}
+			\item \textit{Sea E un espacio métrico y A un subespacio métrico de E. Se tiene:}
+			
+			\begin{enumerate}[label=(\textit{\roman*})]
+				\item \textit{Si A es completo, entonces A es un subconjunto cerrado de E.}
+				\item \textit{Si E es completo y A es un subconjunto cerrado de E, encontes A es completo}.
+			\end{enumerate}
+		\end{itemize}
+		
+	\medskip
+	
+	\item Versión general del teorema de Heine
+	
+	\begin{teorema}[\textbf{Heine}]
+		Sean E y F dos espacios métricos y \(f: E \rightarrow F\) una función continua. Si E es compacto, entonces f es uniformemente continua.
+	\end{teorema}
+	
+	\begin{proof}
+	Por reducción al absurdo, suponemos que \(f\) no es uniformemente continua. Existen sucesiones \(\{x_n\}\) e \(\{y_n\}\) de puntos de \(E\), y un \(\varepsilon > 0\), tales que, para todo \(n \in \mathbb{N}\) se tiene
+	\[
+		d(x_n.y_n) < 1/n \qquad \text{y} \qquad d(f(x_n),f(y_n)) \geq \varepsilon
+	\]
+	
+	Por ser \(E\) compacto, tenemos una sucesión parcial \(\{x_{\sigma (n)}\}\) que converge a un punto \(x \in E\). Puesto que \(\{d(x_{\sigma(n)}, y_{\sigma (n)})\} \rightarrow 0\), deducimos que también \(\{y_{\sigma (n)}\} \rightarrow x\). Como \(f\) es continua, tenemos que \(\{f(x_{\sigma (n)})\} \rightarrow f(x)\) y \(\{f(y_{\sigma (n)})\} \rightarrow f(x)\), luego \(\{d(f(x_{\sigma (n)}), f(y_{\sigma (n)}))\} \rightarrow 0\), lo cual es una contradicción, ya que \\ \(d(f(x_{\sigma (n)}), f(y_{\sigma (n)})) \geq \varepsilon\) para todo \(n \in \mathbb{N}\).
+	\end{proof}
+	\end{enumerate}
+
+\bigskip
+
+	\item Conocer los siguientes resultados, incluyendo su demostración:
+	
+		\begin{enumerate}[label=\textit{\alph*})]
+			\item Teorema del punto fijo
+			
+			\begin{teorema}[\textbf{Punto fijo de Banach}]
+			Sea E un espacio métrico completo y \(f: E \rightarrow E\) una aplicación contractiva. Entonces f tiene un único punto fijo, es decir, existe un único punto \(x \in E\) tal que \(f(x) =x\).			
+			\end{teorema}
+			
+			\begin{proof}
+			Fijamos \(x_0 \in E\) arbitrario y definimos por inducción una sucesión \(\{x_n\}\) de puntos de \(E\), tomando \(x_1 = f(x_0)\) y \(x_{n+1} = f(x_n)\) para todo \(n \in \mathbb{N}\). Probemos que esta sucesión es convergente y su límite será el punto fijo que buscamos.
+			
+			Si \(\alpha < 1\) es la constante de Lipshitz de \(f\) y \(\rho = d(x_0, x_1)\), comprobamos por inducción que
+			\begin{equation}\label{hipotesis_induccion}
+				d(x_n, x_{n+1}) \leq \alpha^n \rho \qquad \forall n \in \mathbb{N}
+			\end{equation}
+			
+			En efecto, tenemos \(d(x_1,x_2) = d(f(x_0),f(x_1)) \leq \alpha d(x_0, x_1) = \alpha \cdot \rho\) y, suponiendo que (\ref{hipotesis_induccion}) se verifca para un \(n  \in \mathbb{N}\), deducimos que
+			\[
+				d(x_{n+1},x_{n+2}) = d(f(x_n),f(x_{n+1})) \leq \alpha d(x_n, x_{n+1}) \leq \alpha \cdot \alpha^n \cdot \rho = \alpha^{n+1} \cdot \rho
+			\]
+			
+			Ahora, para cualesquiera \(n,k \in \mathbb{N}\) tenemos
+			\begin{equation}\label{desigualdad}
+				d(x_n, x_{n+k}) \leq \sum_{j=0}^{k-1} d(x_{n+j},x_{n+j+1}) \leq \rho \sum_{j=0}^{k-1} \alpha^{n+j} \leq \rho \cdot \alpha^n \cdot \sum_{j=0}^{\infty} \alpha^j = \frac{\rho \cdot \alpha^n}{1 - \alpha}
+			\end{equation}
+			
+			De la desigualdad (\ref{desigualdad}) deduciremos fácilmente que \(\{x_n\}\) es una sucesión de Cauchy. En efecto, dado \(\varepsilon > 0\), como \(\{\alpha^n\} \rightarrow 0\), existe \(m \in \mathbb{N}\) tal que, para \(n \geq m\) se tiene que \(\rho \alpha^n < \varepsilon (1 - \alpha)\). Entonces, para \(p,q \geq m\), suponiendo sin perder generalidad que \(p < q\), usamos (\ref{desigualdad}) con \(n = p\) y \(k = q - p\) para obtener
+			\[
+				d(x_p,x_q) = d(x_n, x_{n+k}) \leq \frac{\rho \alpha^n}{1 - \alpha} < \varepsilon
+			\]
+			
+			Como por hipótesis \(E\) es completo, tenemos \(\{x_n\} \rightarrow x \in E\), luego \(\{f(x_n)\} = \{x_{n+1}\} \rightarrow x\). Pero \(f\) es continua, luego \(\{f(x_n)\} \rightarrow f(x)\), y concluimos que \(f(x) = x\). Finalmente, si \(y \in E\) es otro punto fijo de \(f\), se tiene que \(d(x,y) = d(f(x),f(y)) \leq \alpha d(x,y)\), luego \((1 - \alpha) d(x,y) \leq 0\). Como \(\alpha < 1\), deducimos que \(d(x,y) \leq 0\), es decir \(x = y\).
+			\end{proof}
+			
+			\medskip
+			
+			\item Caracterización de la continuidad de una aplicación lineal
+			
+			\begin{itemize}
+				\item \textit{Sean X,Y dos espacios normados y sea \(T: X \rightarrow Y\) una aplicación lineal. Las siguientes afirmaciones son equivalentes:}
+				
+				\begin{enumerate}[label=(\textit{\roman*})]
+					\item \textit{T es continua}
+					\item \textit{Existe una constante \(M \in \mathbb{R}_0^+\) tal que \(||T(x)|| \leq M ||x||\) para todo \(x \in X\)}
+				\end{enumerate}
+			\end{itemize}
+			
+			\begin{proof}
+			\textit{(i) \(\Rightarrow\) (ii)}. Teniendo en cuenta que \(T(0) = 0\), la continuidad de \(T\) en 0 nos dice que
+			\[
+				\exists \delta > 0 : z \in X, ||z|| \leq \delta \Rightarrow ||T(z)|| < 1
+			\]
+			
+			Dado \(x \in X \setminus \{0\}\), tomando \(z = \frac{\delta x}{2 ||x||}\) tenemos claramente \(||z|| = \delta / 2 < \delta\), luego
+			\[
+				||T(x)|| = \frac{2 ||x||}{\delta} ||T(z)|| \leq \frac{2}{\delta} ||x||
+			\]
+			
+			Como esta desigualdad es obvia cuando \(x=0\), hemos probado \textit{(ii)} con \(M = 2 / \delta\).
+			
+			\textit{(ii) \(\Rightarrow\) (i)}. Para cualesquiera \(u,v \in X\), de \textit{(ii)} deducimos claramente que
+			\[
+				||T(u) - T(v)|| = ||T(u-v)|| \leq M ||u - v||
+			\]
+			lo que prueba que \(T\) es lipschitziana, luego continua.
+			\end{proof}
+			
+			\begin{itemize}
+				\item \textit{Si X es un espacio normado de dimensión finita, toda aplicación lineal de X en cualquier otro espacio es normado, es continua.}
+			\end{itemize}
+			
+			\begin{proof}
+			Sea \(Y\) otro espacio normado y \(T: X \rightarrow Y\) una aplicación lineal. Definimos entonces una nueva norma \(||\cdot ||_T\) en \(X\), de la siguiente forma
+			\[
+				||x||_T = ||x|| + ||T(x)|| \qquad \forall x \in X
+			\]
+			
+			Se comprueba rutinariamente que \(||\cdot||_T\) es efectivamente una norma en \(X\). Como \(X\) tiene dimensión finita, el teorema de Hausdorff nos dice que \(||\cdot||_T\) es equivalente a la norma de partida en \(X\), luego existe una constante \(\rho \in \mathbb{R}^+\) tal que \(||x||_T \leq \rho ||x||\) para todo \(x \in X\). Pero está bien claro que 
+			\[
+				||T(x)|| \leq ||x||_T \leq \rho ||x|| \qquad \forall x \in X
+			\]
+			y esto prueba que \(T\) es continua.
+			\end{proof}
+		\end{enumerate}
+\end{enumerate}
+
+\end{document}

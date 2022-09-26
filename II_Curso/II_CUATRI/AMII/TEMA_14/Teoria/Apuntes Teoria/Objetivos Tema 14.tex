@@ -1,0 +1,57 @@
+\documentclass[a4paper, 12pt]{article}
+
+\usepackage{amsmath} %Todos los paquetes de matematicas
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage[utf8]{inputenc}
+\usepackage[spanish, es-lcroman]{babel}
+\usepackage{wrapfig} %Figuras flotantes
+\usepackage{parselines}
+\usepackage{enumitem}
+\usepackage{xcolor}
+\usepackage{graphicx}
+\usepackage{subcaption}
+\usepackage{pgfplots}
+\usepackage{hyperref}
+\usepackage{textcomp}
+\usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry}
+
+
+\providecommand{\abs}[1]{\lvert#1\rvert} %Valor absoluto
+\providecommand{\norm}[1]{\lVert#1\rVert} %Norma
+
+\newtheorem*{lema*}{Lema}
+\newtheorem{teorema}{Teorema}
+\newtheorem*{teorema*}{Teorema}
+\newtheorem{corolario}{Corolario}
+\renewcommand{\qedsymbol}{\(\blacksquare\)}
+
+\providecommand{\abs}[1]{\lvert#1\rvert} %Valor absoluto
+\providecommand{\norm}[1]{\lVert#1\rVert} %Norma
+
+
+\title{\textbf{Objetivos de aprendizaje Tema 14} \\ \textit{Análisis Matemático II}}
+\author{Javier Gómez López}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\begin{enumerate}[label=\textbf{\arabic*}.]
+	
+	\item Conocer el enunciado del teorema del cambio de variable y comprender la forma en que se usa en la práctica para calcular integrales múltiples.
+	
+	Recordemos que, si \(\Omega\) y \(G\) son abierto de \(\mathbb{R}^N\), se dice que una aplicación \(\Phi : \Omega \to G\) es un \textbf{difeomorfismo} de clase \(C^1\), cuando \(\Phi\) es biyectiva y de clase \(C^1\) en \(\Omega\), mientras que \(Phi^{-1}\) es de clase \(C^1\) en \(G\). Ahora enunciamos el teorema buscado:
+	
+	\begin{teorema*}[Cambio de variable]
+	Sea \(\Phi : \Omega \to G\) un difeomorfismo de clase \(C^1\) entre dos abiertos de \(\mathbb{R}^N\). Dado un conjunto medible \(E \subset \Omega\) y una función medible \(f: \Phi (E) \to \mathbb{R}\), se considera la función \(g: E \to \mathbb{R}\) definida por \(g(t) = f(\Phi (t)) |\det J \Phi (t)|\) para todo \(t \in E\), donde \(J \Phi (t)\) es la matriz jacobiana de \(\Phi (t)\). Entonces \(f\) es integrable en \(\Phi (E)\) si, y sólo si, \(g\) es integrable en \(E\), en cuyo caso se tiene:
+	\[
+		\int_{\Phi (E)} f(x) dx = \int_E f(\Phi(t)) |\det J \Phi (t)| dt
+	\]
+	\end{teorema*}
+\end{enumerate}
+
+\end{document}

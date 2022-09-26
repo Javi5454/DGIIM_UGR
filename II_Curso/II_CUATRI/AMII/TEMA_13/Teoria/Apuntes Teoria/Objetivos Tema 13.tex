@@ -1,0 +1,118 @@
+\documentclass[a4paper, 12pt]{article}
+
+\usepackage{amsmath} %Todos los paquetes de matematicas
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage[utf8]{inputenc}
+\usepackage[spanish, es-lcroman]{babel}
+\usepackage{wrapfig} %Figuras flotantes
+\usepackage{parselines}
+\usepackage{enumitem}
+\usepackage{xcolor}
+\usepackage{graphicx}
+\usepackage{subcaption}
+\usepackage{pgfplots}
+\usepackage{hyperref}
+\usepackage{textcomp}
+\usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry}
+
+
+\providecommand{\abs}[1]{\lvert#1\rvert} %Valor absoluto
+\providecommand{\norm}[1]{\lVert#1\rVert} %Norma
+
+\newtheorem*{lema*}{Lema}
+\newtheorem{teorema}{Teorema}
+\newtheorem*{teorema*}{Teorema}
+\newtheorem{corolario}{Corolario}
+\renewcommand{\qedsymbol}{\(\blacksquare\)}
+
+\providecommand{\abs}[1]{\lvert#1\rvert} %Valor absoluto
+\providecommand{\norm}[1]{\lVert#1\rVert} %Norma
+
+
+\title{\textbf{Objetivos de aprendizaje Tema 13} \\ \textit{Análisis Matemático II}}
+\author{Javier Gómez López}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\begin{enumerate}[label=\textbf{\arabic*}.]
+	
+	\item Conocer y comprender el enunciado de los siguientes resultados, así como la forma en que se usan en la práctica:
+	
+	\begin{enumerate}[label=\textit{\alph*)}]
+		\item Teorema de Tonelli, con especial atención al caso particular de una función característica.
+		
+		En lo que sigue, fijamos \(p,q \in  \mathbb{N}\), para tomar \(N = p + q\). Sea \(Z\) un conjunto no vacío arbitrario, aunque sólo usaremos \(Z = \mathbb{R}\) y \(Z = [0,\infty]\). Dada una función \(f: \mathbb{R}^N \to Z\), para cada \(x \in \mathbb{R}^p\) definimos una función \(f_x : \mathbb{R}^q \to Z\) escribiendo
+		\[
+			f_x (y) = f(x,y) \qquad \forall y \in \mathbb{R}^q
+		\]
+		
+		Suele decirse que \(f_x\) es la \textbf{sección vertical} de \(f\) en el punto \(x\). Análogamente, fijado \(y \in \mathbb{R}^q\), definimos la \textbf{sección horizontal} de \(f\) en el punto \(y\), que es la función \(f^y : \mathbb{R}^p \to Z\) dada por
+		\[
+			f^y (x) = f(x,y) \qquad \forall x \in \mathbb{R}^p
+		\]
+		
+		Enunciamos ahora el teorema buscado:
+		\begin{teorema*}[Tonelli]
+		Si \(f: \mathbb{R}^N \to [0,\infty]\) es una función medible positiva, se tiene:
+		\begin{enumerate}[label=\textit{(\roman*)}]
+			\item La función \(f_x\) es medible p.c.t \(x \in \mathbb{R}^p\), y anáogamente, \(f^Y\) es medible p.c.t \(y \in \mathbb{R}^q\)
+			\item Las función \(\varphi\) y \(\Psi\), definidas c.p.d en \(\mathbb{R}^p\) y \(\mathbb{R}^q\) respectivamente, por
+			\[
+				\varphi (x) = \int_{\mathbb{R}^q} f(x,y) dy \quad \text{p.c.t} \quad x \in \mathbb{R}^p \qquad \text{y} \qquad \Psi (y) = \int{\mathbb{R}^p} f(x,y) dx \quad \text{p.c.t} \quad y \in \mathbb{R}^q
+			\]
+			son medibles y verifican que:
+			\[
+				\int_{\mathbb{R}^N} f(x,y) d(x,y) = \int_{\mathbb{R}^p} \varphi (x) dx = \int_{\mathbb{R}^q} \Psi (y) dy
+			\]
+		\end{enumerate}
+		\end{teorema*}
+		
+		\medskip
+		
+		Estudiemos ahora el caso en el que trabajemos con una función característica. Dado un conjunto \(E \subset \mathbb{R}^N\), pensemos ahora lo que debe ocurrir para que se tenga que \(\chi_E \in \mathcal{F}\), donde \(\mathcal{F}\) es la familia de las funciones que cumples las dos condiciones del teorema de Tonelli. Fijado \(x \in \mathbb{R}^p\), la sección vertical \((\chi_E)_x\) es la función característica del conjunto dado por
+		\[
+			E_x = \{y \in \mathbb{R}^q : (x,y) \in E\} \subset \mathbb{R}^q
+		\]
+		Es natural decir que \(E_x\) es la \textbf{sección vertical} de \(E\) en el punto \(x\). Análogamente, dado \(y \in \mathbb{R}^q\), la \textbf{sección horizontal} de \(E\) en el punto \(y\) es el conjunto \(E^y = \{ x \in \mathbb{R}^p : (x,y) \in E\} \subset \mathbb{R}^p\). Reenunciemos ahora el teorema:
+		
+		\begin{teorema*}
+		Para todo conjunto medible \(E \subset \mathbb{R}^N\) se tiene:
+		\begin{enumerate}[label=(\textit{\roman*})]
+			\item La sección vertical \(E_x \subset \mathbb{R}^q\) es medible p.c.t \(x \in \mathbb{R}^p\) y la sección horizontal \(E^y \subset \mathbb{R}^p\) es medible p.c.t \(y \in \mathbb{R}^q\).
+			\item Las funciones \(x \mapsto \lambda_q (E_x)\) e \(y \mapsto \lambda_p(E^y)\), definidas c.p.d en \(\mathbb{R}^p\) y \(\mathbb{R}^q\) respectivamente, son medibles y se verifica que
+			\[
+				\lambda_N (E) = \int_{\mathbb{R}^p} \lambda_q (x) dx = \int_{\mathbb{R}^q} \lambda_p(E^y) dy
+			\]
+		\end{enumerate}
+		\end{teorema*}
+		
+		\bigskip
+		
+		\item Teorema de Fubini
+		
+		El teorema de Tonelli se utiliza principalmente como criterio de integrabilidad. Pero lo que ahora realmente nos interesa es comprobar que, supuesto que \(f\) sea integrable en \(\mathbb{R}^N\), su integral pueda calcularse también usando sus integrales iteradas. Eso es precisamente lo que afirma el siguiente teorema:
+		\begin{teorema*}[Fubini]
+		Para toda función \(f \in \mathcal{L}_1 (\mathbb{R}^N\) se tiene:
+		\begin{enumerate}[label=(\textit{\roman*})]
+			\item \(f_x \in \mathcal{L}_1 (\mathbb{R}^q)\) p.c.t \(x \in \mathbb{R}^p\) y \(f^y \in \mathcal{L}_1 (\mathbb{R}^p)\) p.c.t \(y \in \mathbb{R}^q\)
+			\item Las funciones \(\varphi\) y \(\Psi\), definidas c.p.d en \(\mathbb{R}^p\) y \(\mathbb{R}^q\) respectivamente, por
+			\[
+				\varphi (x) = \int_{\mathbb{R}^q} f(x,y)dy \quad \text{p.c.t} \quad x \in \mathbb{R}^p \qquad \text{y} \qquad \Psi (y) = \int_{\mathbb{R}^p} f(x,y) dx \quad \text{p.c.t} y \in \mathbb{R}^q
+			\]
+			verifican que \(\varphi \in \mathcal{L}_1 (\mathbb{R}^p)\) y \(\Psi \in \mathcal{L}_1 (\mathbb{R}^q)\) con:
+			\[
+				\int_{\mathbb{R}^N} f(x,y) d(x,y) = \int_{\mathbb{R}^p} \varphi (x) dx = \int_{\mathbb{R}^q} \Psi (y) dy
+			\]
+		\end{enumerate}
+		\end{teorema*}
+	
+	\end{enumerate}
+\end{enumerate}
+
+\end{document}

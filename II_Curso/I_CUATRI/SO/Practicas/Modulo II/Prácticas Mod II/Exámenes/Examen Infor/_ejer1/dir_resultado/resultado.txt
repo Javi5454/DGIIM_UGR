@@ -1,0 +1,8 @@
+ARCHIVOS CON MÁS DE 3 BLOQUES
+
+dir_prueba/dir2/hola.c
+dir_prueba/dir2/quetal.c
+dir_prueba/dir3/quetal.c
+dir_prueba/dir1/adios.c
+dir_prueba/dir1/hola.c
+dir_prueba/dir1/quetal.c

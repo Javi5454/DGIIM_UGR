@@ -1,0 +1,9 @@
+#!/bin/bash
+
+gcc -g ejer1.c -o ejer1
+
+./ejer1 . 765
+
+# . es el directorio que leerá
+# 765 es el octal del que se sacan los permisos
+

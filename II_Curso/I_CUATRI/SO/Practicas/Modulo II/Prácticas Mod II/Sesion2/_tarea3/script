@@ -1,0 +1,15 @@
+#!/bin/bash
+
+rm archivo1
+rm archivo2
+
+gcc -g tarea3a.c -o tarea3a
+gcc -g tarea3b.c -o tarea3b
+
+./tarea3a
+
+ls -l
+
+./tarea3b
+
+ls -l

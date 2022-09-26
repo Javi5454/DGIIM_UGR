@@ -1,0 +1,76 @@
+\documentclass[a4paper, 12pt]{article}
+
+\usepackage{amsmath} %Todos los paquetes de matematicas
+\usepackage{amsthm}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage[utf8]{inputenc}
+\usepackage[spanish]{babel}
+\usepackage{wrapfig} %Figuras flotantes
+\usepackage{parselines}
+\usepackage{enumitem}
+\usepackage{xcolor}
+\usepackage{graphicx}
+\usepackage{subcaption}
+\usepackage{tikz}
+\usepackage{pgfplots}
+\usepackage{hyperref}
+\usepackage{textcomp}
+\usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry}
+
+\theoremstyle{definition}
+\newtheorem{ej}{Ejercicio}
+
+\providecommand{\abs}[1]{\lvert#1\rvert} %Valor absoluto
+\providecommand{\norm}[1]{\lVert#1\rVert} %Norma
+
+\title{Ejercicio 16/9/2021}
+\author{Javier Gómez López}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\begin{ej}
+Sea \((X,d)\) un espacio métrico (\(d\) distancia en \(X\)). Tomemos \(r > 0\). Definimos \(d_r : X \times X \longrightarrow \mathbb{R}\) por
+\[
+	d_r(x,y) = r \cdot d(x,y), \quad x,y \in X
+\]
+
+Probar que \(d_r\) es una distancia en \(X\). \\
+
+Debemos probar las 3 propiedades que definen una distancia:
+\begin{enumerate}
+	\item \(d(x,y) = 0 \Longleftrightarrow x=y\)
+	
+\framebox[0.7cm][c]{\(\Rightarrow\)} 
+\[
+	d_r(x,y) = 0 \Rightarrow r \cdot d(x,y)=0 \underset{\underset{r>0}{\uparrow}}{\Rightarrow} d(x,y) = 0
+\]
+Puesto que por definición \(d\) es una distancia, \(x=y\).
+
+\framebox[0.7cm][c]{\(\Leftarrow\)}
+\[
+	x=y \Rightarrow d(x,y) = 0 \Rightarrow d_r(x,y) = \underset{\underset{0}{\uparrow}}{d(x,y)} \cdot r \Rightarrow d_r(x,y) = 0
+\]
+
+	\item \(d(x,y) = d(y,x)\)
+\[
+	d_r(x,y) = r \cdot d(x,y) = r \cdot d(y,x) = d_r(y,x)
+\]
+
+	\item \(d(x,y) \leq d(x,z) + d(y,z)\) \(\forall x,y,z \in X\)
+
+Primero de todo definamos
+\[
+	d_r(x,y) = r \cdot d(x,y) \quad d_r(x,z) = r \cdot d(x,z) \quad d_r(y,z) = r \cdot d(y,z)
+\]
+\[
+	d_r(x,y) \leq d_r(x,z) + d_r(y,z) \Rightarrow r \cdot d(x,y) \leq r \cdot ((d(x,z) + d(y,z)) \Rightarrow d(x,y) \leq d(x,z) + d(y,z)
+\]
+\end{enumerate}
+
+Y queda probado que \(d_r\) es una distancia en \(X\).
+\end{ej}
+\end{document}

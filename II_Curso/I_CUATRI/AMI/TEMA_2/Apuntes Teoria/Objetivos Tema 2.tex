@@ -1,0 +1,198 @@
+\documentclass[a4paper, 12pt]{article}
+
+\usepackage{amsmath} %Todos los paquetes de matematicas
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage[utf8]{inputenc}
+\usepackage[spanish]{babel}
+\usepackage{wrapfig} %Figuras flotantes
+\usepackage{parselines}
+\usepackage{enumitem}
+\usepackage{xcolor}
+\usepackage{graphicx}
+\usepackage{subcaption}
+\usepackage{pgfplots}
+\usepackage{hyperref}
+\usepackage{textcomp}
+\usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry}
+
+
+\providecommand{\abs}[1]{\lvert#1\rvert} %Valor absoluto
+\providecommand{\norm}[1]{\lVert#1\rVert} %Norma
+
+
+\title{\textbf{Objetivos de aprendizaje Tema 2} \\ \textit{Análisis Matemático I}}
+\author{Javier Gómez López}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\begin{enumerate}[label=\textbf{\arabic*}.]
+
+\item Conocer y comprender las siguientes definiciones:
+	\begin{enumerate}[label=\textit{\alph*})]
+	
+	\item Conjunto abierto y conjunto cerrado
+
+\textbf{Conjunto abierto}: Sea \(E\) un espacio métrico y \(U \subset E\). Decimos que \(U\) es un \textbf{subconjunto abierto} de \(E\), o simplemente un abierto de \(E\), cuando \(U\) contiene una bola abierta centrada en cada uno de sus puntos, es decir,
+\[
+	\forall x \in U \quad \exists \varepsilon \in \mathbb{R}^+ : B(x, \varepsilon) \subset U
+\]
+
+Es obvio que el conjunto vacío y el propio \(E\) son conjuntos abiertos y \textit{las bolas abiertas son conjuntos abiertos}.
+
+\par
+
+\textbf{Conjunto cerrado}: Dado \(C \subset E\), decimos que \(C\) es un \textbf{subcojunto cerrado} de \(E\) cuando su complemento \(E \setminus C\) es abierto. 
+
+\bigskip
+
+	\item Interior, cierre y frontera de un conjunto
+
+\textbf{Interior}: Se define el \textbf{interior} de \(A\), que se denota por \(A^{\circ}\), como la unión de todos los abiertos incluidos en \(A\):
+\[
+	A^{\circ} = \bigcup \{ U \in \mathcal{T} : U \subset A \}
+\]	
+
+Claramente \(A^{\circ}\) es abierto y \(A^{\circ} \subset A\). De hecho, \(A^{\circ}\) es el \textit{máximo abierto incluido} en \(A\), pues si \(U \in \mathcal{T}\) y \(U \subset A\), se tiene que \(U \subset A^{\circ}\). Por tanto \(A\) es abierto si, y sólo si, \(A = A^{\circ}\). Cuando \(x \in A^{\circ}\), decimos que \(x\) es un \textbf{punto interior} de \(A\), o que \(A\) es un \textbf{entorno} de \(x\), y denotamos por \(\mathcal{U}(x)\) al conjunto de todos los entornos de \(x\).
+
+\medskip
+
+\textbf{Cierre}: Se define el \textbf{cierre} de \(A\), que se denota por \(\bar{A}\), como la intersección de todos los cerrados en los que \(A\) está incluido:
+\[
+	\bar{A} = \bigcap \{ C \in \mathcal{C} : A \subset C \}
+\]
+Vemos claramente que \(\bar{A}\) es cerrado y \(A \subset \bar{A}\). De hecho, \(\bar{A}\) es el \textit{mínimo cerrado que contiene} al conjunto \(A\), pues si \(C\) es cerrado y \(A \subset C\), se tiene que \(\bar{A} \subset C\). Por tanto, \(A\) es cerrado si, y sólo si, \(A = \bar{A}\). Las operaciones de cierre e interior están claramente relacionadas:
+\[
+	E \setminus \bar{A} = (E \setminus A)^{\circ} \qquad \text{ y } \qquad E \setminus A^{\circ} = \overline{E \setminus A}
+\]
+
+Usando el resultado anterior podemos caracterizar los puntos del cierre de un conjunto \(A\). Para \(x \in E\) tenemos \(x \in \bar{A}\) si, y sólo si, \(E \setminus A\) no es entorno de \(x\). Obtenemos el siguiente resultado:
+\[
+	x \in \bar{A} \Longleftrightarrow U \cap A \neq  \emptyset \text{ } \forall U \in \mathcal{U}(x) \Longleftrightarrow B(x, \varepsilon) \cap A \neq \emptyset \text{ } \forall \varepsilon \in \mathbb{R}^+
+\]
+
+Cuando esto ocurre, decimos que \(x\) es un \textbf{punto adherente} al conjunto \(A\), así que \(\bar{A}\) es el conjunto de todos los puntos adherentes al conjunto \(A\).
+
+\medskip
+
+\textbf{Frontera}: Definimos la \textbf{frontera} de un conjunto \(A \subset E\), que se denota por Fr(\(A\)), como el conjunto de todos los puntos adherentes al conjunto \(A\) que no sean interiores. Por tanto
+\[
+	\text{Fr(}A) = \bar{A} \setminus A^{\circ} = \bar{A} \cap (E\setminus A^{\circ}) = \bar{A} \cap \overline{E \setminus A}
+\]
+
+Como consecuencia, Fr(\(A\)) es un conjunto cerrado y Fr(\(A\)) = Fr(\(E \setminus A\)).
+
+\bigskip
+
+	\item Punto de acumulación y punto aislado de un conjunto
+
+\textbf{Punto de acumulación}: Decimos que \(x \in E\) es un \textbf{punto de acumulación} de \(A\), cuando \(x\) es adherente al conjunto \(A \setminus \{x\}\), esto es, \(x \in A \setminus \{x\}\). Esto significa que todo entorno de \(x\), o toda bola abierta de centro \(x\), contiene puntos de \(A\) distintos de \(x\). Denotamos por \(A'\) al conjunto de todos los puntos de acumulación  de \(A\):
+\[
+	x \in A' \Longleftrightarrow U \cap (A \setminus \{x\}) \neq \emptyset \text{ } \forall U \in \mathcal{U}(x) \Longleftrightarrow B(x, \varepsilon) \cap (A \setminus \{x\}) \neq \emptyset \text{ } \forall \varepsilon \in \mathbb{R}^+
+\]
+
+\textbf{Punto aislado}: Tenemos \(x \in \bar{A} \setminus A'\) si, y sólo si, existe \(U \in \mathcal{U}(x)\) tal que \(U \cap A = \{x\}\), o lo que es lo mismo, existe \(\varepsilon > 0\) tal que \(B(x, \varepsilon) \cap A = \{x\}\).
+
+\bigskip
+
+	\item Sucesión convergente
+
+Una sucesión de elementos de un conjunto \(E \neq \emptyset\) es una aplicación \(\varphi : \mathbb{N} \rightarrow E\), que se denota por \(\{x_n\}\), donde \(x_n = \varphi (n)\) para todo \(n \in \mathbb{N}\). 
+
+Decimos que la sucesión \(\{x_n\}\) \textbf{converge} a un punto \(x \in E\), y escribimos \(\{x_n\} \rightarrow x\), cuando cada entorno de \(x\) contiene a todos los términos de la sucesión, a partir de uno en adelante:
+\begin{equation} \label{convergencia_general}
+	\{x_n\} \rightarrow x \Longleftrightarrow \left[ \forall U \in \mathcal{U}(x) \text{ } \exists m \in \mathbb{N} : n \geq m \Rightarrow x_n \in U \right]
+\end{equation}
+
+Por otra parte, es claro que en (\ref{convergencia_general}), en vez de entornos, podemos usar sólo bolas abiertas,
+\begin{equation}\label{convergencia_bolas}
+	\{x_n\} \rightarrow x \Longleftrightarrow \left[ \forall \varepsilon > 0 \text{ } \exists m \in \mathbb{N} : n \geq m \Rightarrow d(x_n, x) < \varepsilon \right]
+\end{equation}
+	\end{enumerate}
+	
+\bigskip
+
+	\item Conocer y comprender los siguientes resultados:
+	
+	\begin{enumerate}[label=\textit{\alph*})]
+		\item Caracterización de la topología de un espacio métrico mediante las sucesiones convergentes.
+		
+Es muy importante observar que la convergencia de sucesiones determina la topología de cualquier espacio métrico: \\
+
+\hspace{1cm} \textit{En todo espacio métrico \(E\), un punto \(x \in E\) es adherente a un conjunto \(A \subset E\) si, y sólo si, existe una sucesión de puntos de \(A\) que converge a x}. \\
+
+Si \(x \in \bar{A}\), para cada \(n \in \mathbb{N}\) podemos tomar \(x_n \in B(x, 1/n) \cap A\), obteniendo una sucesión \(\{x_n\}\) de puntos de \(A\) tal que \(\{d(x_n, x)\} \rightarrow 0\), luego \(\{x_n\} \rightarrow x\). Pero recíprocamente, si \(\{x_n\} \rightarrow x\) con \(x_n \in A\) para todo \(n \in \mathbb{N}\), es obvio que \(U \cap A \neq \emptyset\) para todo \(U \in \mathcal{U}(x)\), luego \(x \in A\). \hspace{10.5cm} \(\blacksquare\)
+
+Deducimos que un conjunto \(A \subset E\) es cerrado si, y sólo si, \(A\) contiene a los límites de todas las sucesiones de puntos de \(A\) que sean convergentes. Así pues, la topología de un espacio métrico queda caracterizada por la convergencia de sucesiones: si conocemos la convergencia de sucesiones, conocemos los conjuntos cerrados, luego conocemos la topología.
+
+\bigskip
+
+	\item Criterio de equivalencia entre dos distancias, basado en la convergencia de sucesiones \\
+	
+\hspace{1cm} \textit{Si \(d_1\) y \(d_2\) son dos distancias en un conjunto \(E\), equivalen las afirmaciones siguientes:}
+	\begin{enumerate}[label=(\roman*).]
+    \item \textit{La topología generada por \(d_1\) está incluida en la generada por \(d_2\)}.
+    
+    \item \textit{Toda sucesión convergente para la distancia \(d_2\) es convergente para \(d_1\)}
+	\end{enumerate}
+
+\textit{Por tanto, \(d_1\) y \(d_2\) son equivalentes si, y sólo si, dan lugar a las mismas sucesiones convergentes} \\
+
+(I) \(\Rightarrow\) (II). Sea \(\{x_n\}\) una sucesión de puntos de \(E\) y supongamos que \(\{x_n\} \rightarrow x \in E\) para la distancia \(d_2\). Si \(U\) es un entorno de \(x\) para la distancia \(d_1\), aplicando (I) tenemos que \(U\) también es entorno de \(x\) para \(d_2\). Por tanto, existe \(m \in \mathbb{N}\) tal que \(x_n \in U\) para \(n \geq m\), y esto nos dice que \(\{ x_n \} \rightarrow x\) para la distancia \(d_1\).
+
+(II) \(\Rightarrow\) (I). Si \(A \subset E\) es cerrado para \(d_1\), bastará ver que también lo es para \(d_2\). Sea pues \(x\) un punto adherente al conjunto \(A\) para \(d_2\) y veamos que \(x \in A\). Por el resultado anterior, existe una sucesión \(\{x_n\}\) de puntos de \(A\) tal que \(\{d_2(x_n,x)\} \rightarrow 0\). Tomamos \(y_{2n-1} = x_n\) e \(y_{2n} = x\) para todo \(n \in \mathbb{N}\), con lo que también tenemos que \(\{d_2(y_n,x)\} \rightarrow 0\). Aplicando (II) sabemos que la sucesión \(\{y_n\}\) es convergente para la distancia \(d_1\), pero su límite no puede ser otro que \(x\), puesto que \(y_{2n} = x\) para todo \(n \in \mathbb{N}\). Así pues, tenemos \(\{d_1(y_n,x)\} \rightarrow 0\), de donde deducimos que \(\{d_1(x_n, x)\} = \{d_1(y_{2n-1},x)\} \rightarrow 0\). Por ser \(A\) cerrado para \(d_1\), concluimos que \(x \in A\), como se quería. \hspace{11.7cm} \(\blacksquare\)
+
+	\end{enumerate}
+
+\bigskip
+
+	\item Conocer el criterio para la equivalencia de dos normas, incluida su demostración, y conocer la forma en que se usa para definir la topología usual de \(\mathbb{R}^N\). \\
+	
+Se dice que dos distancias en un conjunto \(E\) son \textbf{equivalentes}, cuando generan la misma topología, es decir, los conjuntos abiertos para ambas distancias son los mismos. Decimos que dos normas en un mismo espacio vectorial \(X\) son \textit{equivalentes} cuando lo son las distancias asociadas, esto es, cuando las topologías de ambas normas coinciden.
+
+\hspace{1cm} \textit{Para dos normas \(|| \cdot ||_1\) y \(|| \cdot ||_2\) definidas en un mismo espacio vectorial \(X\), las siguientes afirmaciones son equivalentes:}
+	\begin{enumerate}[label=(\roman*)]
+		\item \textit{Existe una constante \(\rho \in \mathbb{R}^+\) tal que \(||x||_2 \leq \rho ||x||_1\) para todo \(x \in X\)}.
+		
+		\item \textit{La topología de la norma \(|| \cdot ||_2 \) está incluida en la de \(|| \cdot ||_1\)}.
+	\end{enumerate}
+	
+Para la demostración, dados \(x \in X\) y \(r \in \mathbb{R}^+\), denotamos por \(B_1 (x,r)\) y \(B_2 (x,r)\) a las bolas abiertas de centro \(x\) y radio \(r\) para las normas \(|| \cdot ||_1\) y \(|| \cdot ||_2\), respectivamente. \\
+
+(I) \(\Rightarrow\) (II). Si \(U\) es un conjunto abierto para la norma \(|| \cdot ||_2\), para cada \(x \in U\) existe \(\varepsilon > 0\) tal que \(B_2 (x, \varepsilon) \subset U\). de (I) deducimos entonces claramente que \(B_1 (x, \varepsilon / \rho) \subset B_2 (x, \varepsilon) \subset U\), luego \(U\) es abierto para la norma \(|| \cdot ||_1\), como queríamos.
+
+(II) \(\Rightarrow\) (I). Como \(B_2(0,1)\) es abierto para \(|| \cdot ||_2\), también lo es para \(|| \cdot ||_1\), luego existe \(\delta > 0\) tal que \(B_1 (0, \delta) \subset B_2 (0,1)\). Tomando \(\rho = 1/\delta > 0\) conseguimos la desigualdad buscada. En efecto, si \(x \in X\) verificase que \(||x|| > \rho ||x||_1\), tomando \(y = x / ||x||_2\) tendríamos
+\[
+	||y||_1 = \frac{||x||_1}{||x||_2} < \frac{1}{\rho} = \delta
+\]
+de donde \(||y||_2 < 1\), lo cual es una contradicción, puesto que claramente \(||y||_2 = 1\). Así, pues, tenemos \(||x||_2 \leq \rho ||x||_1\) para todo \(x \in X\). \hspace{7cm} \(\blacksquare\)
+
+Aplicando el criterio antes obtenido, vemos fácilmente que las tres normas que hasta ahora hemos considerado en \(\mathbb{R}^N\) son equivalentes:
+
+\begin{itemize}
+	\item \textit{En \(\mathbb{R}^n\), la norma euclídea, la de la suma y la del máximo, son equivalentes.}
+\end{itemize}
+
+La relación entre la norma del máximo \(||\cdot||_{\infty}\) y la de la suma \(||\cdot||_1\) es evidente:
+\[
+	||x||_{\infty} \leq ||x||_1 \leq N ||x||_{\infty} \qquad \forall x \in \mathbb{R}^N
+\]
+Para la norma euclídea \(||\cdot||\), el razonamiento es también evidente, incluso mejorando la segunda desigualdad:
+\[
+	||x||_{\infty} \leq ||x|| \leq N^{1/2} ||x||_{\infty} \qquad \forall x \in \mathbb{R}^N
+\]
+Por supuesto, la norma euclídea y la de la suma son equivalentes, pues hemos visto que ambas son equivalentes a la del máximo. \hfill \(\blacksquare\)
+
+La topología común a las tres normas cuya equivalencia acabamos de comprobar, se conoce como \textbf{topología usual} de \(\mathbb{R}^N\), por ser la que siempre se usa en \(\mathbb{R}^N\). A sus elementos se les llama simplemente \textbf{abiertos} de \(\mathbb{R}^N\). Usando la norma del máximo obtenemos ahora una útil descripción de los mismos.
+
+\begin{itemize}
+	\item \textit{Si \(U_1, U_2, \dotsc, U_N\) son abiertos de \(\mathbb{R}\), entonces el producto cartesiano \(U = \prod_{k=1}^{N} U_k\) es un abierto de \(\mathbb{R}^N\). DE hecho, todo abierto de \(\mathbb{R}^N\) se puede expresar como unión de una familia de productos cartesianos de abiertos de \(\mathbb{R}\).}
+\end{itemize}
+\end{enumerate}
+
+\end{document}

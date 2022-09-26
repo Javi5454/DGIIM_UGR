@@ -1,0 +1,105 @@
+\documentclass[a4paper, 12pt]{article}
+
+\usepackage{amsmath} %Todos los paquetes de matematicas
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage[utf8]{inputenc}
+\usepackage[spanish, es-lcroman]{babel}
+\usepackage{wrapfig} %Figuras flotantes
+\usepackage{parselines}
+\usepackage{enumitem}
+\usepackage{xcolor}
+\usepackage{graphicx}
+\usepackage{subcaption}
+\usepackage{pgfplots}
+\usepackage{hyperref}
+\usepackage{textcomp}
+\usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry}
+
+
+\providecommand{\abs}[1]{\lvert#1\rvert} %Valor absoluto
+\providecommand{\norm}[1]{\lVert#1\rVert} %Norma
+
+\newtheorem*{lema*}{Lema}
+\newtheorem{teorema}{Teorema}
+\newtheorem*{teorema*}{Teorema}
+\newtheorem{corolario}{Corolario}
+\renewcommand{\qedsymbol}{\(\blacksquare\)}
+
+\providecommand{\abs}[1]{\lvert#1\rvert} %Valor absoluto
+\providecommand{\norm}[1]{\lVert#1\rVert} %Norma
+
+
+\title{\textbf{Objetivos de aprendizaje Tema 9} \\ \textit{Análisis Matemático II}}
+\author{Javier Gómez López}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\begin{enumerate}[label=\textbf{\arabic*}.]
+	
+	\item Conocer y comprender la definición de función de variación acotada
+	
+	En lo que sigue, trabajamos en un intervalo compacto \([a,b] \subset \mathbb{R}\) con \(a < b\). Empezamos observando una útil propiedad de las funciones crecientes.
+	
+	\begin{itemize}
+		\item \textit{Si \(f: [a,b] \to \mathbb{R}\) es una función creciente, entonces f tiene límite en los puntos a y b, y tiene límites laterales en todo punto \(c \in ]a,b[\). Como consecuencia, f sólo puede tener un conjunto numerable de discontinuidades, todas ellas evitables o de salto.}
+	\end{itemize}
+	
+	Por otro lado, llamaremos \textbf{partición} del intervalo \([a,b]\) a todo conjunto finito \(P \subset [a,b]\) con \(a, b \in P\), y denotaremos por \(\Pi (a,b)\) al conjunto de tales particiones. Si \(P \in \Pi (a,b)\) tiene \(n + 1\) elementos, con \(n \in \mathbb{N}\), solemos numerarlos de menor a mayor, escribiendo \(P = \{ a = x_0 < x_1 < \dotsc < x_n = b\}\). Fijada dicha partición, a cada función \(f: J \to \mathbb{R}\), definida en un intervalo \(J \subset \mathbb{R}\) con \(a,b \in J\), podemos asociar la suma dada por
+	\[
+		\sigma (f, P) = \sum_{k=1}^{n} | f(x_k) - f(x_{k-1}) |
+	\]
+	
+	Llamaremos \textbf{variación total} de \(f\) en \([a,b]\) al supremo de las sumas del tipo anterior, que se obtienen para todas las particiones del intervalo \([a,b]\), a la que se denota por
+	\[
+		V (f; a,b) = \sup \{ \sigma (f, P) : P \in \Pi (a,b) \} \in [0, \infty ] 
+	\]
+	
+	Decimos que \(f\) tiene  \textbf{variación acotada} en \([a,b]\) cuando \(V (f; a,b) < \infty\). Resaltamos que esta definición tiene sentido para funciones definidas en cualquier intervalo \(J\) tal que \(a,b \in J\). En el caso \(J = [a,b]\), cuando una función \(f: [a,b] \to \mathbb{R}\) tiene variación acotada en \([a,b]\), se dice simplemente que \(f\) es una \textbf{función de variación acotada.}
+	
+	\bigskip
+	
+	\item Conocer y comprender el enunciado de los siguientes resultados:
+	
+	\begin{enumerate}[label=\textit{\alph*)}]
+		\item Relación entre funciones crecientes y funciones de variación acotada
+		
+		Es fácil ver que toda función creciente \(f: [a,b] \to \mathbb{R}\) es de variación acotada. De hecho, si una partición \(P \in \Pi (a,b)\) viene dada por \(P = \{a = x_0 < x_1 < \dotsc <  x_n = b\}\), se tiene
+		\[
+			\sigma (f,P) = \sum_{k=1}^{n} |f(x_k) - f(x_{k-1}) | = \sum_{k=1}^{n} (f(x_k) - f(x_{k-1})) = f(b) - f(a)
+		\]
+		
+		de donde deducimos que \(V (f; a,b) = f(b) - f(a)\). Podemos ya caracterizar las funciones que se obtienen como diferencia de dos crecientes.
+		
+		\begin{itemize}
+			\item \textit{Una función de \([a,b]\) en \(\mathbb{R}\) tiene variación acotada en \([a,b]\) si, y sólo si, se puede expresar como diferencia de dos funciones crecientes.}
+		\end{itemize}
+		
+		\medskip
+		
+		\item Límites y continuidad de las funciones de variación acotada
+		
+		El resultado sobre límites y continuidad de las funciones crecientes, enunciado al principio, se puede extender a las funciones de variación acotada:
+		
+		\begin{itemize}
+			\item \textit{Si \(f: [a,b] \to \mathbb{R}\) es una función de variación acotada, entonces f tiene límite en los puntos a y b, y límites laterales en todo punto \(c \in ]a,b[\). Además, f sólo puede tener un conjunto numerable de discontinuidades, todas ellas evitables o de salto.}
+		\end{itemize}
+		
+		\medskip
+		
+		\item Teorema de derivación de Lebesgue
+		
+		A continuación, se presenta uno de los resultados más importantes en el estudio de las funciones reales de una variable real.
+		
+		\begin{teorema}[Derivación de Lebesgue]
+		Dado un intervalo no trivial \(J \subset \mathbb{R}\), supongamos que una función \(f: J \to \mathbb{R}\) tiene variación acotada en cada intervalo compacto \(K \subset J\). Entonces \(f\) es derivable casi por doquier en J.
+		\end{teorema}
+	\end{enumerate}
+\end{enumerate}
+
+\end{document}

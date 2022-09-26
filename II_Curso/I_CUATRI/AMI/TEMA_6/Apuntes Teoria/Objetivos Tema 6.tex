@@ -1,0 +1,274 @@
+\documentclass[a4paper, 12pt]{article}
+
+\usepackage{amsmath} %Todos los paquetes de matematicas
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage[utf8]{inputenc}
+\usepackage[spanish, es-lcroman]{babel}
+\usepackage{wrapfig} %Figuras flotantes
+\usepackage{parselines}
+\usepackage{enumitem}
+\usepackage{xcolor}
+\usepackage{graphicx}
+\usepackage{subcaption}
+\usepackage{pgfplots}
+\usepackage{hyperref}
+\usepackage{textcomp}
+\usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry}
+
+
+\providecommand{\abs}[1]{\lvert#1\rvert} %Valor absoluto
+\providecommand{\norm}[1]{\lVert#1\rVert} %Norma
+
+\newtheorem{teorema}{Teorema}
+\renewcommand{\qedsymbol}{\(\blacksquare\)}
+
+
+\title{\textbf{Objetivos de aprendizaje Tema 6} \\ \textit{Análisis Matemático I}}
+\author{Javier Gómez López}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\begin{enumerate}[label=\textbf{\arabic*}.]
+
+\item Conocer y comprender el concepto general de función diferenciable y de diferencial de una tal función
+
+Recordemos el concepto de derivada para funciones reales de variable real. Si \(A\) es un subconjunto no vacío de \(\mathbb{R}\), sabemos que una función \(f: A \rightarrow \mathbb{R}\) es derivable en un punto \(a \in A \cap A'\), cuando existe \(\lambda \in \mathbb{R}\) tal que
+\begin{equation}\label{derivada}
+	\lim_{x \to a} \frac{f(x)-f(a)}{x-a} = \lambda
+\end{equation}
+en cuyo caso \(\lambda = f'(a)\) es la \textit{derivada} de \(f\) en \(a\). De entrada, cuando \(f\) está definida en un subconjunto del espacio normado \(X\), el cociente de incrementos que aparece en (\ref{derivada}) no tiene sentido, simplemente no podemos dividir por el vector \(x-a\). Para resolver este problema con el denominador, reescribimos (\ref{derivada}) en la forma
+\[
+	\lim_{x \to a} \frac{f(x)-f(a)-\lambda (x-a)}{x-a} = 0
+\]
+lo que a su vez se puede expresar de dos formas equivalentes:
+\begin{equation}\label{derivada_2}
+	\lim_{x \to a} \frac{| f(x) - f(a) - \lambda (x-a)|}{|x-a|} = 0, \quad \text{ o bien, } \lim_{x \to a} \frac{f(x) - f(a) - \lambda (x-a)}{|x-a|} = 0
+\end{equation}
+Esto resuelve el problema que teníamos con el denominador de (\ref{derivada}): para \(a,x \in X\), bastará escribir \(||x-a||\) en lugar de \(|x-a|\). 
+
+Ahora, para cada \(\alpha \in \mathbb{R}\) consideramos la aplicación lineal de \(\mathbb{R}\) en \(\mathbb{R}\) que consiste en multiplicar por \(\alpha\), esto es, la aplicación \(T_\alpha \in L(\mathbb{R},\mathbb{R})\) dada por \(T_\alpha(x) = \alpha x\) para todo \(x \in \mathbb{R}\).
+
+Por otro lado, con la identificación \(\lambda = f'(a)\), se obtiene la aplicación \(T_\lambda \in L(\mathbb{R},\mathbb{R})\), que será la diferencial de \(f\) en \(a\), y diremos que \(f\) es diferenciable en el punto \(a\). Es claro que las igualdades (\ref{derivada_2}) se expresan equivalentemente en términos de la diferencial. Decimos que \(f: A \to \mathbb{R}\) es \textit{diferenciable} en el punto \(a \in A \cap A'\) cuando existe \(T \in L(\mathbb{R},\mathbb{R})\) verificando que 
+\[
+	\lim_{x \to a} \frac{|f(x) -f(a) - T(x-a)|}{|x-a|} = 0, \quad \text{ o bien, } \lim_{x \to a} \frac{f(x) - f(a) - T(x-a)}{|x-a|} = 0
+\]
+en cuyo caso \(T\) es única, y la llamamos \textit{diferencial} de \(f\) en \(a\), que se denota por \(D f(a)\). En el caso particular de \(\mathbb{R}\), tenemos que \textit{f es diferenciable en a si, y sólo si, es derivable en a}, en cuyo caso se tiene \(f'(a) = Df(a) (1)\), o lo que es lo mismo, \(D f(a) x = f'(a) x\) para todo \(x \in \mathbb{R}\).
+
+Sin embargo, en el caso general, la distinción entre derivada y diferencial se vuelve crucial.
+
+En todo lo que sigue, \(X\) e \(Y\) serán espacio normados arbitrarios, si bien se descartan siempre los casos triviales \(X = \{0\}\) e \(Y = \{0\}\). Fijamos una función \(f: A \to Y\), donde \(A\) es un subconjunto no vacío de \(X\), y un punto \(a \in A^{\circ}\).
+
+Pues bien, se dice que \(f\) es \textit{diferenciable} en el punto \(a\) cuando existe una aplicación lineal y continua \(T \in L(X,Y)\) verificando las siguientes condiciones, que son equivalentes:
+\begin{equation}\label{diferenciable}
+	\lim_{x \to a} \frac{|| f(x) - f(a) - T(x-a)||}{||x-a||} = 0, \quad \text{ o bien, } \lim_{x \to a} \frac{f(x) -f(a)- T(x-a)}{||x-a||} = 0
+\end{equation}
+
+También podemos trasladar el cálculo al origen, usando el conjunto \(B = \{ x-a : x \in A\}\), que verifica \( 0 \in B^{\circ}\). Mediante el cambio de variable \(x = a +h \in A\) con \(h \in B\), teniendo en cuenta que \(x \to a\) cuando \(h \to 0\) y que \(x \neq a\) para \(h \neq 0\), deducimos de (\ref{diferenciable}) que
+\[
+	\lim_{h \to 0} \frac{||f(a+h) - f(a) - T(h)||}{||h||} = 0, \quad \text{ o bien, } \lim_{h \to 0} \frac{f(a+h) - f(a) - T(h)}{||h||} = 0
+\]
+
+Ahora comentaremos algunas características de la diferencial:
+
+\begin{itemize}
+	\item \textit{Si f es diferenciable en a, la aplicación \(T \in L(X,Y)\) que aparece en (\ref{diferenciable}) es única.}
+	
+	Si \(f\) es diferenciable en \(a\), a la única \(T \in L(X,Y)\) que verifica (\ref{diferenciable}), la llamamos \textbf{diferencial} de \(f\) en \(a\), y se denota por \(D f(a)\). Por tanto, \(D f(a) \in L(X,Y)\) se caracteriza por
+	\[
+		\lim_{x \to a} \frac{f(x) - f(a) - Df(a)(a-x)}{||x-a||} = 0
+	\]
+	y como consecuencia verifica también que
+	\[
+		Df(a)(v) = \lim_{t \to 0} \frac{f(a + tv) - f(a)}{t} \qquad \forall v \in X
+	\]
+	
+	\item \textit{Si f es diferenciable en a, entonces f es continua en a.}
+	
+	Podemos interpretar la diferenciabilidad exactamente igual que para funciones reales de variable real: que \(f\) sea diferenciable en \(a\) significa que, " cerca" del punto \(a\), \(f\) admite una "buena aproximación" mediante una función sencilla: la función \(g: X \to Y\) dada por
+	\[
+		g(x) = f(a) + Df(a)(x-a) = f(a) + Df(a)(x) - Df(a)(a) \qquad \forall x \in X
+	\]
+	
+	\item \textit{Si \(U \subset A\) y \(a \in U^{\circ}\), entonces f es diferenciable en a si, y sólo si, \(f|_U\) es diferenciable en a, en cuyo caso se tiene \(Df(a) = D(f|_U)(a)\).}
+	
+	\item \textit{La diferenciabilidad de f en a, así como su diferencial \(Df(a)\), se conservan al sustituir las normas de X e Y por otras equivalentes a ellas.}
+	
+	En el caso que nos interesa, los espacios normados \(X\) e \(Y\) tendrán dimensión finita, luego para estudiar la diferenciabilidad de una función \(f\) podemos considerar cualquier norma en dichos espacios.
+\end{itemize}
+
+Por último presentemos las funciones que son diferenciables en todos sus puntos. Sean pues \(X\) e \(Y\) espacios normados, \(\Omega\) un subconjunto abierto de \(X\) y \(f: \Omega \to Y\) una función. Cuando \(f\) sea diferenciable en todo punto \(x \in \Omega\), diremos simplemente que \(f\) es \textbf{diferenciable}, y \(D(\Omega, Y)\) será el conjunto de todas las funciones diferenciables de \(\Omega\) en \(Y\), contenido en el conjunto \(\mathcal{C} (\Omega,Y)\) de todas las funciones continuas de \(\Omega\) en \(Y\).
+
+Para \(f \in D(\Omega, Y)\) podemos considerar la función \(Df: \Omega \to L(X,Y)\) que a cada punto \(x \in \Omega\) hace corresponder la diferencial \(Df(x) \in L(X,Y)\), y decimos que \(Df\) es la función diferencial de \(f\), o simplemente la \textbf{diferencial} de \(f\).
+
+Como \(L(X,Y)\) es a su vez un espacio normado, tiene sentido plantearse la continuidad de la función \(Df\). Decimos que \(f \in D(\Omega,Y)\) es una \textbf{función de clase \(\mathbf{C}^1\)} cuando \(Df\) es continua, y denotamos por \(C^1 (\Omega,Y)\) al conjunto de todas las funciones de clase \(C^1\) de \(\Omega\) en \(Y\). Por ahora resaltamos la relación entre los conjuntos de funciones recién definidos:
+\[
+	C^1 (\Omega,Y) \subset D(\Omega,Y) \subset \mathcal{C}(\Omega,Y)
+\]
+
+\bigskip
+
+	\item Conocer y comprender el enunciado de los siguientes resultados:
+	
+	\begin{enumerate}[label=\textit{\alph*})]
+		\item Diferenciabilidad del producto de dos funciones con valores reales
+		
+		Primero, debemos mostrar un resultado que necesiteramos posteriormente:
+		\begin{itemize}
+			\item \textit{La función \(P: \mathbb{R}^2 \to \mathbb{R}\) definida por \(P(x,y) =xy\) para todo \((x,y) \in \mathbb{R}^2\), es de clase \(C^1\) en \(\mathbb{R}^2\) y para todo \((x,y) \in \mathbb{R}^2\) se tiene:}
+			\[
+				DP(x,y)(h,k) = yh + xk \qquad \forall (h,k) \in \mathbb{R}^2
+			\]
+		\end{itemize}
+		
+		Podemos ya probar la regla para la diferenciación de un producto de funciones:
+		
+		\begin{itemize}
+			\item \textit{Sea \(\Omega\) un abierto de un espacio normado X y \(f,g : \Omega \to \mathbb{R}\) funciones diferenciables en un punto \(a \in \Omega\). Entonces \((f\) \(g\) es diferenciable en a con}
+			\begin{equation}\label{producto}
+				D(fg)(a) = g(a) Df(a) + f(a) Dg(a)
+			\end{equation}
+			\textit{Si \(f,g \in D(\Omega)\) se tendrá \(fg \in D(\Omega)\) con \(D(fg) = gDf + fDg\), luego \(f,g \in C^1 (\Omega)\) siempre que \(f,g \in C^1(\Omega)\). Así pues, \(D(\Omega)\) y \(C^1(\Omega)\) son subanillos de \(\mathcal{C}(\Omega)\).}
+		\end{itemize}
+		
+		\begin{proof}
+		La función \(h = (f,g): \Omega \to \mathbb{R}^2\) es diferenciable en \(a\) por serlo sus componente \(f\) y \(g\), pero es claro que \(fg = P \circ h\) donde \(P: \mathbb{R}^2 \to \mathbb{R}\) es la función estudiada en el resultado anterior.
+		
+		Puesto que \(P\) es diferenciable en todo punto de \(\mathbb{R}^2\), la regla de la cadena nos dice que \(f\) \(g\) es diferenciable en \(a\). Para calcular su diferencial basta con observar que, para todo \(x \in X\) tenemos claramente:
+		\[
+		\begin{array}{ll}
+			D(fg)(a)(x)  & = [DP(hh(a)) \circ Dh(a)](x) = DP(f(a),g(a)) (Df(a9(x),Dg(a)(x)) \\ 
+			& = g(a) Df(a)(x) + f(a) Dg(a)(x)
+		\end{array}
+		\]
+		\end{proof}
+		
+		Otro resultado interesante es el siguiente:
+		\begin{itemize}
+			\item \textit{Si \(\Omega\) es un abierto no vacío de \(\mathbb{R}^N\), se tiene \(\mathcal{P}(\Omega) \subset C^1(\Omega)\), es decir, toda función polinómica en \(\Omega\) es de clase \(C^1\).}
+		\end{itemize}
+		
+		Pasamos a estudiar ahora la diferenciabilidad de un cociente de funciones diferenciables:
+		\begin{itemize}
+			\item \textit{Sea \(\Omega\) un abierto no vacío de un espacio normado X y sean \(f,g: \Omega \to \mathbb{R}\) diferenciables en un punto \(a \in \Omega\), con \(g(x) \neq 0\) para todo \(x \in \Omega\). Entonces la función cociente \(f/g)\) es diferenciable en a con}
+			\[
+				D(f/g)(a) = \frac{1}{g(a)^2} (g(a) Df(a) - f(a) Dg(a))
+			\]
+			\textit{Por tanto, si \(f,g \in D(\Omega)\) se tiene \(f/g \in D(\Omega)\), y \(f/g \in C^1 (\Omega)\) siempre que \(f,g \in C^1(\Omega)\).}
+		\end{itemize}
+		
+		Otro resultado interesante es el siguiente:
+		\begin{itemize}
+			\item \textit{Si \(\Omega\) es un subconjunto abierto de \(\mathbb{R}^N\), se tiene \(\mathcal{R}(\Omega) \subset C^1(\Omega)\), es decir, toda función racional en \(\Omega\) es de clase \(C^1\).}
+		\end{itemize}
+	\end{enumerate}
+
+\bigskip
+
+	\item Conocer y comprender la regla de la cadena, sobre la diferenciabilidad de una composición de funciones, incluyendo su demostración
+	
+	\begin{teorema}
+	Sean X,Y,Z tres espacios normados, \(\Omega\) y U abiertos no vacíos de X e Y respectivamente, y sean \(f: \Omega \to U\) y \(g: U \to Z\) dos funciones. Si f es diferenciable en un punto \(a \in \Omega\) y g es diferenciable en \(b = f(a)\), entonces \(g \circ f\) es diferenciable en a, con
+	\[
+		D(g \circ f)(a) = Dg(b) \circ Df(a) = Dg(f(a)) \circ Df(a)
+	\]
+	Por tanto, si \(f \in D(\Omega,Y)\) y \(g \in D(U,Z)\), entonces \(g \circ f \in D(\Omega, Z)\).
+	\end{teorema}
+	
+	\begin{proof}
+	Para mayor claridad, la dividimos en tres etapas.
+	
+	\begin{enumerate}[label=\textbf{(\alph*).}]
+		\item Primero traducimos la diferenciabilidad de \(f\) y \(g\), con una notación que haga más fáciles los cálculos. Por una parte, definimos una función \(\Phi : \Omega \to \mathbb{R}_0^+\) de la siguiente forma:
+		\begin{equation}\label{cadena_1}
+			\Phi (x) = \frac{||f(x) - f(a) - Df(a)(x-a)||}{||x-a||} \qquad \forall x \in \Omega \setminus \{a\} \text{ y } \Phi(a) = 0
+		\end{equation}
+		
+		Por ser \(f\) diferenciable en \(a\), tenemos que \(\Phi\) es continua en \(a\), y verifica:
+		\begin{equation}\label{cadena_2}
+			||f(x) - f(a) - Df(a)(x-a)|| = \Phi (x) ||x-a|| \qquad \forall x \in \Omega
+		\end{equation}
+		
+		Análogamente, definimos \(\Psi : U \to \mathbb{R}_0^+\) por
+		\begin{equation}\label{cadena_3}
+			\Psi (x) = \frac{||g(y) - g(b) - Dg(b)(y-b)||}{||y-b||} \qquad \forall y \in U \setminus \{b\} \text{ y } \Psi(b) = 0
+		\end{equation}
+		
+		Entonces \(\Psi\) es continua en \(b\) y verifica:
+		\begin{equation}\label{cadena_4}
+			||g(y)- g(b) - Dg(b)(y-b)|| = \Psi (y) ||y-b|| \qquad \forall y \in U
+		\end{equation}
+		
+		Por último, sólo para abreviar la notación, definimos también \(\Lambda : \Omega \to \mathbb{R}_0^+\) por
+		\[
+			\Lambda(x) = ||(g \circ f)(x) - (g \circ f)(a) - (Dg(b) \circ Df(a)(x-a))|| \qquad \forall x \in \Omega
+		\]
+		Puesto que \(Dg(b) \circ Df(a) \in L(X,Z)\), bastará comprobar que \(\lim_{x \to a} \frac{\Lambda (x)}{||x-a||} = 0\).
+		
+		\item En una segunda fase, obtenemos una desigualdad clave, que relaciona \(\Lambda\) con \(\Phi\) y \(\Psi\).
+		
+		Para \(x \in \Omega\), escribimos \(y = f(x) \in U\), y usamos en \(Z\) la desigualad triangular:
+		\begin{equation}\label{cadena_5}
+			0 \leq \Lambda (x) \leq || g(y) - g(b) - Dg(b)(y-b)|| + ||Dg(b) [ y - b - Df(a)(x-a)] || 
+		\end{equation}
+		
+		Trabajamos ahora por separado con los dos sumandos que han aparecido.
+		
+		El último es el más sencillo, usamos la definición de la norma en \(L(Y,Z)\) junto con (\ref{cadena_2}):
+		\begin{equation}\label{cadena_6}
+		\begin{array}{ll}
+		||Dg(b)[y-b-Df(a)(x-a)]|| & \leq ||Dg(b)|| \cdot ||y -b - Df(a)(x-a)|| \\
+		& = ||Dg(b)|| \cdot ||f(x) - f(a) - Df(a)(x-a)|| \\
+		& = ||Dg(b)|| \cdot \Phi (x) ||x-a||
+		\end{array}
+		\end{equation}
+		
+		En vista de (\ref{cadena_4}), el otro sumando es:
+		\[
+		||g(y) - g(b) - Dg(b)(y-b)|| = \Psi (y) ||f(x) - f(a)||
+		\]
+		
+		La desigualdad triangular en \(Y\), junto con (\ref{cadena_2}) y la definición de la norma en \(L(X,Y)\), nos dan
+		\[
+		\begin{array}{ll}
+		||f(x) - f(a)|| & \leq ||f(x) - f(a) - Df(a)(x-a)|| + ||Df(a)(x-a)|| \\
+		& \leq [\Phi (x) + ||Df(a)||] ||x-a||
+		\end{array}
+		\]
+		de donde deducimos que 
+		\begin{equation}\label{cadena_7}
+		 || g(y) - g(b) -Dg(b)(y-b)|| \leq \Psi (f(x)) [ \Phi (x) + ||Df(a)||] ||x-a||
+		\end{equation}
+		
+		Usando (\ref{cadena_6}) y (\ref{cadena_7}), deducimos de (\ref{cadena_5}) la desigualdad que buscábamos:
+		\begin{equation}\label{cadena_8}
+		0 \leq \Lambda (x) \leq \Psi (f(x)) [ \Phi (x) + || Df(a)|| ] ||x-a|| + ||Dg(b)|| \Phi (x) ||x-a||
+		\end{equation}
+		
+		\item Usando la desigualadad (\ref{cadena_8}), junto con las propiedades conocidas de \(\Phi\) y \(\Psi\), concluimos fácilmente la demostración. Para \(x \in \Omega \setminus \{a\}\), de (\ref{cadena_8}) deducimos que 
+		\begin{equation}\label{cadena_9}
+		0 \leq \frac{\Lambda (x)}{||x-a||} \leq \Psi (f(x)) [ \Phi (x) + ||Df(a)||] + ||Dg(b)|| \Phi (x)
+		\end{equation}
+		luego bastará probar que el último miebro de esta igualdad tiene límite 0 en el punto \(a\).
+		
+		Como \(f\) es diferenciable, luego continua, en el punto \(a\), y \(\Psi\) es continua en \(b = f(a)\), veremos que \(\Psi \circ f\) es continua en \(a\). Además, \(\Phi\) es continua en \(a\), luego tenemos
+		\[
+			\lim_{x \to a} \Psi (f(x)) = \Psi (f(a)) = \Psi (b) = 0 \quad \text{y} \quad \lim_{x \to a} \Phi (x) = \Phi (a) = 0
+		\]
+		
+		Así pues, concluimos claramente que 
+		\[
+			\lim_{x \to a} \left[ \Phi (f(x)) [ \Phi (x) + ||Df(a)||] + ||Dg(b)|| \Phi (x) \right] = 0
+		\]
+		
+		y (\ref{cadena_9}) nos dice que \(\lim_{x \to a} \frac{\Lambda (x)}{||x-a||} = 0\), como queríamos demostrar.
+	\end{enumerate}
+	\end{proof}
+\end{enumerate}
+
+\end{document}

@@ -1,0 +1,238 @@
+\documentclass[a4paper, 12pt]{article}
+
+\usepackage{amsmath} %Todos los paquetes de matematicas
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage[utf8]{inputenc}
+\usepackage[spanish, es-lcroman]{babel}
+\usepackage{wrapfig} %Figuras flotantes
+\usepackage{parselines}
+\usepackage{enumitem}
+\usepackage{xcolor}
+\usepackage{graphicx}
+\usepackage{subcaption}
+\usepackage{pgfplots}
+\usepackage{hyperref}
+\usepackage{textcomp}
+\usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry}
+
+
+\providecommand{\abs}[1]{\lvert#1\rvert} %Valor absoluto
+\providecommand{\norm}[1]{\lVert#1\rVert} %Norma
+
+\newtheorem{teorema}{Teorema}
+\renewcommand{\qedsymbol}{\(\blacksquare\)}
+
+
+\title{\textbf{Objetivos de aprendizaje Tema 4} \\ \textit{Análisis Matemático I}}
+\author{Javier Gómez López}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\begin{enumerate}[label=\textbf{\arabic*}.]
+
+\item Conocer y comprender las siguientes definiciones:
+	\begin{enumerate}[label=\textit{\alph*})]
+	
+	\item Conjunto acotado en un espacio métrico
+	
+	Se dice que un subconjunto de un espacio métrico está \textbf{acotado}, cuando está incluido en una bola.
+		\begin{itemize}
+		\item \textit{Si A es un conjunto acotado de un espacio métrico E, entonces, para todo \(x \in E\) existe \(r \in \mathbb{R}^+\) tal que \(A \subset B (x,r)\).}
+		\end{itemize}
+		
+	Sean \(x_0 \in E\) y \(r_0 \in \mathbb{R}^+\) tales que \(A \subset B(x_0, r_0)\). Si \(d\) es la distancia de \(E\), para todo \(a \in A\) tenemos
+	\[
+		d(a_x) \leq d(a, x_0) + d(x_0, x) < r_0 + d(x_0,x)
+	\]
+	luego \(A \subset B(x,r)\) sin más que tomar \(r = r_0 + d(x_0,x)\). \hfill \(\blacksquare\) \\
+	
+	Es obvio que todo subconjunto finito de un espacio métrico \(E\), está acotado. El siguiente paso es pensar en un subconjunto numerable de \(E\), o lo que es lo mismo, en el conjunto de los términos de una suecisón de puntos de \(E\). Si \(x_n \in E\) para todo \(n \in \mathbb{N}\), decimos que \(\{x_n\}\) es una \textbf{sucesión acotada} cuando el conjunto \(\{x_n : n \in \mathbb{N}\) está acotado. \\
+	
+		\begin{itemize}
+		\item \textit{En cualquier espacio métrico, toda sucesión convergente está acotada}.
+		\end{itemize}
+		
+	Por supuesto, el recíproco es falso: en cualquier espacio métrico que contenga al menos dos puntos, es fácil dar ejemplos de sucesiones acotadas que no son convergentes. \\
+	
+	Es importante resaltar que la acotación no es una propiedad topológica: cuando sustituimos la distancia de un espacio métrico por otra equivalente, un subconjunto acotado puede dejar de serlo, y viceversa.
+	
+\medskip
+	
+	\item Espacio métrico compacto
+	
+	Se dice que un espacio métrico \(E\) es \textbf{compacto} cuando toda sucesión de punto de \(E\) admite una sucesión parcial convergente. Se trata claramente de una propiedad topológica, pues se define mediante la convergencia de sucesiones. \\
+	
+	Si \(E\) es un espacio métrico y \(A \subset E\), diremos que \(A\) es un subconjunto compacto de \(E\) cuando toda sucesión de puntos de \(A\) admite una sucesión parcial que converge a un punto de \(A\).
+	
+		\begin{itemize}
+		\item \textit{Sea A un subconjunto compacto de un espacio métrico E. Entonces A es acotado y es un subconjunto cerrado de E.}
+		\end{itemize}
+		
+	En general, las dos condiciones necesarias para la compacidad que acabamos de nombrar están muy lejos de ser suficientes.
+	
+		\begin{itemize}
+		\item \textit{Un subconjunto de \(\mathbb{R}^N\) es compacto si, y sólo si, es cerrado y acotado.}
+		\end{itemize} 
+		
+	Ya hemos visto que una implicación es válida, no sólo en \(\mathbb{R}^N\), sino en cualquier espacio métrico. Para el recíproco, sea \(A\) un subconjunto cerrado y acotado de \(\mathbb{R}^N\). Toda sucesión \(\{a_n\}\) de puntos de \(A\) es una sucesión acotada de vectores de \(\mathbb{R}^N\), y el teorema de Bolazano-Weierstrass nos dice que \(\{a_n\}\) admite una sucesión parcial \(\{a_{\sigma (n)}\}\) que converge a un vector \(x \in \mathbb{R}^N\). Como \(A\) es cerrado, tenemos \(x \in A\), lo que prueba que toda sucesión de puntos de \(A\) admite una sucesión parcial que converge a un punto de \(A\), es decir, \(A\) es compacto. \hfill \(\blacksquare\) 
+	
+\medskip
+
+	\item Espacio métrico conexo	
+	
+	Decimos que un espacio métrico \(E\) es \textbf{conexo}, cuando no se puede expresar como unión de dos subconjuntos abiertos, no vacíos y disjuntos. Reformulando esta afirmación, obtenemos quee \textit{un espacio métrico E es conexo si, y sólo si, \(\emptyset\) y E son los únicos subconjuntos de E que son a la vez abiertos y cerrados.}
+	
+	Resaltemos que la conexión es una propiedad topológica, se expresa usando sólo conjuntos abiertos y se puede definir de la misma forma para espacios topológicos cualesquiera. 
+	
+		\begin{itemize}
+		\item \textit{Para un espacio métrico E, las siguientes afirmaciones son equivalentes:}
+			\begin{enumerate}[label=(\textit{\roman*})]
+			\item \textit{E es conexo}.
+			\item \textit{La imagen de toda función continua de E en \(\mathbb{R}\) es un intervalo.}
+			\item \textit{Toda función continua de E en \(\{0,1\}\) es constante}.
+			\end{enumerate}
+		\end{itemize}
+		
+		Por el teorema del valor intermedio, todo intervalo es un subconjunto conexo de \(\mathbb{R}\), puesto que verfica la afirmación \textit{(ii)} anterior. Recíprocamente, si \(A\) es un subconjunto conexo de \(\mathbb{R}\), como la inclusión \(I: A \rightarrow \mathbb{R}\), definida por \(I(x) = x\) para todo \(x \in A\), es continua, deducimos que \(I(A) = A\) es un intervalo. Tenemos así una caracterización \textit{topológica} de los intervalos:
+	
+	\begin{itemize}
+		\item \textit{Un subconjunto de \(\mathbb{R}\) es conexo si, y sólo si, es un intervalo.}
+	\end{itemize}
+	\end{enumerate}
+	
+	
+	
+\bigskip
+
+	\item Conocer y comprender los siguientes resultados:
+	
+	\begin{enumerate}[label=\textit{\alph*})]
+		\item Preservación de la compacidad por funciones continuas
+		
+		\begin{teorema}
+			Sean E y F dos espacios métricos y \(f: E \rightarrow F\) una función continua. Si E es compacto, entonces f(E) es compacto.
+		\end{teorema}
+		
+		\begin{proof}
+			Dada una sucesión \(\{y_n\}\) de puntos de \(f(E)\), deberemos probar que \(\{y_n\}\) admite una sucesión parcial que converge a un punto de \(f(E)\). Para cada \(n \in \mathbb{N}\), existirá un punto \(x_n \in E\) tal que \(f(x_n) = y_n\). Como por hipótesis, \(E\) es un espacio métrico compacto, la sucesión \(\{x_n\}\) admitirá una sucesión parcial \(\{x_{\sigma (n)}\}\) que converge a un punto \(x \in E\). Por ser \(f\) continua, deducimos que \(\{f(x_{\sigma (n)})\} \rightarrow f(x)\), es decir, \(\{y_{\sigma (n)}\} \rightarrow f(x) \in f(E)\).
+		\end{proof}
+		
+		De aquí deducimos el siguiente enunciado:
+		
+		\begin{itemize}
+			\item \textit{Si E es un espacio métrico compacto y \(f: E \rightarrow \mathbb{R}\) una función continua, existen \(u.v \in E\) tales que \(f(u) \leq f(x) \leq f(v)\) para todo \(x \in E\)}.
+		\end{itemize}
+		
+\newpage
+		
+		\item Preservación de la conexión por funciones continuas
+		
+		\begin{teorema}
+			Sean E y F espacios métricos y \(f: E \rightarrow F\) una función continua. Si E es conexo, entonces f(E) es un subconjunto conexo de F.
+		\end{teorema}
+		
+		\begin{proof}
+			Para toda función continua \(g: f(E) \rightarrow \mathbb{R}\) tenemos que \(g \circ f\) es continua, luego de ser \(E\) conexo deducimos que \((g \circ f) (E)\) es un intervalo. Así pues, la imagen de toda función de \(f(E)\) en \(\mathbb{R}\) es intervalo, luego \(f(E)\) es conexo.
+			
+			Merece la pena mostrar un razonamiento alternativo. Si \(V\) es un subconjunto abierto y cerrado de \(f(E)\), la continuidad de \(f\) nos dice que \(U= f^{-1} (V)\) es un subconjunto abierto y cerrado de \(E\). Como \(E\) es conexo, tenemos \(U = \emptyset\), o bien \(U = E\). Por ser \(V \subset f(E)\) tenemos que \(V = f(U)\), luego \(V = \emptyset\) o \(V = f(E)\).
+		\end{proof}
+		
+		Uniendo las dos propiedades básicas de las funciones continuas que hemos estudiado, en el caso particular de funciones con valores reales, tenemos la siguiente conclusión:
+		
+		\begin{itemize}
+		\item  \textit{Si E es un espacio métrico compacto y conexo, y \(f: E \rightarrow \mathbb{R}\) es una función continua, entonces f(E) es un intervalo cerrado y acotado.}
+		\end{itemize}
+
+	\end{enumerate}
+
+\bigskip
+
+	\item Conocer los siguientes resultados, incluyendo su demostración:
+	
+		\begin{enumerate}[label=\textit{\alph*})]
+			\item Teorema de Bolzano-Weierstrass
+			
+			\begin{teorema}[\textbf{Bolzano-Weierstrass}]
+			Toda sucesión acotada de vectores de \(\mathbb{R}^N\) admite una sucesión parcial convergente.
+			\end{teorema}
+			
+			\begin{proof}
+			Razonamos por inducción sobre \(N\). La etapa base está clara, sabemos que el teorema es cierto para \(N =1\). Suponiendo cierto en \(\mathbb{R}^N\), lo demostraremos en \(\mathbb{R}^{N+1}\). Sea pues \(\{x_n\}\) una sucesión acotada de vectores de \(\mathbb{R}^{N+1}\).
+			
+			Para cada \(n \in \mathbb{N}\), escribiendo \(y_n(k) = x_n(k)\) para todo \(k \in \Delta_N\) tenemos \(y_n \in \mathbb{R}^N\), y hemos conseguido así una sucesión \(\{y_n\}\) de vectores de \(\mathbb{R}^N\), que evidentemente está acotada. Por la hipótesis de inducción \(\{y_n\}\) admite una sucesión parcial convergente \(\{y_{\varphi(n)}\}\). De esta forma tenemos que \(\{x_{\varphi (n)} (k)\} = \{y_{\varphi (n)} (k)\}\) converge para todo \(k \in \Delta_N\).
+			
+			Ahora \(\{x_{\varphi (n)} (N+1)\}\) es una sucesión acotada de números reales, que a sus vez tendrá una sucesión parcial convergente \(\{x_{\varphi (\tau (n))} (N+1)\}\). Definiendo \(\sigma = \varphi \circ \tau\) es claro que \(\sigma : \mathbb{N} \rightarrow \mathbb{N}\) es estrictamente creciente, luego \(\{x_{\sigma(n)}\}\) es una sucesión parcial de \(\{x_n\}\). Por una parte sabemos que \(\{x_{\sigma (n)}(N+1)\}\) es convergente, pero por otra, para todo \(k \in \Delta_N\), la sucesión \(\{x_{\sigma (n)}(k)\}\) también converge, pues se trata de una sucesión parcial de \(\{x_{\varphi (n)}\}\), que era convergente. En resumen, \(\{x_{\sigma(n)}(k)\}\) es convergente para todo \(k \in \Delta_{N+1}\), luego \(\{x_{\sigma (n)}\}\) converge. 
+			\end{proof}
+			
+			También es importante resaltar que \textit{en todo espacio normado de dimensión infinita existe una sucesión acotada que no admite ninguna sucesión parcial convergente.}
+			
+			\item Teorema de Hausdorff
+			
+			Primera demostraremos un teorema particular de \(\mathbb{R}\) y después lo extenderemos a espacios vectoriales más generales. \\
+			
+			\begin{teorema}[\textbf{\textit{Hausdorff,1932}}]
+			Todas las normas en \(\mathbb{R}^N\) son equivalentes.
+			\end{teorema}
+			
+			\begin{proof}
+			Bastará ver que toda norma \(|| \cdot ||\) en \(\mathbb{R}^N\) es equivalente a la norma de la suma \(||\cdot ||_1\). Sea \(\{e_k : k \in \Delta_N\}\) la base usual de \(\mathbb{R}^N\) y tomemos \(\rho = \text{máx} \{ ||e_k|| : k \in \Delta_N\}\). Por ser \(|| \cdot ||\) una norma para todo \(x \in \mathbb{R}^N\) tenemos
+			\[
+				||x|| = \left| \left| \sum_{k=1}^{N} x(k) e_k \right| \right| \leq \sum_{k=1}^{N} |x(k)| \cdot ||e_k|| \leq \rho \sum_{k=1}^{N} |x(k)| = \rho ||x||_1
+			\]
+			
+			Hemos conseguido, así de fácilmente, una de las dos desigualdades que buscamos:
+			\begin{equation}\label{primera}
+				\exists \rho \in \mathbb{R}^+ : ||x|| \leq \rho ||x||_1 \qquad \forall x \in \mathbb{R}^N
+			\end{equation}
+			
+			Debemos ahora encontrar \(\lambda \in \mathbb{R}^+\) que verifique \(\lambda ||x||_1 \leq ||x||\), también para todo \(x \in \mathbb{R}^N\). En particular, si \(||x||_1 =1\) se deberá tener \(||x|| \geq \lambda\), lo que nos indica cómo encontrar \(\lambda\).
+			
+			Consideramos por tanto el conjunto \(S = \{x \in \mathbb{R}^N : ||x||_1 = 1\}\), que es cerrado y acotado, luego compacto, para la topología usual de \(\mathbb{R}^N\). Además, la función \(||\cdot|| : \mathbb{R}^N \rightarrow \mathbb{R}\) es continua, pues de hecho, usando (\ref{primera}) tenemos:
+			\[
+				| \text{ }||x|| - ||y|| \text{ } | \leq ||x-y|| \leq \rho ||x - y ||_1 \qquad \forall x,y \in \mathbb{R}^N
+			\]
+			Deducimos que la función continua \(||\cdot||\) tiene mínimo en el conjunto compacto \(S\), lo que nos permite tomar \(\lambda = \text{mín}\{||x|| : x \in S\}\). Como \(\lambda = ||x_0||\) para algún \(x_0 \in S\), será \(\lambda \in \mathbb{R}^+\). Además. para \(x \in \mathbb{R}^N \setminus \{0\}\) tenemos:
+			\[
+				\frac{x}{||x||_1} \in S, \text{ luego } \lambda \leq \left| \left| \frac{x}{||x||_1} \right| \right| = \frac{||x||}{||x||_1} \text{ es decir }, \lambda ||x||_1 \leq ||x||
+			\]
+			Esta desigualdad es obvia para \(x = 0\) y hemos probado que 
+			\begin{equation}\label{segunda}
+				\exists \lambda \in \mathbb{R}^+ : \lambda ||x||_1 \leq ||x|| \qquad \forall x \in \mathbb{R}^N
+			\end{equation}
+			
+			En vista de (\ref{primera}) y (\ref{segunda}) las normas \(||\cdot||\) y \(||\cdot||_1\) son equivalentes, como queríamos.
+			\end{proof}
+			
+			
+			Para resaltar mejor el contenido del teorema de Hausdorff, es conveniente hacer un enunciado que, formalmente, es más general:
+			
+			\begin{teorema}
+			Todas las normas en un espacio vectorial de dimensión finita son equivalentes.
+			\end{teorema}
+			
+			\begin{proof}
+			Si \(X\) es un espacio vectorial de dimensión \(N \in \mathbb{N}\), existe una biyección lineal \(\Phi : \mathbb{R}^N \rightarrow X\). Cualesquiera dos normas \(||\cdot||_1\) y \(||\cdot||_2\) en \(X\), se "trasladan" a \(\mathbb{R}^N\) mediante la aplicación \(\Phi\). Más concretamente, basta definir, para todo \(y \in \mathbb{R}^N\),
+			\[
+			||y||_1' = ||\Phi (y)||_1 \qquad \text{y} \qquad ||y||_2' = ||\Phi (y)||_2
+			\]
+			
+			Es rutinario comprobar que de esta forma se obtienen dos normas en \(\mathbb{R}^N\) que, por el teorema anterior, son equivalentes, es decir, existen constantes \(\lambda, \rho \in \mathbb{R}^N\) tales que
+			\[
+			\lambda ||y||_1' \leq ||y||_2' \leq \rho ||y||_1' \qquad \forall y \in \mathbb{R}^N
+			\]
+			Entonces, para cada \(x \in X\) podemos tomar \(y = \Phi^{-1} (x)\) para obtener
+			\[
+				\lambda ||x||_1 = \lambda ||y||_1' \leq ||y||_2' = ||x||_2 = ||y||_2' \leq \rho ||y||_1' = \rho ||x||_1
+			\]
+			luego las normas de partida en \(X\) también son equivalentes, como queríamos.
+			\end{proof}
+		\end{enumerate}
+\end{enumerate}
+
+\end{document}

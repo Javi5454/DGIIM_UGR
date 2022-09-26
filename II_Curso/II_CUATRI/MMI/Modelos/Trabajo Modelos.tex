@@ -1,0 +1,320 @@
+\documentclass[10pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[spanish]{babel}
+\usepackage{tikz}
+\usetikzlibrary{shapes,snakes,babel}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{graphics}
+\usepackage{graphicx}
+\usepackage{xcolor}
+\usepackage{listings}
+\usepackage{csvsimple}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{hyperref}
+\usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry}
+
+\renewcommand*\contentsname{Índice} %Nombre del indice
+
+\begin{document}
+\lstset{
+	basicstyle=\footnotesize,
+	extendedchars=true,
+	literate={á}{{\'a}}1 {ã}{{\~a}}1 {é}{{\'e}}1 {ú}{{\'u}}1 {ó}{{\'o}}1,
+	backgroundcolor=\color{black!5}
+	}
+	
+\begin{titlepage}
+	\centering
+	{\includegraphics[scale=0.5]{Logo_UGR.png}\par}
+	\vspace{1cm}
+	{\bfseries\Large Facultad de Ciencias de la Universidad de Granada \par}
+	\vspace{2.5cm}
+	{\scshape\Huge Procesos estocásticos: Cadenas de Markov aplicadas a la evolución de proyectos de investigación \par}
+	\vspace{3cm}
+	{\itshape\Large Doble Grado Ingeniería Informática y Matemáticas}
+	\vfill
+	{\Large Autores: \par}
+	{\Large Jose Alberto Hoces Castro\par}
+	{\Large Javier Gómez López \par}
+	\vfill
+	{\Large Junio 2022 \par}
+\end{titlepage}
+
+\thispagestyle{empty}
+\null
+\vfill
+
+%%Información sobre la licencia
+\parbox[t]{\textwidth}{
+  \includegraphics[scale=0.05]{by-nc-sa.png}\\[4pt]
+  \raggedright % Texto alineado a la izquierda
+  \sffamily\large
+  {\Large Este trabajo se distribuye bajo una licencia CC BY-NC-SA 4.0.}\\[4pt]
+  Eres libre de distribuir y adaptar el material siempre que reconozcas a los\\
+  autores originales del documento, no lo utilices para fines comerciales\\
+  y lo distribuyas bajo la misma licencia.\\[4pt]
+  \texttt{creativecommons.org/licenses/by-nc-sa/4.0/}
+}
+
+\newpage
+
+\tableofcontents
+
+\newpage
+
+\section{Introducción}
+Nuestro pequeño proyecto surge de la necesidad de poner en práctica los conocimientos adquiridos en la asignatura Modelos Matemáticos I. Existen numerosos estudios de situaciones cotidianas en las que está presente una naturaleza estocástica inherente a los componentes del sistema que las determinan. En otras palabras, son situaciones que podemos estudiar a partir de una serie de probabilidades que expresan la transición de los casos en estudio de un estado a otro en el sistema. Por ejemplo, podemos estudiar cómo se reparte una población de lémures entre 4 hábitats y cómo se distribuyen a largo plazo, o bien cómo van cambiando un conjunto de clientes entre las distintas compañías telefónicas del mercado, etc. Como podemos observar, todos ellos son procesos en los que intervienen decisiones, y los procesos de decisión son naturalmente estocásticos. En nuestro caso, hemos decidido estudiar cómo evoluciona el estado de los proyectos de investigación, basándonos en el estudio que realizaron los profesores Eduardo López Hung y Lai Gen Joa Triay de la Universidad de Ciencias Médicas de Santiago de Cuba en el año 2017 llamado \textit{Cadenas de Markov aplicadas al análisis de la ejecución de proyectos de investigación}.
+\\
+\\
+El proceso de toma de decisiones se ve afectado por dos tipos de factores: objetivos, también llamados cuantitativos, que con las herramientas matemáticas oportunas, modelan la situación con una alta precisión; y subjetivos, también llamados cualitativos, que son las condiciones del medio que rodea la situación y de los individuos implicados, influyendo también en las decisiones. Aunque somos conscientes de la importancia de ambos factores, y que su precisa conjugación da lugar a un estudio más representativo de la realidad. Sin embargo, los métodos cuantitativos han sido creados sobre una base científica mucho más sólida que los cualitativos. Por esto y por razones de simplicidad, partiremos de un modelo cuantitativo que constituye un modelo matematico del sistema bajo estudio.
+\\
+\\
+El enfoque estocástico implica el análisis de una serie de estados que evolucionan en el tiempo. En nuestro caso, vamos a estudiar cómo evolucionan dichos estados de forma que el siguiente estado es dependiente de los estados anteriores. Los estados de nuestro modelo serán los \textit{estados de transición} del sistema. He aquí la razón por la que emplearemos cadenas de Markov, pues todo proceso estocástico es una cadena de Markov.
+\\
+\\
+Nuestro objetivo será determinar el futuro de un conjunto de investigaciones en la Facultad de Tecnología de la Salud de la Universidad de Ciencias Médicas de Santiago de Cuba observando el comportamiento que se dio en el trienio 2013-2015.
+\newpage
+
+\section{Planteamiento del modelo}
+Recordamos el concepto de cadena de Markov: \\
+
+\textbf{Definición.} Una cadena de Markov es una matriz que cumple que sus columnas son todas ellas vectores de probabilidad, es decir, que los elementos de cada columna suman 1. Es lo que conocemos por matrices estocásticas. Si en un modelo se tienen $n$ estados posibles, la cadena de Markov será una matriz cuadrada de dimensión $n$ x $n$, que denotaremos por $A$ y será de la forma:
+
+\begin{equation}
+A = 
+\begin{pmatrix}
+\\
+& p_{ij} &\\
+\\
+\end{pmatrix}
+\end{equation}
+
+Siendo cada $p_{ij}$ la probabilidad de pasar del estado $i$ al estado $j$ ($0 \leq p_{ij} \leq 1$ y $\sum_{i = 1}^{N}p_{ij} = 1$ $\forall j \in \Delta_{N}$). Así, si partimos de un vector inicial $x_0 \in \mathbb R ^N$, podremos hallar $x_n$ sin más que $x_n = A \cdot x_0$.
+\\
+\\
+Volviendo a nuestro modelo, un proyecto es inspeccionado mensualmente con el fin de confirmar si está cumpliendo el cronograma establecido. En el resultado de la inspección solo hay 4 posibilidades, que consideraremos como los posibles estados de un proyecto de investigación:
+
+\begin{itemize}
+	\item $E$: Ejecución normal
+	\item $A$: Atrasado
+	\item $C$: Cancelado
+	\item $T$: Terminado
+\end{itemize}
+
+Gracias a la revisión de los datos históricos de la facultad entre los años 2013 y 2015, así como los expedientes de las revisiones de las pasadas investigaciones, se pudieron determinar las probabilidades de transición entre los 4 estados que estamos considerando:
+
+\begin{itemize}
+	\item Si está en ejecución normal, en la siguiente inspección tiene una probabilidad del 0.4 de permanecer en ejecución normal o terminarse, aunque también puede pasar a estado atrasado con una probabilidad del 0.2.
+	\item Si está atrasado, tiene una probabilidad del 0.5 de seguir en el mismo estado, 0.4 de ser cancelado y 0.1 de volver a ejecución normal.
+	\item Si un proyecto pasa a estado cancelado, existe una mínima posibilidad de un 0.1 de volver al estado atrasado, cosa que pueden hacer los investigadores con más méritos.
+	\item Si un proyecto pasa a estado terminado, posteriormente se somete a revisión por pares, es decir, el trabajo ya realizado es repetido para comprobar la validez de los resultados. Por ello, hay una probabilidad del 0.1 de volver a ejecución normal porque se hayan detectado pequeños errores.
+\end{itemize}
+
+Teniendo en cuenta esta información obtenida por los profesores de la facultad, ya es sencillo obtener la matriz de nuestro modelo:
+
+\begin{table}[h]
+	\begin{center}
+	\begin{tabular}{l|l|l|l|l|}
+		\cline{2-5}
+		& E   & A   & C & T \\ \hline
+		\multicolumn{1}{|l|}{E} & 0.4 & 0.1 & 0 & 0.1 \\ \hline
+		\multicolumn{1}{|l|}{A} & 0.2 & 0.5 & 0.1 & 0 \\ \hline
+		\multicolumn{1}{|l|}{C} & 0   & 0.4 & 0.9 & 0 \\ \hline
+		\multicolumn{1}{|l|}{T} & 0.4 & 0   & 0 & 0.9 \\ \hline
+	\end{tabular}
+\end{center}
+\end{table}
+
+Para terminar de ver con claridad la transición entre los distintos estados por los que puede pasar un proyecto de investigación, presentamos el grafo correspondiente a la matriz:
+\newpage
+\begin{figure}[h!]
+	\centering
+	\begin{tikzpicture}
+ 		\node[draw,circle,color=orange, fill=orange!5] (E) at (0,0) {\Large E};
+		\node[draw,circle,color=cyan, fill=cyan!5] (A) at (2.5,0) {\Large A};
+		\node[draw,circle, color=green, fill=green!5] (T) at (0,-2.5) {\Large T};
+		\node[draw,circle,color=red,fill=red!5] (C) at (2.5,-2.5) {\Large C};
+		%
+		\draw[->,color = orange, line width=0.8pt] (E) to[in=60, out=150, looseness=5] node [above] {0.4} (E);
+		\draw[->,color=orange, line width=0.8pt] (E) to[in=160, out=20] node[above] {0.2} (A);
+		\draw[->, color=orange, line width=0.8pt] (E) to[in=70, out=290] node[right] {0.4} (T);
+		\draw[->, color=cyan, line width=0.8pt] (A) to node[below] {0.1} (E);
+		\draw[->, color=cyan, line width=0.8pt] (A) to[in=60, out=150, looseness=5] node[above] {0.5} (A);
+		\draw[->, color=cyan, line width=0.8pt] (A) to[in=70, out=290] node[right] {0.4} (C);
+		\draw[->, color=red, line width=0.8pt] (C) to[in=250, out=110] node[left] {0.1} (A);
+		\draw[->, color=red, line width=0.8pt] (C) to[in=300, out=240, looseness=5] node[below] {0.9} (C);
+		\draw[->, color=green, line width=0.8pt] (T) to[in=300, out=240, looseness=5] node[below] {0.9} (T);
+		\draw[->, color=green, line width=0.8pt] (T) to[in=250, out=110] node[left] {0.1} (E);
+	\end{tikzpicture}
+	\caption{Grafo de transción de estados de un proyecto de investigación}
+\end{figure}
+
+
+Ahora, dado un conjunto inicial de proyectos de investigación cuyos estados son los 4 definidos, podemos saber cuántos proyectos se hallarán en cada estado al cabo de $n$ meses usando que si $A$ es la matriz de estados, $x_0$ el vector inicial de proyectos y $x_n$ y el vector de proyectos en el mes n-ésimo, entonces $x_n = A \cdot x_0$. A continuación vamos a resolver el modelo para conocer el comportamiento a largo plazo.
+
+\section{Resolución}
+
+\textbf{Proposición.} Si $||\cdot||$ es una norma matricial y $\lambda \in \sigma(A)$, entonces $||A|| \geq \lambda$. \\
+
+Por ello, usando la norma matricial $|| \cdot ||_1$, que se define como $|| \cdot ||_1 = max_{1 \leq j \leq n} \sum_{i = 1}^{N} |p_{ij}|$, como $A$ es una matriz de estados y todos los elementos de cada columna suman 1, sabemos que $\rho (A) \leq 1$, siendo $\rho(A)$ el radio espectral de la matriz. Además, por otro resultado de teoria, sabemos que todas las matrices estocásticas tienen a $\lambda = 1$ como valor propio, luego necesariamente $\rho(A) = 1$. Para conocer el comportamiento a largo plazo, el siguiente teorema nos va a resultar muy útil:
+\\
+\\
+\textbf{Teorema 1.} Sea A una matriz con valor propio dominante $\lambda$ y $v$ es un vector propio asociado a $\lambda$. Para cualquier valor inicial $x_0$, existe una constante $c$ tal que $\frac{1}{\lambda ^n} x_n \rightarrow c \cdot v_p$, siendo $v_p$ el vector propio $v$ normalizado (usando la norma $|\cdot|_1$). \\
+\\
+Para el caso concreto de una matriz estocástica, la constante $c$ viene determinada por el valor inicial $x_0$, pues se da que $c = | x_0 |_1$. Para poder hacer uso de este teorema, lo que nos queda es comprobar que $\lambda = 1$ es valor propio dominante de $A$.
+\\
+\\
+Vamos a comprobar que $\lambda = 1$ es VPD, es decir, es el valor propio con mayor valor absoluto y su multiplicidad en el polinomio  característico de la matriz es . Calculamos el polinomio característico de la matriz y lo resolvemos:
+
+\[
+det(A - \lambda \cdot I) = 0
+\]
+
+\[
+\left |
+\begin{array}{cccc}
+
+0.4 - \lambda & 0.1 & 0 & 0.1 \\
+
+0.2 & 0.5 - \lambda & 0.1 & 0 \\
+
+0 & 0.4 & 0.9 - \lambda & 0 \\
+
+0.4 & 0 & 0 & 0.9 - \lambda
+
+\end{array}
+\right | 
+= 0
+\]
+\\
+De donde se obtiene que el polinomio característico es $\lambda ^ 4 - \frac{27}{10} \lambda ^ 3 + \frac{253}{100} \lambda ^ 2 - \frac{189}{200} \lambda + \frac{23}{200}$. Igualándolo a 0, obtenemos que las raíces son $\lambda_1 = 1$, $\lambda_2 = 0.96056$, $\lambda_3 = 0.5$ y $\lambda_4 = 0.23944$. Por lo tanto, concluimos que $\lambda = 1$ es VPD. \\
+
+También podríamos haber usado un teorema que deriva del \textit{Teorema de Perron-Frobenius}:\\
+\\
+\textbf{Teorema 2.} Si una matriz $A$ es ergódica, $\rho(A)$ es VPD y existe un vector propio asociado a \(\rho (A)\) con todos sus componentes \(> 0\).\\
+\textbf{Definición 2.} Se dice que una matriz $A$ es ergódica si existe un natural $p \in \mathbb{N}$ tal que la matriz $A^p$ es estrictamente positiva.\\
+
+Usando esta definición, comprobamos que $A$ es ergódica, pues para $n = 3$, se tiene que:
+
+\[
+A^3 =
+\begin{pmatrix}
+0.158 & 0.071 & 0.018 & 0.139 \\
+0.142 & 0.229 & 0.157 & 0.036 \\
+0.144 & 0.628 & 0.821 & 0.008 \\
+0.556 & 0.072 & 0.004 & 0.817 
+\end{pmatrix}
+\]
+
+Luego por el teorema 2, volvemos a confirmar que $\rho(A) = 1$ es VPD de $A$. Pasamos a calcular el subespacio propio asociado a $\lambda = 1$, que denotaremos por $V_1$:
+\\
+\[
+V_1 = \left\{(x,y,z,t) \in \mathbb{R}^4 / 
+\begin{pmatrix}
+-0.6 & 0.1 & 0 & 0.1 \\
+0.2 & -0.5 & 0.1 & 0 \\
+0 & 0.4 & -0.1 & 0 \\
+0.4 & 0 & 0 & -0.1 
+\end{pmatrix} \cdot
+\begin{pmatrix}
+x \\
+y \\
+z \\
+t 
+\end{pmatrix} =
+\begin{pmatrix}
+0 \\
+0 \\
+0 \\
+0 
+\end{pmatrix} \right\}
+\]
+
+Y obtenemos que $V_1 = \{(\frac{1}{4}\lambda, \frac{1}{2}\lambda, 2\lambda, \lambda) / \lambda \in \mathbb{R}\}$. Ya podemos aplicar el teorema 1. Previamente, normalizamos usando la norma $|\cdot|_1$ el vector propio asociado a $\lambda = 1$, y obtenemos que $v_p = (\frac{1}{15},\frac{2}{15}, \frac{8}{15}, \frac{4}{15})$. Dado un valor inicial $x_0$, $x_n \rightarrow |x_0|_1 \cdot (\frac{1}{15},\frac{2}{15}, \frac{8}{15}, \frac{4}{15})$. Por ejemplo, si $x_0 = (30,15,0,0)$, $x_n \rightarrow 45 \cdot (\frac{1}{15},\frac{2}{15}, \frac{8}{15}, \frac{4}{15}) = (3,6,24,12)$, lo que quiere decir que a largo plazo, de 45 proyectos se tendrán 3 en ejecución normal, 6 atrasados, 24 cancelados y 12 terminados.
+
+\section{Aclaraciones}
+En el desarrollo de este trabajo nos hemos encontrado con dos inconvenientes por los que nos hemos visto obligados a realizar dos pequeñas modificaciones en la matriz del artículo en el que nos hemos basado. De no haberlo hecho, no podríamos haber aprovechado los resultados teóricos estudiados en clase. \\
+\\
+\textbf{Primer ajuste:} La matriz inicial era la siguiente:
+
+\[
+\begin{pmatrix}
+0.4 & 0.1 & 0 & 0 \\
+0.2 & 0.5 & 0 & 0 \\
+0 & 0.4 & 1 & 0 \\
+0.4 & 0 & 0 & 1 
+\end{pmatrix}
+\]
+
+Al haber dos estados absorbentes ($C$ cancelado y $T$ terminado), la matriz no era transitiva y, por lo tanto, tampoco ergódica. Por ello, no podíamos aplicar el teorema 2 y tuvimos que hallar las raíces manualmente. Sin embargo, por la forma de la matriz (las dos últimas columnas son enteras de ceros excepto en un elemento con valor 1), al desarrollar el determinante para obtener el polinomio característico, es evidente que $\lambda = 1$ tiene multiplicidad 2, por lo que no sería VPD y no podríamos aplicar el teorema 1 para el comportamiento a largo plazo. Es por ello que decidimos incluir la probabilidad de 0.1 de pasar de cancelado a atrasado, obteniendo esta matriz:
+
+\[
+\begin{pmatrix}
+0.4 & 0.1 & 0 & 0 \\
+0.2 & 0.5 & 0.1 & 0 \\
+0 & 0.4 & 0.9 & 0 \\
+0.4 & 0 & 0 & 1 
+\end{pmatrix}
+\]
+\\
+\textbf{Segundo ajuste:} Nuestra nueva matriz ajustada seguía sin ser transitiva por tener el estado absorbente $T$, pero ya podíamos afirmar que $\lambda = 1$ era VPD. Sin embargo, al calcular el subespacio propio $V_1$, obteníamos que sus vectores eran de la forma $(0,0,0,1)\lambda$ con $\lambda \in \mathbb{R}$, es decir, que todos los proyectos acababan teniendo éxito y llegaban al estado $T$, es decir, ninguno acababa siendo cancelado. Como esto nos parecía una situación poco realista, decidimos añadir una probabilidad del 0.1 de pasar del estado $T$ a $E$, para así asegurar que había proyectos de investigación que terminaban en fracaso. Así, llegamos a la matriz que hemos acabado usando para el trabajo:
+
+\[
+\begin{pmatrix}
+0.4 & 0.1 & 0 & 0.1 \\
+0.2 & 0.5 & 0.1 & 0 \\
+0 & 0.4 & 0.9 & 0 \\
+0.4 & 0 & 0 & 0.9 
+\end{pmatrix}
+\]
+
+Además, esta matriz sí es ergódica, por lo que nos permitía aprovechar el teorema 2 visto en clase.
+
+\newpage
+
+\section{Cuestiones interesantes}
+
+Ahora que conocemos la proporción de proyectos que acaban terminando, podemos definir una función \(f: \mathbb{R}_0^+ \to \mathbb{R}\) tal que
+\[
+	f(x) = 	\frac{4}{15} \cdot x - \frac{12}{15} \cdot \lambda \qquad \forall x \in \mathbb{R}_0^+
+\]
+donde \(\lambda \in \mathbb{R}_0+\) es la financiación proporcionada a un proyecto. \(\frac{4}{15}\) es la cantidad de proyectos que finalizan correctamente y reportan un beneficio y \(\frac{8}{15}\) son la cantidad de proyectos que se cancelan. De esta manera, nuestra ecuación tiene en cuenta que hemos financiado todos los proyectos finalizados, tanto como con éxito como sin él. Los proyectos que aún continúan en desarrollo no se toman en cuenta porque no han generado ningún beneficio aún. La variable \(x\) nos da la información de rentabilidad asociada un proyecto. De esta manera, dado un \(\lambda\) fijo, podríamos comprobar a partir de que \(x\) es rentable un proyecto. \\
+
+Si hacemos \(f(x) = 0\), obtenemos que \(x = 3 \lambda\), esto quiere decir que necesitamos obtener de beneficio el triple de lo que hemos invertido en un proyecto. Por ejemplo, si invertimos \(100€\) en un proyecto, debemos esperar al menos \(300€\) de retorno para no obtener pérdidas. \\
+
+Esto podría ser de gran utilidad puesto que de esta manera una administración o cualquier otra organización podría maximizar su productividad y beneficios y sería capaz de tener una plantilla de trabajadores óptima para llevar a cabo su labor.
+
+\section{Conclusiones}
+
+El enfoque estocástico, plasmado en el uso de Cadenas de Markov, se presenta en númerosas situaciones cuyo estudio es de gran interés, como en el caso de los procesos administrativos que hemos estudiado. Puesto que existen variables aleatorias, cuyos valores son estados característicos de los mismos, las Cadenas de Markov se presentan como una herramienta muy útil y potente para el análisis a corto, medio y largo plazo de procesos cuyo estado varía en el tiempo, y esta variación viene determinada por los estados anteriores que se hayan presentado en el sistema.\\
+
+En el caso estudiado, se pudo analizar la ejecución de proyectos de investigación en el ámbito de salud gracias a la modelización de esta ejecución en forma de cadena de Markov, definiendo los diferentes estados por los que puede pasar un proyecto y las probabilidades de que este se encuentre en un estado determinado a partir del estado en el que se encontraba.\\
+
+La obtención de datos como los extraídos en el estudio pueden ser de gran utilizad, pues permite a la administración (en este caso de la universidad) conocer información acerca de sus proyectos de investigación, su rentabilidad en función de su financiación, su potencia investigadora y permite poder realizar ciertas revisiones en este campo para así mejorarlo de la manera más eficiente posible. \\
+
+En el caso de la Facultad de Tecnología de la Salud de la Universidad de Santiago de Cuba, se pudo determinar elementos o variables que permiten tomar decisiones del tipo mencionado a corto y largo plazo, a partir de datos históricos durante un trienio (2013-2015), relacionadas con el número de transiciones y otros parámetros. En el caso de esta Facultad se valoraron los resultados de este estudio como favorables para el centro, puesto que se consideró que una buena parte de los proyectos de investigación terminan, y de la dificultad que esto supone. \\
+
+\section{Reflexión sobre el trabajo}
+
+Este trabajo nos ha permitido acercanos de manera muy directa a la aplicación de las matemáticas en la vida real. Hemos observado la importancia del desarrollo de herramientas como las Cadenas de Markov, que desarrollan los matemáticos investigadores a lo largo de todo el mundo. \\
+
+Queríamos destacar la potencia que hemos percibido en una herramienta como son los procesos estocásticos y el uso de Cadenas de Markov. Durante la búsqueda del tema sobre el que realizar el trabajo encontramos una interminable lista de artículos, de temas muy diversos, en los que el principal análisis del artículo se basaba en el uso de Cadenas de Markov. \\
+
+La ventaja que presenta esta herramienta es el hecho de que ``recuerda'', es decir, el último evento condiciona las posibilidades de los eventos futuros. Esta dependencia del evento anterior distingue a las cadenas de Markov de las series de eventos independientes, como tirar una moneda al aire o el sorteo de la lotería. En los negocios, las cadenas de Markov se han utilizado para analizar los patrones de compra, los deudores morosos, planear las necesidades de personal y para analizar el reemplazo de equipo. También nos ha llamado mucho la atención el uso de este enfoque en una rama tan importante como es el Machine Learning, donde la necesidad de recordar los últimos eventos se antoja imprescindible y las Cadenas de Markov permiten el aprendizaje de cierto tipo de Redes Neuronales. \\
+
+Creemos que se trata de las primeras veces en lo que llevamos de universidad que vemos tan de cerca una aplicación real de lo que hemos estudiado, lo cual nos ha resultado muy gratificante y positivo. También hemos podido comprobar, debido a la gran cantidad de datos que hemos encontrado acerca de las Cadenas de Markov, que aunque un trabajo esté realizado, siempre se puede mejorar y trabajar más aún para conseguir unos resultados más verídicos.
+
+\newpage
+
+\begin{thebibliography}{X}
+\bibitem{Unam} \textsc{Juan Antonio del Valle F.},
+	\textit{Introducción a las Cadenas o Procesos de Markov} \url{https://www.ingenieria.unam.mx/javica1/ingsistemas2/Simulacion/Cadenas_de_Markov.htm}
+	
+\bibitem{Principal} \textsc{Lopez Hung, Eduardo} y \textsc{Joa Triay, Lai Gen}, \textit{Cadenas de markov aplicadas al análisis de la ejecución de proyectos de investigación.} \url{http://scielo.sld.cu/scielo.php?script=sci_arttext&pid=S1684-18592017000100005&lng=es&nrm=iso}
+\end{thebibliography}
+
+
+\end{document}

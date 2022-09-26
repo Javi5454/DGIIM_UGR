@@ -1,0 +1,209 @@
+\documentclass[a4paper, 12pt]{article}
+
+\usepackage{amsmath} %Todos los paquetes de matematicas
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage[utf8]{inputenc}
+\usepackage[spanish, es-lcroman]{babel}
+\usepackage{wrapfig} %Figuras flotantes
+\usepackage{parselines}
+\usepackage{enumitem}
+\usepackage{xcolor}
+\usepackage{graphicx}
+\usepackage{subcaption}
+\usepackage{pgfplots}
+\usepackage{hyperref}
+\usepackage{textcomp}
+\usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry}
+
+
+\providecommand{\abs}[1]{\lvert#1\rvert} %Valor absoluto
+\providecommand{\norm}[1]{\lVert#1\rVert} %Norma
+
+\newtheorem*{lema*}{Lema}
+\newtheorem{teorema}{Teorema}
+\newtheorem*{teorema*}{Teorema}
+\newtheorem{corolario}{Corolario}
+\renewcommand{\qedsymbol}{\(\blacksquare\)}
+
+
+\title{\textbf{Objetivos de aprendizaje Tema 11} \\ \textit{Análisis Matemático I}}
+\author{Javier Gómez López}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\begin{enumerate}[label=\textbf{\arabic*}.]
+
+\item Conocer y comprender el enunciado de los siguientes resultados:
+
+\begin{enumerate}
+	\item Regla de diferenciación de la función inversa
+	
+	\begin{teorema}[Regla de diferenciación de la inversa]
+	Sean X e Y espacios normados, \(\Omega\) un abierto de X, \(f: \Omega \to Y\) una función inyectiva y \(f^{-1}: B \to X\) su inversa, donde \(B = f(\Omega)\). Supongamos que f es diferenciable en un punto \(a \in \Omega\), y que \(b = f(a) \in B^{\circ}\). Entonces, las siguientes afirmaciones son equivalentes:
+	\begin{enumerate}[label=(\textit{\roman*})]
+		\item \(f^{-1}\) es diferenciable en el punto b.
+		\item \(f^{-1}\) es continua en b y \(Df(a)\) es un homeomorfismo lineal de X sobre Y.
+	\end{enumerate}
+	
+	En caso de que se cumplan (i) y (ii), se tiene: \(Df^{-1} (b) = Df(a)^{-1}\).
+	\end{teorema}
+	
+	\item Teorema de la función inversa global
+	
+	\begin{teorema}[función inversa global]
+	Sea \(\Omega\) un abierto de \(\mathbb{R}^N\) y \(f \in C^1 (\Omega, \mathbb{R}^N)\). Supongamos que f es inyectiva y que \(\text{det}Jf(x) \neq 0\) para todo \(x \in \Omega\). Entonces \(W = f(\Omega)\) es abierto y \(f^{-1}\) es diferenciable con \(Df^{-1}(f(x)) = Df(x)^{-1}\) para todo \(x \in \Omega\). De hecho se tiene que \(f^{-1} \in C^1 (W, \mathbb{R}^N\).
+	\end{teorema}
+\end{enumerate}
+
+\bigskip
+
+\item Conocer y comprender el teorema de la función inversa local, incluyendo su demostración.
+
+\begin{teorema*}[función inversa local]
+Sea \(\Omega\) un abierto de \(\mathbb{R}^N\) y \(f: \Omega \to \mathbb{R}^N\) una función diferenciable, es decir, \(f \in D(\Omega, \mathbb{R}^N)\). Supongamos que la función diferencial \(Df\) es continua en un punto \(a \in \Omega\) y que \(\text{det}J(a) \neq 0\). Entonces existe un abierto \(U\) de \(\mathbb{R}^N\), con \(a \in U \subset \Omega\), para el que se verifican las siguientes afirmaciones:
+\begin{enumerate}[label=(\textit{\roman*})]
+	\item f es inyectiva en U
+	\item \( V = f(U)\) es un abierto de \(\mathbb{R}^N\)
+	\item \(\text{det}Jf(x) \neq 0\) para todo \(x \in U\)
+	\item Si \(\varphi = f|_U\), entonces \(\varphi^{-1} \in D(V, \mathbb{R}^N)\), con \(D \varphi^{-1} (f(x)) = Df(x)^{-1}\) para todo \(x \in U\).
+\end{enumerate}
+\end{teorema*}
+
+\begin{proof}
+Usaremos cualquier norma en \(\mathbb{R}^N\), y empezamos trabajando en un caso particular más cómodo, del que al final se deducirá fácilmente el caso general. Concretamente, suponemos por ahora que \(a = f(a) = 0\) y que \(Df(a) = \text{Id}\) es la identidad en \(\mathbb{R}^N\). \\
+
+En este caso, la idea intuitiva en la que se basa el teorema está muy clara: en un entorno del origen, \(f\) debe comportarse de forma similar a como lo hace la identidad, una función que cumple obviamente todas las afirmaciones del teorema. Así pues, procede trabajar con la diferencia entre ambas, es decir, la función \(g: \Omega \to \mathbb{R}^N\) dada por
+\[
+	g(x) = x - f(x) \qquad \forall x \in \Omega
+\]
+
+Es claro que \(g(0) = 0 \), así como que \(g\) es diferenciable con
+\[
+	Dg(x) = \text{Id} - Df(x) \qquad x \in \Omega
+\]
+
+Como, por hipótesis, \(Df\) es continua en el origen, vemos claramente que \(Dg\) también lo es, con \(Dg(0) = 0\), luego existe \(\delta_1 > 0\) tal que \(B (0, \delta_1) \subset \Omega\) y
+\[
+	||Dg(x)|| \leq 1/2 \qquad \forall x \in B(0 ,\delta_1)
+\]
+
+Por otra parte, recordemos que la continuidad de \(Df\) en el origen también implica la de la función \(x \mapsto \text{det}Jf(x)\), siendo \(\text{det}Jf(0) = 1\), luego existe \(\delta_2 > 0\) tal que \(B(0, \delta_2) \subset \Omega\) y 
+\[
+	\text{det}Jf(x) \neq 0 \qquad \forall x \in B(0, \delta_2)
+\]
+
+Tomamos ahora \(r = (1/3) \text{min} \{\delta_1, \delta_2\}\) con lo cual tenemos:
+\begin{equation}\label{proof_6}
+	x \in \mathbb{R}^N, \text{ } ||x|| < 3r \Rightarrow x \in \Omega, \text{ } ||Dg(x)|| \leq 1/2 \quad  \text{ y } \quad \text{det}Jf(x) \neq 0
+\end{equation}
+
+Como \(B(0, 3r)\) es un subconjunto abierto y convexo de \(\mathbb{R}^N\), un corolario de la desigualdad del valor medio nos asegura que \(g\) es lipschitziana en dicho abierto, más concretamente:
+\begin{equation}\label{proof_7}
+	x,z \in B(x, 3r) \Rightarrow ||g(x) - g(z))|| \leq (1/2) ||x-z||
+\end{equation}
+
+En particular, tomando \(z= 0\) tenemos
+\begin{equation}\label{proof_8}
+x \in B(x, 3r) \Rightarrow ||g(x) || \leq (1/2) ||x||
+\end{equation}
+
+Llegamos al paso clave de la demostración, que consiste en usar el teorema del punto fijo de Banach, para probar lo siguiente:
+\begin{itemize}
+	\item \textit{Para cada \(y_0 \in \overline{B} (0,r)\) existe un único \(x_0 \in \overline{B} (0,2r)\) tal que \(f(x_0) = y_0\). Además, si de hecho \(||y_0|| < r\), se tiene también \(||x_0|| < 2r\)}.
+\end{itemize}
+
+Fijado \(y_0 \in \overline{B} (0,r)\), para \(x \in \overline{B} (0,2r)\) se tiene
+\begin{equation}\label{proof_9}
+	f(x) = y_0 \Longleftrightarrow g(x) = x - Y_0 \Longleftrightarrow g(x) + y_0 = x
+\end{equation}
+luego buscamos un punto fijo de la función \(x \mapsto g(x) + y_0\). Así pues, tomamos \(E = \overline{B} (0,2r)\), que es un espacio métrico completo, subconjunto cerrado de \(\mathbb{R}^N\), y definimos \(h(x) = g(x) + y_0\) para todo \(x \in E\). Usando (\ref{proof_8}) tenemos
+\[
+	||h(x)|| \leq ||g(x)|| + ||y_0|| \leq (1/2) ||x|| + ||y_0|| \leq 2r \qquad \forall x \in E
+\]
+luego \(h(E) \subset E\). Además, \(h\) es contractiva, pues de (\ref{proof_7}) deducimos claramente que,
+\[
+	||h(x) - h(z)|| = ||g(x) - g(z)|| \leq (1/2) ||x-z|| \qquad \forall x,z \in E
+\]
+
+Por el teorema del punto fijo, existe un único \(x_0 \in E\) tal que \(h(x_0) = x_0\) y, en vista de (\ref{proof_9}), \(x_0\) es el único punto de \(\overline{B}(0,2r)\) tal que \(f(x_0) = y_0\). Por último, si \(||y_0|| < 2r\), razonando como antes tenemos \(||x_0|| = ||h(x_0)|| \leq (1/2) ||x_0|| + ||y_0|| \leq r + ||y_0|| < 2r\). Queda así comprobada la afirmación \(\centerdot\), y el resto de la demostración se obtendrá ya sin dificultad. \\
+
+Concretamente tomamos
+\[
+	U = B(0,2r) \cap f^{-1} (B(0,r))
+\]
+
+Como \(f\) es continua, el conjunto \(f^{-1} (B(0,r))\) es abierto, luego \(U\) también es abierto, y es claro que \(0 \in U \subset \Omega\). Comprobamos ahora todas las afirmaciones del teorema.
+
+\begin{enumerate}[label=(\textit{\roman*})]
+\item Si \(x,z \in U\) verifican que \(f(x) = f(z)\), tomando \(y_0 = f(x) \in B(0,r)\), de \(\centerdot\) deducimos que existe un único \(x_0 \in B(0,2r)\) tal que \(f(x_0) = y_0\), pero \(x,z \in B(0,2r)\), luego \(x = z = x_0\) y hemos probado que \(f\) es inyectiva en \(U\).
+
+\item Tomando \(V = f(U)\), es claro que \(V \subset B(0,r)\) y comprobamos enseguida que se da la igualdad, con lo que \(V\) es una bola abierta. Para cada \(y_0 \in B(0,r)\), usando de nuevo \(\centerdot\) tenemos un \(x_0 \in B(0,2r)\) tal que \(f(x_0) = y_0\), pero entonces \(x_0 \in U\), luego \(y_0 \in f(U)\) como queríamos.
+
+\item Para \(x \in U\) tenemos \(||x|| < 3r\) y (\ref{proof_6}) nos dice que \(\text{det}Jf(x) \neq 0\).
+
+\item Usando la regla de diferenciación de la función inversa, y teniendo en cuenta (\textit{iii}), basta probar que \(\varphi^{-1}\) es continua, y de hecho veremos que es lipschitziana.
+\end{enumerate}
+
+Para \(y_1, y_2 \in V\), sean \(x_1 = \varphi^{-1} (y_1)\) y \(x_2 = \varphi^{-1} (y_2)\), con lo que \(x_1, x_2 \in U\), \(f(x_1) = y_1\) y también \(f(x_2) = y_2\). Por definición de \(g\), tenemos \(x_1 = y_1 + g(x_1)\) y \(x_2 = y_2 + g(x_2)\). Por tanto, usando (\ref{proof_7}) obtenemos
+\[
+	||x_1 - x_2|| \leq ||y_1 - y_2|| + ||g(x_1) + g(x_2)|| \leq ||y_1 - y_2|| + (1/2) ||x_1 - x_2||
+\] 
+
+Deducimos claramente que 
+\[
+	|| \varphi^{-1} (y_1) - \varphi^{-1} (y_2)|| = || x_1 - x_"|| \leq 2 ||y_1 - y_2|| \qquad \forall y_1, y_2 \in V
+\]
+
+Queda así probado el teorema cuando \(a = f(a) = 0\) y \(Df(a) = \text{Id}\). Completamos ahora la demostración, viendo que el caso general se deduce del que ya tenemos resuelto. \\
+
+Sea \(\Omega_0 = \{ z \in \mathbb{R}^N : z + a \in \Omega\}\) que es un abierto de \(\mathbb{R}^N\), como imagen inversa de \(\Omega\) por una traslación, y verifica que \(0 \in \Omega_0\). Como, por hipótesis, \(\text{det}Jf(a) \neq 0\), tenemos que \(T = Df(a)\) es biyectiva y usaremos su inversa. Consideramos entonces la función \(f_0: \Omega_0 \to \mathbb{R}^N\) dada por
+\begin{equation}\label{proof_10}
+	f_0 (z) = T^{-1} ((f(z+a) - f(a)) \qquad \forall z \in \Omega_0
+\end{equation}
+que verifica \(f_0 (0) = 0\). La regla de la cadena nos dice que \(f_0\) es diferenciable con
+\begin{equation}\label{proof_11}
+Df_0 (z) = T^{-1} \circ Df(z+a) \qquad \forall z \in \Omega_0
+\end{equation}
+y en particular \(Df_0 (0) = T^{-1} \circ T = \text{Id}\). También deducimos que \(Df_0)\) es continua en el origen, pues para \(z \in U_0\), se tiene
+\[
+	||Df_0(z) - Df_0 (0)|| = || T^{-1} \circ (Df(z+a) - T)|| \leq ||T^{-1}|| || Df(z+a) - Df(a)||
+\]
+y bsata tener en cuenta que \(Df\) es continua en \(a\). En resumen, \(f_0\) verifica las hipótesis del teorema, en el caso particular que ya hemos resuelto. \\
+
+Por tanto, tenemos \(0 \in U_0 = U_0^{\circ} \subset \Omega_0\), con \(f_0\) inyectiva en \(U_0\), el conjunto \(V_0 = f_0(U_0)\) es abierto, \(\text{det} Jf_0(z) \neq 0\) para todo \(z \in U_0\) y \(\varphi_0^{-1} \in D(V_0, \mathbb{R}^N\) donde \(\varphi_0 = f_0 |_{U_0}\). Sólo queda hacer el camino de vuelta, traduciendo toda esta información en términos de \(f\). \\
+
+Para ello, sea \(U = \{ z+a : z \in U_0\}\) que claramente es un abierto de \(\mathbb{R}^N\) con \(a \in U \subset \Omega\). A partir de (\ref{proof_10}) deducimos claramente que
+\begin{equation}\label{proof_12}
+f(x) = T(f_0 (x-a)) + f(a) \qquad \forall x \in \Omega
+\end{equation}
+mientras que (\ref{proof_11}) se traduce en
+\begin{equation}\label{proof_13}
+Df(x) = T \circ Df_0 (x-a) \qquad \forall x \in \Omega
+\end{equation}
+
+Comprobamos ya, de forma bastante rutinaria, que \(f\) tiene en \(U\) las propiedades requeridas.
+
+\begin{enumerate}[label=(\textit{\roman*})]
+\item Si \(f(x_1) = f(x_2)\) con \(x_1, x_2 \in U\), usando (\ref{proof_12}) tenemos \(T(f_0(x_1 - a)) = T(f_0(x_2 -a ))\), pero \(T\) es biyectiva, luego \(f_0 (x_1 -a) = f_0 (x_2 -a)\). como \(x_1 -a, x_2 -a \in U_0\) y \(f_0\) es inyectiva en \(U_0\), concluimos que \(x_1 = x_2\), luego \(f \) es inyectiva en \(U\).
+
+\item Veamos que \(V = f(U)\) es abierto. Como \(V_0\) es abierto y \(T\) es un homeomorfismo, \(T (V_0)\) es abierto, y de (\ref{proof_12}) se deduce que \(V = \{v \in \mathbb{R}^N : v - f(a) \in T(V_0)\}\).
+
+\item Para \(x \in U\) tenemos \(x -a \in U_0\), luego \(\text{det}Jf_0 (x-a) \neq 0\), así que \(Df_0 (x-a)\) es biyectiva. Como \(T\) también lo es, deducimos de (\ref{proof_13}) que \(Df(x)\) es biyectiva, es decir, \(\text{det}Jf(x) \neq 0\).
+
+\item Si \(\varphi = f |_U\), veamos la relación entre \(\varphi^{-1}\) y \(\varphi_0^{-1}\). Para \( y \in V\) se tiene \(y - f(a) \in T(V_0)\), luego \(T^{-1} (y - f(a)) \in V_0\), lo que permite tomar \( x = (\varphi_0^{-1} \circ T^{-1}) ( y - f(a)) + a \in U\), y usando (\ref{proof_12}) vemos claramente que \(f(x) = y\). Esto prueba que
+\[
+	\varphi^{-1} (y) = ( \varphi_0^{-1} \circ T^{-1} ) (y - f(a)) + a \qquad \forall y \in V
+\]
+donde vemos claramente que \(\varphi^{-1}\) es continua. Como \(\varphi\) es diferenciable y \(D \varphi (x) = Df(x)\) es biyectiva para todo \(x \in U\), la regla de diferenciación de la función inversa nos dice que \(\varphi^{-1}\) es diferenciable con \(D \varphi^{-1} (f(x)) = Df(x)^{-1}\) para todo \(x \in U\).
+\end{enumerate}
+\end{proof}
+
+\end{enumerate}
+
+\end{document}

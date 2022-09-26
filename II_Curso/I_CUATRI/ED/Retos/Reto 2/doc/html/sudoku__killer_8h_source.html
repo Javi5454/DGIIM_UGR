@@ -1,0 +1,124 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.17"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>RETO 2: Fichero Fuente sudoku_killer.h</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">RETO 2
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Generado por Doxygen 1.8.17 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'Buscar');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','Buscar');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="headertitle">
+<div class="title">sudoku_killer.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="sudoku__killer_8h.html">Ir a la documentación de este archivo.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160; </div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#ifndef _SUDOKU_KILLER_</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">#define _SUDOKU_KILLER_</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160; </div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor">#include &lt;iostream&gt;</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160; </div>
+<div class="line"><a name="l00025"></a><span class="lineno"><a class="line" href="classSudoku__Killer.html">   25</a></span>&#160;<span class="keyword">class </span><a class="code" href="classSudoku__Killer.html">Sudoku_Killer</a>{</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;<span class="keyword">private</span>:</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160; </div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;    vector&lt;vector&lt;int&gt;&gt; tablero = {{0,0,0,0,0,0,0,0,0},</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;                                   {0,0,0,0,0,0,0,0,0},</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;                                   {0,0,0,0,0,0,0,0,0},</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;                                   {0,0,0,0,0,0,0,0,0},</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;                                   {0,0,0,0,0,0,0,0,0},</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;                                   {0,0,0,0,0,0,0,0,0},</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;                                   {0,0,0,0,0,0,0,0,0},</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;                                   {0,0,0,0,0,0,0,0,0},</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;                                   {0,0,0,0,0,0,0,0,0}};</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160; </div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;     vector&lt;vector&gt;<span class="keywordtype">int</span>&gt;&gt; celdas;</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160; </div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;     vector&lt;int&gt; celdas_sum;</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160; </div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;     <span class="keywordtype">void</span> getSum(<span class="keywordtype">int</span> i, <span class="keywordtype">int</span> j, <span class="keywordtype">int</span> celda_id, <span class="keywordtype">bool</span> checked[9][9], <span class="keywordtype">int</span> &amp;result);</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160; </div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;     <span class="keywordtype">bool</span> alreadyInRow(<span class="keywordtype">int</span> val, <span class="keywordtype">int</span> row);</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160; </div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;     <span class="keywordtype">bool</span> alreadyInCol(<span class="keywordtype">int</span> val, <span class="keywordtype">int</span> col);</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160; </div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;     <span class="keywordtype">bool</span> alredyInSmallGrid(<span class="keywordtype">int</span> row, <span class="keywordtype">int</span> col, <span class="keywordtype">int</span> val);</div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160; </div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;     <span class="keywordtype">bool</span> canUse(<span class="keywordtype">int</span> row, <span class="keywordtype">int</span> col, <span class="keywordtype">int</span> val);</div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160; </div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;<span class="keyword">public</span>:</div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160; </div>
+<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;    <a class="code" href="classSudoku__Killer.html#a4c2abc4471fabf41962595c200692671">Sudoku_Killer</a>(vector&lt;vector&lt;int&gt;&gt; celdas, vector&lt;int&gt; celdas_sum);</div>
+<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160; </div>
+<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classSudoku__Killer.html#ab60f1f1d7e682b5f4c8ef0ee62964d53">printSudoku</a>(ofstream dest);</div>
+<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160; </div>
+<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="classSudoku__Killer.html#a224d79734c75b3e9a3438ca5748244a3">solveSudoku</a>(<span class="keywordtype">int</span> i, <span class="keywordtype">int</span> j);</div>
+<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160; </div>
+<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;};</div>
+<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160; </div>
+<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;<span class="preprocessor">#endif // _SUDOKU_KILLER_</span></div>
+</div><!-- fragment --></div><!-- contents -->
+<div class="ttc" id="aclassSudoku__Killer_html_ab60f1f1d7e682b5f4c8ef0ee62964d53"><div class="ttname"><a href="classSudoku__Killer.html#ab60f1f1d7e682b5f4c8ef0ee62964d53">Sudoku_Killer::printSudoku</a></div><div class="ttdeci">void printSudoku(ofstream dest)</div><div class="ttdoc">Imprime el sudoku por un cauce dado.</div></div>
+<div class="ttc" id="aclassSudoku__Killer_html_a4c2abc4471fabf41962595c200692671"><div class="ttname"><a href="classSudoku__Killer.html#a4c2abc4471fabf41962595c200692671">Sudoku_Killer::Sudoku_Killer</a></div><div class="ttdeci">Sudoku_Killer(vector&lt; vector&lt; int &gt;&gt; celdas, vector&lt; int &gt; celdas_sum)</div><div class="ttdoc">Constructor con parámetros.</div></div>
+<div class="ttc" id="aclassSudoku__Killer_html"><div class="ttname"><a href="classSudoku__Killer.html">Sudoku_Killer</a></div><div class="ttdoc">T.D.A Sudoko Killer Una instancia del tipo de dato abstracto Sudoku_Killer nos permite crear sudokus ...</div><div class="ttdef"><b>Definition:</b> <a href="sudoku__killer_8h_source.html#l00025">sudoku_killer.h:25</a></div></div>
+<div class="ttc" id="aclassSudoku__Killer_html_a224d79734c75b3e9a3438ca5748244a3"><div class="ttname"><a href="classSudoku__Killer.html#a224d79734c75b3e9a3438ca5748244a3">Sudoku_Killer::solveSudoku</a></div><div class="ttdeci">bool solveSudoku(int i, int j)</div><div class="ttdoc">Soluciona el sudoku de manera recursiva.</div></div>
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Generado por &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.17
+</small></address>
+</body>
+</html>

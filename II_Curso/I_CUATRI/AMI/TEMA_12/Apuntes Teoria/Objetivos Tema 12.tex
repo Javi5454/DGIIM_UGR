@@ -1,0 +1,134 @@
+\documentclass[a4paper, 12pt]{article}
+
+\usepackage{amsmath} %Todos los paquetes de matematicas
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage[utf8]{inputenc}
+\usepackage[spanish, es-lcroman]{babel}
+\usepackage{wrapfig} %Figuras flotantes
+\usepackage{parselines}
+\usepackage{enumitem}
+\usepackage{xcolor}
+\usepackage{graphicx}
+\usepackage{subcaption}
+\usepackage{pgfplots}
+\usepackage{hyperref}
+\usepackage{textcomp}
+\usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry}
+
+
+\providecommand{\abs}[1]{\lvert#1\rvert} %Valor absoluto
+\providecommand{\norm}[1]{\lVert#1\rVert} %Norma
+
+\newtheorem*{lema*}{Lema}
+\newtheorem{teorema}{Teorema}
+\newtheorem*{teorema*}{Teorema}
+\newtheorem{corolario}{Corolario}
+\renewcommand{\qedsymbol}{\(\blacksquare\)}
+
+
+\title{\textbf{Objetivos de aprendizaje Tema 12} \\ \textit{Análisis Matemático I}}
+\author{Javier Gómez López}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\begin{enumerate}[label=\textbf{\arabic*}.]
+	\item Conocer y comprender el teorema de la función implícita, incluyendo su demostración
+	
+	\begin{teorema*}
+	Sea \(\Omega\) un abierto de \(\mathbb{R}^N \times \mathbb{R}^M\), \(F \in D(\Omega, \mathbb{R}^M)\) y \((a,b) \in \Omega\) tal que \(F (a,b) = 0\). Consideremos el abierto \(\Omega_a \subset \mathbb{R}^M\) y la función \(F_a \in D(\Omega_a, \mathbb{R}^M)\) dados por
+	\[
+		\Omega_a = \{ y \in \mathbb{R}^M : (a,y) \in \Omega\} \qquad \text{y} \qquad F_a(y) = F(a,y) \quad \forall y \in \Omega_a
+	\]
+	Supongamos que \(DF\) es continua en \((a,b)\) y que \(DF_a (b)\) es biyectiva. Entonces existen, un abierto W, con \((a,b) \in W \subset \Omega\), un abierto \( U \subset \mathbb{R}^N\) y una función \(\Psi \in D(U, \mathbb{R}^M)\), tales que
+	\begin{equation}\label{teorema}
+		\{ (x,y) \in W : F(x,y) = 0\} = \{ (x, \Psi (x)) : x \in U\}
+	\end{equation}
+	\end{teorema*}
+	
+\bigskip
+
+\begin{proof}
+Consistirá simplemente en aplicar el teorema de la función inversa local a la función \(H: \Omega \to \mathbb{R}^N \times \mathbb{R}^M\) definda por
+\[
+	H(x,y) = (x, F(x,y)) \qquad \forall (x,y) \in \Omega
+\]
+que claramente verifica \(H(a,b) = (a,0)\). \\
+
+Empezamos observando que \(H\) es diferenciable, pues sus dos componentes lo son. Pero conviene calcular explícitamente la diferencial de \(H\) en cada punto de \(\Omega\). \\
+
+Para ello, consideramos las proyecciones lineales naturales de \(\mathbb{R}^N \times \mathbb{R}^M\) sobre \(\mathbb{R}^N\) y \(\mathbb{R}^M\), que denotamos por \(\pi_1\) y \(\pi_2\) respectivamente, es decir, escribimos:
+\[
+	\pi_1 (x,y) = x \qquad \text{y} \qquad \pi_2 (x,y) = y \qquad \forall (x,y) \in \mathbb{R}^N \times \mathbb{R}^M
+\] \\
+
+Por otra parte \(J_1\) y \(J_2\) serán las inyecciones lineales de \(\mathbb{R}^N\) y \(\mathbb{R}^M\) en \(\mathbb{R}^N \times \mathbb{R}^M\), dadas por
+\[
+	J_1(x) = (x,0) \quad \forall x \in \mathbb{R}^N \qquad \text{y} \qquad J_2(y) = (0,y) \quad \forall y \in \mathbb{R}^M
+\] \\
+
+De esta forma, para todo \((x,y) \in \Omega\), tenemos claramente
+\[
+	H(x,y) = (x,0) + (0, F(x,y)) = J_1 (x) + J_2 (F(x,y)) = J_1 (\pi_1(x,y)) + J_2 (F(x,y))
+\]
+lo que se resume escribiendo \(H = J_1 \circ (\pi_1 |_{\Omega}) + J_2 \circ F\). Deducimos claramente que
+\begin{equation}\label{proof_4}
+	DH (x,y) = J_1 \circ \pi_1 + J_2 \circ DF(x,y) \qquad \forall (x,y) \in \Omega
+\end{equation}
+
+Entonces, también para todo \((x,y) \in \Omega\), tenemos
+\[
+	||DH(x,y) - DH(a,b)|| = || J_2 \circ (DF(x,y) - DF(a,b))|| \leq ||J_2|| || DF (x,y) - DF(a,b)||
+\]
+y como \(DF\) es continua en \((a,b)\), vemos que \(DH\) también lo es. Para aplicar el teorema de la función inversa local, sólo queda comprobar que \(DH(a,b)\) es biyectiva, para lo cual usaremos la hipótesis sobre la función \(F_a\). \\
+
+Observamos que para todo \(y \in \Omega_a\) se tiene \(F_a (y) = F((a,0) + (0,y)) = F(J_1 (a) + J_2(y))\), y la regla de la cadena nos da
+\begin{equation}\label{proof_5}
+	DF_a(y) = DF(a,y) \circ J_2 \quad \forall y \in \Omega_a \qquad \text{luego} \qquad DF_a(b) = DF(a,b) \circ J_2
+\end{equation}
+
+Para comprobar que \(DH(a,b)\) es biyectiva, como se trata de una aplicación lineal entre dos espacios vectoriales de la misma dimensión, bastará ver que es inyectiva. Suponemos por tanto que \(DH (a,b) (u,v) = (0,0)\) con \((u,v) \in \mathbb{R}^N \times \mathbb{R}^M\), para probar que \(u = v = 0\). En efecto, usando (\ref{proof_4}) tenemos
+\[
+	(0,0) = DH(a,b)(u,v) = (u,0) + (0, DF(a,b)(u,v))
+\]
+de donde deducimos, primero que \(u = 0\), y entonces que
+\[
+	0 = DF (a,b)(u,v) = (DF(a,b) \circ J_2) (v) = (DF_a(b))(v)
+\]
+donde, para la última igualdad, hemos usado (\ref{proof_5}). Como por hipótesis, \(DF_a(b)\) es biyectiva, obtenemos \(v = 0\), como queríamos. \\
+
+El teorema de la función inversa nos da un abierto \(W \) de \(\mathbb{R}^N \times \mathbb{R}^M\), con \((a,b) \in W \subset \Omega\), y un abierto \(G = H(W)\) de \(\mathbb{R}^M\), con \((a,0) \in G\), tales que \(H |_W\) es un biyección de \(W\) sobre \(G\), cuya inversa es diferenciable en \(G\). Dicha inversa es por tanto una biyección \(K: G \to W\) que es diferenciable y verifica que \(H(K(x,z)) = (x,z)\) para todo \((x,z) \in G\). \\
+
+Tomando \(U = J_1^{-1} (G) = \{ x \in \mathbb{R}^N : (x,0) \in G\}\), tenemos un abierto de \(\mathbb{R}^N\) tal que \(a \in U\), y la última igualdad nos dice que
+\begin{equation}\label{proof_6}
+H(K(x,0)) = (x,0) \qquad \forall x \in U
+\end{equation}
+
+Consideremos ahora las dos componentes de la función \(x \mapsto K(x,0)\), de \(U\) en \(W\), pues la segunda es la funciñón \(\Psi : U \to \mathbb{R}^M\) que buscamos. Más concretamente, definimos
+\[
+	\varphi (x) = \pi_1 (K(x,0)) \qquad \text{y} \qquad \Psi (x) = \pi_2 (K(x,0)) \qquad \forall x \in U
+\]
+
+Pero \(\varphi\) es fácil de calcular. Para \(x \in U\), tenemos \((\varphi (x), \Psi (x)) = K(x,0) \in W\) y (\ref{proof_6}) nos da
+\[
+	(x,0) = H(\varphi (x), \Psi (x)) = (\varphi (x), F(\varphi(x), \Psi (x)))
+\]
+luego \(\varphi (x) = x\) para todo \(x \in U\). Deducimos que
+\begin{equation}\label{proof_7}
+	(x, \Psi (x)) \in W \qquad \text{y} \qquad F(x, \Psi (x)) = 0 \qquad \forall x \in U
+\end{equation}
+
+Claramente \(\Psi\) es diferenciable, pues basta observar que \(\Psi = \pi_2 \circ K \circ (J_1 |_U)\). Sólo nos queda comprobar que \(W\), \(U\) y \(\Psi\) verifican la igualad (\ref{teorema})- \\
+
+Una inclusión la tenemos en (\ref{proof_7}), pues si \(x \in U\) e \(y = \Psi (x)\), vemos en (\ref{proof_7}) que \((x,y) \in W\) y \(F (x,y) = 0\). \\
+
+Recíprocamente, si \((x,y) \in W\) y \(F(x,y) = 0\), tenemos que \(x,0) = H(x,y) \in G\), luego \(x \in U\). Además, también sabemos que \(K(x,0) \in W\) y \(H(K(x,0= = (x,0)\), pero \(H\) es inyectiva en \(W\), luego \((x,y) = K(x,0) = (x, \Psi (x))\), de donde \(y = \Psi (x)\) como queríamos demostrar.
+\end{proof}
+\end{enumerate}
+
+\end{document}

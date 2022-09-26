@@ -1,0 +1,180 @@
+\documentclass[a4paper, 12pt]{article}
+
+\usepackage{amsmath} %Todos los paquetes de matematicas
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage[utf8]{inputenc}
+\usepackage[spanish, es-lcroman]{babel}
+\usepackage{wrapfig} %Figuras flotantes
+\usepackage{parselines}
+\usepackage{enumitem}
+\usepackage{xcolor}
+\usepackage{graphicx}
+\usepackage{subcaption}
+\usepackage{pgfplots}
+\usepackage{hyperref}
+\usepackage{textcomp}
+\usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry}
+
+
+\providecommand{\abs}[1]{\lvert#1\rvert} %Valor absoluto
+\providecommand{\norm}[1]{\lVert#1\rVert} %Norma
+
+\newtheorem*{lema*}{Lema}
+\newtheorem{teorema}{Teorema}
+\newtheorem*{teorema*}{Teorema}
+\newtheorem{corolario}{Corolario}
+\renewcommand{\qedsymbol}{\(\blacksquare\)}
+
+\providecommand{\abs}[1]{\lvert#1\rvert} %Valor absoluto
+\providecommand{\norm}[1]{\lVert#1\rVert} %Norma
+
+
+\title{\textbf{Objetivos de aprendizaje Tema 6} \\ \textit{Análisis Matemático II}}
+\author{Javier Gómez López}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\begin{enumerate}[label=\textbf{\arabic*}.]
+
+\item Conocer y comprender las siguientes definiciones:
+
+\begin{enumerate}[label=\textit{\alph*)}]
+	\item Integral de una función simple positiva
+	
+	Sea \(s\) una función simple positiva, y consideremos su descomposición canónica:
+	\begin{equation}\label{uno}
+	s = \sum_{k=1}^{p} \alpha_k \chi_{A_k} \qquad \text{donde} \qquad p \in \mathbb{N}, \quad \alpha_1, \dotsc, \alpha_p \in \mathbb{R}_0^+, \quad A_1, \dotsc, A_p \in \mathcal{M}
+	\end{equation}
+	
+	Para cada conjunto medible \(E \subset \Omega\), se define la \textbf{integral} de \(s\) sobre \(E\) mediante la igualdad
+	\[
+		\int_{E} s = \sum_{k=1}^{p} \alpha_k \lambda (E \cap A_k) 
+	\]
+	
+	Para extender esta primera definición, sólo necesitamos tres propiedades:
+	\begin{itemize}
+		\item \textbf{Homogeneidad.} \textit{Si s es una función simple positiva, se tiene:}
+		\[
+			\int_E \rho s = \rho \int_E s \qquad \forall \rho \in \mathbb{R}_0^+, \quad \forall E \in \mathcal{M}
+		\]
+		
+		\item \textbf{Aditividad.} \textit{Si s es una función simple positiva, la función \(\varphi: \mathcal{M} \to [0,\infty ] \) definida por}
+		\[
+			\varphi (E) = \int_E s \qquad \forall E \in \mathcal{M}
+		\]
+		\textit{es \(\sigma\)-aditiva y verifica que \(\varphi (\emptyset) = 0\), luego es una medida.}
+		
+		\item \textbf{Crecimiento.} \textit{Si s,t son funciones simples positivas y \(E \in \mathcal{M}\), entonces:}
+		\[
+			s(x) \leq t(x) \quad \forall x \in E \Rightarrow \int_E s \leq \int_E t
+		\]
+	\end{itemize}
+	
+	\medskip
+	
+	\item Integral de una función medible positiva
+	
+	Volvemos a trabajar en un conjunto medible \(\Omega \subset \mathbb{R}^N\), para estudiar la integral de una función \(f \in \mathcal{L}^+ (\Omega)\), esto es, una función medible \(f: \Omega \to [0, \infty]\).
+	
+	Se define la \textbf{integral de una función medible positiva} \(f: \Omega \to [0, \infty]\), sobre un conjunto medible \(E \subset \Omega\), mediante la igualdad:
+	\begin{equation}\label{tres}
+		\int_E f = \sup \left\{ \int_E s: s \in \mathcal{S}^+, \quad s(x) \leq f(x) \quad \forall x \in E \right\}
+	\end{equation}
+	donde \(\mathcal{S}^+\) es el conjunto de las funciones simples positivas.
+	
+	De nuevo, para extender esta definición, necesitamos estas tres propiedades:
+	\begin{itemize}
+		\item \textbf{Crecimiento.} \textit{Si f y g son funciones medibles positivas y \(E \in \mathcal{M} \cap \mathcal{P}(\Omega)\), se tiene:}
+		\[
+			f(x) \leq g(x) \quad \forall x \in E \Rightarrow \int_E f \leq \int_E g
+		\]
+		
+		\item \textbf{Homogeneidad.} \textit{Si f es una función medible positiva, tiene:}
+		\[
+			\int_E \rho f = \rho \int_E f \qquad \forall \rho \in  \mathbb{R}_0^+, \quad \forall E \in \mathcal{M} \cap \mathcal{P}(\Omega)
+		\]
+		
+		\item \textbf{Localización.} \textit{Si f es una función medible positiva, se tiene:}
+		\[
+			\int_E f = \int_{\Omega} \chi_E f \qquad \forall E \in \mathcal{M} \cap \mathcal{P} (\Omega)
+		\]
+	\end{itemize}
+\end{enumerate}
+
+\item Conocer y comprender el enunciado de los siguientes resultados:
+
+\begin{enumerate}[label=\textit{\alph*)}]
+	\item Integración de la suma de una serie
+	
+	A partir del teorema de aproximación de Lebesgue, obtendremos las propiedas más relevantes de la integral. Empezamos por su aditividad respecto al integrando. Conviene aclarar que, si \(\{f_n\}\) es una sucesión de funciones de \(\Omega\) en \([0, \infty]\), siempre tiene sentido considerar la función \(f: \Omega \to [0, \infty]\) definida por \(f(x) = \sum_{n=1}^{\infty} f_n(x)\) para todo \(x \in \Omega\). Es natural decir que \(f\) es la \textit{suma de la serie} \(\sum_{n \geq 1}^{\infty} f_n\). Enunciamos el siguiente resultado:
+	\begin{itemize}
+		\item \textbf{Integral de la suma de una serie.} \textit{Para cualquier sucesión \(\{f_n\}\) de funciones medibles positivas, se tiene:}
+		\[
+			\int_{\Omega} \sum_{n=1}^{\infty} f_n = \sum_{n=1}^{\infty} \int_{\Omega} f_n
+		\]
+	\end{itemize}
+	
+	\medskip
+	
+	\item Aditividad de la integral como función del conjunto sobre el que se integra
+	
+	Junto con la propiedad anteriormente enunciada, podemos ya enunciar la aditividad de la integral de una función medible positiva, que hasta ahora sólo conocíamos para funciones simples positivas:
+	\begin{itemize}
+		\item \textbf{Aditividad.} \textit{Si f es una función medible poisitiva, definiendo}
+		\[
+			\varphi (E) = \int_E f \qquad \forall E \in \mathcal{M} \cap \mathcal{P} (\Omega)
+		\]
+		\textit{se obtiene una función \(\varphi: \mathcal{M} \cap \mathcal{P} (\Omega) \to [0, \infty]\), que es \(\sigma\)-aditiva y verifica que \(\varphi ( \emptyset) = 0\), luego es una medida en \(\Omega\).}
+	\end{itemize}
+\end{enumerate}
+
+\bigskip
+
+\item Conocer y comprender el teorema de la convergencia monótona, incluyendo su demostración.
+
+\begin{teorema*}[Convergencia monótona]
+Sea \(\{f_n\}\) una sucesión creciente de funciones medibles positivas, y sea \(f(x) = \lim_{n \to \infty} f_n (x)\) para todo \(x \in \Omega\). Se tiene entonces:
+\[
+	\int_{\Omega} f = \lim_{n \to \infty} \int_{\Omega} f_n
+\]
+\end{teorema*}
+
+\begin{proof}
+Como \(\{f_n\}\) es creciente, la correspondiente sucesión de integrales también lo es, luego converge. Existe por tanto el límite que aparece en el segundo miembro de la igualdad buscada, al que denotaremos por \(L \in [0, \infty]\). Además se tiene \(f_n \leq f\) para todo \(n \in \mathbb{N}\), luego el crecimiento de la integral también nos dice que 
+\[
+	\int_{\Omega} f_n \leq \int_{\Omega} f \quad \forall n \in \mathbb{N}, \qquad \text{de donde} \qquad L \leq \int_{\Omega} f
+\]
+
+Para la otra desigualdad basta probar que, si \(s \in \mathcal{S}^+\) verifica que \(s(x) \leq f(x)\) para todo \(x \in \Omega\), la integral de \(s\) sobre \(\Omega\) es menor o igual que \(L\). Fijado \(\rho \in \mathbb{R}\) con \(0 < \rho < 1\), para cada \(n \in \mathbb{N}\) definimos
+\[
+	E_n = \{ x \in \Omega : f_n(x) \geq \rho s(x)\}
+\]
+y comprobamos que \(E_n \in \mathcal{M}\). Para ello, escribimos la descomposición canónica de \(s\) igual que en (\ref{uno}). Como \(f_n\) es medible, se tiene que
+\[
+	A_k \cap E_n = A_k \cap \{x \in \Omega: f_n(x) \geq \rho \alpha_k\} \in \mathcal{M} \quad \forall k \in \Delta_p, \qquad \text{luego} \qquad E_n = \biguplus_{k=1}^{p} (A_k \cap E_n) \in \mathcal{M}
+\]
+
+Como \(\{f_n\}\) es creciente, tenemos también que \(E_n \subset E_{n+1}\) para todo \(n \in \mathbb{N}\) y de hecho vamos a ver que \(\{E_n\} \nearrow \Omega\). Si \(s (x) = 0\) se tiene obviamente \(x \in E_n\) para todo \(n \in \mathbb{N}\). En otro caso, como \(\{f_n (x) \} \nearrow f(x) \geq s(x) > \rho s(x)\), existe \(n \in \mathbb{N}\) con \(x \in E_n\).
+
+Fijado \(n \in \mathbb{N}\), como \(\rho s(x) \leq f_n(x)\) para todo \(x \in E_n\), usando la homogeneidad de la integral de \(s\), dos veces el crecimiento de la integral, y la definición de \(L\), obtenemos
+\[
+	\rho \int_{E_n} s = \int_{E_n} \rho s \leq \int_{E_n} f_n = \int_{\Omega} \chi_{E_n} f_n \leq \int_{\Omega} f_n \leq L
+\]
+
+Usamos ahora que la integral de \(s\), como función del conjunto sobre el que se integra es una medida, luego es crecientemente continua, para obtener:
+\[
+\rho \int_{\Omega} s = \rho \lim_{n \to \infty} \int_{E_n} s \leq L
+\]
+
+Pero esta desigualdad es válida para todo \(\rho \in ]0,1[\), luego la integral de \(s\) sobre \(\Omega\) es menor igual que \(L\), como queríamos demostrar.
+\end{proof}
+
+\end{enumerate}
+
+\end{document}

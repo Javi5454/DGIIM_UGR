@@ -1,0 +1,1 @@
+/usr/bin/c++ -g CMakeFiles/ejer25.dir/programas/ejer25.cpp.o -o ejer25 

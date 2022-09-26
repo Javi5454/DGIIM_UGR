@@ -1,0 +1,5 @@
+/home/javi5454/Desktop/Github/Linux_PC/II_Curso/ED/Retos/Reto5/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+/home/javi5454/Desktop/Github/Linux_PC/II_Curso/ED/Retos/Reto5/cmake-build-debug/CMakeFiles/ejer22.dir
+/home/javi5454/Desktop/Github/Linux_PC/II_Curso/ED/Retos/Reto5/cmake-build-debug/CMakeFiles/ejer24.dir
+/home/javi5454/Desktop/Github/Linux_PC/II_Curso/ED/Retos/Reto5/cmake-build-debug/CMakeFiles/ejer30.dir
+/home/javi5454/Desktop/Github/Linux_PC/II_Curso/ED/Retos/Reto5/cmake-build-debug/CMakeFiles/edit_cache.dir

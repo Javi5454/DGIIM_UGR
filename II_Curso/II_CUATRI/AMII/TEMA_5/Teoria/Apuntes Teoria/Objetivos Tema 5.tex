@@ -1,0 +1,215 @@
+\documentclass[a4paper, 12pt]{article}
+
+\usepackage{amsmath} %Todos los paquetes de matematicas
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage[utf8]{inputenc}
+\usepackage[spanish, es-lcroman]{babel}
+\usepackage{wrapfig} %Figuras flotantes
+\usepackage{parselines}
+\usepackage{enumitem}
+\usepackage{xcolor}
+\usepackage{graphicx}
+\usepackage{subcaption}
+\usepackage{pgfplots}
+\usepackage{hyperref}
+\usepackage{textcomp}
+\usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry}
+
+
+\providecommand{\abs}[1]{\lvert#1\rvert} %Valor absoluto
+\providecommand{\norm}[1]{\lVert#1\rVert} %Norma
+
+\newtheorem*{lema*}{Lema}
+\newtheorem{teorema}{Teorema}
+\newtheorem*{teorema*}{Teorema}
+\newtheorem{corolario}{Corolario}
+\renewcommand{\qedsymbol}{\(\blacksquare\)}
+
+\providecommand{\abs}[1]{\lvert#1\rvert} %Valor absoluto
+\providecommand{\norm}[1]{\lVert#1\rVert} %Norma
+
+
+\title{\textbf{Objetivos de aprendizaje Tema 5} \\ \textit{Análisis Matemático II}}
+\author{Javier Gómez López}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\begin{enumerate}[label=\textbf{\arabic*}.]
+
+\item Conocer y comprender las siguientes definiciones:
+
+\begin{enumerate}[label=\textit{\alph*)}]
+	\item Función real medible y función medible positiva
+	
+	Dado un espacio topológico \(Y\), diremos que \(f: \Omega \to Y\) es una \textbf{función medible}, cuando la imagen inversa por \(f\) de todo subconjunto abierto de \(Y\), sea un conjunto medible, es decir:
+	\[
+		G = G^{\circ} \subset Y \Rightarrow f^{-1} (G) \in \mathcal{M}
+	\]
+	
+	Denotaremos por \(\mathcal{L}(\Omega)\) al conjunto de todas las funciones medibles de \(\Omega\) en \(\mathbb{R}\), a las que llamaremos \textbf{funciones reales medibles}. Sin embargo, las propiedades fundamentales de la integral adoptan una forma mucho más sencilla y elegante, si permitimos que dichas funciones tomen el valor \(\infty\). Por ello, considerando \([0, \infty]\) la topología usual estudiada en su momento, vamos a trabajar con funciones medibles de \(\Omega\) en \([0, \infty]\), a las que llamaremos \textbf{funciones medibles positivas}. Denotaremos por \(\mathcal{L}^{+} ( \Omega)\) al conjunto de tales funciones.
+	
+	\item Función simple positiva
+	
+	Partimos de las funciones que sólo toman los valores 0 y 1. Concretamente, denotamos por \(\chi_B: \mathbb{R}^N \to \{0,1\}\) a la \textbf{función característica} de un conjunto \(B \subset \mathbb{R}^N\), definida por
+	\[
+		\chi_B (x) = 1 \quad \forall x \in B \qquad \text{y} \qquad \chi_B (x) = 0 \quad \forall x \in \mathbb{R}^N \setminus B
+	\]
+	
+	A partir de las funciones características de conjuntos medibles, podemos ahora construir fácilmente nuevas funciones medibles positivas. \\
+	
+	Llamaremos \textbf{función simple positiva} a toda combinación lineal de funciones características de conjuntos medibles, cuyos coeficientes sean número reales no negativos, es decir, a toda función de la forma
+	\[
+		s = \sum_{i = 1}^{m} \rho_i \chi_{c_i} \quad \text{ donde } m \in \mathbb{N}, \quad \rho_1, \dotsc, \rho_m \in \mathbb{R}_0^+ \quad \text{ y } C_1, \dotsc, C_m \in \mathcal{M}
+	\]
+\end{enumerate}
+
+\item Conocer y comprender el enunciado de los siguientes resultados:
+
+\begin{enumerate}[label=\textit{\alph*)}]
+	\item Estabilidad de las funciones reales medibles por operaciones algebraicas y operaciones relacionadas con el orden entre funciones
+	
+	Empecemos recordando que el conjunto \(\mathcal{F}(\Omega)\), de todas las funciones de \(\Omega\) en \(\mathbb{R}\), es un anillo conmutativo, y también un espacio vectorial sobre \(\mathbb{R}\), con las operaciones definidas de la manera natural. Concretamente, para cualesquiera \(f,g \in \mathcal{F}(\Omega)\), \(\alpha \in \mathbb{R}\) y \(x \in \Omega\), se tiene
+	\[
+		(f + g)(x) = f(x) + g(x), \qquad (fg)(x) = f(x)g(x), \qquad (\alpha f) (x) = \alpha f(x)
+	\]
+	
+	De aquí, extraemos el siguiente resultado:
+	\begin{itemize}
+		\item \textit{La suma y el producto de funciones reales medibles también son funciones medibles}.
+	\end{itemize}
+	
+	\medskip
+
+	Veamos ahora la estabilidad por operaciones que tienen que ver con la relación de orden natural entre funciones. Concretamente, para \(f,g \in \mathcal{F} (\Omega)\) se define
+	\[
+		f \leq g \Leftrightarrow f(x) \leq g(x) \qquad \forall x \in \Omega
+	\]
+	
+	y es obvio que así se obtiene una relación de orden en \(\mathcal{F}(\Omega)\). A cada función \(f \in \mathcal{F}(\Omega)\) podemos asociar la función \(|f|\), \textbf{valor absoluto} de \(f\), dada por
+	\[
+		|f| (x) = |f(x)| = \max \{f(x), - f(x)\} \qquad \forall x \in \Omega
+	\]
+	
+	y es claro que, en el conjunto ordenado \(\mathcal{F}(\Omega)\), se tiene \(|f| = \sup \{f, -f\}\). Nótese que el conjunto \(\{f, -f\}\) puede no tener máximo. Definimos ahora dos funciones \(f^+, f^- : \Omega \to \mathbb{R}_0^+\) escribiendo, para todo \(x \in \Omega\),
+	\[
+		f^+ (x) = \max \{f(x), 0\} \qquad \text{y} \qquad f^- (x) = \max \{-f(x), 0\}
+	\]
+	de forma que \(f^+ = \sup \{f, 0\}\) y \(f^- = \sup \{-f,0\}\). Se dice que \(f^+\) es la \textbf{parte positiva} de \(f\), mientras que \(f^-\) es la \textbf{parte negativa} de \(f\). Pues bien, veamos el siguiente resultado:
+	\begin{itemize}
+		\item \textit{El valor absoluto, la parte positiva y la parte negativa de una función real medible, son también funciones medibles}.
+	\end{itemize}
+	
+	\medskip
+	
+	\item Estabilidad de las funciones medibles positivas por operaciones analíticas: supremo e ínfimo, límite superior e inferior, y límite puntual
+	
+	Veamos una útil caracterización de las funciones medibles positivas:
+	
+	\begin{itemize}
+		\item \textit{Para una función \(f: \Omega \to [0, \infty]\), las siguientes afirmaciones son equivalentes:}
+		\begin{enumerate}[label=(\textit{\roman*})]
+			\item \textit{f es medible}
+			\item \textit{Para todo \(\alpha \in \mathbb{R}^+\), el conjunto \(\{ x \in \Omega : f(x) < \alpha\}\) es medible}
+			\item \textit{Para todo \(\alpha \in \mathbb{R}^+\), el conjunto \(\{ x \in \Omega : f(x) \geq  \alpha\}\) es medible}
+			\item \textit{Para todo \(\alpha \in \mathbb{R}^+\), el conjunto \(\{ x \in \Omega : f(x) > \alpha\}\) es medible}
+			\item \textit{Para todo \(\alpha \in \mathbb{R}^+\), el conjunto \(\{ x \in \Omega : f(x) \leq \alpha\}\) es medible}
+		\end{enumerate}
+	\end{itemize}
+	
+	\medskip
+	
+	De aquí extraemos el siguiente resultado:
+	\begin{itemize}
+		\item \textit{\(\{f_n\}\) es una sucesión de funciones medibles positivas, también son medibles las cuatro funciones definidas como sigue:}
+		\[
+			g = \sup \{f_n : n \in \mathbb{N}\}, \qquad g(x) = \sup \{f_n (x) : n \in \mathbb{N}\} \qquad \forall x \in \Omega
+		\]
+		\[
+			h = \inf \{f_n : n \in \mathbb{N}\}, \qquad h(x) = \inf \{f_n (x) : n \in \mathbb{N}\} \qquad \forall x \in \Omega
+		\]
+		\[
+			\varphi = \limsup_{n \to \infty} f_n, \qquad \varphi (x) = \limsup_{n \to \infty} f_n(x) \qquad \forall x \in \Omega
+		\]
+		\[
+			\Psi = \liminf_{n \to \infty} f_n, \qquad \Psi (x) = \liminf_{n \to \infty} f_n(x) \qquad \forall x \in \Omega
+		\]
+		
+		\textit{En particular, cuando \(\{f_n\}\) converge puntualmente en \(\Omega\) a una función \(f: \Omega \to [0, \infty]\), se tiene que f es medible.}
+	\end{itemize}
+\end{enumerate}
+
+\bigskip
+
+\item Conocer y comprender la demostración del teorema de aproximación de Lebesgue, incluyendo el caso de aproximación uniforme.
+
+\begin{teorema*}[Aproximación de Lebesgue]
+Toda función medible positiva es el límite puntual en \(\Omega\) de una sucesión creciente de funciones simples positivas.
+\end{teorema*}
+
+\begin{proof}
+Si \(f: \Omega \to [0, \infty]\) es medible, para \(n,k \in \mathbb{N}\) con \(1 \leq k \leq n 2^n\) definimos
+\[
+	F_n = \{x \in \Omega: f(x) \geq n\} \qquad \text{y} \qquad E_{n,k} = \left\{ x \in \Omega : \frac{k-1}{2^n} \leq f(x) < \frac{k}{2^n}\right\}
+\]
+y vemos claramente que, tanto \(F_n\) como \(E_{n,k}\) son conjuntos medibles. Definimos ahora
+\begin{equation}\label{tres}
+	s_n = n \chi_{F_n} + \sum_{k= 1}^{n 2^n} \frac{k-1}{2^n} \chi_{E_{n,k}} \qquad \forall n \in \mathbb{N}
+\end{equation}
+
+Evidentemente, \(\{s_n\}\) es una sucesión de funciones simples positivas, y la demostración se concluirá probando que \(\{s_n\} \nearrow f\). Se tiene \(s_n(x) = 0\) para cualesquiera \(x \in \mathbb{R}^N \setminus \Omega\) y \(n \in \mathbb{N}\), pero sólo nos interesa lo que ocurre en \(\Omega\). Para que se comprenda mejor el razonamiento, conviene hacer una sencilla observación acerca de la igualdad (\ref{tres}). Fijado \(n \in \mathbb{N}\), tenemos
+\[
+	[0, \infty] = [n, \infty] \biguplus \left( \biguplus_{k=1}^{n 2^n} \left[ \frac{k-1}{2^n}, \frac{k}{2^n} \right[ \right), \qquad \text{luego} \qquad \Omega = F_n \biguplus \left( \biguplus_{k=1}^{n 2^n} E_{n,k} \right)
+\]
+
+Por tanto, dado \(x \in \Omega\), al usar (\ref{tres}) para calcular \(s_n(x)\), aparece a lo sumo un sumando no nulo. Así pues, si \(x \in F_n\) tendremos \(s_n(x) = n\), y en otro caso existe un único \(k \in \{1,2,\dotsc,n 2^n\}\) tal que \(x \in E_{n,k}\), con lo que \(s_n(x) = (k-1) 2^{-n}\).
+
+Fijados \(x \in \Omega\) y \(n \in \mathbb{N}\), para comprobar que \(s_n (x) \leq s_{n+1} (x)\), cabe distinguir tres casos, dependiendo del valor de \(f(x)\). Empezamos por el más sencillo:
+\[
+	n+1 \leq f(x) \Rightarrow x \in F_{n+1} \subset F_n \Rightarrow s_n(x) = n < n + 1 = s_{n+1} (x)
+\]
+
+Si \(n \leq f(x) < n + 1\), existe un único \(k \in \mathbb{N}\), con \(1 \leq k \leq (n+1) 2^{n+1}\), tal que \(x \in E_{n+1, k}\). Entonces \(k > 2^{n+1} f(x) \geq 2^{n+1}\), luego \(k - 1 \geq 2^{n+1}n\), y deducimos que
+\[
+	s_n (x) = n \leq \frac{k-1}{2^{n+1}} = s_{n+1} (x)
+\] 
+
+Supongamos por último que \(f(x) < n \) y sea \(k \in \mathbb{N}\), con \(1 \leq k \leq n 2^n\), tal que \(x \in E_{n,k}\). Entonces \(2k -2 \leq 2^{n+1} f(x) < 2k\), es decir, \(j - 1 \leq 2^{n+1} f(x) < j +1\), donde \(j = 2k -1\) verifica que \(1 \leq j \leq n 2^{n+1} - 1 < (n+1) 2^{n+1}\), con lo que caben dos posibilidades:
+\[
+	j - 1 \leq 2^{n+1} f(x) < j \Longrightarrow s_n (x) = \frac{k-1}{2^n} = \frac{j-1}{2^{n+1}} = s_{n+1} (x)
+\]
+\[
+	j \leq 2^{n+1} f(x) < j + 1 \Longrightarrow s_n (x) = \frac{k-1}{2^n} < \frac{j}{2^{n+1}} = s_{n+1} (x)
+\]
+
+Comprobado que \(\{s_n\}\) es creciente, fijamos \(x \in \Omega\) para ver que \(\{s_n (x) \} \to f(x)\). Esto es evidente si \(f(x) = \infty\), pues entonces \(s_n(x) = n\) para todo \(n \in \mathbb{N}\). En otro caso, para \(n > f(x)\) se tiene que \(x \not \in F_n\), luego \(x \in E_{n.k}\) con \(1 \leq k \leq n 2^n\). Por tanto:
+\begin{equation}\label{cuatro}
+	n \in \mathbb{N}, \quad n > f(x) \quad \Longrightarrow \quad 0 \leq f(x) - s_n(x) \leq 1/2^n
+\end{equation}
+
+lo que claramente implica que \(\{s_n(x)\} \to f(x)\).
+\end{proof}
+
+En un caso particular importante, la demostración anterior contiene una información que merece ser destacada:
+
+\begin{teorema*}[Aproximación uniforme]
+Si f es una función medible positiva, verificando que \(\sup f(\Omega) < \infty\), entonces existe una sucesión creciente de funciones simples positivas que converge uniformemente a f en \(\Omega\).
+\end{teorema*}
+
+\begin{proof}
+	Nótese que las funciones simples positivas nunca toman el valor \(\infty\), y por hipótesis se tiene \(f(x) < \infty\) para todo \(x \in \Omega\), luego tiene sentido decir que \(\{s_n\}\) converge uniformemente a \(f\) en \(\Omega\). Definiendo \(\{s_n\}\) como en (\ref{tres}), comprobaremos enseguida dicha convergencia uniforme. Basta para ello tomar \(m \in \mathbb{N}\) tal que \(m > \sup f(\Omega)\), con lo cual, para todo \(n \in \mathbb{N}\) con \(n \geq m\), vemos en (\ref{cuatro}) que
+	\[
+		0 \leq f(x) - s_n (x) \leq 1/2^n \qquad \forall x \in \Omega
+	\]
+	
+	y esto prueba que \(\{s_n\}\) converge uniformemente a \(f\) en \(\Omega\).
+\end{proof}
+
+\end{enumerate}
+
+\end{document}

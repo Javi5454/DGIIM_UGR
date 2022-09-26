@@ -1,0 +1,32 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+../bintree/bintree.h
+queue
+-
+bintree.hxx
+../bintree/bintree.hxx
+node.hxx
+../bintree/node.hxx
+
+../bintree/bintree.hxx
+cassert
+-
+
+../bintree/node.hxx
+cassert
+-
+
+/home/javi5454/Desktop/Github/Linux_PC/II_Curso/ED/Retos/Reto5/programas/ejer22.cpp
+iostream
+-
+bintree.h
+/home/javi5454/Desktop/Github/Linux_PC/II_Curso/ED/Retos/Reto5/programas/bintree.h
+string
+-
+

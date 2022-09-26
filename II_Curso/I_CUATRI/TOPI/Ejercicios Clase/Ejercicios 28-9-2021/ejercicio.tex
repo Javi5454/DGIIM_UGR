@@ -1,0 +1,90 @@
+\documentclass[a4paper, 12pt]{article}
+
+\usepackage{amsmath} %Todos los paquetes de matematicas
+\usepackage{amsthm}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage[utf8]{inputenc}
+\usepackage[spanish]{babel}
+\usepackage{wrapfig} %Figuras flotantes
+\usepackage{parselines}
+\usepackage{enumitem}
+\usepackage{xcolor}
+\usepackage{graphicx}
+\usepackage{subcaption}
+\usepackage{tikz}
+\usepackage{pgfplots}
+\usepackage{hyperref}
+\usepackage{textcomp}
+\usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry}
+
+\theoremstyle{definition}
+\newtheorem{ej}{Ejercicio}
+
+\providecommand{\abs}[1]{\lvert#1\rvert} %Valor absoluto
+\providecommand{\norm}[1]{\lVert#1\rVert} %Norma
+
+\title{Ejercicio 16/9/2021}
+\author{Javier Gómez López}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\begin{ej}
+Sean \(d_2\) y \(d = \) distancia discreta. Prueba que no son métricamente equivalentes en \(\mathbb{R}^n\).
+
+Dos distancias son equivalentes si 
+\begin{equation} \label{met_equivalentes}
+\exists \alpha , \beta > 0 : \alpha \cdot d(x,y) \leq d'(x,y) \leq \beta \cdot d(x,y) \quad \forall x,y \in X
+\end{equation}
+
+El caso en el que \(x=y\) cumple la desigualdad y es una comprobación trivial. Recordemos que \(d_2\) es una distancia en \(\mathbb{R}^n\) que procede de una norma y por tanto es no acotada. Por otro lado, tomando \(x \neq y\), tenemos que de ser métricamente equivalentes, tendríamos que 
+\[
+	d_2 (x,y) \leq \beta \cdot d(x,y) = \beta \Rightarrow d_2(x,y) \leq \beta
+\]
+lo cual es un absurdo y quedaría demostrado.
+\end{ej}
+
+\bigskip
+
+\begin{ej}
+Sea \((X,d)\) un espacio métrico.
+\begin{enumerate}
+	\item Probar que \(d' = \text{min}\{1,d\}\) es una distancia en \(X\).
+	
+Para ello hay que probar las tres propiedades que deben de cumplir todas las distancias.
+	\begin{enumerate}
+		\item \(d'(x,y) = 0 \Longleftrightarrow \text{min}\{1,d(x,y)\} = 0 \Longleftrightarrow d(x,y) = 0 \underset{\underset{d \text{ es una distancia}}{\uparrow}}{\Longleftrightarrow} x=y\)
+		\item \(d'(x,y) = \text{min}\{1,d(x,y)\} = \text{min}\{1,d(y,x)\} = d'(y,x)\) \(\forall x,y \in X\).
+		\item Queremos comprobar la desigualad triangular:
+		\[
+			d'(x,y) \leq d'(x,z) + d'(z,y)
+		\] 
+		Podemos afirmar que \(d' \leq 1\). Si \(d'(x,z)=1\) o \(d'(z,y)=1\) entonces
+		\[
+			d'(x,z) + d'(z,y) \geq 1 \geq d'(x,y)
+		\]
+		
+		Ahora supongamos \(d'(x,z) <1 \) y \(d'(z,y) < 1\). Por tanto
+		\[
+		d'(x,z) = d(x,z) \text{ y } d'(z,y) = d(z,y)
+		\]
+		\[
+			d'(x,y) \leq d(x,y) \leq d(x,z) + d(z,y) = d'(x,z) + d'(z,y)
+		\]
+		
+		Y queda demostrado que \(d'(x,y) \leq d'(x,z) + d'(z,y)\) \(\forall x,y,z \in X\).
+	\end{enumerate}
+	
+	\item Si \((X,d)\) es no acotado, \(d, d'\) no son métricamente equivalentes.
+	
+	Recordemos (\ref{met_equivalentes}) para definir cuando dos distancias son métricamente equivalentes. Para la parte de la derecha de la desigualdad podemos tomar \(\beta = 1\). Si existiera \(\alpha > 0 : \alpha \cdot d \leq d' \Rightarrow \alpha \cdot d(x,y) \leq d'(x,y) \leq 1\) \(\forall x,y \in X\), obtendríamos que
+	\[
+		d(x,y) \leq \frac{1}{\alpha} \quad \forall x,y \in X
+	\]
+	lo cual es un absurdo. Por tanto, \(\nexists \alpha : \alpha \cdot d \leq d'\) y queda probado que no son métricamente equivalentes.
+\end{enumerate}
+\end{ej}
+\end{document}

@@ -1,0 +1,4 @@
+/home/javi5454/Desktop/Github/Linux_PC/II_Curso/ED/Practicas/clion-2021.2.2/bin/cmake/linux/bin/cmake -DCMAKE_BUILD_TYPE=Debug -DCMAKE_DEPENDS_USE_COMPILER=FALSE -G "CodeBlocks - Unix Makefiles" /home/javi5454/Desktop/Github/Linux_PC/II_Curso/ED/Retos/Reto5
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /home/javi5454/Desktop/Github/Linux_PC/II_Curso/ED/Retos/Reto5/cmake-build-debug

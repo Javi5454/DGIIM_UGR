@@ -1,0 +1,144 @@
+\documentclass[a4paper, 12pt]{article}
+
+\usepackage{amsmath} %Todos los paquetes de matematicas
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage[utf8]{inputenc}
+\usepackage[spanish, es-lcroman]{babel}
+\usepackage{wrapfig} %Figuras flotantes
+\usepackage{parselines}
+\usepackage{enumitem}
+\usepackage{xcolor}
+\usepackage{graphicx}
+\usepackage{subcaption}
+\usepackage{pgfplots}
+\usepackage{hyperref}
+\usepackage{textcomp}
+\usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry}
+
+
+\providecommand{\abs}[1]{\lvert#1\rvert} %Valor absoluto
+\providecommand{\norm}[1]{\lVert#1\rVert} %Norma
+
+\newtheorem*{lema*}{Lema}
+\newtheorem{teorema}{Teorema}
+\newtheorem*{teorema*}{Teorema}
+\newtheorem{corolario}{Corolario}
+\renewcommand{\qedsymbol}{\(\blacksquare\)}
+
+\providecommand{\abs}[1]{\lvert#1\rvert} %Valor absoluto
+\providecommand{\norm}[1]{\lVert#1\rVert} %Norma
+
+
+\title{\textbf{Objetivos de aprendizaje Tema 4} \\ \textit{Análisis Matemático II}}
+\author{Javier Gómez López}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\begin{enumerate}[label=\textbf{\arabic*}.]
+
+\item Conocer y comprender las siguientes definiciones:
+
+\begin{enumerate}[label=\textit{\alph*)}]
+	\item Conjuntos de Borel
+	
+	Dado un conjunto no vacío \(\Omega\), es inmediato comprobar que la intersección de cualquier familia no vacía de \(\sigma\)-álgebras en \(\Omega\), es también una \(\sigma\)-álgebra en \(\Omega\). Para una familia de conjuntos \(\mathcal{T} \subset \mathcal{P} (\Omega)\), es obvio que \(\mathcal{P} (\Omega)\) es una \(\sigma\)-álgebra que contiene a \(\mathcal{T}\). De esta forma, obtenemos una \(\sigma\)-álgebra \(\mathcal{A}\), que contiene a \(\mathcal{T}\) y está contenida en todas las \(\sigma\)-álgebras que contienen a \(\mathcal{T}\). Decimos que \(\mathcal{A}\) es la \(\sigma\)\textbf{-álgebra engendrada} por \(\mathcal{T}\), la mínima \(\sigma\)-álgebra que contiene a \(\mathcal{T}\). \\
+	
+Si consideramos \(\Omega\) como un espacio topológico y \(\mathcal{T}\) es la topología de \(\Omega\), es decir, la familia de todos los subconjuntos abiertos de \(\Omega\). La \(\sigma\)-álgebra engendrada por \(\mathcal{T}\) recibe el nombre de \(\sigma\)\textbf{-álgebra de Borel} de \(\Omega\), cuyos elementos se conocen como \textbf{conjuntos de Borel}. \\
+
+	\item Conjuntos de Cantor
+	
+Llamaremos \textbf{sucesión admisible} a toda sucesión \(a = \{a_n\}\) de números reales que, tomando por comodidad \(a_0 = 1\) verifique:
+\[
+	0 < a_n < \frac{a_{n-1}}{2} \qquad \forall n \in \mathbb{N}
+\]
+\end{enumerate}
+
+Escribiremos también \(\rho_n = a_{n-1} - a_n > 0\) para todo \(n \in \mathbb{N}\). Ahora, para cada \(n \in \mathbb{N}\), usaremos el conjunto producto cartesiano \(U_n = \{0,1\}^n\), formado por todas las \(n\)-uplas  de ceros y unos. A cada \(u \in U_n\) asociamos el intervalo compacto \(J(u)\), definido por
+\[
+	J(u) = [ m(u), m(u) + a_n] \qquad \text{donde} \qquad m(u) = \sum_{j=1}^{n} u(j) \rho_j \qquad \forall u \in U_n, \forall n \in \mathbb{N}
+\]
+
+A partir de estos intervalos, definimos ahora:
+\[
+	K_n(a) = \bigcup_{u \in U_n} J(u) \quad \forall n \in \mathbb{N} \qquad \text{y} \qquad C(a) = \bigcap_{n=1}^{\infty} K_n(a)
+\]
+donde resaltamos la dependencia de la sucesión admisible \(a\) que hemos usado en la definición. Se dice que \(C(a)\) es el \textbf{conjunto de Cantor} asociado a la sucesión \(a\).
+
+\newpage
+
+\item Conocer y comprender el enunciado de los siguientes resultados:
+\begin{enumerate}[label=\textit{\alph*})]
+	\item Regularidad de la medida de Lebesgue
+	
+Podemos distinguir entre dos tipos de regularidades en la medida de Lebesgue:
+\begin{itemize}
+	\item \textbf{Regularidad exterior}. Por así decirlo, la medida de un conjunto medible puede obtenerse ``por fuera'', usando los conjuntos abiertos que lo contienen:
+	\begin{itemize}
+		\item \textit{Para todo \(E \in \mathcal{M}\), se tiene: \(\lambda(E) = \inf \{ \lambda(G) : E \subset G^{\circ} = G \subset \mathbb{R}^N\}\)}
+	\end{itemize}
+	
+	\item \textbf{Regularidad interior}. Por así decirlo, la medida de un conjunto medible también puede calcularse ``por dentro'' usando los conjuntos compactos contenidos en él. 
+	\begin{itemize}
+		\item \textit{Para todo \(E \in \mathcal{M}\), se tiene; \(\lambda(E) = \sup \{\lambda(K): K \text{ compacto }, K \subset E\}\)}.
+	\end{itemize}
+\end{itemize}
+
+	\item Caracterizaciones de los conjuntos medibles, usando la topología de \(\mathbb{R}^N\).
+	\begin{itemize}
+		\item \textit{Para un conjunto \(E \subset \mathbb{R}^N\), las siguientes afirmaciones son equivalentes:}
+		\begin{enumerate}[label=(\textit{\roman*})]
+			\item \textit{E es medible}
+			\item \textit{Para cada \(\varepsilon > 0\), existe un abierto \(G \subset \mathbb{R}^N\), tal que \(E \subset G\) y \(\lambda^*(G \setminus E) < \varepsilon\)}.
+			\item \textit{Para cada \(\varepsilon > 0\), existe un cerrado, \(F \subset \mathbb{R}^N\) tal que \(F \subset E\) y \(\lambda^*(E \setminus F) < \varepsilon\)}.
+			\item \textit{Existe un conjunto \(A \subset \mathbb{R}^N\), de tipo \(F_{\sigma}\) tal que \(A \subset E\) y \(\lambda^*(E \setminus A) = 0\)}
+			\item \textit{Existe un conjunto \(B \subset \mathbb{R}^N\), de topo \(G_{\sigma}\), tal que \(E \subset B\) y \(\lambda^*(B \setminus E) = 0\)}
+		\end{enumerate}
+	\end{itemize}
+	
+	\item Teoremas de unicidad de la medida de Lebesgue
+	
+	\begin{teorema*}[Primer teorema de unicidad]
+	Si \(\mathcal{A}\) es una \(\sigma\)-álgebra, con \(\mathcal{B} \subset \mathcal{A} \subset \mathcal{M}\), y \(\mu : A \to [0, \infty]\) una medida, tal que \(\mu (J) = \lambda (J)\) para todo intervalo diádico \(J \subset \mathbb{R}^N\), entonces \(\mu (E) = \lambda (E)\) para todo \(E \in \mathcal{A}\). En particular, \(\lambda\) es la única medida definida en \(\mathcal{M}\), que extiende a la medida elemental de los intervalos acotados.
+	\end{teorema*}
+	
+	\medskip
+	
+	\begin{teorema*}[Segundo teorema de unicidad]
+	Para \(\mathcal{A} = \mathcal{B}\), o bien \(\mathcal{A} = \mathcal{M}\), sea \(\mu : A \to [0, \infty]\) una medida invariante por traslaciones, tal que \(\mu (G) < \infty\) para algún abierto no vacío \(G \subset \mathbb{R}^N\). Entonces existe \(\rho \in \mathbb{R}_0^+\) tal que \(\mu (E) = \rho \lambda (E)\) para todo \(E \in \mathcal{A}\).
+	\end{teorema*}
+
+\end{enumerate}
+
+\bigskip
+
+	\item Conocer y comprender la demostración de la existencia de conjuntos no medibles.
+	
+	\begin{teorema}
+	Todo subconjunto de \(\mathbb{R}^N\), con medida exterior estrictamente positiva, contiene un conjunto no medible.
+	\end{teorema}
+	
+	\begin{proof}
+	Dado \(A \in \mathcal{P} (\mathbb{R}^N)\) verificando que \(\lambda^*(A) > 0\), podemos escribir \(A = \bigcup_{n=1}^{\infty} A_n\), donde \(A_n = A \cap [-n,n]^N\) para todo \(n \in \mathbb{N}\). Usando entonces que \(\lambda^*\) es \(\sigma\)-subaditiva, se tiene que \(\lambda^* (A) \leq \sum_{n=1}^{\infty} \lambda^*(A_n)\), luego existe \(m \in \mathbb{N}\) tal que \(\lambda^* (A_m) > 0\). \\
+	
+	Si abreviamos escribiendo \(B = A_m \subset A\), tenemos que \(\lambda^* (B) > 0\), con la ventaja de que \(B\) está acotado, y bastará probar que \(B\) contiene un conjunto no medible, pues entonces \(A\) también lo contendrá. \\
+	
+	Usaremos que \(\mathbb{Q}^N\) es un subgrupo aditivo de \(\mathbb{R}^N\), lo que permite considerar el grupo cociente \(\mathcal{H} = \frac{\mathbb{R}^N}{\mathbb{Q}^N}\) y la aplicación cociente \(q : \mathbb{R}^N \to \mathcal{H}\), que es sobreyectiva. Usando el conjunto \(q (B) \subset \mathcal{H}\), el axioma de elección nos dice que existe una aplicación \(\phi : q(B) \to B\) tal que \(q(\phi (h)) = h\) para todo \(h \in q (B)\). Nos interesa la imagen de \(\phi\), el conjunto \(W = \phi(q(B))\). Observamos que \(W \subset B\), y en particular, \(W\) está acotado. \\
+	
+	En primer lugar, para todo \(b \in B\), tenemos \(q(b) = h \in q (B)\), pero también \(q(\phi (h)) = h\), luego \(b - \phi (h) = r \in \mathbb{Q}^N\), de donde \(b = \phi (h) + r \in W + \mathbb{Q}^N\). Esto prueba que \(B \subset W + \mathbb{Q}^N\).
+	
+	Por otra parte, si \(r,s \in \mathbb{Q}^N\) verifican que \((W+r) \cap (W+s) \neq \emptyset\), tendremos \(w_1, w_2 \in W\) tales que \(w_1 + r = w_2 +s\), de donde \(q(w_1) = q(w_2)\). Escribiendo \(w_1 = \phi (h_1)\) y \(w_2 = \phi (h_2)\) con \(h_1, h_2 \in q (B)\), tenemos entonces \(h_1 = q(w_1) = q(w_2) = h_2\), de donde \(w_1 = w_2\), y por tanto, \(r = s\). Así pues, los conjuntos de la forma \(W + r\) con \(r \in \mathbb{Q}^N\) son dos a dos disjuntos. \\
+	
+	Fijamos ahora una sucesión acotado \(\{r_n\}\) de elementos de \(\mathbb{Q}^N\), verificando \(r_n \neq r_m\) para cualesquiera \(n, m \in \mathbb{N}\) con \(n \neq m\). Como \(W\) está acotado, el conjunto \(C = \biguplus_{n=1}^{\infty} (W + r_n)\) también lo está. Suponemos ahora que \(W\) es medible, para llegar a una contradicción. \\
+	
+	Para cada \(r \in \mathbb{Q}^N\), como la medida de Lebesgue es invariante por traslaciones, de \(W \in \mathcal{M}\) deducimos que \(W + r \in \mathcal{M}\) con \(\lambda (W+r) = \lambda(W)\). Como consecuencia tenemos que \(C \in \mathcal{M}\), así como \(\lambda(C) = \sum_{n=1}^{\infty} \lambda (W + r_n) = \lambda (W) \infty\). Como \(C\) está acotado, también tenemos \(\lambda (C) < \infty\), luego \(\lambda (W) = 0\). Pero entonces \(\lambda (W + r) = 0\) para todo \(r \in \mathbb{Q}^N\) y, como \(\mathbb{Q}^N\) es numerable, de \(B \subset \bigcup_{r \in \mathbb{Q}^N} (W + r)\), deducimos que \(\lambda^* (B) = 0\), lo cual es una contradicción.
+	\end{proof}
+	
+\end{enumerate}
+
+\end{document}

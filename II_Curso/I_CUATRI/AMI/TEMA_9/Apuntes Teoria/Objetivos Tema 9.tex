@@ -1,0 +1,181 @@
+\documentclass[a4paper, 12pt]{article}
+
+\usepackage{amsmath} %Todos los paquetes de matematicas
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage[utf8]{inputenc}
+\usepackage[spanish, es-lcroman]{babel}
+\usepackage{wrapfig} %Figuras flotantes
+\usepackage{parselines}
+\usepackage{enumitem}
+\usepackage{xcolor}
+\usepackage{graphicx}
+\usepackage{subcaption}
+\usepackage{pgfplots}
+\usepackage{hyperref}
+\usepackage{textcomp}
+\usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry}
+
+
+\providecommand{\abs}[1]{\lvert#1\rvert} %Valor absoluto
+\providecommand{\norm}[1]{\lVert#1\rVert} %Norma
+
+\newtheorem{teorema}{Teorema}
+\renewcommand{\qedsymbol}{\(\blacksquare\)}
+
+
+\title{\textbf{Objetivos de aprendizaje Tema 9} \\ \textit{Análisis Matemático I}}
+\author{Javier Gómez López}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\begin{enumerate}[label=\textbf{\arabic*}.]
+
+\item Conocer y comprender la definición de matriz jacobiana, así como su relación con la diferencial \\
+
+Primero de todo, definamos lo que es la matriz asociada a una aplicación lineal. Denotamos por \(\mathcal{M}_{M \times N}\) al conjunto de todas las matrices \(M \times N\) (\(M\) filas y \(N\) columnas) con coeficientes reales. Para cada \(x \in \mathbb{R}^N\), sus coordenadas en la base usual de \(\mathbb{R}^N\) forman una matriz columna que también denotamos por \(x\), por lo que escribimos \(x \in \mathcal{M}_{N \times 1}\). Anágolamente, el vector \(y = T(x) \in \mathbb{R}^M\), donde \(T \in L(\mathbb{R}^N, \mathbb{R}^M\), tiene sus coordenadas en la base usual de \(\mathbb{R}^M\), que dan la matriz columna \(y \in \mathcal{M}_{M \times 1}\). Existe entonces una única matriz \(A \in \mathcal{M}_{M \times N}\) tal que, para todo \(x \in \mathbb{R}^N\), obtenemos \(y = T(x)\) como producto de matrices: \(y = A \cdot x\). Diremos que \(A\) es \textbf{la matriz de la aplicación lineal} \(T\), y es única. \\
+
+En lo que sigue, fijamos un abierto \(\Omega \subset \mathbb{R}^N\) y una función \(f: \Omega \to \mathbb{R}^M\). Escribimos \(f =  (f_1, f_2, \dotsc, f_M)\) para indicar las \(M\) componentes de \(f\), campos escalares definidos en \(\Omega\). Recordamos que, para todo \(j \in \Delta_M\) se tiene \(f_j = \pi_j \circ f\). \\
+
+Si \(f\) es diferenciable en un punto \(a \in \Omega\), la matriz de la aplicación lineal \(Df(a) \in L(\mathbb{R}^N, \mathbb{R}^M\) recibe el nombre de \textbf{matriz jacobiana} de \(f\) en \(a\) y se denota por \(Jf(a)\). Los coeficientes de dicha matriz jacobiana, \(Jf(a) = ( \alpha_{jk}) \in \mathcal{M}_{M \times N}\), vienen dados por \(\alpha_{jk} = (\pi_j \circ Df(a))(e_k)\), para cualesquiera \(j \in \Delta_M\) y \(k \in \Delta_N\). Obtenemos que
+\[
+	\alpha_{jk} = Df_j(a)(e_k) = \frac{\partial f_j}{\partial x_k} (a) \qquad \forall j \in \Delta_M, \quad \forall k \in \Delta_N
+\]
+
+Así pues, la matriz jacobiana de \(f\) en \(a\) viene dada por:
+\[
+Jf(a) =
+\begin{pmatrix}
+\frac{\partial f_1}{\partial x_1} (a) & \frac{\partial f_1}{\partial x_2} (a) & \dotsb & \dotsb & \frac{\partial f_1}{\partial x_N} (a) \\
+\\
+\frac{\partial f_2}{\partial x_1} (a) & \frac{\partial f_2 }{x_2 } (a) & \dotsb & \dotsb & \frac{\partial f_2}{\partial x_N} (a) \\
+\\
+\vdots & \vdots & &  & \vdots \\
+\\
+\frac{\partial f_M}{\partial x_1} (a) & \frac{\partial f_M}{\partial x_2} (a) & \dotsb & \dotsb & \frac{\partial f_M}{\partial x_M} (a)
+\end{pmatrix}
+\] \\
+
+Se recuerda fácilmente, pues para cada \(j \in \Delta_M\), su \(j\)-ésima fila es el gradiente de \(f_j\) en \(a\), es decir, las \(M\) filas de la matriz jacobiana son los gradientes de las \(M\) componentes de \(f\). Por otra parte, para cada \(k \in \Delta_N\), la \(k\)-ésima columna de la matriz jacobiana es el vector derivada parcial de \(f\) con respecto a la \(k\)-ésima variable en el punto \(a\), luego las \(N\) columnas de la matriz jacobiana son las \(N\) derivadas parciales de \(f\) en \(a\). \\
+
+Cuando \(M = 1\), tenemos un campo escalar, cuya matriz jacobiana es su gradiente, escrito como una matriz fila. Por otra parte, cuando \(N = 1\), tenemos una función de una sola variable real, cuya matriz jacobiana es su vector derivada, escrito como una matriz columna.
+
+\bigskip
+
+\item Saber usar la matriz jacobiana para calcular el plano tangente a una superficie paramétrica
+
+Llamamos \textbf{superficie paramétrica} en \(\mathbb{R}^3\) a la imagen de toda función continua \(\Gamma: \Omega \to \mathbb{R}^3\) donde \(\Omega\) es un subconjunto no vacío, abierto y conexo de \(\mathbb{R}^2\). Se trata por tanto del conjunto
+\[
+	\Sigma = \Gamma (\Omega) = \{ \Gamma (t,s): (t,s) \in \Omega\}
+\]
+
+Las variables reales \(t\) y \(s\) son ahora los \textit{parámetros}, y a cada valor \((t,s) \in \Omega\) de los mismos, corresponde un único punto \(\Gamma (t,s)\) de la superficie \(\Sigma\). \\
+
+Como hicimos con las curvas paramétricas, llamamos \(x,y,z \) a las tres componentes de la función \(\Gamma\) y decimos que 
+\[
+	x = x(t,s) \qquad y = y(t,s) \qquad z = z(t,s) \qquad (t,s) \in \Omega
+\]
+son las \textit{ecuaciones paramétricas} de la superficie \(\Sigma = \Gamma (\Omega)\). \\
+
+Para extender la noción de plano tangente, fijamos una superficie paramétrica \(\Sigma = \Gamma (\Omega)\). Supongamos que \(\Sigma\) es diferenciable en un punto \((t_0, s_0) \in \Omega\). Sea \(P_0 = \Gamma (t_0, s_0) = (x_0, y_0, z_0)\) y observemos que la matriz jacobiana, cuyas columnas son las derivadas parciales de \(\Gamma\):
+\[
+	J \Gamma (t_0, s_0) = 
+\begin{pmatrix}
+\frac{\partial x}{\partial t} (t_0, s_0) & \frac{\partial x}{\partial s} (t_0, s_0) \\
+\\
+\frac{\partial y}{\partial t} (t_0, s_0) & \frac{\partial y}{\partial s} (t_0, s_0) \\
+\\
+\frac{\partial z}{\partial t} (t_0, s_0) & \frac{\partial z}{\partial s} (t_0, s_0)
+\end{pmatrix} = \left( \frac{\partial \Gamma}{\partial t} (t_0, s_0), \frac{\partial \Gamma}{\partial s} (t_0,s_0) \right)
+\] \\
+
+Usando que \(\Omega\) es abierto, podemos encontrar \(\delta >0\) de forma que se tenga \(J_1 \times J_2 \subset \Omega\) donde \(J_1 = ] t_0 - \delta, t_0 + \delta[\) y \(]s_0 - \delta, s_0 + \delta[\). Sean entonces \(\gamma_1 : J_1 \to \mathbb{R}^3\) y \(\gamma_2 : J_2 \to \mathbb{R}^3\) las funciones definidas por
+\[
+	\gamma_1 (t) = \Gamma (t, s_0) \quad \forall t \in J_1 \qquad \text{y} \qquad \gamma_2 (s) = \Gamma(t_0, s) \quad \forall s \in J_2
+\] \\
+
+Tenemos dos curvas paramétricas contenidas en la superficie \(\Sigma\). Además ambas funciones son derivables. Podemos así encontrar dos puntos regulares en ambas curvas y construir el único plano \(\Pi\) que contiene las rectas tangentes que pasan por dichos puntos. \\
+
+Por tanto, las ecuaciones paramétricas del plano \(\Pi\) pueden escribirse de la forma:
+\begin{equation}\label{parametricas_plano}
+\begin{array}{cc}
+x &= x_0 + (t-t_0) \frac{\partial x}{\partial t} (t_0,s_0) + (s - s_0) \frac{\partial x}{\partial s} (t_0,s_0) \\
+\\
+y &= y_0 + (t - t_0) \frac{\partial y}{\partial t} (t_0,s_0) + (s-s_0)\frac{\partial y}{\partial s} (t_0,s_0) \\
+\\
+z &= z_0 + (t-t_0) \frac{\partial z}{\partial t} (t_0, s_0) + (s - s_0) \frac{\partial z}{\partial s} (t_0,s_0)
+\end{array}
+\end{equation}
+
+Estas ecuaciones son más faciles de recordar si las escribimos en forma matricial:
+\begin{equation}\label{parametricas_ecuacion}
+\begin{pmatrix}
+x \\
+\\
+y \\
+\\
+z
+\end{pmatrix} = 
+\begin{pmatrix}
+x_0 \\
+\\
+y_0 \\
+\\
+z_0
+\end{pmatrix} + J \Gamma (t_0,s_0) \cdot
+\begin{pmatrix}
+t - t_0 \\
+\\
+s - s_0
+\end{pmatrix}
+\end{equation} \\
+
+Decimos que \(\Pi\) es el \textbf{plano tangente} a la superficie \(\Sigma\) en el punto \(P_0\).
+
+\bigskip
+
+\item Conocer y comprender la regla de la cadena para el cálculo de derivadas parciales, incluyendo su demostración. \\
+
+Sea \(f: \Omega \to \mathbb{R}^M\), de donde \(\Omega\) es un abierto de \(\mathbb{R}^N\), pero ahora consideramos un abierto \(U\) de \(\mathbb{R}^M\) tal que \(f(\Omega) \subset U\) y otra función \(g: U \to \mathbb{R}^P\) donde \(P \in \mathbb{N}\) es arbitrario. Esto permite definir la composición \(h = g \circ f: \Omega \to \mathbb{R}^P\). Suponemos que \(f\) es diferenciable en un punto \(a \in \Omega\) y que \(g\) es diferenciable en el punto \(b = f(a) \in U\), con lo que la regla de la cadena nos dice que \(h\) es diferenciable en \(a\) con
+\[
+	Dh(a) = Dg(b) \circ Df(a)
+\] \\
+
+Veamos cómo se traduce esta igualdad en términos de las matrices jacobianas. Para \(x \in \mathbb{R}^N\), sean \(y = Df(a)(x) \in \mathbb{R}^M\) y \(z = Dg(b)(y) \in \mathbb{R}^P\), con lo que \(z = Dh(a)(x)\). Escribiendo los tres vectores \(x,y,z\) como matrices columnas, tenemos
+\[
+	Jh(a) \cdot x = z = Jg(b) \cdot y = Jg(b) \cdot (Jf(a) \cdot x) = (Jg(b) \cdot Jf(a)) \cdot x \qquad \forall x \in \mathbb{R}^N
+\]
+donde hemos usado la asociatividad del producto de matrices. Deducimos claramente que 
+\begin{equation}\label{cadena_1}
+	Jh(a) = Jg(b) \cdot Jf(a)
+\end{equation} \\
+
+Esta igualdad matricial nos dará una regla práctica para calcular derivadas parciales, tan pronto como especifiquemos los coeficientes de las tres matrices que en ella aparecen. Para \(Jf(a)\) ya lo hemos antes:
+\[
+	Jf(a) = (\alpha_{jk}) = \left( \frac{\partial f_j}{\partial x_k} (a) \right) \in \mathcal{M}_{M \times N}
+\] \\
+
+La función \(g\) tiene \(P\) componentes \(g_i\) con \(i \Delta_P\), que son funciones de \(M\) variables reales. A efectos de escribir las derivadas parciales de cada componente, la \(j\)-ésima de esas variables debe denotarse lógicamente por \(y_j\) para todo \(j \in \Delta_M\). De esta forma, para \(i \in \Delta_P\) y \(j \in \Delta_M\), la derivada parcial de \(g_i\) con respecto a la \(j\)-ésima variable, en el punto \(b\), es \(\frac{\partial g_i}{\partial y_j} (b)\), y ya podemos escribir explícitamente la matriz jacobiana:
+\[
+	Jg(b) = (\beta_{ij}) = \left( \frac{\partial g_i}{\partial y_j} (b) \right) \in \mathcal{M}_{P \times M}
+\] \\
+
+Finalmente \(h\) tiene también sus \(P\) componentes \(h_i = g_i \circ f\) con \(i \in \Delta_P\), que son funciones de \(N\) variables reales, las mismas de las que depende \(f\), esto es, \(x_k\) con \(k \in \Delta_N\). Por tanto:
+\[
+	J h(a) = (\lambda_{ik}) = \left( \frac{\partial h_i}{\partial x_k} (a) \right) \in \mathcal{M}_{P \times N}
+\] \\
+
+En vista de (\ref{cadena_1}) la definición del producto de matrices nos dice que, para cualesquierea \(i \in \Delta_P\) y \(k \in \Delta_N\), se tiene \(\lambda_{ik} = \sum_{j=1}^{M} \beta_{ij} \alpha_{jk}\), es decir,
+\begin{equation}\label{cadena_3}
+\frac{\partial h_i}{\partial x_k} (a) = \sum_{j=1}^{M} \frac{\partial g_i}{\partial y_j} (b) \frac{\partial f_j}{\partial x_k} (a) \qquad \forall k \in \Delta_N \qquad \forall i \in \Delta_P
+\end{equation}
+
+
+\end{enumerate}
+
+\end{document}

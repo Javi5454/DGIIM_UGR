@@ -1,0 +1,7 @@
+/home/javi5454/Desktop/Github/Linux_PC/II_Curso/ED/Practicas/Practica_3/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+/home/javi5454/Desktop/Github/Linux_PC/II_Curso/ED/Practicas/Practica_3/cmake-build-debug/CMakeFiles/doc_doxygen.dir
+/home/javi5454/Desktop/Github/Linux_PC/II_Curso/ED/Practicas/Practica_3/cmake-build-debug/CMakeFiles/maxstack.dir
+/home/javi5454/Desktop/Github/Linux_PC/II_Curso/ED/Practicas/Practica_3/cmake-build-debug/CMakeFiles/edit_cache.dir
+/home/javi5454/Desktop/Github/Linux_PC/II_Curso/ED/Practicas/Practica_3/cmake-build-debug/CMakeFiles/pila_max.dir
+/home/javi5454/Desktop/Github/Linux_PC/II_Curso/ED/Practicas/Practica_3/cmake-build-debug/CMakeFiles/maxqueue.dir
+/home/javi5454/Desktop/Github/Linux_PC/II_Curso/ED/Practicas/Practica_3/cmake-build-debug/CMakeFiles/cola_max.dir

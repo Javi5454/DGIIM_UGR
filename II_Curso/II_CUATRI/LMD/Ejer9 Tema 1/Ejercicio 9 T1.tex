@@ -1,0 +1,104 @@
+\documentclass[a4paper, 12pt]{article}
+
+\usepackage{amsmath} %Todos los paquetes de matematicas
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage[utf8]{inputenc}
+\usepackage[spanish, es-lcroman]{babel}
+\usepackage{wrapfig} %Figuras flotantes
+\usepackage{parselines}
+\usepackage{enumitem}
+\usepackage{xcolor}
+\usepackage{graphicx}
+\usepackage{subcaption}
+\usepackage{pgfplots}
+\usepackage{hyperref}
+\usepackage{textcomp}
+\usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry}
+
+
+\providecommand{\abs}[1]{\lvert#1\rvert} %Valor absoluto
+\providecommand{\norm}[1]{\lVert#1\rVert} %Norma
+
+\newtheorem*{lema*}{Lema}
+\newtheorem{teorema}{Teorema}
+\newtheorem*{teorema*}{Teorema}
+\newtheorem{corolario}{Corolario}
+\newtheorem{ej}{Ejercicio}
+\renewcommand{\qedsymbol}{\(\blacksquare\)}
+
+\providecommand{\abs}[1]{\lvert#1\rvert} %Valor absoluto
+\providecommand{\norm}[1]{\lVert#1\rVert} %Norma
+
+
+\title{\textbf{Ejercicio 9 Relación Tema 1} \\ \textit{Lógica y Métodos discretos}}
+\author{Javier Gómez López}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\setcounter{ej}{8}
+
+\begin{ej}
+Es cierto que de un número \(n_0\) en adelante se tiene que \(100^n < n!\). Encuéntrelo y demuestre por inducción lo dicho a partir de ese número \(n_0\).
+\end{ej}
+
+En primer lugar, estudiemos la convergencia de la serie \(\sum_{n \geq 1} \frac{n!}{100^n}\). Para ello, sea \(\alpha_n = \frac{n!}{100^n}\) y apliquemos el criterio de d'Alembert o del cociente: 
+\[
+	\lim_{n \to \inf} \frac{\alpha_{n+1}}{\alpha_n} = \lim_{n \to \infty} \frac{\frac{(n+1)!}{100^{n+1}}}{\frac{n!}{100^n}} = \lim_{n \to \infty} \frac{n+1}{100} = \infty
+\]
+
+Vemos que dicho límite es mayor estricto que 1, por tanto el criterio del cociente nos dice que la serie \(\sum_{n \geq 1} \alpha_n\) diverge. \\
+
+Que dicha serie es divergente, supone que:
+\[
+	\exists n_0 \in \mathbb{N} : n \geq n_0 \Rightarrow 100^n < n!
+\]
+
+Ahora, tratemos  de hallar dicho \(n_0\). Para ello, sabiendo que la función logaritmo es una función creciente, y por tanto, obtenemos la siguiente expresión:
+\[
+	\log (100^n) < \log (n!)
+\]
+
+Desarrollamos esta expresión:
+\[
+	n \cdot \log (100) < \log (n!) \underset{\underset{\text{Fórmula de Stirling}}{\downarrow}}{<} n \cdot \log (n) - n
+\]
+\[
+	\log (100) < \log (n) -1
+\]
+
+Ahora aplicamos que la función exponencial es una función creciente:
+\[
+	e^{\log (100) + 1} < n
+\]
+
+Y deducimos que 
+\[
+	271 < n
+\]
+
+La fórmula de Stirling la hemos visto en la asignatura de Algorítmica, y se basa en la siguiente aproximación:
+\[
+	n! \simeq \sqrt{2 \pi n} \cdot \left( \frac{n}{e} \right)^n
+\]
+
+Cabe destacar que \(n_0 = 272\) no tiene por qué ser el mínimo natural que cumpla nuestro enunciado, debido a que la fórmula de Stirling es una aproximación, no una igualdad. Aún así, hemos encontrado un \(n_0 \in \mathbb{N}\) que cumple lo que queríamos probar. \\
+
+Ahora pasamos a usar lo demostrado como caso base de nuestra hipótesis de inducción. Apliquemos el primer principio de inducción:
+\begin{itemize}
+	\item \textit{Supongamos \(n \in \mathbb{N}\), \(n \geq n_0\) tal que \(100^n < n!\) y probemos que \(100^{n+1} < (n+1)!\)}
+\end{itemize}
+
+Entonces, tenemos que 
+\[
+	100^{n+1} < (n+1)! \Rightarrow 100^n \cdot 100 < (n+1) \cdot n!
+\]
+
+Por la hipótesis de inducción, se verifica que \(100^n < n!\). Por otro lado, de \(100 < n +1\) sabemos que se cumple pues \(n \geq n_0\), pero \(n_0 = 272\). Por tanto, la desigualdad queda probada y hemos terminado.
+
+\end{document}

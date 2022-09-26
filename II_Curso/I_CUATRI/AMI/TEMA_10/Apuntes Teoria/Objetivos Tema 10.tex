@@ -1,0 +1,191 @@
+\documentclass[a4paper, 12pt]{article}
+
+\usepackage{amsmath} %Todos los paquetes de matematicas
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage[utf8]{inputenc}
+\usepackage[spanish, es-lcroman]{babel}
+\usepackage{wrapfig} %Figuras flotantes
+\usepackage{parselines}
+\usepackage{enumitem}
+\usepackage{xcolor}
+\usepackage{graphicx}
+\usepackage{subcaption}
+\usepackage{pgfplots}
+\usepackage{hyperref}
+\usepackage{textcomp}
+\usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry}
+
+
+\providecommand{\abs}[1]{\lvert#1\rvert} %Valor absoluto
+\providecommand{\norm}[1]{\lVert#1\rVert} %Norma
+
+\newtheorem*{lema*}{Lema}
+\newtheorem{teorema}{Teorema}
+\newtheorem*{teorema*}{Teorema}
+\newtheorem{corolario}{Corolario}
+\renewcommand{\qedsymbol}{\(\blacksquare\)}
+
+
+\title{\textbf{Objetivos de aprendizaje Tema 10} \\ \textit{Análisis Matemático I}}
+\author{Javier Gómez López}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\begin{enumerate}[label=\textbf{\arabic*}.]
+
+\item Conocer y comprender el enunciado de los siguientes resultados:
+
+\begin{enumerate}
+	\item Teorema del valor medio escalar \\
+	
+	\begin{teorema}
+	Sea \(\Omega\) un abierto de un espacio normado X, \(a,b \in \Omega\) tales que \([a,b] \subset \Omega\) y \(f: \Omega \to \mathbb{R}\) una función continua en \([a,b]\), y diferenciable en \(]a,b[\). Entonces, existe \(c \in ]a,b[\) tal que
+	\begin{equation}\label{valor_medio_escalar_1}
+		f(b) -f(a) = Df(c) (b-a)
+	\end{equation}
+	Como consecuencia, si \(M \in \mathbb{R}_0^+\) verifica que \(||Df(x)|| \leq M\) para todo \(x \in ]a,b[\), se tendrá:
+	\begin{equation}\label{valor_medio_escalar_2}
+		| f(b) - f(a)| \leq M ||b-a||
+	\end{equation}
+	\end{teorema}
+	
+	\bigskip
+	
+	\item Corolarios de la desigualdad del valor medio
+	
+	\begin{corolario}
+	Sean X e Y espacios normados, \(\Omega\) un abierto convexo de X y \(f: \Omega \to Y\) una función diferenciable. Supongamos que existe \(M \in \mathbb{R}_0^+\) verificando que \(||Df(x)|| \leq M\) para todo \(x \in \Omega\). Entonces \(f\) es lipschitziana con constante M, es decir:
+	\[
+		||f(b) -f(a)|| \leq M ||b-a|| \qquad \forall a,b \in \Omega
+	\]
+	\end{corolario}
+	
+	\begin{corolario}
+	Sean X e Y espacios normados, \(\Omega\) un subconjunto abierto y conexo de X y \(f: \Omega \to Y\) una función diferenciable tal que \(Df(x) = 0\) para todo \(x \in \Omega\). Entonces f es constante.
+	\end{corolario}
+\end{enumerate}
+
+\bigskip
+
+\item Conocer y comprender la versión general de la desigualdad del valor medio, incluyendo su demostración, así como la del lema previo.
+
+\begin{lema*}
+Sea Y un espacio normado y sean \(g: [0,1] \to Y\) y \(\alpha: [0,1] \to \mathbb{R}\) dos funciones continuas en \([0,1]\) y derivables en \(]0,1[\), verificando que 
+\begin{equation} \label{lema_1}
+	||g'(t)|| \leq \alpha' (t) \qquad \forall t \in ]0,1[
+\end{equation}
+Se tiene entonces la siguientes desigualdad:
+\begin{equation}\label{lema_2}
+|| g(1) - g(0)|| \leq \alpha (1) - \alpha (0)
+\end{equation}
+\end{lema*}
+
+\begin{proof}
+Fijado \(\varepsilon > 0\), consideremos el conjunto 
+\[
+	\Lambda = \{ t \in [0,1] : ||g(t) - g(0)|| \leq \alpha (t) - \alpha(0) + \varepsilon t + \varepsilon \}
+\]
+y a poco que se piense, la demostración estará casi concluida si probamos que \(1 \in \Lambda\). \\
+
+Por ser \(g\) y \(\alpha\) continuas, la función \(\varphi : [0,1] \to \mathbb{R}\) defindia por
+\[
+	\varphi (t) = ||g(t) - g(0) || - ( \alpha (t) - \alpha (0)) - \varepsilon t \qquad \forall t \in [0,1]
+\]
+también es continua, de lo que deduciremos dos consecuencias:\\
+
+En primer lugar, como \(\varphi (0) = 0\), la continuidad de \(\varphi\) en 0 nos permite encontrar \(\eta \in ]0,1[\) tal que, para \(t \in [0, \eta]\), se tenga \(\varphi (t) < \varepsilon\), con lo que \([0,\eta] \subset \Lambda\). \\
+
+Por otra parte, como \(\Lambda = \{ t \in [0,1] : \varphi (t) \leq \varepsilon\}\), la continuidad de \(\varphi\) nos dice que \(\Lambda\) es un subconjunto cerrado de \([0,1]\), luego es compacto, y en particular tiene máximo. Sea pues \(t_0 = \text{máx} \Lambda\) y anotemos que \(t_0 \geq \eta > 0\). Nuestro objetivo es probar que \(t_0 = 1\), así que supondremos que \(t_0 < 1\) para llegar a una contradcción. \\
+
+Al ser \(0 < t_0 < 1\), tenemos que \(g\) y \(\alpha\) son derivables en \(t_0\), luego existe \(\delta >0\) tal que, para todo \(t \in [0,1]\) con \(|t-t_0| \leq \delta\), se tiene
+\[
+\begin{array}{cc}
+||g(t) - g(t_0) - g'(t_0) (t-t_0) || \leq \frac{\varepsilon}{2} |t - t_0| & \qquad \text{y también} \\
+\\
+| \alpha(t) - \alpha (t_0) - \alpha'(t_0) (t-t_0)| \leq \frac{\varepsilon}{2} |t - t_0|
+\end{array}
+\] \\
+
+Obviamente, podemos suponer que \(t_0 + \delta < 1\), para tomar \(t = t_0 + \delta\) y obtener
+\begin{equation}\label{proof_lema_1}
+\begin{array}{cc}
+|| g(t_0 + \delta) - g(t_0) - \delta g'(t_0) || \leq \frac{\varepsilon}{2} \delta & \qquad \text{así como} \\
+\\
+| \alpha (t_0 + \delta) - \alpha(t_0) - \delta \alpha'(t_0) \leq \frac{\varepsilon}{2} \delta
+\end{array}
+\end{equation} \\
+
+Llegaremos a una contradicción viendo que \(t_0 + \delta \in \Lambda\). Para ello, usando la primera desigualdad de (\ref{proof_lema_1}), la hipótesis (\ref{lema_1}) con \(t = t_0\), y el hecho de que \(t_0 \in \Lambda\), tenemos:
+\begin{equation} \label{proof_lema_2}
+\begin{array}{ll}
+|| g(t_0 + \delta) - g(0) ||  &\leq ||g(t_0 + \delta) - g(t_0) - \delta g'(t_0)|| + \delta ||g'(t_0)|| + ||g(t_0) - g(0)|| \\
+\\
+ &\leq \frac{\varepsilon}{2} \delta + \delta \alpha' (t_0) + \alpha (t_0) - \alpha (0) + \varepsilon t_0 + \varepsilon
+\end{array}
+\end{equation}
+
+Por otra parte, usando la segunda desigualad de (\ref{proof_lema_1}) tenemos también
+\begin{equation} \label{proof_lema_3}
+\begin{array}{ll}
+\delta \alpha'(t_0) + \alpha (t_0) &= \alpha (t_0 + \delta) - (\alpha (t_0 + \delta) - \alpha (t_0) - \delta \alpha' (t_0)) \\
+\\
+&\leq \alpha (t_0 + \delta) + \frac{\varepsilon}{2} \delta
+\end{array}
+\end{equation} \\
+
+De (\ref{proof_lema_2}) y (\ref{proof_lema_3}) deducimos claramente que
+\[
+\begin{array}{ll}
+||g(t_0 + \delta) - g(0) || \leq \frac{\varepsilon}{2} \delta + \alpha (t_0 + \delta) + \frac{\varepsilon}{2} \delta - \alpha (0) + \varepsilon t_0 + \varepsilon \\
+\\
+&= \alpha(t_0 + \delta) - \alpha(0) + \varepsilon (t_0 + \delta) + \varepsilon
+\end{array}
+\]
+
+es decir, que \(t_0 + \delta \in \Lambda\). Esto es una clara contradicción, ya que \(t_0 + \delta > t_0 = \text{máx} \Lambda\). \\
+
+Así pues hemos comprobado que \(t_0 = 1\) y en particular \(1 \in \Lambda\), es decir
+\[
+	||g(1) - g(0)|| \leq \alpha (1) + \alpha (0) + 2 \varepsilon
+\]
+
+Como esto es válido para todo \(\varepsilon \in \mathbb{R}^+\), tenemos (\ref{lema_2}), como queríamos.
+\end{proof}
+
+\begin{teorema*}[Desigualdad del valor medio]
+Sean X e Y espacios normados, \(\Omega\) abierto de X, \(a,b \in X\) tales que \([a,b] \subset \Omega\) y \(f: \Omega \to Y\) una función. Supongamos que f es continua en \([a,b]\) y diferenciable en \(]a,b[\), y que existe \(M \in \mathbb{R}_0^+\) tal que \(||Df(x)|| \leq M\) para todo \(x \in ]a.b[\). Se tiene entonces:
+\[
+	||f(b) - f(a)|| \leq M ||b-a||
+\]
+\end{teorema*}
+
+\begin{proof}
+Basta aplicar el lema anterior a las funciones \(g_ [0,1] \to Y\) y \(\alpha: [0,1] \to \mathbb{R}\) definidas, para todo \(t \in [0,1]\), por
+\[
+	g(t) = f((1-t) a + tb) \qquad \text{y} \qquad \alpha (t) = M ||b-a|| t
+\] \\
+
+Es claro que \(g\) y \(\alpha\) son continuas en \([0,1]\) y derivables en \(]0,1[\) con
+\[
+\begin{array}{ll}
+||g'(t)|| &= || Df((1-t) a + tb) (b-a)|| \\
+\\
+&\leq ||Df((1-t)a + tb)|| ||b-a|| \leq M ||b-a|| = \alpha' (t) \qquad \forall t \in ]0,1[
+\end{array}
+\] \\
+
+Aplicando pues el lema anterior, obtenemos la desigualdad buscada:
+\[
+	||f(b) - f(a)|| = ||g(1)- g(0)|| \leq \alpha(1) - \alpha(0) = M ||b-a||
+\]
+\end{proof}
+
+\end{enumerate}
+
+\end{document}

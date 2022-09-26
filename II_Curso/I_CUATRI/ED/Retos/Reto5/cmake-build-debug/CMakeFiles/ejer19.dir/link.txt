@@ -1,0 +1,1 @@
+/usr/bin/c++ -g CMakeFiles/ejer19.dir/programas/ejer19.cpp.o -o ejer19 
